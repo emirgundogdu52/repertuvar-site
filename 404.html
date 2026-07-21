@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sayfa bulunamadi</title>
+<script>
+var p = window.location.pathname.replace(/^\//, '');
+if (/\.html$/.test(p)) {
+  window.location.replace('https://app.repertuvar.app/' + p + window.location.search + window.location.hash);
+}
+</script>
+<style>
+body{background:#070a0f;color:#f5f7fb;font-family:-apple-system,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center;padding:24px}
+h1{font-size:52px;margin:0 0 8px}
+a{color:#FFC83D}
+</style>
+</head>
+<body>
+<div>
+<h1>404</h1>
+<p>Aradigin sayfa burada degil.</p>
+<p><a href="/">Ana sayfaya don</a> &middot; <a href="https://app.repertuvar.app/">Uygulamayi ac</a></p>
+</div>
+</body>
+</html>
