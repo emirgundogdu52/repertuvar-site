@@ -176,8 +176,8 @@
     .instrument-copy h2 { margin: 0 0 15px; font-size: 29px; line-height: 1.05; }
     .instrument-copy ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 12px; color: #d7dce5; }
     .instrument-copy li::before { content: "✓"; color: var(--orange); margin-right: 8px; font-weight: 900; }
-    .baglama { width: 56%; max-height: 465px; object-fit: contain; object-position: bottom; filter: drop-shadow(0 25px 28px rgba(0,0,0,.45)); transform: translateX(18px); }
-    .guitar { width: 48%; max-height: 365px; object-fit: contain; object-position: bottom; filter: sepia(.18) saturate(.82) brightness(.75) drop-shadow(0 25px 28px rgba(0,0,0,.5)); transform: translate(-10px, -6px); }
+    .baglama { width: 43%; max-height: 430px; flex-shrink: 0; order: 2; margin-left: 2%; object-fit: contain; object-position: bottom; filter: drop-shadow(0 25px 28px rgba(0,0,0,.45)); }
+    .guitar { width: 55%; max-height: 392px; flex-shrink: 0; order: 1; object-fit: contain; object-position: bottom; filter: sepia(.18) saturate(.82) brightness(.75) drop-shadow(0 25px 28px rgba(0,0,0,.5)); }
 
     .section { padding: 72px 0; }
     .section-title { font-size: clamp(28px, 3vw, 42px); line-height: 1.1; letter-spacing: -.035em; margin: 0 0 12px; }
@@ -233,8 +233,8 @@
       .hero-grid { grid-template-columns: 1fr 1.25fr; }
       .instrument-column { grid-column: 1 / -1; min-height: 330px; max-width: 700px; width: 100%; margin-inline: auto; }
       .instrument-copy { left: 30px; top: 30px; }
-      .baglama { width: 34%; max-height: 320px; margin-left: auto; }
-      .guitar { width: 29%; max-height: 280px; }
+      .baglama { width: 30%; max-height: 320px; flex-shrink: 0; order: 2; margin-left: 2%; }
+      .guitar { width: 38%; max-height: 292px; flex-shrink: 0; order: 1; }
       .feature-grid { grid-template-columns: repeat(2,1fr); }
       .steps { grid-template-columns: repeat(2,1fr); }
     }
@@ -270,8 +270,8 @@
       .instrument-copy { position: relative; inset: auto; align-self: flex-start; width: 48%; z-index: 3; padding-top: 30px; }
       .instrument-copy h2 { font-size: 25px; }
       .instrument-copy ul { font-size: 10px; }
-      .baglama { width: 34%; max-height: 290px; }
-      .guitar { width: 28%; max-height: 230px; }
+      .baglama { width: 28%; max-height: 290px; flex-shrink: 0; order: 2; margin-left: 2%; }
+      .guitar { width: 36%; max-height: 264px; flex-shrink: 0; order: 1; }
       .section { padding: 52px 0; }
       .feature-grid, .steps, .why-grid, .footer-grid { grid-template-columns: 1fr; }
       .feature-card p { min-height: auto; }
@@ -330,7 +330,7 @@
         <div class="instrument-column">
           <div class="instrument-copy"><h2>Her müzisyen<br>için güçlü.</h2><ul><li>Makama göre düzenleme</li><li>Potpuri desteği</li><li>Sürükle-bırak akış</li><li>Akıllı sıralama</li><li>Bluetooth pedal ile kontrol</li></ul></div>
           <img class="baglama" src="assets/baglama.png" alt="Akustik bağlama" />
-          <img class="guitar" src="assets/guitar.png" alt="Akustik klasik gitar" />
+          <img class="guitar" src="assets/guitar-dik.png" alt="Akustik klasik gitar" />
         </div>
       </div>
     </div>
@@ -381,6 +381,82 @@
     var p = a.getAttribute('data-app');
     a.href = APP_BASE + '/' + (p === 'login' ? 'login.html' : '');
   });
+</script>
+
+<style>
+  .tablet-screen { position: relative; }
+  .song-row { border: 1px solid transparent; }
+  .song-row.dragging {
+    background: rgba(255,200,61,.10);
+    border-color: rgba(255,200,61,.55);
+    box-shadow: 0 14px 28px rgba(0,0,0,.45);
+    position: relative; z-index: 3;
+  }
+  .rep-toast {
+    position: absolute; top: 14px; left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: #FFC83D; color: #1A1305;
+    font-size: 11px; font-weight: 700; padding: 6px 12px;
+    border-radius: 20px; white-space: nowrap; z-index: 6;
+    display: flex; align-items: center; gap: 5px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.4);
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .rep-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .rep-toast { display: none; } }
+</style>
+<script>
+(function repDragDemo(){
+  var list = document.querySelector('.song-list');
+  if (!list) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var screen = document.querySelector('.tablet-screen');
+  var toast = document.createElement('div');
+  toast.className = 'rep-toast';
+  toast.innerHTML = '<span>&#10003;</span> Repertuvar guncellendi';
+  if (screen) screen.appendChild(toast);
+  function renumber(){
+    var all = list.querySelectorAll('.song-row');
+    for (var i = 0; i < all.length; i++) {
+      var n = all[i].firstElementChild;
+      if (n) n.textContent = i + 1;
+      if (i === 0) all[i].classList.add('active');
+      else all[i].classList.remove('active');
+    }
+  }
+  var EASE = 'transform .65s cubic-bezier(.34,1.15,.4,1)';
+  function rotate(){
+    var rows = Array.prototype.slice.call(list.querySelectorAll('.song-row'), 0, 3);
+    if (rows.length < 3) return;
+    var first = rows[0], rest = rows.slice(1);
+    var firstOld = first.getBoundingClientRect();
+    var restOld = rest.map(function(r){ return r.getBoundingClientRect(); });
+    first.classList.add('dragging');
+    first.classList.remove('active');
+    rest[rest.length - 1].insertAdjacentElement('afterend', first);
+    var firstNew = first.getBoundingClientRect();
+    first.style.transition = 'none';
+    first.style.transform = 'translateY(' + (firstOld.top - firstNew.top) + 'px)';
+    rest.forEach(function(r, i){
+      var nr = r.getBoundingClientRect();
+      r.style.transition = 'none';
+      r.style.transform = 'translateY(' + (restOld[i].top - nr.top) + 'px)';
+    });
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        first.style.transition = EASE;
+        first.style.transform = '';
+        rest.forEach(function(r){ r.style.transition = EASE; r.style.transform = ''; });
+        setTimeout(function(){ first.classList.remove('dragging'); renumber(); }, 650);
+        setTimeout(function(){ toast.classList.add('show'); }, 760);
+        setTimeout(function(){ toast.classList.remove('show'); }, 2100);
+      });
+    });
+  }
+  setTimeout(rotate, 2600);
+  setInterval(rotate, 3400);
+})();
 </script>
 </body>
 </html>
