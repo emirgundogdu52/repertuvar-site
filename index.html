@@ -162,14 +162,17 @@
     .song-row .mode { color: #9ca7b7; }
     .song-row .key { color: #fff; }
     .pedal {
-      position: absolute; right: 2%; bottom: 4%; width: 185px; aspect-ratio: 1.55; border-radius: 24px;
-      background: linear-gradient(145deg, #171d28, #06080c); border: 1px solid rgba(255,255,255,.16);
-      box-shadow: 0 24px 40px rgba(0,0,0,.5); transform: rotate(2deg);
+      position: absolute; right: 2%; bottom: 4%; width: 200px; height: auto;
+      object-fit: contain; transform: rotate(2deg); z-index: 2;
+      filter: drop-shadow(0 22px 30px rgba(0,0,0,.6));
     }
-    .pedal::before, .pedal::after { content: ""; position: absolute; bottom: 22px; width: 35px; height: 35px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f4eadc 0 18%, #a18f76 22% 48%, #3f372e 52%); box-shadow: inset 0 0 0 3px rgba(0,0,0,.25); }
-    .pedal::before { left: 27px; } .pedal::after { right: 27px; }
-    .pedal-led { position: absolute; top: 18px; left: 50%; width: 7px; height: 7px; border-radius: 50%; background: #3d8bff; box-shadow: 0 0 18px #3d8bff; }
-    .pedal-logo { position: absolute; inset: 0; display: grid; place-items: center; color: #dfe5ef; font-size: 13px; font-weight: 800; }
+    .device-wrap::after {
+      content: ""; position: absolute; right: 6%; bottom: 6%;
+      width: 190px; height: 120px; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(ellipse, rgba(120,150,200,.20), transparent 70%);
+      filter: blur(22px); z-index: 0;
+    }
+    .step-pedal { display: block; width: 128px; height: auto; margin-top: 16px; opacity: .9; }
 
     .instrument-column { min-height: 480px; position: relative; display: flex; align-items: flex-end; justify-content: center; gap: 0; }
     .instrument-copy { position: absolute; top: 55px; left: -8px; z-index: 3; }
@@ -213,8 +216,16 @@
     .promo h3 { font-size: 34px; line-height: 1.08; margin: 0; max-width: 390px; }
     .promo p { color: #b7bfcc; max-width: 360px; line-height: 1.55; }
     .promo-instruments { position: absolute; right: 10px; bottom: -12px; width: 55%; height: 92%; display: flex; align-items: flex-end; justify-content: flex-end; }
-    .promo-instruments img:first-child { width: 53%; max-height: 100%; object-fit: contain; }
-    .promo-instruments img:last-child { width: 46%; max-height: 78%; object-fit: contain; filter: sepia(.18) saturate(.82) brightness(.78); }
+    .promo-instruments img:first-child {
+      order: 2; height: 100%; width: auto; max-width: 40%; flex-shrink: 0;
+      margin-left: 3%; object-fit: contain; object-position: bottom;
+      filter: drop-shadow(0 18px 24px rgba(0,0,0,.45));
+    }
+    .promo-instruments img:last-child {
+      order: 1; height: 91%; width: auto; max-width: 51%; flex-shrink: 0;
+      object-fit: contain; object-position: bottom;
+      filter: sepia(.18) saturate(.82) brightness(.78) drop-shadow(0 18px 24px rgba(0,0,0,.5));
+    }
 
     .cta { background: #0b1017; color: #fff; border-radius: var(--radius-md); padding: 34px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
     .cta h3 { margin: 0 0 8px; font-size: 30px; }
@@ -262,10 +273,8 @@
       .tablet-screen { padding: 12px; }
       .song-row { font-size: 9px; grid-template-columns: 18px 1fr auto; gap: 6px; padding: 7px; }
       .song-row .key { display: none; }
-      .pedal { width: 125px; right: 1%; bottom: 0; border-radius: 16px; }
-      .pedal::before, .pedal::after { width: 24px; height: 24px; bottom: 14px; }
-      .pedal::before { left: 18px; } .pedal::after { right: 18px; }
-      .pedal-logo { font-size: 9px; }
+      .pedal { width: 132px; right: 1%; bottom: 0; }
+      .step-pedal { width: 104px; }
       .instrument-column { min-height: 300px; overflow: hidden; }
       .instrument-copy { position: relative; inset: auto; align-self: flex-start; width: 48%; z-index: 3; padding-top: 30px; }
       .instrument-copy h2 { font-size: 25px; }
@@ -316,15 +325,15 @@
           <div class="tablet"><div class="tablet-screen">
             <div class="screen-head"><span>Konser Setlistim⌄</span><span>•••</span></div><div class="screen-sub">19 Parça · 75 dk</div>
             <div class="song-list">
-              <div class="song-row active"><span>1</span><span>Bir Bahar Akşamı</span><span class="mode">Rast</span><span class="key">Am</span></div>
-              <div class="song-row"><span>2</span><span>Hicaz Yürüyüş</span><span class="mode">Hicaz</span><span class="key">Dm</span></div>
-              <div class="song-row"><span>3</span><span>Derdim Çoktur Hangisine Yanam</span><span class="mode">Nihavent</span><span class="key">Em</span></div>
-              <div class="song-row"><span>4</span><span>Sevda Şarkıları Potpuri</span><span class="mode">Potpuri</span><span class="key">F</span></div>
-              <div class="song-row"><span>5</span><span>Sen Ağlama</span><span class="mode">Hüzzam</span><span class="key">Gm</span></div>
-              <div class="song-row"><span>6</span><span>Ben Sana Vurgunum</span><span class="mode">Uşşak</span><span class="key">Cm</span></div>
+              <div class="song-row active"><span>1</span><span>Allı Turnam</span><span class="mode">Hüseyni</span><span class="key">La</span></div>
+              <div class="song-row"><span>2</span><span>Dostum Dostum</span><span class="mode">Hüseyni</span><span class="key">La</span></div>
+              <div class="song-row"><span>3</span><span>Barış Güvercini</span><span class="mode">Hüseyni</span><span class="key">La</span></div>
+              <div class="song-row"><span>4</span><span>Vardar Ovası</span><span class="mode">Hicaz</span><span class="key">La</span></div>
+              <div class="song-row"><span>5</span><span>Aldırma Gönül</span><span class="mode">Hicaz</span><span class="key">La</span></div>
+              <div class="song-row"><span>6</span><span>Bedir Geliyor</span><span class="mode">Hicaz</span><span class="key">La</span></div>
             </div>
           </div></div>
-          <div class="pedal"><span class="pedal-led"></span><span class="pedal-logo"><span class="accent">♫</span>&nbsp; repertuvar.app</span></div>
+          <img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı (harici cihaz)" />
         </div>
 
         <div class="instrument-column">
@@ -340,9 +349,9 @@
     <section class="section" id="features"><div class="container">
       <h2 class="section-title">Sahneye çıkan müzisyenlerin ihtiyaç duyduğu özellikler.</h2><p class="section-lead">Dağınık listeler yerine, performansın tamamını tek yerden yönetin.</p>
       <div class="feature-grid">
-        <article class="card feature-card" id="pedal"><div class="feature-head"><span class="feature-icon purple">⌁</span><h3>Bluetooth Pedal</h3></div><p>Telefona dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p><div class="mini-ui"><div class="pedal" style="position:relative;right:auto;bottom:auto;width:150px"></div></div></article>
+        <article class="card feature-card" id="pedal"><div class="feature-head"><span class="feature-icon purple">⌁</span><h3>Bluetooth Pedal</h3></div><p>Telefona dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="mini-list"><div>Gülizar</div><div>Hatıran Yeter</div><div>Aşkına Yandım Gönlüm</div></div></div></article>
-        <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Rast · Nihavent · Hicaz · Segâh</p></div></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Hüseyni · Hicaz · Kürdi · Uşşak</p></div></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue">♙</span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><div class="mini-ui"><div style="font-size:74px;color:var(--blue)">☁</div></div></article>
       </div>
     </div></section>
@@ -352,7 +361,7 @@
         <div class="step"><span class="step-num">1</span><h3>Eseri Bul veya Ekle</h3><p>Veritabanından eser seç ya da kendi eserini ekle.</p></div>
         <div class="step"><span class="step-num">2</span><h3>Repertuvarını Oluştur</h3><p>Şarkılarını sırala, potpurilerini oluştur, istersen makamına göre düzenle.</p></div>
         <div class="step"><span class="step-num">3</span><h3>Grubunla Paylaş</h3><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşsın.</p></div>
-        <div class="step"><span class="step-num">4</span><h3>Sahnede Yönet</h3><p>Bluetooth pedal ile şarkılar arasında kesintisiz geçiş yap.</p></div>
+        <div class="step"><span class="step-num">4</span><h3>Sahnede Yönet</h3><p>Bluetooth pedal ile şarkılar arasında kesintisiz geçiş yap.</p><img class="step-pedal" src="assets/pedal-cizim.png" alt="" /></div>
       </div>
     </div></section>
 
@@ -365,7 +374,7 @@
           <div class="compare-row"><span>Telefona dokunmak gerekir</span><span>✓ Bluetooth pedal ile kontrol</span></div>
           <div class="compare-row"><span>Bireysel kullanım odaklı</span><span>✓ Grup senkronizasyonu</span></div>
         </div>
-        <div class="promo"><h3>Her müzisyen için güçlü. Türk müziği icra edenler için ise daha da güçlü.</h3><p>İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam düzenine geç.</p><div class="promo-instruments"><img src="assets/baglama.png" alt="Akustik bağlama"><img src="assets/guitar.png" alt="Akustik gitar"></div></div>
+        <div class="promo"><h3>Her müzisyen için güçlü. Türk müziği icra edenler için ise daha da güçlü.</h3><p>İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam düzenine geç.</p><div class="promo-instruments"><img src="assets/baglama.png" alt="Akustik bağlama"><img src="assets/guitar-dik.png" alt="Akustik klasik gitar"></div></div>
       </div>
     </div></section>
 
@@ -387,24 +396,39 @@
   .tablet-screen { position: relative; }
   .song-row { border: 1px solid transparent; }
   .song-row.dragging {
-    background: rgba(255,200,61,.10);
-    border-color: rgba(255,200,61,.55);
-    box-shadow: 0 14px 28px rgba(0,0,0,.45);
-    position: relative; z-index: 3;
+    background: rgba(255,200,61,.10); border-color: rgba(255,200,61,.55);
+    box-shadow: 0 14px 28px rgba(0,0,0,.45); position: relative; z-index: 3;
   }
   .rep-toast {
     position: absolute; top: 14px; left: 50%;
     transform: translateX(-50%) translateY(-6px);
-    background: #FFC83D; color: #1A1305;
-    font-size: 11px; font-weight: 700; padding: 6px 12px;
-    border-radius: 20px; white-space: nowrap; z-index: 6;
+    background: #FFC83D; color: #1A1305; font-size: 11px; font-weight: 700;
+    padding: 6px 12px; border-radius: 20px; white-space: nowrap; z-index: 6;
     display: flex; align-items: center; gap: 5px;
     box-shadow: 0 10px 24px rgba(0,0,0,.4);
     opacity: 0; pointer-events: none;
     transition: opacity .3s ease, transform .3s ease;
   }
   .rep-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  @media (prefers-reduced-motion: reduce) { .rep-toast { display: none; } }
+  .pedal-wrap {
+    position: absolute; right: 2%; bottom: 4%; width: 200px; z-index: 2;
+    transform: rotate(2deg);
+    transition: transform .17s cubic-bezier(.3,1.5,.5,1);
+  }
+  .pedal-wrap .pedal {
+    position: static; right: auto; bottom: auto; width: 100%;
+    transform: none; z-index: auto; display: block;
+  }
+  .pedal-wrap.press { transform: rotate(2deg) scale(.968); }
+  .pedal-hit {
+    position: absolute; right: 10%; top: 50%; width: 27%; height: 64%;
+    transform: translateY(-50%); border-radius: 16px; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(255,200,61,.5), rgba(255,200,61,.12) 55%, transparent 75%);
+    opacity: 0; transition: opacity .16s ease;
+  }
+  .pedal-wrap.press .pedal-hit { opacity: 1; }
+  @media (max-width: 720px) { .pedal-wrap { width: 132px; right: 1%; bottom: 0; } }
+  @media (prefers-reduced-motion: reduce) { .rep-toast, .pedal-hit { display: none; } }
 </style>
 <script>
 (function repDragDemo(){
@@ -416,46 +440,63 @@
   toast.className = 'rep-toast';
   toast.innerHTML = '<span>&#10003;</span> Repertuvar guncellendi';
   if (screen) screen.appendChild(toast);
-  function renumber(){
-    var all = list.querySelectorAll('.song-row');
-    for (var i = 0; i < all.length; i++) {
-      var n = all[i].firstElementChild;
-      if (n) n.textContent = i + 1;
-      if (i === 0) all[i].classList.add('active');
-      else all[i].classList.remove('active');
-    }
+  var wrap = null;
+  var pedal = document.querySelector('.device-wrap img.pedal');
+  if (pedal && pedal.parentNode) {
+    wrap = document.createElement('span');
+    wrap.className = 'pedal-wrap';
+    pedal.parentNode.insertBefore(wrap, pedal);
+    wrap.appendChild(pedal);
+    var hit = document.createElement('span');
+    hit.className = 'pedal-hit';
+    wrap.appendChild(hit);
   }
   var EASE = 'transform .65s cubic-bezier(.34,1.15,.4,1)';
-  function rotate(){
-    var rows = Array.prototype.slice.call(list.querySelectorAll('.song-row'), 0, 3);
-    if (rows.length < 3) return;
-    var first = rows[0], rest = rows.slice(1);
-    var firstOld = first.getBoundingClientRect();
-    var restOld = rest.map(function(r){ return r.getBoundingClientRect(); });
-    first.classList.add('dragging');
-    first.classList.remove('active');
-    rest[rest.length - 1].insertAdjacentElement('afterend', first);
-    var firstNew = first.getBoundingClientRect();
-    first.style.transition = 'none';
-    first.style.transform = 'translateY(' + (firstOld.top - firstNew.top) + 'px)';
-    rest.forEach(function(r, i){
-      var nr = r.getBoundingClientRect();
-      r.style.transition = 'none';
-      r.style.transform = 'translateY(' + (restOld[i].top - nr.top) + 'px)';
+  function satirlar(){ return Array.prototype.slice.call(list.querySelectorAll('.song-row')); }
+  function numarala(){ satirlar().forEach(function(r,i){ var n=r.firstElementChild; if(n) n.textContent=i+1; }); }
+  function isaretle(i){ satirlar().forEach(function(r,k){ r.classList.toggle('active', k===i); }); }
+  function siralamaYap(bitti){
+    var rw = satirlar().slice(0,3);
+    if (rw.length < 3) { bitti(); return; }
+    var ilk = rw[0], kalan = rw.slice(1);
+    var io_ = ilk.getBoundingClientRect();
+    var ko = kalan.map(function(r){ return r.getBoundingClientRect(); });
+    ilk.classList.add('dragging'); ilk.classList.remove('active');
+    kalan[kalan.length-1].insertAdjacentElement('afterend', ilk);
+    var iy = ilk.getBoundingClientRect();
+    ilk.style.transition='none';
+    ilk.style.transform='translateY(' + (io_.top - iy.top) + 'px)';
+    kalan.forEach(function(r,k){
+      var ny = r.getBoundingClientRect();
+      r.style.transition='none';
+      r.style.transform='translateY(' + (ko[k].top - ny.top) + 'px)';
     });
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
-        first.style.transition = EASE;
-        first.style.transform = '';
-        rest.forEach(function(r){ r.style.transition = EASE; r.style.transform = ''; });
-        setTimeout(function(){ first.classList.remove('dragging'); renumber(); }, 650);
+        ilk.style.transition=EASE; ilk.style.transform='';
+        kalan.forEach(function(r){ r.style.transition=EASE; r.style.transform=''; });
+        setTimeout(function(){ ilk.classList.remove('dragging'); numarala(); isaretle(0); }, 650);
         setTimeout(function(){ toast.classList.add('show'); }, 760);
         setTimeout(function(){ toast.classList.remove('show'); }, 2100);
+        setTimeout(bitti, 2450);
       });
     });
   }
-  setTimeout(rotate, 2600);
-  setInterval(rotate, 3400);
+  function pedalBas(hedef, bitti){
+    if (wrap) {
+      wrap.classList.add('press');
+      setTimeout(function(){ wrap.classList.remove('press'); }, 165);
+    }
+    setTimeout(function(){ isaretle(hedef); }, 95);
+    setTimeout(bitti, 1350);
+  }
+  var adim = 0;
+  function dongu(){
+    if (adim === 0) { siralamaYap(function(){ adim = 1; dongu(); }); }
+    else if (adim <= 3) { var h = adim; pedalBas(h, function(){ adim++; dongu(); }); }
+    else { isaretle(0); adim = 0; setTimeout(dongu, 1700); }
+  }
+  setTimeout(dongu, 2200);
 })();
 </script>
 </body>
