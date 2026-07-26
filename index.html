@@ -1,122 +1,532 @@
-￼
-Giriş YapÜcretsiz Dene
-Sen sahnede müziğine odaklan. Gerisini repertuvar.app halletsin.
-Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedalı ile sahneni yönet. İster sürükle-bırak ile kendi akışını oluştur, ister akıllı özelliklerle repertuvarını saniyeler içinde düzenle.
-Ücretsiz Dene →Pedalı Keşfet →
+<!doctype html>
+<!--
+  repertuvar.app — LANDING PAGE  (repo: repertuvar-site)
+  Uygulamanın kendisi app.repertuvar.app'te. Bu dosyanın auth.js / db.js /
+  topnav.js / style.css bağımlılığı YOKTUR.
+  Uygulamaya giden tüm bağlantılar sayfa sonundaki APP_BASE sabitinden kurulur —
+  alan adı değişirse YALNIZ orası değişir.
 
-Çevrimdışı Çalışır
-İnternet olmasa da sorun yok.
+  DEĞİŞİKLİK GÜNLÜĞÜ
+  2026-07-21 : Tasarım dosyası repoya hazırlandı. Eklenenler: canonical + Open Graph
+               + theme-color + favicon; APP_BASE ile bağlantı bağlama; menüdeki ölü
+               çapalar (#pricing #blog #support) kaldırıldı, #pedal bölümü gerçek bir
+               id'ye bağlandı; footer'daki henüz var olmayan sayfalar (Hakkımızda,
+               Kariyer, Blog, Yardım Merkezi) çıkarıldı, İletişim mailto oldu;
+               görseller assets/ altında yeniden boyutlandırıldı (931KB -> 435KB).
+-->
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Repertuvar.app — sahneye çıkan müzisyenler için akıllı repertuvar yönetimi. Eser arşivi, potpuri, makama göre sıralama, grup senkronizasyonu, sayfa çevirme pedalı." />
+  <title>Repertuvar.app — Sahnede müziğine odaklan</title>
+  <link rel="canonical" href="https://repertuvar.app/" />
+  <link rel="icon" href="favicon.png" />
+  <meta name="theme-color" content="#070a0f" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Repertuvar.app — Sahnede müziğine odaklan" />
+  <meta property="og:description" content="Türk müziği icra edenler için repertuvar yönetimi: eser arşivi, potpuri, makama göre sıralama, grup senkronizasyonu." />
+  <meta property="og:url" content="https://repertuvar.app/" />
+  <meta property="og:locale" content="tr_TR" />
+  <style>
+    :root {
+      --bg: #070a0f;
+      --bg-soft: #0d1119;
+      --surface: #111722;
+      --surface-2: #171e2b;
+      --paper: #f7f8fa;
+      --white: #ffffff;
+      --text: #f5f7fb;
+      --text-muted: #aeb6c5;
+      --ink: #111827;
+      --ink-muted: #667085;
+      /* 2026-07-21: turuncu tasarım hatasıydı — uygulamanın marka altınına çevrildi.
+         Değişken adları korundu ki tasarımın geri kalanı aynen çalışsın.
+         --orange      : koyu zeminlerde parlak altın (uygulamadaki accent)
+         --orange-deep : AÇIK zeminlerde okunur koyu altın (marka ikon rengi) */
+      --orange: #FFC83D;
+      --orange-hover: #FFD463;
+      --orange-soft: #FFDA7A;
+      --orange-deep: #D68A00;
+      --on-gold: #1A1305;
+      --purple: #6f4ccf;
+      --purple-glow: rgba(116, 74, 214, .22);
+      --pink: #db3f73;
+      --green: #18a567;
+      --blue: #246ed8;
+      --line-dark: rgba(255,255,255,.11);
+      --line-light: #e6e9ef;
+      --shadow-dark: 0 24px 64px rgba(0,0,0,.38);
+      --shadow-card: 0 14px 35px rgba(17,24,39,.08);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --container: 1240px;
+    }
 
-Bluetooth Pedal
-Ekrana dokunmadan geçiş yap.
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
-Grup Senkronizasyonu
-Değişiklikler anında herkese ulaşır.
+    .container { width: min(var(--container), calc(100% - 40px)); margin-inline: auto; }
 
-Güvenli Yedekleme
-Verilerin güvende kalır.
-Konser Setlistim⌄
-•••
-19 Parça · 75 dk
-1
-Allı Turnam
-Hüseyni
-La
-2
-Dostum Dostum
-Hüseyni
-La
-3
-Barış Güvercini
-Hüseyni
-La
-4
-Vardar Ovası
-Hicaz
-La
-5
-Aldırma Gönül
-Hicaz
-La
-6
-Bedir Geliyor
-Hicaz
-La
-￼
-Her müzisyen için güçlü.
-	•	Makama göre düzenleme
-	•	Potpuri desteği
-	•	Sürükle-bırak akış
-	•	Akıllı sıralama
-	•	Bluetooth pedal ile kontrol
-￼
-￼
-Sahneye çıkan müzisyenlerin ihtiyaç duyduğu özellikler.
-Dağınık listeler yerine, performansın tamamını tek yerden yönetin.
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 68% 20%, var(--purple-glow), transparent 30%),
+        radial-gradient(circle at 84% 38%, rgba(255,200,61,.10), transparent 28%),
+        linear-gradient(180deg, #05070b 0%, #090d14 100%);
+      color: var(--text);
+      min-height: 710px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      opacity: .42;
+      background:
+        linear-gradient(106deg, transparent 0 48%, rgba(137,83,230,.13) 53%, transparent 58%),
+        radial-gradient(ellipse at 62% 82%, rgba(112,58,175,.22), transparent 38%),
+        radial-gradient(ellipse at 88% 75%, rgba(62,34,112,.14), transparent 28%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 170px;
+      z-index: -1;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.32));
+    }
 
-Bluetooth Pedal
-Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.
-￼
-♫
-Kesintisiz Performanslar Hazırla
-Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.
-Allı Turnam
-Dostum Dostum
-Barış Güvercini
-▦
-Akıllı Repertuvar Yönetimi
-Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.
-Makama Göre Düzenle
-Hüseyni · Hicaz · Kürdi · Uşşak
+    .nav { height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 21px; }
+    /* Marka logosu — beyaz yazı + altın .app, koyu zemin için. Yeni marka ikonu
+       hazır olunca logonun soluna .brand-mark olarak eklenebilir. */
+    .brand-logo { height: 60px; width: auto; display: block; }
+    footer .brand-logo { height: 26px; margin-bottom: 12px; }
+    @media (max-width: 720px) { .brand-logo { height: 52px; } }
 
-Grup Senkronizasyonu
-Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.
-☁
-Nasıl Çalışır?
-Dakikalar içinde sahneye hazır ol.
-1
-Eseri Bul veya Ekle
-Veritabanından eser seç ya da kendi eserini ekle.
-2
-Repertuvarını Oluştur
-Şarkılarını sırala, potpurilerini oluştur, istersen makamına göre düzenle.
-3
-Grubunla Paylaş
-Yaptığın değişiklikler tüm grup üyelerine anında ulaşsın.
-4
-Sahnede Yönet
-Bluetooth pedal ile şarkılar arasında kesintisiz geçiş yap.
-￼
-Neden Repertuvar.app?
-Diğer uygulamalar
-Repertuvar.app
-Manuel liste düzenleme
-✓ Sürükle-bırak ve akıllı sıralama
-Potpuri desteği yok
-✓ Potpuri oluşturabilir
-Türk müziğine özel değil
-✓ Makam sıralama desteği
-Ekrana dokunmak gerekir
-✓ Bluetooth pedal ile kontrol
-Bireysel kullanım odaklı
-✓ Grup senkronizasyonu
-Her müzisyen için güçlü. Türk müziği icra edenler için ise daha da güçlü.
-İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam düzenine geç.
-￼
-￼
-Hazırsan sahneye çık.
-Repertuvarını dakikalar içinde oluştur. Gerisini Repertuvar.app halletsin.
-Ücretsiz Dene →
-￼
-Sahneye çıkan müzisyenler için akıllı repertuvar yönetim sistemi.
-Ürün
-Özellikler
-Pedal
-Nasıl çalışır
-Uygulama
-Uygulamayı aç
-Giriş yap
-İletişim
-info@repertuvar.app
-Gizlilik Politikası
-© 2026 Repertuvar.app — Tüm hakları saklıdır.
+    /* 2026-07-21: ♫ ikonu kaldırıldı, yeni marka ikonu tasarlanacak.
+       Kural hazır duruyor — yeni ikon gelince <span class="brand-mark"> geri eklenir. */
+    .brand-mark {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border-radius: 9px; background: var(--orange); color: #111; font-size: 19px;
+      box-shadow: 0 8px 22px rgba(255,200,61,.25);
+    }
+    .nav-links { display: flex; gap: 30px; align-items: center; color: #d8dde7; font-size: 14px; }
+    .nav-actions { display: flex; gap: 12px; }
+    .btn {
+      min-height: 46px; padding: 0 20px; border-radius: 10px; border: 1px solid transparent;
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-weight: 750;
+      cursor: pointer; transition: .2s ease;
+    }
+    .btn-primary { background: var(--orange); color: var(--on-gold); box-shadow: 0 12px 30px rgba(255,200,61,.20); }
+    .btn-primary:hover { background: var(--orange-hover); transform: translateY(-1px); }
+    .btn-ghost { background: rgba(255,255,255,.03); color: #fff; border-color: rgba(255,255,255,.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,.08); }
+
+    .hero-grid { display: grid; grid-template-columns: .92fr 1.16fr .62fr; gap: 28px; align-items: center; padding: 42px 0 54px; }
+    .hero-copy h1 { margin: 0; font-size: clamp(42px, 5.1vw, 72px); line-height: .99; letter-spacing: -.05em; max-width: 680px; }
+    .accent { color: var(--orange); }
+    .hero-copy p { max-width: 560px; margin: 24px 0; color: #c2c9d5; line-height: 1.65; font-size: 16px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 13px; }
+    .benefits { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; margin-top: 42px; }
+    .benefit { min-width: 0; }
+    .benefit-icon { width: 38px; height: 38px; border: 2px solid #FFC83D; background: rgba(255,200,61,.12); color: #FFC83D; border-radius: 50%; display: grid; place-items: center; margin-bottom: 10px; font-size: 19px; }
+    .benefit-icon i { font-size: 19px; line-height: 1; }
+    .benefit b { display: block; font-size: 12px; margin-bottom: 5px; }
+    .benefit span { color: #8f98a8; font-size: 11px; line-height: 1.45; }
+
+    .device-wrap { position: relative; min-height: 480px; display: grid; place-items: center; }
+    .tablet {
+      width: min(100%, 610px); aspect-ratio: 1.28; border-radius: 30px; padding: 15px;
+      background: linear-gradient(145deg, #313743, #090c12 55%); box-shadow: var(--shadow-dark);
+      transform: perspective(1200px) rotateY(-8deg) rotateX(2deg);
+    }
+    .tablet-screen { height: 100%; border-radius: 19px; background: #0b1018; border: 1px solid rgba(255,255,255,.09); padding: 22px; overflow: hidden; }
+    .screen-head { display: flex; justify-content: space-between; align-items: center; color: #fff; font-weight: 700; }
+    .screen-sub { font-size: 11px; color: #8290a4; margin-top: 6px; }
+    .song-list { margin-top: 16px; display: grid; gap: 8px; }
+    .song-row { display: grid; grid-template-columns: 28px 1fr auto auto; gap: 12px; padding: 10px 11px; border-radius: 8px; color: #d7dde7; font-size: 12px; background: rgba(255,255,255,.025); }
+    .song-row.active { border: 1px solid var(--orange); background: rgba(255,200,61,.08); }
+    .song-row .mode { color: #9ca7b7; }
+    .song-row .key { color: #fff; }
+    .pedal {
+      position: absolute; right: 2%; bottom: 4%; width: 200px; height: auto;
+      object-fit: contain; transform: rotate(2deg); z-index: 2;
+      filter: drop-shadow(0 22px 30px rgba(0,0,0,.6));
+    }
+    .device-wrap::after {
+      content: ""; position: absolute; right: 6%; bottom: 6%;
+      width: 190px; height: 120px; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(ellipse, rgba(120,150,200,.20), transparent 70%);
+      filter: blur(22px); z-index: 0;
+    }
+    .step-pedal { display: block; width: 128px; height: auto; margin-top: 16px; opacity: .9; }
+
+    .instrument-column { min-height: 480px; position: relative; display: flex; align-items: flex-end; justify-content: center; gap: 0; }
+    .instrument-copy { position: absolute; top: 55px; left: -8px; z-index: 3; }
+    .instrument-copy h2 { margin: 0 0 15px; font-size: 29px; line-height: 1.05; }
+    .instrument-copy ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 12px; color: #d7dce5; }
+    .instrument-copy li::before { content: "✓"; color: var(--orange); margin-right: 8px; font-weight: 900; }
+    .baglama { width: 43%; max-height: 430px; flex-shrink: 0; order: 2; margin-left: 2%; object-fit: contain; object-position: bottom; filter: drop-shadow(0 25px 28px rgba(0,0,0,.45)); }
+    .guitar { width: 55%; max-height: 392px; flex-shrink: 0; order: 1; object-fit: contain; object-position: bottom; filter: sepia(.18) saturate(.82) brightness(.75) drop-shadow(0 25px 28px rgba(0,0,0,.5)); }
+
+    .section { padding: 72px 0; }
+    .section-title { font-size: clamp(28px, 3vw, 42px); line-height: 1.1; letter-spacing: -.035em; margin: 0 0 12px; }
+    .section-lead { margin: 0 0 34px; color: var(--ink-muted); }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .card { background: #fff; border: 1px solid var(--line-light); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 24px; }
+    .feature-head { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+    .feature-icon { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 900; }
+    .purple { background: var(--purple); } .pink { background: var(--pink); } .green { background: var(--green); } .blue { background: var(--blue); }
+    .feature-card h3 { margin: 0; font-size: 18px; line-height: 1.15; }
+    .feature-card p { color: var(--ink-muted); font-size: 14px; line-height: 1.55; min-height: 87px; }
+    .mini-ui { height: 165px; margin-top: 16px; border-radius: 14px; background: #f6f7fa; display: grid; place-items: center; overflow: hidden; }
+    .mini-list { width: 82%; background: #10151e; color: #fff; border-radius: 12px; padding: 15px; font-size: 12px; display: grid; gap: 10px; }
+    .mini-list div::before { content: "•"; color: var(--orange); margin-right: 8px; }
+
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
+    .step-num { width: 34px; height: 34px; border-radius: 50%; background: var(--orange); color: var(--on-gold); display: grid; place-items: center; font-weight: 850; margin-bottom: 13px; }
+    .step h3 { margin: 0 0 8px; font-size: 17px; }
+    .step p { margin: 0; color: var(--ink-muted); font-size: 14px; line-height: 1.5; }
+
+    .why-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 22px; align-items: stretch; }
+    .compare { overflow: hidden; }
+    .compare-head, .compare-row { display: grid; grid-template-columns: 1fr 1fr; }
+    .compare-head div { padding: 15px 18px; font-weight: 800; text-align: center; }
+    .compare-head div:first-child { background: #111722; color: #fff; }
+    .compare-head div:last-child { background: var(--orange); color: var(--on-gold); }
+    .compare-row span { padding: 13px 16px; border-top: 1px solid var(--line-light); font-size: 14px; }
+    .compare-row span:last-child { color: #28313f; background: #FFFBEE; }
+    .promo {
+      position: relative; overflow: hidden; color: #fff; min-height: 360px; border-radius: var(--radius-md); padding: 34px;
+      background: radial-gradient(circle at 65% 30%, rgba(112,75,190,.25), transparent 32%), linear-gradient(135deg,#0b0e15,#15111d);
+    }
+    .promo h3 { font-size: 34px; line-height: 1.08; margin: 0; max-width: 390px; }
+    .promo p { color: #b7bfcc; max-width: 360px; line-height: 1.55; }
+    .promo-instruments { position: absolute; right: 10px; bottom: -12px; width: 55%; height: 92%; display: flex; align-items: flex-end; justify-content: flex-end; }
+    .promo-instruments img:first-child {
+      order: 2; height: 100%; width: auto; max-width: 40%; flex-shrink: 0;
+      margin-left: 3%; object-fit: contain; object-position: bottom;
+      filter: drop-shadow(0 18px 24px rgba(0,0,0,.45));
+    }
+    .promo-instruments img:last-child {
+      order: 1; height: 91%; width: auto; max-width: 51%; flex-shrink: 0;
+      object-fit: contain; object-position: bottom;
+      filter: sepia(.18) saturate(.82) brightness(.78) drop-shadow(0 18px 24px rgba(0,0,0,.5));
+    }
+
+    .cta { background: #0b1017; color: #fff; border-radius: var(--radius-md); padding: 34px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .cta h3 { margin: 0 0 8px; font-size: 30px; }
+    .cta p { margin: 0; color: #aeb6c5; }
+
+    footer { background: #080c12; color: #c3cad6; padding: 46px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr repeat(3, .7fr); gap: 38px; }
+    footer h4 { color: #fff; margin: 0 0 14px; }
+    footer a { display: block; color: #9da7b7; margin: 8px 0; font-size: 14px; }
+    .copyright { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--line-dark); color: #798393; font-size: 13px; }
+
+    .menu-button { display: none; border: 0; background: transparent; color: #fff; font-size: 24px; }
+
+    @media (max-width: 1050px) {
+      .nav-links { display: none; }
+      .hero-grid { grid-template-columns: 1fr 1.25fr; }
+      .instrument-column { grid-column: 1 / -1; min-height: 330px; max-width: 700px; width: 100%; margin-inline: auto; }
+      .instrument-copy { left: 30px; top: 30px; }
+      .baglama { width: 30%; max-height: 320px; flex-shrink: 0; order: 2; margin-left: 2%; }
+      .guitar { width: 38%; max-height: 292px; flex-shrink: 0; order: 1; }
+      .feature-grid { grid-template-columns: repeat(2,1fr); }
+      .steps { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(100% - 28px, var(--container)); }
+      .hero { min-height: auto; }
+      .nav { height: 68px; }
+      .brand { font-size: 16px; }
+      .brand-mark { width: 30px; height: 30px; }
+      .nav-actions .btn-ghost { display: none; }
+      .nav-actions .btn-primary { display: none; }
+      .menu-button { display: block; }
+      .hero-grid { grid-template-columns: 1fr; padding-top: 28px; gap: 14px; }
+      .hero-copy h1 { font-size: clamp(40px, 12vw, 58px); }
+      .hero-copy p { font-size: 15px; }
+      .hero-cta .btn { flex: 1 1 150px; }
+      .benefits { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 28px; }
+      .benefit { text-align: center; }
+      .benefit-icon { margin-inline: auto; }
+      .benefit span { display: none; }
+      .benefit b { font-size: 10px; }
+      .device-wrap { min-height: 330px; margin-top: 10px; }
+      .tablet { width: 92%; padding: 9px; border-radius: 20px; transform: perspective(1000px) rotateY(-4deg); }
+      .tablet-screen { padding: 12px; }
+      .song-row { font-size: 9px; grid-template-columns: 18px 1fr auto; gap: 6px; padding: 7px; }
+      .song-row .key { display: none; }
+      .pedal { width: 132px; right: 1%; bottom: 0; }
+      .step-pedal { width: 104px; }
+      .instrument-column { min-height: 300px; overflow: hidden; }
+      .instrument-copy { position: relative; inset: auto; align-self: flex-start; width: 48%; z-index: 3; padding-top: 30px; }
+      .instrument-copy h2 { font-size: 25px; }
+      .instrument-copy ul { font-size: 10px; }
+      .baglama { width: 28%; max-height: 290px; flex-shrink: 0; order: 2; margin-left: 2%; }
+      .guitar { width: 36%; max-height: 264px; flex-shrink: 0; order: 1; }
+      .section { padding: 52px 0; }
+      .feature-grid, .steps, .why-grid, .footer-grid { grid-template-columns: 1fr; }
+      .feature-card p { min-height: auto; }
+      .steps { gap: 14px; }
+      .step { display: grid; grid-template-columns: 38px 1fr; column-gap: 10px; align-items: start; }
+      .step-num { grid-row: 1 / 3; }
+      .step h3, .step p { grid-column: 2; }
+      .compare-row span { font-size: 12px; padding: 11px 10px; }
+      .promo { min-height: 470px; padding: 26px; }
+      .promo h3 { font-size: 28px; max-width: 100%; }
+      .promo-instruments { width: 78%; height: 58%; right: -8px; }
+      .cta { align-items: flex-start; flex-direction: column; }
+      .cta .btn { width: 100%; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="/" aria-label="Repertuvar.app ana sayfa"><img class="brand-logo" src="assets/logo.png" alt="repertuvar.app" width="440" height="102" /></a>
+        <div class="nav-links">
+          <a href="#features">Özellikler</a><a href="#pedal">Pedal</a><a href="#nasil">Nasıl çalışır</a><a href="#neden">Neden Repertuvar</a>
+        </div>
+        <div class="nav-actions"><a class="btn btn-ghost" data-app="login">Giriş Yap</a><a class="btn btn-primary" data-app="login">Ücretsiz Dene</a><button class="menu-button" aria-label="Menüyü aç">☰</button></div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Sen sahnede müziğine odaklan. Gerisini <span class="accent">repertuvar.app</span> halletsin.</h1>
+          <p>Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedalı ile sahneni yönet. İster sürükle-bırak ile kendi akışını oluştur, ister akıllı özelliklerle repertuvarını saniyeler içinde düzenle.</p>
+          <div class="hero-cta"><a class="btn btn-primary" data-app="login">Ücretsiz Dene →</a><a class="btn btn-ghost" href="#pedal">Pedalı Keşfet →</a></div>
+          <div class="benefits">
+            <div class="benefit"><span class="benefit-icon"><i class="ti ti-wifi-off"></i></span><b>Çevrimdışı Çalışır</b><span>İnternet olmasa da sorun yok.</span></div>
+            <div class="benefit"><span class="benefit-icon"><i class="ti ti-bluetooth"></i></span><b>Bluetooth Pedal</b><span>Ekrana dokunmadan geçiş yap.</span></div>
+            <div class="benefit"><span class="benefit-icon"><i class="ti ti-refresh"></i></span><b>Grup Senkronizasyonu</b><span>Değişiklikler anında herkese ulaşır.</span></div>
+            <div class="benefit"><span class="benefit-icon"><i class="ti ti-database"></i></span><b>Güvenli Yedekleme</b><span>Verilerin güvende kalır.</span></div>
+          </div>
+        </div>
+
+        <div class="device-wrap" aria-label="Uygulama ekranı ve Bluetooth pedal görseli">
+          <div class="tablet"><div class="tablet-screen">
+            <div class="screen-head"><span>Konser Setlistim⌄</span><span>•••</span></div><div class="screen-sub">19 Parça · 75 dk</div>
+            <div class="song-list">
+              <div class="song-row active"><span>1</span><span>Allı Turnam</span><span class="mode">Hüseyni</span><span class="key">La</span></div>
+              <div class="song-row"><span>2</span><span>Dostum Dostum</span><span class="mode">Hüseyni</span><span class="key">La</span></div>
+              <div class="song-row"><span>3</span><span>Barış Güvercini</span><span class="mode">Hüseyni</span><span class="key">La</span></div>
+              <div class="song-row"><span>4</span><span>Vardar Ovası</span><span class="mode">Hicaz</span><span class="key">La</span></div>
+              <div class="song-row"><span>5</span><span>Aldırma Gönül</span><span class="mode">Hicaz</span><span class="key">La</span></div>
+              <div class="song-row"><span>6</span><span>Bedir Geliyor</span><span class="mode">Hicaz</span><span class="key">La</span></div>
+            </div>
+          </div></div>
+          <img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı (harici cihaz)" />
+        </div>
+
+        <div class="instrument-column">
+          <div class="instrument-copy"><h2>Her müzisyen<br>için güçlü.</h2><ul><li>Makama göre düzenleme</li><li>Potpuri desteği</li><li>Sürükle-bırak akış</li><li>Akıllı sıralama</li><li>Bluetooth pedal ile kontrol</li></ul></div>
+          <img class="baglama" src="assets/baglama.png" alt="Akustik bağlama" />
+          <img class="guitar" src="assets/guitar-dik.png" alt="Akustik klasik gitar" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="features"><div class="container">
+      <h2 class="section-title">Sahneye çıkan müzisyenlerin ihtiyaç duyduğu özellikler.</h2><p class="section-lead">Dağınık listeler yerine, performansın tamamını tek yerden yönetin.</p>
+      <div class="feature-grid">
+        <article class="card feature-card" id="pedal"><div class="feature-head"><span class="feature-icon purple"><i class="ti ti-bluetooth"></i></span><h3>Bluetooth Pedal</h3></div><p>Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="mini-list"><div>Allı Turnam</div><div>Dostum Dostum</div><div>Barış Güvercini</div></div></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Hüseyni · Hicaz · Kürdi · Uşşak</p></div></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue"><i class="ti ti-refresh"></i></span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><div class="mini-ui"><div style="font-size:74px;color:var(--blue)">☁</div></div></article>
+      </div>
+    </div></section>
+
+    <section class="section" id="nasil" style="padding-top:0"><div class="container"><h2 class="section-title">Nasıl Çalışır?</h2><p class="section-lead">Dakikalar içinde sahneye hazır ol.</p>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><h3>Eseri Bul veya Ekle</h3><p>Veritabanından eser seç ya da kendi eserini ekle.</p></div>
+        <div class="step"><span class="step-num">2</span><h3>Repertuvarını Oluştur</h3><p>Şarkılarını sırala, potpurilerini oluştur, istersen makamına göre düzenle.</p></div>
+        <div class="step"><span class="step-num">3</span><h3>Grubunla Paylaş</h3><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşsın.</p></div>
+        <div class="step"><span class="step-num">4</span><h3>Sahnede Yönet</h3><p>Bluetooth pedal ile şarkılar arasında kesintisiz geçiş yap.</p><img class="step-pedal" src="assets/pedal-cizim.png" alt="" /></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="neden" style="padding-top:10px"><div class="container"><h2 class="section-title">Neden Repertuvar.app?</h2>
+      <div class="why-grid">
+        <div class="card compare"><div class="compare-head"><div>Diğer uygulamalar</div><div>Repertuvar.app</div></div>
+          <div class="compare-row"><span>Manuel liste düzenleme</span><span>✓ Sürükle-bırak ve akıllı sıralama</span></div>
+          <div class="compare-row"><span>Potpuri desteği yok</span><span>✓ Potpuri oluşturabilir</span></div>
+          <div class="compare-row"><span>Türk müziğine özel değil</span><span>✓ Makam sıralama desteği</span></div>
+          <div class="compare-row"><span>Ekrana dokunmak gerekir</span><span>✓ Bluetooth pedal ile kontrol</span></div>
+          <div class="compare-row"><span>Bireysel kullanım odaklı</span><span>✓ Grup senkronizasyonu</span></div>
+        </div>
+        <div class="promo"><h3>Her müzisyen için güçlü. Türk müziği icra edenler için ise daha da güçlü.</h3><p>İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam düzenine geç.</p><div class="promo-instruments"><img src="assets/baglama.png" alt="Akustik bağlama"><img src="assets/guitar-dik.png" alt="Akustik klasik gitar"></div></div>
+      </div>
+    </div></section>
+
+    <section class="section" style="padding-top:8px"><div class="container"><div class="cta"><div><h3>Hazırsan sahneye çık.</h3><p>Repertuvarını dakikalar içinde oluştur. Gerisini Repertuvar.app halletsin.</p></div><a class="btn btn-primary" data-app="login">Ücretsiz Dene →</a></div></div></section>
+  </main>
+
+  <footer><div class="container"><div class="footer-grid"><div><div class="brand"><img class="brand-logo" src="assets/logo.png" alt="repertuvar.app" width="440" height="102" /></div><p style="max-width:320px;color:#8f99a9;line-height:1.6">Sahneye çıkan müzisyenler için akıllı repertuvar yönetim sistemi.</p></div><div><h4>Ürün</h4><a href="#features">Özellikler</a><a href="#pedal">Pedal</a><a href="#nasil">Nasıl çalışır</a></div><div><h4>Uygulama</h4><a data-app="">Uygulamayı aç</a><a data-app="login">Giriş yap</a></div><div><h4>İletişim</h4><a href="mailto:info@repertuvar.app">info@repertuvar.app</a><a href="/privacy">Gizlilik Politikası</a></div></div><div class="copyright">© 2026 Repertuvar.app — Tüm hakları saklıdır.</div></div></footer>
+
+<script>
+  /* Uygulamanın adresi TEK YERDE. Alan adı değişirse yalnız bu satır değişir. */
+  var APP_BASE = 'https://app.repertuvar.app';
+  document.querySelectorAll('[data-app]').forEach(function(a){
+    var p = a.getAttribute('data-app');
+    a.href = APP_BASE + '/' + (p === 'login' ? 'login.html' : '');
+  });
+</script>
+
+<style>
+  .tablet-screen { position: relative; }
+  .song-row { border: 1px solid transparent; }
+  .song-row.dragging {
+    background: rgba(255,200,61,.10); border-color: rgba(255,200,61,.55);
+    box-shadow: 0 14px 28px rgba(0,0,0,.45); position: relative; z-index: 3;
+  }
+  .rep-toast {
+    position: absolute; top: 14px; left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: #FFC83D; color: #1A1305; font-size: 11px; font-weight: 700;
+    padding: 6px 12px; border-radius: 20px; white-space: nowrap; z-index: 6;
+    display: flex; align-items: center; gap: 5px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.4);
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .rep-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .pedal-wrap {
+    position: absolute; right: 2%; bottom: 4%; width: 200px; z-index: 2;
+    transform: rotate(2deg);
+    transition: transform .17s cubic-bezier(.3,1.5,.5,1);
+  }
+  .pedal-wrap .pedal {
+    position: static; right: auto; bottom: auto; width: 100%;
+    transform: none; z-index: auto; display: block;
+  }
+  .pedal-wrap.press { transform: rotate(2deg) scale(.968); }
+  .pedal-hit {
+    position: absolute; right: 10%; top: 50%; width: 27%; height: 64%;
+    transform: translateY(-50%); border-radius: 16px; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(255,200,61,.5), rgba(255,200,61,.12) 55%, transparent 75%);
+    opacity: 0; transition: opacity .16s ease;
+  }
+  .pedal-wrap.press .pedal-hit { opacity: 1; }
+  .bt-wave {
+    position: absolute; left: -22px; top: -26px; width: 62px; height: 62px;
+    pointer-events: none; overflow: visible;
+  }
+  .bt-wave path { fill: none; stroke: #5B9BFF; stroke-width: 3.4; stroke-linecap: round; opacity: 0; }
+  .pedal-wrap.signal .bt-wave path { animation: btArc .62s ease-out both; }
+  .pedal-wrap.signal .bt-wave path:nth-child(2) { animation-delay: .10s; }
+  .pedal-wrap.signal .bt-wave path:nth-child(3) { animation-delay: .20s; }
+  @keyframes btArc { 0% { opacity: 0; } 30% { opacity: .95; } 100% { opacity: 0; } }
+  .tablet { transition: filter .22s ease; }
+  .tablet.recv { filter: drop-shadow(0 0 12px rgba(91,155,255,.55)); }
+  @media (max-width: 720px) {
+    .pedal-wrap { width: 132px; right: 1%; bottom: 0; }
+    .bt-wave { width: 44px; height: 44px; left: -16px; top: -18px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .rep-toast, .pedal-hit, .bt-wave { display: none; } }
+</style>
+<script>
+(function repDragDemo(){
+  var list = document.querySelector('.song-list');
+  if (!list) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var screen = document.querySelector('.tablet-screen');
+  var tablet = document.querySelector('.tablet');
+  var toast = document.createElement('div');
+  toast.className = 'rep-toast';
+  toast.innerHTML = '<span>&#10003;</span> Repertuvar guncellendi';
+  if (screen) screen.appendChild(toast);
+  var wrap = null;
+  var pedal = document.querySelector('.device-wrap img.pedal');
+  if (pedal && pedal.parentNode) {
+    wrap = document.createElement('span');
+    wrap.className = 'pedal-wrap';
+    pedal.parentNode.insertBefore(wrap, pedal);
+    wrap.appendChild(pedal);
+    var hit = document.createElement('span');
+    hit.className = 'pedal-hit';
+    wrap.appendChild(hit);
+    var bt = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    bt.setAttribute('class','bt-wave');
+    bt.setAttribute('viewBox','0 0 60 60');
+    bt.innerHTML = '<path d="M40 56 A16 16 0 0 1 56 40"/>' +
+                   '<path d="M26 56 A30 30 0 0 1 56 26"/>' +
+                   '<path d="M12 56 A44 44 0 0 1 56 12"/>';
+    wrap.appendChild(bt);
+  }
+  var EASE = 'transform .65s cubic-bezier(.34,1.15,.4,1)';
+  function satirlar(){ return Array.prototype.slice.call(list.querySelectorAll('.song-row')); }
+  function numarala(){ satirlar().forEach(function(r,i){ var n=r.firstElementChild; if(n) n.textContent=i+1; }); }
+  function isaretle(i){ satirlar().forEach(function(r,k){ r.classList.toggle('active', k===i); }); }
+  function siralamaYap(bitti){
+    var rw = satirlar().slice(0,3);
+    if (rw.length < 3) { bitti(); return; }
+    var ilk = rw[0], kalan = rw.slice(1);
+    var io_ = ilk.getBoundingClientRect();
+    var ko = kalan.map(function(r){ return r.getBoundingClientRect(); });
+    ilk.classList.add('dragging'); ilk.classList.remove('active');
+    kalan[kalan.length-1].insertAdjacentElement('afterend', ilk);
+    var iy = ilk.getBoundingClientRect();
+    ilk.style.transition='none';
+    ilk.style.transform='translateY(' + (io_.top - iy.top) + 'px)';
+    kalan.forEach(function(r,k){
+      var ny = r.getBoundingClientRect();
+      r.style.transition='none';
+      r.style.transform='translateY(' + (ko[k].top - ny.top) + 'px)';
+    });
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        ilk.style.transition=EASE; ilk.style.transform='';
+        kalan.forEach(function(r){ r.style.transition=EASE; r.style.transform=''; });
+        setTimeout(function(){ ilk.classList.remove('dragging'); numarala(); isaretle(0); }, 650);
+        setTimeout(function(){ toast.classList.add('show'); }, 760);
+        setTimeout(function(){ toast.classList.remove('show'); }, 2100);
+        setTimeout(bitti, 2450);
+      });
+    });
+  }
+  function pedalBas(hedef, bitti){
+    if (wrap) {
+      wrap.classList.add('press', 'signal');
+      setTimeout(function(){ wrap.classList.remove('press'); }, 165);
+      setTimeout(function(){ wrap.classList.remove('signal'); }, 880);
+    }
+    if (tablet) {
+      setTimeout(function(){ tablet.classList.add('recv'); }, 250);
+      setTimeout(function(){ tablet.classList.remove('recv'); }, 620);
+    }
+    setTimeout(function(){ isaretle(hedef); }, 310);
+    setTimeout(bitti, 1450);
+  }
+  var adim = 0;
+  function dongu(){
+    if (adim === 0) { siralamaYap(function(){ adim = 1; dongu(); }); }
+    else if (adim <= 3) { var h = adim; pedalBas(h, function(){ adim++; dongu(); }); }
+    else { isaretle(0); adim = 0; setTimeout(dongu, 1700); }
+  }
+  setTimeout(dongu, 2200);
+})();
+</script>
+</body>
+</html>
