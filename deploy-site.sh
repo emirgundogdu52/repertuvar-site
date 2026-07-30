@@ -11,7 +11,7 @@
 # ────────────────────────────────────────────────────────────
 set -uo pipefail
 
-SITE="$HOME/Desktop/Yeni Repertuvar/Repertuvar App Claude/repertuvar-site"
+SITE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SITE" || { echo "Repo bulunamadi: $SITE"; exit 1; }
 
 MSG="${1:-site $(date '+%Y-%m-%d %H:%M')}"
