@@ -13,11 +13,17 @@
                id'ye bağlandı; footer'daki henüz var olmayan sayfalar (Hakkımızda,
                Kariyer, Blog, Yardım Merkezi) çıkarıldı, İletişim mailto oldu;
                görseller assets/ altında yeniden boyutlandırıldı (931KB -> 435KB).
+  2026-08-01 : Google Search Console doğrulaması için <head>'e google-site-verification
+               meta etiketi eklendi (DNS TXT kaydı isimtescil zone'una yazılmadığı için
+               meta yöntemine geçildi). Etiket silinmemeli.
 -->
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Search Console doğrulaması (URL öneki tipi mülk). Doğrulama geçtikten
+       sonra bu satır SİLİNMEMELİ — Google periyodik olarak yeniden kontrol eder. -->
+  <meta name="google-site-verification" content="CWYP5EXv93OILEwYi5Myfd_scSLZMkIJru" />
   <meta name="description" content="Repertuvar.app — sahneye çıkan müzisyenler için akıllı repertuvar yönetimi. Eser arşivi, potpuri, makama göre sıralama, grup senkronizasyonu, sayfa çevirme pedalı." />
   <title>Repertuvar.app — Sahnede müziğine odaklan</title>
   <link rel="canonical" href="https://repertuvar.app/" />
