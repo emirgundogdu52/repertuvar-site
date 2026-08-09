@@ -540,5 +540,40 @@
   setTimeout(dongu, 2200);
 })();
 </script>
+<!-- ── ZİYARET SAYACI (2026-08-09) ────────────────────────────────────────
+     Landing sayfasının kaç ziyaretçi aldığını bilmiyorduk: hiçbir ölçüm
+     yoktu (Search Console arama gösterimini verir, ziyareti değil; GitHub
+     repo "traffic" sayfası repoyu sayar, siteyi değil). Cloudflare Web
+     Analytics kurulamadığı için kendi sayacımızı kullanıyoruz.
+     GİZLİLİK: IP, çerez, kimlik ya da parmak izi YOK — yalnızca zaman, sayfa
+     yolu, geldiği site ve kaba cihaz türü yazılıyor. Bu yüzden rıza bandı
+     gerekmiyor. Sayılar Yönetim sayfasında görünüyor.
+     Sayfa ağırlığı: tek fetch, 1 KB'ın altında, `keepalive` ile sayfa
+     kapansa bile gidiyor; hata olursa sessizce yutuluyor. -->
+<script>
+(function () {
+  try {
+    // Aynı oturumda aynı sayfayı tekrar sayma (F5 spam'ini önler).
+    var k = 'lh:' + location.pathname;
+    if (sessionStorage.getItem(k)) return;
+    sessionStorage.setItem(k, '1');
+  } catch (e) {}
+  try {
+    fetch('https://ehytkzxdhjyjuubizdnl.supabase.co/rest/v1/rpc/log_hit', {
+      method: 'POST',
+      headers: {
+        'apikey': 'sb_publishable_f_WsYxzN06B5dGROrkGyPQ_UDxKSbtO',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        p_path: location.pathname || '/',
+        p_ref: document.referrer || '',
+        p_cihaz: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'mobil' : 'masaustu'
+      }),
+      keepalive: true
+    }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
