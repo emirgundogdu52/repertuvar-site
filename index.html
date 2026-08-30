@@ -373,7 +373,7 @@
           <span class="siradaki-bilgi">La · 15/8 · Dp</span>
         </div>
         <p class="siradaki-not">Örnek: bir Türk müziği eseri — karar sesi, usulü ve düzeniyle.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
-        <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="potpuri">
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><p class="feature-sub">Sıralamayı değiştirdiğinde <b>zincirlenmiş eserler birlikte taşınır</b> — potpurinin içi asla dağılmaz.</p><div class="mini-ui"><div class="potpuri">
           <div class="pot-sat tek"><span class="pot-no">3</span><span class="pot-ad">Yemen Türküsü</span><span class="pot-bilgi">A · 4/4</span></div>
           <div class="pot-zincir">
             <span class="pot-etiket">Potpuri · aralıksız</span>
@@ -650,6 +650,14 @@
      üstteki cümlenin ("title, key and usul") kanıtı. Ama açıklamasız bırakınca
      yabancı ziyaretçiye kapalı geliyor; kısa bir not onu örneğe çeviriyor. */
   .siradaki-not { font-size:12.5px; opacity:.66; margin:6px 0 0; line-height:1.5; }
+
+  /* (2026-08-30) KUTULARDAKİ BOŞLUK. `.mini-ui` 165px SABİT yükseklikteydi ve
+     `.feature-card p` 87px alt sınır dayatıyordu; içeriği az olan kart bunu
+     boşlukla dolduruyor, çok olan kart taşıyordu. İkisi de esnetildi:
+     kutular artık içeriği kadar yer kaplıyor. Izgara zaten `align-items:start`
+     olmadığı için kartlar yine aynı hizada başlıyor. */
+  .mini-ui { height:auto !important; min-height:120px; padding:10px 0; }
+  .feature-card p { min-height:0 !important; }
   /* (2026-08-30) Kartın tek cümlesi "sürükle-bırak ve makam" diyordu ama
      gerisini saymıyordu. Somut liste, özelliğin gerçekte ne kadar geniş
      olduğunu gösteriyor — soyut bir "akıllı yönetim" vaadinden daha ikna edici. */
@@ -795,6 +803,9 @@
     "Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.":
       "Drag and drop to reorder — or let the app group pieces by makam automatically.",
     "Potpuri · aralıksız": "Medley · no gap",
+    "Sıralamayı değiştirdiğinde": "When you reorder the set,",
+    "zincirlenmiş eserler birlikte taşınır": "chained pieces move together",
+    "— potpurinin içi asla dağılmaz.": "— a medley never falls apart.",
     "Yemen Türküsü": "Softly, As in a Morning Sunrise",
     "Vardar Ovası": "Take Five",
     "Sürükle-bırak ile sırala": "Reorder by dragging",
