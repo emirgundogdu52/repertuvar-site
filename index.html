@@ -319,7 +319,7 @@
         <div class="nav-links">
           <a href="#features">Özellikler</a><a href="#pedal">Pedal</a><a href="#nasil">Nasıl çalışır</a><a href="#neden">Neden Repertuvar</a>
         </div>
-        <div class="nav-actions"><a class="btn btn-ghost" data-app="login">Giriş Yap</a><a class="btn btn-primary" data-app="login">Ücretsiz Dene</a><button class="menu-button" aria-label="Menüyü aç">☰</button></div>
+        <div class="nav-actions"><button class="btn btn-ghost lang-btn" id="langBtn" onclick="dilDegistir()" aria-label="Language / Dil">EN</button><a class="btn btn-ghost" data-app="login">Giriş Yap</a><a class="btn btn-primary" data-app="login">Ücretsiz Dene</a><button class="menu-button" aria-label="Menüyü aç">☰</button></div>
       </nav>
 
       <div class="hero-grid">
@@ -573,6 +573,181 @@
       keepalive: true
     }).catch(function () {});
   } catch (e) {}
+})();
+</script>
+
+<style>
+  .lang-btn { font-weight:700; letter-spacing:.04em; min-width:52px; }
+</style>
+<script>
+/* ═══ ARAYÜZ DİLİ — 2026-08-30 ═══════════════════════════════════════════
+   Landing sayfası ayrı bir repoda ve tek dosya; uygulamadaki i18n.js burada
+   yok. Bu yüzden küçük, kendi içinde kapalı bir çevirici.
+
+   YÖNTEM: metin düğümleri Türkçe karşılığıyla eşleştirilip değiştiriliyor.
+   Böylece 36 KB'lık sayfanın her etiketine data-i18n eklemek gerekmiyor.
+   Sözlükte OLMAYAN metinler olduğu gibi kalır — eser adları, makam adları
+   (Hüseyni, Hicaz) bilerek dışarıda: onlar veri, arayüz değil.
+
+   SEO NOTU: Google yalnızca Türkçe sürümü indeksler. İngilizce trafik
+   gerçekten oluşursa ayrı bir /en sayfasına bölmek gerekir; metin o zaman
+   zaten hazır olur.
+   ═══════════════════════════════════════════════════════════════════════ */
+(function () {
+  const EN = {
+    "Repertuvar.app — Sahnede müziğine odaklan": "Repertuvar.app — Focus on your music on stage",
+    "Özellikler": "Features",
+    "Pedal": "Pedal",
+    "Nasıl çalışır": "How it works",
+    "Neden Repertuvar": "Why Repertuvar",
+    "Giriş Yap": "Sign In",
+    "Giriş yap": "Sign in",
+    "Ücretsiz Dene": "Try Free",
+    "Ücretsiz Dene →": "Try Free →",
+    "Pedalı Keşfet →": "See the Pedal →",
+
+    "Sen sahnede müziğine odaklan. Gerisini": "Play. Just play. Let",
+    "halletsin.": "handle the rest.",
+    "Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedalı ile sahneni yönet. İster sürükle-bırak ile kendi akışını oluştur, ister akıllı özelliklerle repertuvarını saniyeler içinde düzenle.":
+      "Build your setlist, keep the whole band in sync, and turn pages with a Bluetooth pedal — without taking your hands off the instrument.",
+
+    "Çevrimdışı Çalışır": "Works Offline",
+    "İnternet olmasa da sorun yok.": "No signal in the venue? Still works.",
+    "Bluetooth Pedal": "Bluetooth Pedal",
+    "Ekrana dokunmadan geçiş yap.": "Change songs hands-free.",
+    "Grup Senkronizasyonu": "Band Sync",
+    "Değişiklikler anında herkese ulaşır.": "Every change reaches everyone instantly.",
+    "Güvenli Yedekleme": "Safe Backup",
+    "Verilerin güvende kalır.": "Your setlists are never lost.",
+
+    "Konser Setlistim⌄": "My Concert Set⌄",
+    "19 Parça · 75 dk": "19 songs · 75 min",
+
+    "Her müzisyen": "Built for every",
+    "için güçlü.": "musician.",
+    "Sahneye çıkan müzisyenlerin ihtiyaç duyduğu özellikler.":
+      "Everything you actually need once you are on stage.",
+    "Makama göre düzenleme": "Sort by makam",
+    "Potpuri desteği": "Medley support",
+    "Sürükle-bırak akış": "Drag-and-drop order",
+    "Akıllı sıralama": "Smart sorting",
+    "Bluetooth pedal ile kontrol": "Bluetooth pedal control",
+
+    "Dağınık listeler yerine, performansın tamamını tek yerden yönetin.":
+      "One place for the whole set — instead of scattered notes and screenshots.",
+    "Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.":
+      "Move between songs without touching the screen. Your hands stay where they belong.",
+    "Kesintisiz Performanslar Hazırla": "Plan Seamless Sets",
+    "Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.":
+      "Chain several pieces into one medley and plan the transitions before the show.",
+    "Akıllı Repertuvar Yönetimi": "Smart Setlist Management",
+    "Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.":
+      "Drag and drop to reorder — or let the app group pieces by makam automatically.",
+    "Makama Göre Düzenle": "Group by Makam",
+    "Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.":
+      "Edit once and everyone sees it. The whole ensemble works from the same setlist.",
+
+    "Nasıl Çalışır?": "How It Works",
+    "Dakikalar içinde sahneye hazır ol.": "Stage-ready in minutes.",
+    "Eseri Bul veya Ekle": "Find or Add a Piece",
+    "Veritabanından eser seç ya da kendi eserini ekle.":
+      "Pick from the shared library or add your own.",
+    "Repertuvarını Oluştur": "Build the Setlist",
+    "Şarkılarını sırala, potpurilerini oluştur, istersen makamına göre düzenle.":
+      "Order the songs, build medleys, group by makam if you work that way.",
+    "Grubunla Paylaş": "Share with the Band",
+    "Yaptığın değişiklikler tüm grup üyelerine anında ulaşsın.":
+      "Everyone gets your changes the moment you make them.",
+    "Sahnede Yönet": "Run the Show",
+    "Bluetooth pedal ile şarkılar arasında kesintisiz geçiş yap.":
+      "Step through the set with a Bluetooth pedal.",
+
+    "Neden Repertuvar.app?": "Why Repertuvar.app?",
+    "Diğer uygulamalar": "Other apps",
+    "Manuel liste düzenleme": "Manual list editing",
+    "✓ Sürükle-bırak ve akıllı sıralama": "✓ Drag-and-drop and smart sorting",
+    "Potpuri desteği yok": "No medley support",
+    "✓ Potpuri oluşturabilir": "✓ Build medleys",
+    "Türk müziğine özel değil": "No makam awareness",
+    "✓ Makam sıralama desteği": "✓ Understands makam and usul",
+    "Ekrana dokunmak gerekir": "You have to touch the screen",
+    "✓ Bluetooth pedal ile kontrol": "✓ Hands-free Bluetooth pedal",
+    "Bireysel kullanım odaklı": "Built for one person",
+    "✓ Grup senkronizasyonu": "✓ Built for ensembles",
+    "Her müzisyen için güçlü. Türk müziği icra edenler için ise daha da güçlü.":
+      "Strong for any musician. Unmatched if you play Turkish music.",
+    "İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam düzenine geç.":
+      "Arrange it your way, or switch to makam order with a single tap.",
+
+    "Hazırsan sahneye çık.": "Ready when you are.",
+    "Repertuvarını dakikalar içinde oluştur. Gerisini Repertuvar.app halletsin.":
+      "Build your setlist in minutes. Repertuvar.app takes it from there.",
+    "Sahneye çıkan müzisyenler için akıllı repertuvar yönetim sistemi.":
+      "Smart setlist and stage management for performing musicians.",
+
+    "Ürün": "Product",
+    "Uygulama": "App",
+    "Uygulamayı aç": "Open the app",
+    "İletişim": "Contact",
+    "Gizlilik Politikası": "Privacy Policy",
+    "Kullanım Koşulları": "Terms of Use",
+    "© 2026 Repertuvar.app — Tüm hakları saklıdır.": "© 2026 Repertuvar.app — All rights reserved."
+  };
+
+  let dil = 'tr';
+  const ilk = new Map();   // düğüm -> Türkçe hâli (geri dönebilmek için)
+
+  function yuru(kok, uygulaFn) {
+    const gez = document.createTreeWalker(kok, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        const p = n.parentNode;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        const tag = p.nodeName;
+        // Kod ve stil blokları çevrilmez.
+        if (tag === 'SCRIPT' || tag === 'STYLE') return NodeFilter.FILTER_REJECT;
+        return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const liste = [];
+    let n; while ((n = gez.nextNode())) liste.push(n);
+    liste.forEach(uygulaFn);
+  }
+
+  function ingilizceyeGec() {
+    yuru(document.body, n => {
+      const t = n.nodeValue.trim();
+      if (!EN[t]) return;                       // sözlükte yoksa dokunma
+      if (!ilk.has(n)) ilk.set(n, n.nodeValue);
+      n.nodeValue = n.nodeValue.replace(t, EN[t]);
+    });
+    document.title = EN[document.title] || document.title;
+    document.documentElement.setAttribute('lang', 'en');
+  }
+
+  function turkceyeDon() {
+    ilk.forEach((eski, n) => { n.nodeValue = eski; });
+    document.documentElement.setAttribute('lang', 'tr');
+  }
+
+  window.dilDegistir = function () {
+    dil = (dil === 'tr') ? 'en' : 'tr';
+    if (dil === 'en') ingilizceyeGec(); else turkceyeDon();
+    const b = document.getElementById('langBtn');
+    if (b) b.textContent = (dil === 'tr') ? 'EN' : 'TR';
+    try { localStorage.setItem('siteLang', dil); } catch (e) {}
+  };
+
+  // İlk açılış: kayıtlı tercih varsa onu uygula, yoksa tarayıcı diline bak.
+  // Türkçe olmayan her dil için İngilizce daha iyi bir tahmin.
+  document.addEventListener('DOMContentLoaded', function () {
+    let hedef = null;
+    try { hedef = localStorage.getItem('siteLang'); } catch (e) {}
+    if (!hedef) {
+      const n = (navigator.language || 'tr').slice(0, 2).toLowerCase();
+      hedef = (n === 'tr') ? 'tr' : 'en';
+    }
+    if (hedef === 'en') window.dilDegistir();
+  });
 })();
 </script>
 </body>
