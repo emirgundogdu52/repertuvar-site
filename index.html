@@ -613,7 +613,15 @@
      beklenemez — açıklamasız bırakmak yabancılık yaratır, açıklamak ise
      ayırt edici üstünlüğü anlatma fırsatı. Fareyle üzerine gelmek telefonda
      çalışmadığı için dokunma da açıyor. */
-  .terim { border-bottom:1px dotted currentColor; cursor:help; position:relative; }
+  /* (2026-08-30 DÜZELTME) Span satır içi kalmalı ve boşluk yaratmamalı.
+     İlk hâlinde terimler kutu gibi ayrışıyor, tablo hücrelerinde satır
+     kırılıyor ve komşu kelimeler kayboluyordu. `display:inline` ve
+     `white-space:nowrap` bunu engelliyor; alt çizgi de border yerine
+     text-decoration ile veriliyor (border kutu genişliği yaratıyordu). */
+  .terim { display:inline; white-space:nowrap; cursor:help; position:relative;
+           border:0; padding:0; margin:0; background:none;
+           text-decoration:underline dotted; text-underline-offset:3px;
+           text-decoration-thickness:1px; }
   .terim::after {
     content: attr(data-aciklama);
     position:absolute; left:50%; bottom:calc(100% + 8px); transform:translateX(-50%);
@@ -622,6 +630,7 @@
     padding:9px 12px; border-radius:9px; width:max-content; max-width:250px;
     opacity:0; visibility:hidden; transition:opacity .15s; z-index:60;
     box-shadow:0 6px 20px rgba(0,0,0,.28); pointer-events:none;
+    white-space:normal;   /* balonun İÇİ normal sarsın, terim sarmasın */
   }
   .terim:hover::after, .terim.acik::after { opacity:1; visibility:visible; }
 
