@@ -354,7 +354,8 @@
         </div>
 
         <div class="instrument-column">
-          <div class="instrument-copy"><h2>Her müzisyen<br>için güçlü.</h2><ul><li>Makama göre düzenleme</li><li>Potpuri desteği</li><li>Sürükle-bırak akış</li><li>Akıllı sıralama</li><li>Bluetooth pedal ile kontrol</li></ul></div>
+          <div class="instrument-copy"><h2>Her müzisyen<br>için güçlü.</h2><ul><li>Makama göre düzenleme</li><li>Potpuri desteği</li><li>Sürükle-bırak akış</li><li>Akıllı sıralama</li><li>Bluetooth pedal ile kontrol</li>
+              <li>Eser notları ve kişisel notlar</li></ul></div>
           <img class="baglama" src="assets/baglama.png" alt="Akustik bağlama" />
           <img class="guitar" src="assets/guitar-dik.png" alt="Akustik klasik gitar" />
         </div>
@@ -369,7 +370,7 @@
         <article class="card feature-card" id="pedal"><div class="feature-head"><span class="feature-icon purple"><i class="ti ti-bluetooth"></i></span><h3>Bluetooth Pedal</h3></div><p>Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="mini-list"><div>Allı Turnam</div><div>Dostum Dostum</div><div>Barış Güvercini</div></div></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Hüseyni · Hicaz · Kürdi · Uşşak</p></div></div></article>
-        <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue"><i class="ti ti-refresh"></i></span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><div class="mini-ui"><div style="font-size:74px;color:var(--blue)">☁</div></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue"><i class="ti ti-refresh"></i></span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><p class="feature-sub">Eserin altına düştüğün not — "girişi ben alıyorum", "burada yavaşlıyoruz" — herkese gider. <b>Kişisel notların ise yalnızca sende kalır.</b></p><div class="mini-ui"><div style="font-size:74px;color:var(--blue)">☁</div></div></article>
       </div>
     </div></section>
 
@@ -589,6 +590,7 @@
      Önceki hâli yalnızca "EN" yazıyordu ve belirsizdi: bu mevcut dil mi,
      geçilecek dil mi? İkisini yan yana gösterip aktif olanı vurgulamak
      hiçbir yorum gerektirmiyor. */
+  .feature-sub { font-size:14px; opacity:.78; margin-top:-4px; }
   .lang-switch { display:inline-flex !important; border:1px solid rgba(255,255,255,.22);
                  border-radius:10px; overflow:hidden; }
   .lang-opt { background:transparent; border:0; color:rgba(255,255,255,.62);
@@ -665,6 +667,10 @@
     "Makama Göre Düzenle": "Group by Makam",
     "Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.":
       "Edit once and everyone sees it. The whole ensemble works from the same setlist.",
+    "Eserin altına düştüğün not — \"girişi ben alıyorum\", \"burada yavaşlıyoruz\" — herkese gider.":
+      "Notes you leave on a piece — \"I take the intro\", \"we slow down here\" — reach the whole band.",
+    "Kişisel notların ise yalnızca sende kalır.": "Your private notes stay yours alone.",
+    "Eser notları ve kişisel notlar": "Shared and private notes",
 
     "Nasıl Çalışır?": "How It Works",
     "Dakikalar içinde sahneye hazır ol.": "Stage-ready in minutes.",
