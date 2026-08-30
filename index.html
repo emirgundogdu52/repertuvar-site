@@ -367,7 +367,11 @@
     <section class="section" id="features"><div class="container">
       <h2 class="section-title">Sahneye çıkan müzisyenlerin ihtiyaç duyduğu özellikler.</h2><p class="section-lead">Dağınık listeler yerine, performansın tamamını tek yerden yönetin.</p>
       <div class="feature-grid">
-        <article class="card feature-card" id="pedal"><div class="feature-head"><span class="feature-icon purple"><i class="ti ti-bluetooth"></i></span><h3>Bluetooth Pedal</h3></div><p>Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
+        <article class="card feature-card" id="pedal"><div class="feature-head"><span class="feature-icon purple"><i class="ti ti-bluetooth"></i></span><h3>Bluetooth Pedal</h3></div><p>Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p><p class="feature-sub"><b>Sahnedeki fısıltıya son.</b> Sahne modunda, ekranın altında sıradaki eser her zaman görünür — adı, kararı, usulü. "Sırada ne var, hangi tondan giriyoruz?" diye sormaya gerek kalmaz.</p><div class="siradaki-mini">
+          <span class="siradaki-etiket">Sıradaki eser</span>
+          <span class="siradaki-ad">Acem Kızı</span>
+          <span class="siradaki-bilgi">La · 15/8 · Dp</span>
+        </div><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="mini-list"><div>Allı Turnam</div><div>Dostum Dostum</div><div>Barış Güvercini</div></div></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Hüseyni · Hicaz · Kürdi · Uşşak</p></div></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue"><i class="ti ti-refresh"></i></span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><p class="feature-sub">Eserin altına düştüğün not — "girişi ben alıyorum", "burada yavaşlıyoruz" — herkese gider. <b>Kişisel notların ise yalnızca sende kalır.</b></p><div class="mini-ui"><div class="sync-mini">
@@ -616,6 +620,17 @@
      74px'lik bir emoji duruyordu — hem çocuksu hem de neyi anlattığı belirsiz.
      Yerine özelliğin KENDİSİNİ gösteren küçük bir arayüz: paylaşılan not ile
      kişisel not yan yana, farkı bir bakışta görünür. */
+  /* (2026-08-30) "Sıradaki eser" şeridi: sahnedeki gerçek görünümün küçük
+     hâli. Koyu zemin ve sarı çerçeve bilerek — kullanıcı uygulamayı açtığında
+     aynı şeyi görecek, vitrin ile gerçek arasında fark olmasın. */
+  .siradaki-mini { display:flex; flex-direction:column; gap:2px; margin:14px 0 4px;
+                   background:#10151e; border:1px solid rgba(255,200,61,.55);
+                   border-radius:11px; padding:10px 13px; text-align:left; }
+  .siradaki-etiket { font-size:10px; font-weight:800; letter-spacing:.09em;
+                     text-transform:uppercase; color:rgba(255,255,255,.5); }
+  .siradaki-ad { font-size:15px; font-weight:700; color:#fff; }
+  .siradaki-bilgi { font-size:12px; color:#FFC83D; }
+
   .sync-mini { display:flex; flex-direction:column; gap:10px; width:92%; }
   .sync-not { display:flex; flex-direction:column; gap:3px; padding:11px 13px;
               border-radius:11px; background:#fff; border:1px solid rgba(0,0,0,.08);
@@ -712,6 +727,11 @@
       "One place for the whole set — instead of scattered notes and screenshots.",
     "Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.":
       "Move between songs without touching the screen. Your hands stay where they belong.",
+    "Sahnedeki fısıltıya son.": "No more whispering between songs.",
+    "Sahne modunda, ekranın altında sıradaki eser her zaman görünür — adı, kararı, usulü. \"Sırada ne var, hangi tondan giriyoruz?\" diye sormaya gerek kalmaz.":
+      "In Stage Mode, the next piece stays at the bottom of the screen — title, key and usul. Nobody has to lean over and ask what's coming.",
+    "Sıradaki eser": "Up next",
+    "Acem Kızı": "Acem Kızı",
     "Kesintisiz Performanslar Hazırla": "Plan Seamless Sets",
     "Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.":
       "Chain several pieces into one medley and plan the transitions before the show.",
