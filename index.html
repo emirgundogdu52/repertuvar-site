@@ -374,7 +374,13 @@
         </div>
         <p class="siradaki-not">Örnek: bir Türk müziği eseri — karar sesi, usulü ve düzeniyle.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="mini-list"><div>Allı Turnam</div><div>Dostum Dostum</div><div>Barış Güvercini</div></div></div></article>
-        <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Hüseyni · Hicaz · Kürdi · Uşşak</p></div></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><ul class="ozellik-liste">
+          <li>Sürükle-bırak ile sırala</li>
+          <li>Makama göre tek dokunuşla düzen</li>
+          <li>Potpuri zincirleri — eserleri birbirine bağla</li>
+          <li>Repertuvarı kopyala, taslak veya onaylı olarak tut</li>
+          <li>Her esere kadro ve not ekle</li>
+        </ul><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Hüseyni · Hicaz · Kürdi · Uşşak</p></div></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue"><i class="ti ti-refresh"></i></span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><p class="feature-sub">Eserin altına düştüğün not — "girişi ben alıyorum", "burada yavaşlıyoruz" — herkese gider. <b>Kişisel notların ise yalnızca sende kalır.</b></p><div class="mini-ui"><div class="sync-mini">
         <div class="sync-not paylasik">
           <span class="sync-etiket"><i class="ti ti-users"></i> Grup notu</span>
@@ -635,6 +641,14 @@
      üstteki cümlenin ("title, key and usul") kanıtı. Ama açıklamasız bırakınca
      yabancı ziyaretçiye kapalı geliyor; kısa bir not onu örneğe çeviriyor. */
   .siradaki-not { font-size:12.5px; opacity:.66; margin:6px 0 0; line-height:1.5; }
+  /* (2026-08-30) Kartın tek cümlesi "sürükle-bırak ve makam" diyordu ama
+     gerisini saymıyordu. Somut liste, özelliğin gerçekte ne kadar geniş
+     olduğunu gösteriyor — soyut bir "akıllı yönetim" vaadinden daha ikna edici. */
+  .ozellik-liste { list-style:none; padding:0; margin:12px 0 4px;
+                   display:grid; gap:7px; font-size:14px; }
+  .ozellik-liste li { position:relative; padding-left:20px; opacity:.85; line-height:1.5; }
+  .ozellik-liste li::before { content:"✓"; position:absolute; left:0; top:0;
+                              color:var(--orange, #FFC83D); font-weight:800; }
 
   .sync-mini { display:flex; flex-direction:column; gap:10px; width:92%; }
   .sync-not { display:flex; flex-direction:column; gap:3px; padding:11px 13px;
@@ -750,6 +764,11 @@
     "Akıllı Repertuvar Yönetimi": "Smart Setlist Management",
     "Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.":
       "Drag and drop to reorder — or let the app group pieces by makam automatically.",
+    "Sürükle-bırak ile sırala": "Reorder by dragging",
+    "Makama göre tek dokunuşla düzen": "Group by makam with one tap",
+    "Potpuri zincirleri — eserleri birbirine bağla": "Medley chains — link pieces into one flow",
+    "Repertuvarı kopyala, taslak veya onaylı olarak tut": "Duplicate a setlist, keep it as draft or approved",
+    "Her esere kadro ve not ekle": "Add who plays what, and notes, per piece",
     "Makama Göre Düzenle": "Group by Makam",
     "Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.":
       "Edit once and everyone sees it. The whole ensemble works from the same setlist.",
