@@ -373,7 +373,16 @@
           <span class="siradaki-bilgi">La · 15/8 · Dp</span>
         </div>
         <p class="siradaki-not">Örnek: bir Türk müziği eseri — karar sesi, usulü ve düzeniyle.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
-        <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="mini-list"><div>Allı Turnam</div><div>Dostum Dostum</div><div>Barış Güvercini</div></div></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="potpuri">
+          <div class="pot-sat tek"><span class="pot-no">3</span><span class="pot-ad">Yemen Türküsü</span><span class="pot-bilgi">A · 4/4</span></div>
+          <div class="pot-zincir">
+            <span class="pot-etiket">Potpuri · aralıksız</span>
+            <div class="pot-sat"><span class="pot-no">4</span><span class="pot-ad">Allı Turnam</span><span class="pot-bilgi">A · 4/4</span></div>
+            <div class="pot-sat"><span class="pot-no">5</span><span class="pot-ad">Dostum Dostum</span><span class="pot-bilgi">A · 4/4</span></div>
+            <div class="pot-sat"><span class="pot-no">6</span><span class="pot-ad">Barış Güvercini</span><span class="pot-bilgi">A · 9/8</span></div>
+          </div>
+          <div class="pot-sat tek"><span class="pot-no">7</span><span class="pot-ad">Vardar Ovası</span><span class="pot-bilgi">D · 4/4</span></div>
+        </div></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><ul class="ozellik-liste">
           <li>Sürükle-bırak ile sırala</li>
           <li>Makama göre tek dokunuşla düzen</li>
@@ -647,6 +656,25 @@
   .ozellik-liste { list-style:none; padding:0; margin:12px 0 4px;
                    display:grid; gap:7px; font-size:14px; }
   .ozellik-liste li { position:relative; padding-left:20px; opacity:.85; line-height:1.5; }
+  /* (2026-08-30) POTPURİ GÖRSELİ. Önceki hâli üç eseri düz liste olarak
+     gösteriyordu — birbirine bağlı oldukları hiç anlaşılmıyordu, oysa
+     özelliğin tamamı o bağ. Zincirlenmiş eserler artık çerçeve içinde ve
+     sol kenarda dikey bir çizgiyle bağlı; setlist içindeki tek eserler
+     (3 ve 7) dışarıda kalıyor, fark bir bakışta görünüyor. */
+  .potpuri { width:92%; display:flex; flex-direction:column; gap:6px;
+             background:#10151e; border-radius:12px; padding:12px; text-align:left; }
+  .pot-sat { display:flex; align-items:center; gap:9px; padding:8px 10px;
+             border-radius:8px; background:rgba(255,255,255,.06); }
+  .pot-no { font-size:11px; color:rgba(255,255,255,.42); min-width:12px; }
+  .pot-ad { font-size:13px; font-weight:600; color:#fff; flex:1;
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pot-bilgi { font-size:11px; color:rgba(255,255,255,.5); }
+  .pot-zincir { position:relative; margin:2px 0 2px 10px; padding:6px 0 6px 12px;
+                border-left:2px solid #FFC83D; display:flex; flex-direction:column; gap:6px; }
+  .pot-etiket { font-size:10px; font-weight:800; letter-spacing:.07em;
+                text-transform:uppercase; color:#FFC83D; }
+  .pot-zincir .pot-sat { background:rgba(255,200,61,.12); }
+
   .ozellik-liste li::before { content:"✓"; position:absolute; left:0; top:0;
                               color:var(--orange, #FFC83D); font-weight:800; }
 
@@ -723,7 +751,6 @@
     "Allı Turnam": "Autumn Leaves",
     "Dostum Dostum": "Blue Bossa",
     "Barış Güvercini": "Summertime",
-    "Vardar Ovası": "Take Five",
     "Aldırma Gönül": "So What",
     "Bedir Geliyor": "Fly Me to the Moon",
     "Hüseyni": "Dm",
@@ -764,6 +791,9 @@
     "Akıllı Repertuvar Yönetimi": "Smart Setlist Management",
     "Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.":
       "Drag and drop to reorder — or let the app group pieces by makam automatically.",
+    "Potpuri · aralıksız": "Medley · no gap",
+    "Yemen Türküsü": "Softly, As in a Morning Sunrise",
+    "Vardar Ovası": "Take Five",
     "Sürükle-bırak ile sırala": "Reorder by dragging",
     "Makama göre tek dokunuşla düzen": "Group by makam with one tap",
     "Potpuri zincirleri — eserleri birbirine bağla": "Medley chains — link pieces into one flow",
