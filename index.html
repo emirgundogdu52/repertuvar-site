@@ -608,6 +608,23 @@
      74px'lik bir emoji duruyordu — hem çocuksu hem de neyi anlattığı belirsiz.
      Yerine özelliğin KENDİSİNİ gösteren küçük bir arayüz: paylaşılan not ile
      kişisel not yan yana, farkı bir bakışta görünür. */
+  /* (2026-08-30) TERİM AÇIKLAMALARI (yalnızca İngilizce sürümde).
+     "makam" ve "usul" İngilizce metinde geçiyor ama okuyanın bunları bilmesi
+     beklenemez — açıklamasız bırakmak yabancılık yaratır, açıklamak ise
+     ayırt edici üstünlüğü anlatma fırsatı. Fareyle üzerine gelmek telefonda
+     çalışmadığı için dokunma da açıyor. */
+  .terim { border-bottom:1px dotted currentColor; cursor:help; position:relative; }
+  .terim::after {
+    content: attr(data-aciklama);
+    position:absolute; left:50%; bottom:calc(100% + 8px); transform:translateX(-50%);
+    background:#111827; color:#f9fafb; font-size:12.5px; font-weight:500;
+    line-height:1.5; letter-spacing:0; text-transform:none; text-align:left;
+    padding:9px 12px; border-radius:9px; width:max-content; max-width:250px;
+    opacity:0; visibility:hidden; transition:opacity .15s; z-index:60;
+    box-shadow:0 6px 20px rgba(0,0,0,.28); pointer-events:none;
+  }
+  .terim:hover::after, .terim.acik::after { opacity:1; visibility:visible; }
+
   .sync-mini { display:flex; flex-direction:column; gap:10px; width:92%; }
   .sync-not { display:flex; flex-direction:column; gap:3px; padding:11px 13px;
               border-radius:11px; background:#fff; border:1px solid rgba(0,0,0,.08);
@@ -773,6 +790,63 @@
     liste.forEach(uygulaFn);
   }
 
+  // İngilizce metinde geçen Türk müziği terimlerine açıklama balonu takıyor.
+  // Türkçe sürümde çağrılmıyor: Türk kullanıcıya "makam nedir" anlatmak
+  // gereksiz, hatta küçümseyici olurdu.
+  const TERIMLER = {
+    'makam': 'A melodic system in Turkish and Middle Eastern music — like a scale, but it also defines how the melody moves.',
+    'usul': 'A rhythmic cycle. More than a time signature: it sets the pattern of strong and weak beats.',
+    'medley': 'Several pieces played back to back as one continuous flow (potpuri).'
+  };
+
+  function terimleriIsaretle() {
+    const dizi = Object.keys(TERIMLER);
+    const gez = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(n) {
+        const p = n.parentNode;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        const tag = p.nodeName;
+        if (tag === 'SCRIPT' || tag === 'STYLE' || p.classList.contains('terim'))
+          return NodeFilter.FILTER_REJECT;
+        return /makam|usul|medley/i.test(n.nodeValue)
+          ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const dugumler = []; let n;
+    while ((n = gez.nextNode())) dugumler.push(n);
+
+    dugumler.forEach(dugum => {
+      const kalip = new RegExp('\\b(' + dizi.join('|') + ')\\b', 'i');
+      if (!kalip.test(dugum.nodeValue)) return;
+      const parcalar = dugum.nodeValue.split(new RegExp('\\b(' + dizi.join('|') + ')\\b', 'gi'));
+      const kap = document.createDocumentFragment();
+      parcalar.forEach(par => {
+        const k = par.toLowerCase();
+        if (TERIMLER[k]) {
+          const sp = document.createElement('span');
+          sp.className = 'terim';
+          sp.setAttribute('data-aciklama', TERIMLER[k]);
+          sp.setAttribute('tabindex', '0');
+          sp.textContent = par;
+          // Dokunmatikte hover yok — dokunma da açsın.
+          sp.addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.querySelectorAll('.terim.acik').forEach(x => { if (x !== sp) x.classList.remove('acik'); });
+            sp.classList.toggle('acik');
+          });
+          kap.appendChild(sp);
+        } else if (par) {
+          kap.appendChild(document.createTextNode(par));
+        }
+      });
+      dugum.parentNode.replaceChild(kap, dugum);
+    });
+    // Balonun dışına dokununca kapansın.
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.terim.acik').forEach(x => x.classList.remove('acik'));
+    });
+  }
+
   function ingilizceyeGec() {
     yuru(document.body, n => {
       const t = n.nodeValue.trim();
@@ -782,9 +856,14 @@
     });
     document.title = EN[document.title] || document.title;
     document.documentElement.setAttribute('lang', 'en');
+    terimleriIsaretle();
   }
 
   function turkceyeDon() {
+    // Terim balonları metin düğümlerini <span>'lere böldüğü için basit geri
+    // yazma yetmiyor; en temiz yol sayfayı yeniden yüklemek. Tercih zaten
+    // localStorage'da, dönüşte Türkçe açılır.
+    if (document.querySelector('.terim')) { location.reload(); return; }
     ilk.forEach((eski, n) => { n.nodeValue = eski; });
     document.documentElement.setAttribute('lang', 'tr');
   }
@@ -801,9 +880,9 @@
     if (hedef !== 'tr' && hedef !== 'en') return;
     if (hedef === dil) return;                 // zaten o dildeyiz
     dil = hedef;
+    try { localStorage.setItem('siteLang', dil); } catch (e) {}   // reload'dan ÖNCE
     if (dil === 'en') ingilizceyeGec(); else turkceyeDon();
     isaretle();
-    try { localStorage.setItem('siteLang', dil); } catch (e) {}
   };
 
   // İlk açılış: kayıtlı tercih varsa onu uygula, yoksa tarayıcı diline bak.
