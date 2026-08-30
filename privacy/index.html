@@ -30,6 +30,23 @@
   th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
   th{color:var(--muted);font-weight:600}
 </style>
+<script>
+/* (2026-08-30) DİL YÖNLENDİRMESİ.
+   Landing sayfası tarayıcı diline göre kendiliğinden açılıyordu ama bu sayfa
+   açılmıyordu — tutarsızdı. Artık aynı tercihi (`siteLang`) paylaşıyorlar:
+   kullanıcı landing'de TR seçtiyse burada da Türkçe kalır.
+   Yönlendirme `replace` ile yapılıyor ki geri tuşu döngüye girmesin. */
+(function () {
+  try {
+    var t = localStorage.getItem('siteLang');
+    if (!t) {
+      var n = (navigator.language || 'tr').slice(0, 2).toLowerCase();
+      t = (n === 'tr') ? 'tr' : 'en';
+    }
+    if (t === 'en') location.replace('en/');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -37,7 +54,7 @@
 <header>
   <!-- (2026-08-30) İngilizce sürüme bağlantı. Ayrı dosya: hukuki metinde
        yarım çeviri, hangi metnin geçerli olduğunu belirsizleştirir. -->
-  <a class="dil" href="en/">English</a>
+  <a class="dil" href="en/" onclick="try{localStorage.setItem('siteLang','en')}catch(e){}">English</a>
   <h1>Gizlilik Politikası</h1>
   <p class="eff">Yürürlük tarihi: 26.07.2026 · Son güncelleme: 11.08.2026</p>
 </header>
