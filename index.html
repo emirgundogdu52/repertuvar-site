@@ -577,7 +577,14 @@
 </script>
 
 <style>
+  /* (2026-08-30) Dil düğmesi HER GENİŞLİKTE görünür.
+     Sayfada `@media` içinde `.nav-actions .btn-ghost { display:none }` var —
+     dar ekranda menü hamburger'e dönerken hayalet düğmeleri gizliyor. Dil
+     düğmesi de o sınıfı taşıdığı için birlikte kayboluyordu. Oysa yabancı bir
+     ziyaretçinin ilk ihtiyacı tam olarak bu düğme; menünün içine saklanamaz. */
   .lang-btn { font-weight:700; letter-spacing:.04em; min-width:52px; }
+  .nav-actions .lang-btn { display: inline-flex !important; align-items:center;
+                           justify-content:center; }
 </style>
 <script>
 /* ═══ ARAYÜZ DİLİ — 2026-08-30 ═══════════════════════════════════════════
