@@ -1,0 +1,159 @@
+<!doctype html>
+<!--
+  TERMS / EN — 2026-08-30
+
+  Gizlilik sayfasıyla aynı desen: ayrı dosya, üstte bağlayıcılık uyarısı,
+  `siteLang` tercihine göre otomatik yönlendirme.
+
+  DİKKAT: 7. madde (ücretli özellikler) bugün varsayımsal — App Store/Google
+  Play üzerinden satın alma anlatılıyor ama henüz mağazada değiliz ve abonelik
+  başlamadı. Ödeme alınmaya başlandığında bu madde ile 9. ve 12. maddeler
+  profesyonel olarak gözden geçirilmeli (cayma hakkı, iade, tüketici hukuku).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use · Repertuvar</title>
+<link rel="alternate" hreflang="tr" href="https://repertuvar.app/terms/">
+<link rel="alternate" hreflang="en" href="https://repertuvar.app/terms/en/">
+<script>
+/* Kullanıcı Türkçeyi seçtiyse bu sayfaya doğrudan gelse bile Türkçe sürüme
+   gönderiliyor. Döngü riski yok: Türkçe sayfa yalnızca tercih 'en' iken
+   buraya yönlendiriyor. */
+(function () {
+  try {
+    if (localStorage.getItem('siteLang') === 'tr') location.replace('../');
+  } catch (e) {}
+})();
+</script>
+<style>
+  :root{--ink:#1b1e2b;--muted:#5b6072;--line:#e6e8f0;--gold:#B26A00;--bg:#fbfbfd}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6;font-size:16px}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  header{border-bottom:2px solid var(--line);padding-bottom:18px;margin-bottom:28px}
+  h1{font-size:28px;margin:0 0 6px}
+  .eff{color:var(--muted);font-size:14px;margin:0}
+  h2{font-size:19px;margin:34px 0 8px}
+  p,li{color:#2b2f3e}
+  a{color:var(--gold)}
+  ul{padding-left:20px}
+  .note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:8px;padding:12px 16px;margin:18px 0;font-size:14px;color:var(--muted)}
+  .ceviri-uyari{background:#fff4dd;border:1px solid #e8c98a;border-radius:8px;
+    padding:12px 16px;margin:0 0 24px;font-size:14px;color:#7a5200}
+  .dil{float:right;font-size:14px}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="dil" href="../" onclick="try{localStorage.setItem('siteLang','tr')}catch(e){}">Türkçe</a>
+  <h1>Terms of Use</h1>
+  <p class="eff">Effective date: 26.07.2026 · Last updated: 26.07.2026</p>
+</header>
+
+<div class="ceviri-uyari">
+  This English text is provided for information only. The binding version of these
+  terms is the Turkish one, available at <a href="../">repertuvar.app/terms</a>.
+  In case of any discrepancy, the Turkish text prevails.
+</div>
+
+<p>These Terms of Use (the "Terms") govern your use of the <strong>Repertuvar</strong>
+mobile application (the "App") and the <a href="https://www.repertuvar.app">repertuvar.app</a>
+website. By using the App you accept these Terms. If you do not accept them, please do not
+use the App.</p>
+
+<h2>1. Who Provides the Service</h2>
+<ul>
+  <li><strong>Business:</strong> Pera Digital VoF</li>
+  <li><strong>Chamber of Commerce (KvK) no:</strong> 75476274</li>
+  <li><strong>Address:</strong> Meldedonk 11, 3206 BG Spijkenisse, the Netherlands</li>
+  <li><strong>Contact:</strong> <a href="mailto:info@repertuvar.app">info@repertuvar.app</a></li>
+</ul>
+
+<h2>2. What the Service Is</h2>
+<p>Repertuvar is a tool that helps musicians manage their pieces, setlists and stage
+arrangements, and share and synchronise repertoire with the members of a group or choir.
+It offers particular support for Turkish music. Features may be updated, added or removed
+from time to time.</p>
+
+<h2>3. Your Account</h2>
+<p>Some features require an account. When creating one, you agree to provide accurate
+information, to keep your login credentials secure, and to be responsible for activity that
+takes place under your account. The App is not designed for people under 16.</p>
+
+<h2>4. Acceptable Use</h2>
+<p>When using the App, you agree not to:</p>
+<ul>
+  <li>break applicable law or infringe the rights of others;</li>
+  <li>upload or share copyrighted content you do not hold the rights to;</li>
+  <li>damage the App's infrastructure, attempt to bypass its security, or abuse it through
+  automated means;</li>
+  <li>use group or sharing features for harassment, spam or unauthorised access.</li>
+</ul>
+
+<h2>5. Your Content and Copyright</h2>
+<p>The content you enter into the App (pieces, setlists, chord sheets, group data and so on)
+is yours and remains yours. You grant us permission to process it only so that we can provide
+the service to you — storing it, synchronising it, and sharing it with your group members.</p>
+<p>You are responsible for holding the rights to anything you upload or share. If content is
+reported as infringing copyright, we reserve the right to remove it. Catalogue details of
+traditional or anonymous pieces (makam, usul, region and similar) are factual information;
+however, specific arrangements, notation and recordings may be subject to third-party rights.</p>
+
+<h2>6. Intellectual Property</h2>
+<p>The App itself — its design, software, name and logo — belongs to Pera Digital VoF or its
+licensors. These Terms grant you no rights other than the right to use the App.</p>
+
+<h2>7. Paid Features and Purchases</h2>
+<p>The App may include paid features or subscriptions. In-app purchases are handled through
+the App Store and Google Play; payments, renewals and refunds are subject to the rules of the
+relevant store. Subscriptions are managed and cancelled from your store account settings.</p>
+
+<h2>8. Availability of the Service</h2>
+<p>We provide the App "as is" and "as available". We do not guarantee that it will run without
+interruption or error; we may suspend the service or change features for maintenance, updates
+or technical reasons. We recommend keeping your own backups of important data.</p>
+
+<h2>9. Limitation of Liability</h2>
+<p>To the extent permitted by applicable law, we are not liable for indirect, incidental or
+consequential damages arising from your use of the App. These Terms do not affect the statutory
+rights you have as a consumer, which cannot be excluded by contract.</p>
+
+<h2>10. Termination</h2>
+<p>You can delete your account at any time from within the App. We reserve the right to suspend
+or terminate your access if you breach these Terms.</p>
+
+<h2>11. Changes to These Terms</h2>
+<p>We may update these Terms from time to time. For significant changes we will notify you in
+the App or on the website. Continuing to use the App after an update means you accept the new
+Terms.</p>
+
+<h2>12. Governing Law</h2>
+<p>These Terms are governed by the law of the Netherlands. If you are a consumer, you retain the
+rights granted to you by the mandatory consumer protection rules of your country of residence.</p>
+
+<h2>13. Contact</h2>
+<p>For questions about these Terms: <a href="mailto:info@repertuvar.app">info@repertuvar.app</a></p>
+
+<div class="note">
+  This document is a general set of terms and does not constitute legal advice.
+  It should be reviewed against your own circumstances — in particular the clauses on paid
+  features, liability and governing law — before you rely on it.
+</div>
+
+<footer>
+  Repertuvar · <a href="https://www.repertuvar.app">repertuvar.app</a><br>
+  Repertoire management for performing musicians.
+  <a href="../">Türkçe sürüm</a>
+</footer>
+
+</div>
+</body>
+</html>
