@@ -319,7 +319,10 @@
         <div class="nav-links">
           <a href="#features">Özellikler</a><a href="#pedal">Pedal</a><a href="#nasil">Nasıl çalışır</a><a href="#neden">Neden Repertuvar</a>
         </div>
-        <div class="nav-actions"><button class="btn btn-ghost lang-btn" id="langBtn" onclick="dilDegistir()" aria-label="Language / Dil">EN</button><a class="btn btn-ghost" data-app="login">Giriş Yap</a><a class="btn btn-primary" data-app="login">Ücretsiz Dene</a><button class="menu-button" aria-label="Menüyü aç">☰</button></div>
+        <div class="nav-actions"><div class="lang-switch" role="group" aria-label="Language / Dil">
+            <button type="button" class="lang-opt" data-lang="tr" onclick="dilSec('tr')">TR</button>
+            <button type="button" class="lang-opt" data-lang="en" onclick="dilSec('en')">EN</button>
+          </div><a class="btn btn-ghost" data-app="login">Giriş Yap</a><a class="btn btn-primary" data-app="login">Ücretsiz Dene</a><button class="menu-button" aria-label="Menüyü aç">☰</button></div>
       </nav>
 
       <div class="hero-grid">
@@ -582,9 +585,18 @@
      dar ekranda menü hamburger'e dönerken hayalet düğmeleri gizliyor. Dil
      düğmesi de o sınıfı taşıdığı için birlikte kayboluyordu. Oysa yabancı bir
      ziyaretçinin ilk ihtiyacı tam olarak bu düğme; menünün içine saklanamaz. */
-  .lang-btn { font-weight:700; letter-spacing:.04em; min-width:52px; }
-  .nav-actions .lang-btn { display: inline-flex !important; align-items:center;
-                           justify-content:center; }
+  /* (2026-08-30) TEK DÜĞME YERİNE İKİ SEÇENEK.
+     Önceki hâli yalnızca "EN" yazıyordu ve belirsizdi: bu mevcut dil mi,
+     geçilecek dil mi? İkisini yan yana gösterip aktif olanı vurgulamak
+     hiçbir yorum gerektirmiyor. */
+  .lang-switch { display:inline-flex !important; border:1px solid rgba(255,255,255,.22);
+                 border-radius:10px; overflow:hidden; }
+  .lang-opt { background:transparent; border:0; color:rgba(255,255,255,.62);
+              font:inherit; font-weight:700; font-size:13px; letter-spacing:.04em;
+              padding:9px 12px; cursor:pointer; line-height:1;
+              transition:background .15s, color .15s; }
+  .lang-opt:hover { color:#fff; background:rgba(255,255,255,.08); }
+  .lang-opt.aktif { background:#fff; color:#111; }
 </style>
 <script>
 /* ═══ ARAYÜZ DİLİ — 2026-08-30 ═══════════════════════════════════════════
@@ -736,11 +748,20 @@
     document.documentElement.setAttribute('lang', 'tr');
   }
 
-  window.dilDegistir = function () {
-    dil = (dil === 'tr') ? 'en' : 'tr';
+  function isaretle() {
+    document.querySelectorAll('.lang-opt').forEach(b => {
+      const aktif = b.getAttribute('data-lang') === dil;
+      b.classList.toggle('aktif', aktif);
+      b.setAttribute('aria-pressed', aktif ? 'true' : 'false');
+    });
+  }
+
+  window.dilSec = function (hedef) {
+    if (hedef !== 'tr' && hedef !== 'en') return;
+    if (hedef === dil) return;                 // zaten o dildeyiz
+    dil = hedef;
     if (dil === 'en') ingilizceyeGec(); else turkceyeDon();
-    const b = document.getElementById('langBtn');
-    if (b) b.textContent = (dil === 'tr') ? 'EN' : 'TR';
+    isaretle();
     try { localStorage.setItem('siteLang', dil); } catch (e) {}
   };
 
@@ -753,7 +774,8 @@
       const n = (navigator.language || 'tr').slice(0, 2).toLowerCase();
       hedef = (n === 'tr') ? 'tr' : 'en';
     }
-    if (hedef === 'en') window.dilDegistir();
+    if (hedef === 'en') window.dilSec('en');
+    isaretle();
   });
 })();
 </script>
