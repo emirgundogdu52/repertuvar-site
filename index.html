@@ -370,7 +370,18 @@
         <article class="card feature-card" id="pedal"><div class="feature-head"><span class="feature-icon purple"><i class="ti ti-bluetooth"></i></span><h3>Bluetooth Pedal</h3></div><p>Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p><div class="mini-ui"><img class="pedal" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" style="position:relative;right:auto;bottom:auto;width:80%;transform:none;filter:drop-shadow(0 10px 16px rgba(0,0,0,.22))" /></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon pink">♫</span><h3>Kesintisiz Performanslar Hazırla</h3></div><p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p><div class="mini-ui"><div class="mini-list"><div>Allı Turnam</div><div>Dostum Dostum</div><div>Barış Güvercini</div></div></div></article>
         <article class="card feature-card"><div class="feature-head"><span class="feature-icon green">▦</span><h3>Akıllı Repertuvar Yönetimi</h3></div><p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p><div class="mini-ui"><div class="card" style="padding:14px;width:88%;box-shadow:none"><b>Makama Göre Düzenle</b><p style="min-height:auto;margin:12px 0 0">Hüseyni · Hicaz · Kürdi · Uşşak</p></div></div></article>
-        <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue"><i class="ti ti-refresh"></i></span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><p class="feature-sub">Eserin altına düştüğün not — "girişi ben alıyorum", "burada yavaşlıyoruz" — herkese gider. <b>Kişisel notların ise yalnızca sende kalır.</b></p><div class="mini-ui"><div style="font-size:74px;color:var(--blue)">☁</div></div></article>
+        <article class="card feature-card"><div class="feature-head"><span class="feature-icon blue"><i class="ti ti-refresh"></i></span><h3>Grup Senkronizasyonu</h3></div><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p><p class="feature-sub">Eserin altına düştüğün not — "girişi ben alıyorum", "burada yavaşlıyoruz" — herkese gider. <b>Kişisel notların ise yalnızca sende kalır.</b></p><div class="mini-ui"><div class="sync-mini">
+        <div class="sync-not paylasik">
+          <span class="sync-etiket"><i class="ti ti-users"></i> Grup notu</span>
+          <span class="sync-metin">Girişi ben alıyorum</span>
+          <span class="sync-kim">Emir · herkes görür</span>
+        </div>
+        <div class="sync-not kisisel">
+          <span class="sync-etiket"><i class="ti ti-lock"></i> Kişisel not</span>
+          <span class="sync-metin">Kapoyu 2'ye al</span>
+          <span class="sync-kim">yalnızca sen</span>
+        </div>
+      </div></div></article>
       </div>
     </div></section>
 
@@ -591,6 +602,24 @@
      geçilecek dil mi? İkisini yan yana gösterip aktif olanı vurgulamak
      hiçbir yorum gerektirmiyor. */
   .feature-sub { font-size:14px; opacity:.78; margin-top:-4px; }
+
+  /* (2026-08-30) Bulut emojisi kaldırıldı: diğer kartlar somut arayüz
+     parçaları gösterirken (pedal fotoğrafı, eser listesi, makam kartı) burada
+     74px'lik bir emoji duruyordu — hem çocuksu hem de neyi anlattığı belirsiz.
+     Yerine özelliğin KENDİSİNİ gösteren küçük bir arayüz: paylaşılan not ile
+     kişisel not yan yana, farkı bir bakışta görünür. */
+  .sync-mini { display:flex; flex-direction:column; gap:10px; width:92%; }
+  .sync-not { display:flex; flex-direction:column; gap:3px; padding:11px 13px;
+              border-radius:11px; background:#fff; border:1px solid rgba(0,0,0,.08);
+              box-shadow:0 1px 3px rgba(0,0,0,.05); text-align:left; }
+  .sync-not.paylasik { border-left:3px solid var(--blue, #2563eb); }
+  .sync-not.kisisel  { border-left:3px solid #14b8a6; }
+  .sync-etiket { font-size:10.5px; font-weight:800; letter-spacing:.05em;
+                 text-transform:uppercase; display:flex; align-items:center; gap:5px; }
+  .sync-not.paylasik .sync-etiket { color:var(--blue, #2563eb); }
+  .sync-not.kisisel  .sync-etiket { color:#0d9488; }
+  .sync-metin { font-size:14px; font-weight:600; color:#111; }
+  .sync-kim   { font-size:11.5px; color:#6b7280; }
   .lang-switch { display:inline-flex !important; border:1px solid rgba(255,255,255,.22);
                  border-radius:10px; overflow:hidden; }
   .lang-opt { background:transparent; border:0; color:rgba(255,255,255,.62);
@@ -671,6 +700,12 @@
       "Notes you leave on a piece — \"I take the intro\", \"we slow down here\" — reach the whole band.",
     "Kişisel notların ise yalnızca sende kalır.": "Your private notes stay yours alone.",
     "Eser notları ve kişisel notlar": "Shared and private notes",
+    "Grup notu": "Band note",
+    "Girişi ben alıyorum": "I take the intro",
+    "Emir · herkes görür": "Emir · everyone sees it",
+    "Kişisel not": "Private note",
+    "Kapoyu 2'ye al": "Capo on 2nd fret",
+    "yalnızca sen": "only you",
 
     "Nasıl Çalışır?": "How It Works",
     "Dakikalar içinde sahneye hazır ol.": "Stage-ready in minutes.",
