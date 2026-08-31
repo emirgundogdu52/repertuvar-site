@@ -24,8 +24,9 @@
   <!-- Google Search Console doğrulaması (URL öneki tipi mülk). Doğrulama geçtikten
        sonra bu satır SİLİNMEMELİ — Google periyodik olarak yeniden kontrol eder. -->
   <meta name="google-site-verification" content="CWYP5EXv93OILEwYi5Myfd_scSLZMkIJru" />
-  <meta name="description" content="Repertuvar.app — sahneye çıkan müzisyenler için akıllı repertuvar yönetimi. Eser arşivi, potpuri, makama göre sıralama, grup senkronizasyonu, sayfa çevirme pedalı." />
-  <title>Repertuvar.app — Sahnede müziğine odaklan</title>
+  <meta name="description" content="Repertuvar.app, müzisyenler için repertuvar ve sahne yönetim uygulaması. Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedal ile sahnede yönet." />
+  <title>Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi</title>
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://repertuvar.app/" />
   <link rel="icon" type="image/png" sizes="512x512" href="favicon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
@@ -40,6 +41,42 @@
   <meta property="og:description" content="Türk müziği icra edenler için repertuvar yönetimi: eser arşivi, potpuri, makama göre sıralama, grup senkronizasyonu." />
   <meta property="og:url" content="https://repertuvar.app/" />
   <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="Repertuvar.app" />
+  <!-- og:image ve twitter:image BILEREK EKLENMEDI (2026-08-31).
+       Depodaki gorsellerin hicbiri sosyal paylasim olcusune (1200x630) uygun degil:
+       assets/logo.png 688x160, assets/pedal-foto.png 640x344 (dogru orana yakin ama
+       cok kucuk ve markasiz), baglama/guitar dikey, favicon 512x512 kare ikon.
+       Rastgele asset koymak yerine ayri bir OG gorseli uretilmeli; hazir olunca
+       her iki etiket de BIRLIKTE eklenecek. -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi" />
+  <meta name="twitter:description" content="Repertuvar.app, müzisyenler için repertuvar ve sahne yönetim uygulaması. Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedal ile sahnede yönet." />
+  <!-- JSON-LD: yalnizca bu sayfadan DOGRULANABILEN bilgiler.
+       operatingSystem, offers, aggregateRating ve review BILEREK YOK —
+       sayfada isletim sistemi, fiyat ya da puanlama iddiasi bulunmuyor. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Repertuvar.app",
+    "url": "https://repertuvar.app/",
+    "applicationCategory": "MultimediaApplication",
+    "inLanguage": ["tr", "en"],
+    "description": "Repertuvar.app, müzisyenler için repertuvar ve sahne yönetim uygulaması. Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedal ile sahnede yönet.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Repertuvar.app",
+      "url": "https://repertuvar.app/",
+      "email": "info@repertuvar.app",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://repertuvar.app/assets/logo.png",
+        "width": 688,
+        "height": 160
+      }
+    }
+  }
+  </script>
   <style>
     :root {
       --bg: #070a0f;
