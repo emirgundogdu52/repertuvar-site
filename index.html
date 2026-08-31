@@ -37,8 +37,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta name="theme-color" content="#070a0f" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Repertuvar.app — Sahnede müziğine odaklan" />
-  <meta property="og:description" content="Türk müziği icra edenler için repertuvar yönetimi: eser arşivi, potpuri, makama göre sıralama, grup senkronizasyonu." />
+  <meta property="og:title" content="Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi" />
+  <meta property="og:description" content="Repertuvar.app, müzisyenler için repertuvar ve sahne yönetim uygulaması. Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedal ile sahnede yönet." />
   <meta property="og:url" content="https://repertuvar.app/" />
   <meta property="og:locale" content="tr_TR" />
   <meta property="og:site_name" content="Repertuvar.app" />
@@ -945,13 +945,19 @@
       if (!ilk.has(n)) ilk.set(n, n.nodeValue);
       n.nodeValue = n.nodeValue.replace(t, EN[t]);
     });
-    document.title = EN[document.title] || document.title;
-    document.documentElement.setAttribute('lang', 'en');
+    // (2026-08-31) <html lang> ve <title> BILEREK DEGISTIRILMIYOR.
+    // Googlebot sayfayi en-US yerel ayariyla render eder; onceki hali
+    // tarayici dili Turkce olmayan herkeste lang="en" yapiyordu, yani
+    // Google'a "bu sayfa Ingilizce" diyordu. Ham HTML Turkce oldugu icin
+    // celiskili sinyal cikiyor ve Turkce sorgulardaki hedefi zayiflatiyordu.
+    // Metin cevirisi aynen duruyor — ziyaretci deneyimi degismedi.
+    // ODUN: Ingilizce metin lang="tr" altinda kaldigi icin ekran okuyucu
+    // telaffuzu bozulur. /en ayri URL + hreflang'e geciince ikisi de cozulur.
   }
 
   function turkceyeDon() {
     ilk.forEach((eski, n) => { n.nodeValue = eski; });
-    document.documentElement.setAttribute('lang', 'tr');
+    // lang niteligine dokunulmuyor — bkz. ingilizceyeGec() notu.
   }
 
   function isaretle() {
