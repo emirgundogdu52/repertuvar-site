@@ -42,15 +42,19 @@
   <meta property="og:url" content="https://repertuvar.app/" />
   <meta property="og:locale" content="tr_TR" />
   <meta property="og:site_name" content="Repertuvar.app" />
-  <!-- og:image ve twitter:image BILEREK EKLENMEDI (2026-08-31).
-       Depodaki gorsellerin hicbiri sosyal paylasim olcusune (1200x630) uygun degil:
-       assets/logo.png 688x160, assets/pedal-foto.png 640x344 (dogru orana yakin ama
-       cok kucuk ve markasiz), baglama/guitar dikey, favicon 512x512 kare ikon.
-       Rastgele asset koymak yerine ayri bir OG gorseli uretilmeli; hazir olunca
-       her iki etiket de BIRLIKTE eklenecek. -->
+  <!-- (2026-09-03) OG gorseli hazir: assets/og-image.png, 1200x630.
+       Kaynak sablon depo kokunde `og-image.html` — metni ya da yerlesimi
+       degistirmek gerekirse orayi acip yeniden ekran goruntusu al.
+       Mutlak URL sart: goreli yol paylasim onizlemelerinde cozulmuyor. -->
+  <meta property="og:image" content="https://repertuvar.app/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Repertuvar.app — tablet ve Bluetooth sayfa cevirme pedali" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi" />
   <meta name="twitter:description" content="Repertuvar.app, müzisyenler için repertuvar ve sahne yönetim uygulaması. Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedal ile sahnede yönet." />
+  <meta name="twitter:image" content="https://repertuvar.app/assets/og-image.png" />
+  <meta name="twitter:image:alt" content="Repertuvar.app — tablet ve Bluetooth sayfa cevirme pedali" />
   <!-- JSON-LD: yalnizca bu sayfadan DOGRULANABILEN bilgiler.
        operatingSystem, offers, aggregateRating ve review BILEREK YOK —
        sayfada isletim sistemi, fiyat ya da puanlama iddiasi bulunmuyor. -->
