@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--
+  repertuvar.app — OG GÖRSELİ ŞABLONU  (2026-09-03)
+
+  NE İŞE YARAR: bağlantı WhatsApp/Telegram/X/LinkedIn'de paylaşıldığında
+  çıkan önizleme kartının resmi. Şu an sitede `og:image` YOK, kart görselsiz
+  çıkıyor.
+
+  NASIL KULLANILIR
+  1. Bu dosyayı `repertuvar-site` deposunun köküne koy (assets/ ile aynı
+     seviyede — logo ve pedal fotoğrafı oradan okunuyor).
+  2. Tarayıcıda aç. Sayfa TAM 1200×630 piksel çizilir.
+  3. Ekran görüntüsü al:
+     · macOS: Cmd+Shift+4, sonra Boşluk, sonra kutuya tıkla → tam kutuyu alır.
+     · Ya da Chrome DevTools → Cmd+Shift+P → "Capture node screenshot" →
+       .og kutusunu seç. Bu yöntem piksel piksel doğru olur, tercih edilir.
+  4. Çıkan dosyayı `assets/og-image.png` olarak kaydet.
+  5. Bana söyle, `og:image` ve `twitter:image` etiketlerini bağlayayım.
+  6. Aynı görseli GitHub → repo → Settings → Social preview'a da koyabilirsin.
+
+  TASARIM KARARLARI
+  · Kart WhatsApp'ta parmak genişliğinde görünür. Bu yüzden tabletin ekranındaki
+    şarkı listesi OKUNMASIN diye tasarlandı — silüet yeter, doku olarak durur.
+    Ekrandaki satırları küçültüp soluklaştırdım; okunaklı yapmaya çalışmak
+    küçük boyutta karmaşa yaratıyordu.
+  · Tablet kadraja BİLEREK tam sığmıyor, sağdan taşıyor: küçük boyutta
+    "bir cihaz" olduğu anlaşılsın, ayrıntı yarışmasın.
+  · Pedal sağ altta, tabletin önünde. İkisi birlikte ürünün ne olduğunu tek
+    bakışta anlatıyor: ekran + ayakla kontrol.
+  · Metin ÜÇ satırı geçmiyor. OG kartlarında en sık yapılan hata metni
+    doldurmak; küçüldüğünde hiçbiri okunmuyor.
+  · Renkler ve yazı tipi landing sayfasının kendi değişkenlerinden alındı ki
+    karta tıklayan kişi aynı görsel dili görsün.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<title>OG görseli — 1200×630</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#FFC83D; --on-gold:#1A1305;
+    --text:#f5f7fb; --text-muted:#aeb6c5;
+    --purple-glow:rgba(116,74,214,.22);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:#1b1f27;
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;
+    display:grid; place-items:center; min-height:100vh; padding:24px;
+  }
+  /* ── KART: tam 1200×630 ─────────────────────────────────────────── */
+  .og{
+    width:1200px; height:630px; position:relative; overflow:hidden;
+    isolation:isolate; color:var(--text);
+    background:
+      radial-gradient(circle at 72% 22%, var(--purple-glow), transparent 34%),
+      radial-gradient(circle at 88% 62%, rgba(255,200,61,.10), transparent 30%),
+      linear-gradient(180deg,#05070b 0%,#090d14 100%);
+  }
+  .og::before{
+    content:""; position:absolute; inset:0; z-index:-1; opacity:.42;
+    background:
+      linear-gradient(106deg, transparent 0 46%, rgba(137,83,230,.13) 52%, transparent 58%),
+      radial-gradient(ellipse at 64% 84%, rgba(112,58,175,.22), transparent 40%);
+  }
+
+  /* ── SOL: logo + tek cümle ──────────────────────────────────────── */
+  .sol{
+    position:absolute; left:64px; top:0; bottom:0; width:560px;
+    display:flex; flex-direction:column; justify-content:center; gap:22px;
+  }
+  .logo{ height:74px; width:auto; display:block; }
+  .baslik{
+    margin:0; font-size:46px; line-height:1.08; letter-spacing:-.035em;
+    font-weight:800; max-width:520px;
+  }
+  .baslik .vurgu{ color:var(--orange); }
+  .alt{
+    margin:0; font-size:20px; line-height:1.45; color:var(--text-muted);
+    max-width:470px; font-weight:400;
+  }
+  .rozetler{ display:flex; gap:10px; margin-top:6px; flex-wrap:wrap; }
+  .rozet{
+    font-size:15px; font-weight:600; color:#d7dce5;
+    border:1px solid rgba(255,255,255,.18); border-radius:999px;
+    padding:7px 15px; background:rgba(255,255,255,.04); white-space:nowrap;
+  }
+
+  /* ── SAĞ: tablet (kadrajdan taşar) ──────────────────────────────── */
+  .tablet{
+    position:absolute; right:-90px; top:74px; width:560px; aspect-ratio:1.28;
+    border-radius:28px; padding:14px;
+    background:linear-gradient(145deg,#313743,#090c12 55%);
+    box-shadow:0 24px 64px rgba(0,0,0,.55);
+    transform:perspective(1200px) rotateY(-11deg) rotateX(2deg);
+  }
+  .ekran{
+    height:100%; border-radius:18px; background:#0b1018;
+    border:1px solid rgba(255,255,255,.09); padding:20px; overflow:hidden;
+  }
+  .ekran-bas{
+    display:flex; justify-content:space-between; align-items:center;
+    color:#fff; font-weight:700; font-size:15px;
+  }
+  .ekran-alt{ font-size:11px; color:#8290a4; margin-top:5px; }
+  /* Satırlar BİLEREK okunmaz boyutta — küçük kartta doku olarak durmalı. */
+  .liste{ margin-top:14px; display:grid; gap:7px; }
+  .satir{
+    display:grid; grid-template-columns:20px 1fr auto; gap:10px;
+    padding:9px 10px; border-radius:7px; font-size:11px;
+    color:#aab3c0; background:rgba(255,255,255,.025);
+  }
+  .satir.aktif{ border:1px solid var(--orange); background:rgba(255,200,61,.09); color:#fff; }
+  .satir .ton{ color:#8f99a8; }
+
+  /* ── PEDAL: tabletin önünde, sağ alt ────────────────────────────── */
+  .pedal{
+    position:absolute; right:34px; bottom:-16px; width:290px; height:auto;
+    transform:rotate(2deg); z-index:3;
+    filter:drop-shadow(0 26px 34px rgba(0,0,0,.72));
+  }
+  /* pedalın altına hafif ışık — zeminden kopmasın */
+  .og::after{
+    content:""; position:absolute; right:60px; bottom:0;
+    width:300px; height:150px; border-radius:50%; pointer-events:none;
+    background:radial-gradient(ellipse, rgba(120,150,200,.20), transparent 70%);
+    filter:blur(26px); z-index:2;
+  }
+
+  /* ── alt şerit: alan adı ────────────────────────────────────────── */
+  .alan{
+    position:absolute; left:64px; bottom:44px; z-index:4;
+    font-size:19px; font-weight:700; letter-spacing:.02em; color:var(--orange);
+  }
+
+  /* ekrandaki yardım metni — görüntüye girmez */
+  .yardim{
+    max-width:1200px; margin-top:18px; color:#9aa4b2; font-size:13px;
+    line-height:1.6; font-family:ui-monospace,monospace;
+  }
+  @media print{ .yardim{ display:none; } }
+</style>
+</head>
+<body>
+
+  <div class="og">
+    <div class="sol">
+      <img class="logo" src="assets/logo.png" alt="repertuvar.app" />
+      <h1 class="baslik">Sahnede müziğine odaklan.<br><span class="vurgu">Gerisini biz halledelim.</span></h1>
+      <p class="alt">Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedalla sayfa çevir.</p>
+      <div class="rozetler">
+        <span class="rozet">Çevrimdışı çalışır</span>
+        <span class="rozet">Grup senkronizasyonu</span>
+      </div>
+    </div>
+
+    <div class="tablet">
+      <div class="ekran">
+        <div class="ekran-bas"><span>Konser Setlistim</span><span>•••</span></div>
+        <div class="ekran-alt">19 parça · 75 dk</div>
+        <div class="liste">
+          <div class="satir"><span>1</span><span>Allı Turnam</span><span class="ton">Hüseyni</span></div>
+          <div class="satir aktif"><span>2</span><span>Dostum Dostum</span><span class="ton">Hüseyni</span></div>
+          <div class="satir"><span>3</span><span>Barış Güvercini</span><span class="ton">Hüseyni</span></div>
+          <div class="satir"><span>4</span><span>Vardar Ovası</span><span class="ton">Hicaz</span></div>
+          <div class="satir"><span>5</span><span>Aldırma Gönül</span><span class="ton">Hicaz</span></div>
+        </div>
+      </div>
+    </div>
+
+    <img class="pedal" src="assets/pedal-foto.png" alt="" />
+    <div class="alan">repertuvar.app</div>
+  </div>
+
+  <div class="yardim">
+    Kutu tam 1200×630. Ekran görüntüsü al → assets/og-image.png olarak kaydet.
+    En temizi: Chrome DevTools → Cmd+Shift+P → "Capture node screenshot" → .og öğesini seç.
+  </div>
+
+</body>
+</html>
