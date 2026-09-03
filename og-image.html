@@ -71,8 +71,15 @@
   .sol{
     position:absolute; left:64px; top:0; bottom:0; width:560px;
     display:flex; flex-direction:column; justify-content:center; gap:22px;
+    /* KOLON flex'te varsayilan align-items:stretch, cocuklari CAPRAZ eksende
+       (yani GENISLIKTE) kapsayiciya yayar ve img'deki width:auto'yu ezer.
+       Logo bu yuzden 688x160 iken ~528x60 ciziliyordu, yatayda iki kat gerik.
+       flex-start bunu keser; asagida olculeri ayrica sabitledim. */
+    align-items:flex-start;
   }
-  .logo{ height:74px; width:auto; display:block; }
+  /* 688x160 -> oran 4.3. Yukseklik 74 ise genislik 318. Ikisini de yazmak
+     tarayicinin yerlesim sirasindan bagimsiz olarak orani garantiler. */
+  .logo{ width:318px; height:74px; display:block; flex:0 0 auto; object-fit:contain; }
   .baslik{
     margin:0; font-size:46px; line-height:1.08; letter-spacing:-.035em;
     font-weight:800; max-width:520px;
