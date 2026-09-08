@@ -1,24 +1,1162 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- build: 2026-08-01 — "Oturumu Kapat" satiri Hesap bolumunden KALDIRILDI; cikis artik
+     yalnizca avatar/hesap menusunde (sidebar'da tema dugmesinin ustu, mobilde ust cubuk).
+     logout() fonksiyonu dosyada duruyor. Ilgili: topnav.js v2026-08-01-sidebar-account. -->
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Yonlendiriliyor</title>
-<link rel="canonical" href="https://app.repertuvar.app/ayarlar.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Repertuvar — Ayarlar</title>
+<link rel="icon" href="Repertuvar_logo.png">
+<script src="i18n.js"></script>
+<script src="auth.js"></script>
+<script src="topnav.js" defer></script>
 <script>
-window.location.replace('https://app.repertuvar.app/ayarlar.html' + window.location.search + window.location.hash);
+async function hesapSilOnay() {
+  document.getElementById('silOnayEmail').value = '';
+  document.getElementById('silHataMsg').style.display = 'none';
+
+  // Repertuvar ve sahip olunan grup sayısını çek
+  try {
+    const uid = getUserId();
+    const r = await fetch(SUPA_URL + '/rest/v1/repertoires?owner_id=eq.' + uid + '&select=id', {
+      headers: authHeaders()
+    });
+    const reps = r.ok ? await r.json() : [];
+    const gr = await fetch(SUPA_URL + '/rest/v1/groups?owner_id=eq.' + uid + '&select=id', {
+      headers: authHeaders()
+    });
+    const gruplar = gr.ok ? await gr.json() : [];
+
+    const satirlar = [];
+    // Sayi metnin ICINDE ({n}), sonuna eklenmiyor: kelime sirasi dile gore
+    // degisebilsin.
+    if (reps.length > 0) satirlar.push(_t('mod.sil_repUyari', '{n} repertuvarınız kalıcı olarak silinecek.').replace('{n}', reps.length));
+    if (gruplar.length > 0) satirlar.push(_t('mod.sil_grupUyari', 'Sahibi olduğunuz {n} grubun yönetimi başka bir üyeye devredilecek (grupta başka üye yoksa grup silinecek).').replace('{n}', gruplar.length));
+
+    const uyariEl = document.getElementById('silRepUyari');
+    if (uyariEl) {
+      uyariEl.innerHTML = satirlar.length ? satirlar.join('<br>') : _t('mod.sil_repYok', 'Kayıtlı repertuvarınız bulunmuyor.');
+      uyariEl.style.display = 'block';
+    }
+  } catch(e) {}
+
+  document.getElementById('hesapSilModal').classList.add('open');
+}
+
+function hesapSilKapat() {
+  document.getElementById('hesapSilModal').classList.remove('open');
+}
+
+// (2026-08-30) JS'ten yazilan metinler icin ceviri yardimcisi. data-i18n
+// yalnizca HTML'de duran metinleri cozer; toast ve dogrulama mesajlari
+// calisma aninda uretildigi icin sozluge buradan bakiyorlar.
+// i18n yuklenmemisse Turkceye duser, hicbir akis kirilmaz.
+function _t(anahtar, tr) {
+  try { return (window.i18n && window.i18n.t) ? window.i18n.t(anahtar, tr) : tr; }
+  catch (e) { return tr; }
+}
+
+async function hesapSil() {
+  const email = document.getElementById('silOnayEmail').value.trim();
+  const user = getUser();
+  const hata = document.getElementById('silHataMsg');
+  
+  if (!email) { hata.style.display='block'; hata.textContent=_t('mod.sil_epostaGir','E-posta adresinizi girin.'); return; }
+  if (email !== user?.email) { hata.style.display='block'; hata.textContent=_t('mod.sil_eslesmiyor','E-posta adresi eşleşmiyor.'); return; }
+
+  const btn = document.getElementById('silOnayla');
+  btn.disabled = true; btn.textContent = _t('mod.sil_siliniyor','Siliniyor...');
+
+  try {
+    // Sunucu tarafı kalıcı silme (tüm veri + auth kaydı)
+    const res = await fetch(SUPA_URL + '/rest/v1/rpc/delete_my_account', {
+      method: 'POST',
+      headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+      body: '{}'
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+  } catch(e) {
+    hata.style.display = 'block';
+    hata.textContent = _t('mod.sil_basarisiz','Hesap silinemedi, lütfen tekrar deneyin.');
+    btn.disabled = false; btn.textContent = _t('ay.hesapsil','Hesabımı Sil');
+    return;
+  }
+
+  // Başarılı: oturumu temizle ve çıkış
+  localStorage.clear();
+  window.location.href = 'login.html?msg=hesap-silindi';
+}
+
 </script>
-<meta http-equiv="refresh" content="0; url=https://app.repertuvar.app/ayarlar.html">
+<script>
+const DAVET_URL = 'https://app.repertuvar.app/login.html';
+const DAVET_MESAJ = _t('ay.davetMesaj','Merhaba! Türk müziği repertuvar yönetimi için harika bir uygulama keşfettim. Sahne modunda eserler arası geçiş çok kolay. Bir bak: ');
+
+function linkKopyala() {
+  navigator.clipboard.writeText(DAVET_URL).then(() => {
+    const btn = document.getElementById('kopyalaBtn');
+    btn.textContent = _t('ay.kopyalandi','✓ Kopyalandı');
+    setTimeout(() => btn.textContent = '📋 Kopyala', 2000);
+  });
+}
+
+function paylasBilesen(tip) {
+  const mesaj = encodeURIComponent(DAVET_MESAJ + DAVET_URL);
+  const konu = encodeURIComponent(_t('ay.paylasKonu','Repertuvar — Sahne Müzisyenleri için'));
+  if (tip === 'whatsapp') {
+    window.open('https://wa.me/?text=' + mesaj, '_blank');
+  } else if (tip === 'email') {
+    window.open('mailto:?subject=' + konu + '&body=' + mesaj);
+  } else if (tip === 'sms') {
+    window.open('sms:?body=' + mesaj);
+  } else if (tip === 'native') {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Repertuvar.app',
+        text: DAVET_MESAJ,
+        url: DAVET_URL
+      });
+    } else {
+      linkKopyala();
+    }
+  }
+}
+
+async function davetGonder() {
+  const email = document.getElementById('davetEmail').value.trim();
+  const msg = document.getElementById('davetMsg');
+  if (!email) { 
+    msg.style.display = 'block';
+    msg.style.color = '#f87171';
+    msg.textContent = 'E-posta adresi girin.';
+    return; 
+  }
+  const btn = document.getElementById('davetBtn');
+  btn.disabled = true; btn.textContent = _t('ay.gonderiliyor','Gönderiliyor...');
+  
+  // Supabase ile davet e-postası gönder
+  const SUPA_URL_L = 'https://ehytkzxdhjyjuubizdnl.supabase.co';
+  const SUPA_KEY_L = 'sb_publishable_f_WsYxzN06B5dGROrkGyPQ_UDxKSbtO';
+  
+  try {
+    const r = await fetch(SUPA_URL_L + '/auth/v1/admin/invite', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPA_KEY_L,
+        'Authorization': 'Bearer ' + (localStorage.getItem('sb_token') || SUPA_KEY_L),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, data: { invited: true } })
+    });
+    if (r.ok) {
+      msg.style.display = 'block';
+      msg.style.color = '#4ade80';
+      msg.textContent = _t('ay.davetGonderildi','✓ Davet gönderildi!');
+      document.getElementById('davetEmail').value = '';
+    } else {
+      // Admin API yoksa manuel mail aç
+      const konu = encodeURIComponent(_t('ay.davetKonu',"Repertuvar'a Davet"));
+      const icerik = encodeURIComponent(_t('ay.davetGovde','Merhaba,\n\nSeni Repertuvar uygulamasına davet ediyorum. Türk müziği sahne yönetimi için çok işlevsel bir araç.\n\nKayıt olmak için: ') + DAVET_URL + _t('ay.iyiMuzikler','\n\nİyi müzikler!'));
+      window.open('mailto:' + email + '?subject=' + konu + '&body=' + icerik);
+      msg.style.display = 'block';
+      msg.style.color = '#4ade80';
+      msg.textContent = _t('ay.mailAcildi','✓ Mail uygulaması açıldı.');
+    }
+  } catch(e) {
+    const konu = encodeURIComponent(_t('ay.davetKonu',"Repertuvar'a Davet"));
+    const icerik = encodeURIComponent(_t('ay.davetGovdeKisa','Merhaba,\n\nSeni Repertuvar uygulamasına davet ediyorum.\n\nKayıt olmak için: ') + DAVET_URL);
+    window.open('mailto:' + email + '?subject=' + konu + '&body=' + icerik);
+    msg.style.display = 'block';
+    msg.style.color = '#4ade80';
+    msg.textContent = _t('ay.mailAcildi','✓ Mail uygulaması açıldı.');
+  }
+  
+  btn.disabled = false; btn.textContent = _t('ay.gonder','Gönder');
+}
+
+</script>
+<link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-body{background:#070a0f;color:#f5f7fb;font-family:-apple-system,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center;padding:24px}
-a{color:#FFC83D}
+
+/* Üst nav bu sayfada sabit kalsın (scroll ile kaybolmasın) */
+.r-topnav{position:fixed !important;top:0;left:0;right:0;z-index:200;}
+body{padding-top:var(--topnav-h, 66px);}
+
+/* ── Page styles ── */
+.page { padding: 24px 20px; max-width: 640px; }
+@media(min-width:1024px) { .page { padding: 32px; } }
+/* Yatay kaydırma emniyeti: taşan tek bir öğe bütün sayfayı kaydırılabilir
+   yapıp "zoom'lu" hissi veriyor. */
+html, body { overflow-x: hidden; }
+
+.settings-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  /* (2026-08-22) MOBİL GENİŞLİK DÜZELTMESİ.
+     Buradaki `width:424px` + `margin-left/right: calc(50% - 212px)` bir
+     MASAÜSTÜ ORTALAMA HİLESİ. ~390px'lik bir telefonda calc(50% - 212px)
+     NEGATİF çıkıyor ⇒ bölüm ekrandan taşıyor, sol kenar kırpılıyor ve sayfa
+     "yakınlaştırılmış" görünüyor. Aynı kusur mesajlar.html'de 2026-07-17'de
+     bulunup düzeltilmişti; ayarlar.html'de kalmış.
+     Doğrusu: ebeveyni doldur, 424px'i geçme, ortala. */
+  width: 100%;
+  max-width: 424px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.section-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.section-icon { font-size: 22px; }
+.section-title { font-size: 16px; font-weight: 700; color: var(--text); }
+.section-subtitle { font-size: 14px; color: var(--text3); margin-top: 1px; }
+
+.setting-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; gap: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.setting-row:last-child { border-bottom: none; }
+.setting-label { font-size: 16px; font-weight: 500; color: var(--text); }
+.setting-desc { font-size: 14px; color: var(--text3); margin-top: 2px; }
+
+/* Toggle switch */
+.toggle {
+  position: relative; width: 44px; height: 24px; flex-shrink: 0;
+}
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; inset: 0; cursor: pointer;
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 24px; transition: all .2s;
+}
+.toggle-slider::before {
+  content: ''; position: absolute;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--text3); left: 2px; top: 2px;
+  transition: all .2s;
+}
+.toggle input:checked + .toggle-slider { background: var(--accent); border-color: var(--accent); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); background: #fff; }
+
+/* Select */
+.setting-select {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 10px;
+  color: var(--text); font-size: 15px; font-family: var(--font);
+  outline: none; cursor: pointer;
+}
+.setting-select:focus { border-color: var(--accent); }
+
+/* Action button */
+.setting-btn {
+  background: none; border: 1px solid var(--border);
+  border-radius: 8px; padding: 7px 14px;
+  font-size: 15px; font-weight: 600; color: var(--text2);
+  cursor: pointer; font-family: var(--font); transition: all .15s;
+  text-decoration: none; display: inline-block;
+  /* (2026-08-30) Satir flex + space-between. Bunlar olmadan soldaki aciklama
+     uzayinca dugme sikisip metnindeki bosluktan kiriliyor ve ok alt satira
+     iniyor ("Members" / "→"). Ingilizcede goruldu ama acik dilden bagimsiz:
+     uzun bir Turkce aciklama da ayni sonucu verir. Sikismasi gereken taraf
+     dugme degil, sarabilen aciklama metni. */
+  white-space: nowrap; flex-shrink: 0;
+}
+.setting-btn:hover { border-color: var(--accent2); color: var(--accent3); }
+.setting-btn.danger { border-color: rgba(248,113,113,.3); color: var(--red); }
+.setting-btn.danger:hover { background: rgba(248,113,113,.08); border-color: var(--red); }
+.setting-btn.primary { background: linear-gradient(135deg,var(--accent),var(--accent2)); border:none; color:#fff; box-shadow:0 2px 8px rgba(124,111,255,0.3); }
+.setting-btn.primary:hover { opacity:.9; }
+
+/* Profile avatar */
+.profile-avatar {
+  width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg,var(--accent),var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 800; color: #fff;
+  box-shadow: 0 0 16px rgba(124,111,255,0.3);
+}
+.profile-info { flex: 1; min-width: 0; }
+.profile-name { font-size: 19px; font-weight: 700; color: var(--text); }
+.profile-email { font-size: 15px; color: var(--text3); margin-top: 3px; }
+.profile-role {
+  display: inline-block; margin-top: 6px;
+  font-size: 12px; font-weight: 700;
+  padding: 2px 8px; border-radius: 10px;
+  background: rgba(124,111,255,0.15); border: 1px solid rgba(124,111,255,0.3);
+  color: var(--accent3);
+}
+
+/* Version */
+.version-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 14px; color: var(--text3);
+}
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: 10px; padding: 10px 20px;
+  font-size: 16px; color: var(--text2); z-index: 999;
+  animation: toastIn .2s ease; white-space: nowrap;
+}
+.toast.ok { border-color: rgba(74,222,128,.4); color: var(--green); }
+.toast.err { border-color: rgba(248,113,113,.4); color: var(--red); }
+@keyframes toastIn { from{opacity:0;transform:translateX(-50%) translateY(8px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+
+/* Password modal */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.7); z-index: 500;
+  align-items: center; justify-content: center; padding: 16px;
+}
+.modal-overlay.open { display: flex; }
+.modal-card {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: 16px; padding: 24px; width: min(400px, 96vw);
+}
+.modal-title { font-size: 19px; font-weight: 700; margin-bottom: 16px; }
+.field { margin-bottom: 12px; }
+.field label { display: block; font-size: 14px; font-weight: 600; color: var(--text3); margin-bottom: 5px; letter-spacing:.05em; }
+.field input {
+  width: 100%; background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 12px; color: var(--text);
+  font-size: 16px; font-family: var(--font); outline: none; transition: border-color .15s;
+}
+.field input:focus { border-color: var(--accent); }
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+
+  .sb-user-x { position:relative; }
+  .sb-user-dropdown { display:none; position:fixed; bottom:90px; left:10px; right:10px;
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:4px; z-index:9999; box-shadow:0 -4px 20px rgba(0,0,0,.5); }
+  .sb-user-dropdown.open { display:block; }
+  .sb-dd-item { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:7px;
+    font-size:15px; font-weight:600; color:var(--text2); text-decoration:none; cursor:pointer;
+    transition:all .15s; background:none; border:none; width:100%; font-family:inherit; }
+  .sb-dd-item:hover { background:rgba(124,111,255,0.12); color:var(--text); }
+  .sb-dd-item.danger { color:var(--red); }
+  .sb-dd-item.danger:hover { background:rgba(248,113,113,0.1); }
+
 </style>
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/fonts/tabler-icons.woff2?v3.44.0" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
 </head>
 <body>
-<div>
-<p>Uygulama yeni adresine tasindi.</p>
-<p><a href="https://app.repertuvar.app/ayarlar.html">app.repertuvar.app adresine git</a></p>
+
+<div id="r-topnav-container"></div>
+
+<!-- ══ DESKTOP SIDEBAR ══ -->
+<!-- ══ MAIN WRAP ══ -->
+<div class="main-wrap">
+
+  <!-- Tablet + Mobil: Üst Bar -->
+
+  <div class="page">
+
+    <!-- 1. PROFİL -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-icon">👤</span>
+        <div><div class="section-title" data-i18n="ay.hesap">Hesap</div></div>
+      </div>
+      <div class="setting-row">
+        <div class="profile-avatar" id="profileAvatar">—</div>
+        <div class="profile-info">
+          <div class="profile-name" id="profileName">—</div>
+          <div class="profile-email" id="profileEmail">—</div>
+          <div class="profile-role" id="profileRole">Üye</div>
+        </div>
+      </div>
+      <div class="setting-row">
+        <div style="flex:1;min-width:0;">
+          <div class="setting-label" data-i18n="ay.adsoyad">Ad Soyad</div>
+          <div class="setting-desc" data-i18n="ay.adsoyad_alt">Eklediğin eserlerde ve grup listelerinde bu isim görünür</div>
+          <input id="setName" type="text" placeholder="Adınız ve soyadınız" autocomplete="name"
+            style="margin-top:8px;width:100%;max-width:320px;padding:9px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:inherit;box-sizing:border-box;">
+          <div id="setNameMsg" style="margin-top:6px;font-size:12px;display:none;"></div>
+        </div>
+        <button class="setting-btn" onclick="saveDisplayName()" data-i18n="ay.kaydet">Kaydet</button>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.sifre">Şifre</div>
+          <div class="setting-desc" data-i18n="ay.sifre_alt">Hesap şifreni değiştir</div>
+        </div>
+        <button class="setting-btn" onclick="openPasswordModal()" data-i18n="ay.degistir">Değiştir</button>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.eposta">E-posta Adresi</div>
+          <div class="setting-desc" data-i18n="ay.eposta_alt">Hesap e-posta adresini değiştir</div>
+        </div>
+        <button class="setting-btn" onclick="openEmailModal()" data-i18n="ay.degistir">Değiştir</button>
+      </div>
+      <!-- Oturumu Kapat satırı 2026-08-01'de KALDIRILDI — çıkış artık sidebar'daki
+           avatar/hesap menüsünde (masaüstü) ve mobil üst çubuktaki avatar menüsünde.
+           Tek yerde durması "çıkış nerede?" karışıklığını bitiriyor. logout() fonksiyonu
+           dosyada duruyor, silinmedi. -->
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" style="color:var(--red);" data-i18n="ay.hesapsil">Hesabımı Sil</div>
+          <div class="setting-desc" data-i18n="ay.hesapsil_alt">Tüm verileriniz kalıcı olarak silinir (GDPR)</div>
+        </div>
+        <button class="setting-btn danger" onclick="hesapSilOnay()" data-i18n="ay.sil">Sil</button>
+      </div>
+    </div>
+
+    <!-- (2026-08-30) ARAYÜZ DİLİ.
+         Dil seçimi ALAN GÖRÜNÜRLÜĞÜNDEN BAĞIMSIZ: İngilizce arayüz kullanan
+         biri makam müziği çalışıyor olabilir. İkisi ayrı ayarlar. -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-icon">🌐</span>
+        <div><div class="section-title" data-i18n="ayar.dil">Arayüz Dili</div>
+             <div class="section-subtitle" data-i18n="ayar.dil_alt">Uygulamanın gösterileceği dil</div></div>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ayar.dil">Arayüz Dili</div>
+          <div class="setting-desc" id="dilNot"></div>
+        </div>
+        <select id="dilSecim" onchange="dilDegistir(this.value)"
+                style="padding:9px 12px;border-radius:9px;background:var(--surface2);
+                       border:1px solid var(--border);color:var(--text);font-size:14px;
+                       font-family:inherit;"></select>
+      </div>
+    </div>
+
+    <!-- (2026-08-30) MÜZİK ALANLARI — "gelenek seçimi" KALDIRILDI.
+         Önceki hâli "Türk Halk Müziği / Türk Sanat Müziği / Batı Müziği" diye
+         soruyordu. İki sorunu vardı: (a) kullanıcıyı bir kimliğe yerleştiriyor,
+         (b) "Batı'yı seçersem türkü ekleyemez miyim?" korkusu yaratıyordu.
+         Artık kimlik değil ALAN soruluyor — kullanıcı hangi bilgilerle
+         çalıştığını söylüyor, sistem onu sınıflandırmıyor.
+         Bu seçim YALNIZCA yeni eserlerin başlangıç alanlarını etkiler;
+         mevcut eserlerin alanları değişmez. -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-icon">🎼</span>
+        <div><div class="section-title" data-i18n="ay.muzikalan">Müzik Alanları</div>
+             <div class="section-subtitle" data-i18n="ay.muzikalan_alt">Yeni eserlerde hangi alanlar açık gelsin</div></div>
+      </div>
+
+      <div class="setting-row" style="display:block;">
+        <div class="setting-desc" id="alanAciklama" style="margin-bottom:12px;line-height:1.6;">
+          Kapattığınız alanlar <b>silinmez</b> — dolu olan bir alan her zaman görünür,
+          ve her eserde <b>“+ Müzik alanı ekle”</b> ile istediğinizi geri açabilirsiniz.
+          Bu ayar yalnızca <b>yeni</b> eserlerin başlangıç görünümünü belirler.
+        </div>
+        <div id="alanKutulari" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-desc" id="alanDurum" style="flex:1;"></div>
+        <button class="setting-btn" onclick="alanVarsayilanKaydet()" data-i18n="ay.kaydet">Kaydet</button>
+      </div>
+    </div>
+
+    <!-- 2. SAHNE MODU TERCİHLERİ -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-icon">🎭</span>
+        <div><div class="section-title" data-i18n="ay.sahne">Sahne Modu</div><div class="section-subtitle" data-i18n="ay.sahne_alt">Sahneye çıkarken kullanılan varsayılan ayarlar</div></div>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.tema">Varsayılan Tema</div>
+          <div class="setting-desc" data-i18n="ay.tema_alt">Sahne modunda açılış teması</div>
+        </div>
+        <select class="setting-select" id="stageTheme" onchange="saveSetting('stageTheme',this.value)">
+          <option value="day" data-i18n="ay.gunduz">☀️ Gündüz</option>
+          <option value="night" data-i18n="ay.gece">🌙 Gece</option>
+        </select>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.hiza">Söz Hizalama</div>
+          <div class="setting-desc" data-i18n="ay.hiza_alt">Sahne modunda varsayılan metin hizası</div>
+        </div>
+        <select class="setting-select" id="stageLyricsAlign" onchange="saveSetting('stageLyricsAlign',this.value)">
+          <option value="center" data-i18n="ay.orta">Orta</option>
+          <option value="left" data-i18n="ay.sol">Sol</option>
+          <option value="right" data-i18n="ay.sag">Sağ</option>
+        </select>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.akor">Akor Görünümü</div>
+          <div class="setting-desc" data-i18n="ay.akor_alt">Söz yerine akorları göster</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="stageShowChords" onchange="saveSetting('stageShowChords',this.checked?'1':'0')">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 3. ADMİN ARAÇLARI -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-icon">🎶</span>
+        <div><div class="section-title" data-i18n="ay.grup">Grup / Koro</div><div class="section-subtitle" data-i18n="ay.grup_alt">Grup üyeliği ve yönetimi</div></div>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.grupyon">Grup Yönetimi</div>
+          <div class="setting-desc" data-i18n="ay.grupyon_alt">Üyeler, davet linkleri, roller</div>
+        </div>
+        <a href="gruplar.html" class="setting-btn" data-i18n="ay.grupgit">Gruba Git →</a>
+      </div>
+    </div>
+
+    <div class="settings-section admin-only">
+      <div class="section-header">
+        <span class="section-icon">🛠️</span>
+        <div><div class="section-title" data-i18n="ay.yonetim">Yönetim</div><div class="section-subtitle" data-i18n="ay.yonetim_alt">Sadece adminler görebilir</div></div>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.istat">İstatistikler</div>
+          <div class="setting-desc" data-i18n="ay.istat_alt">Ziyaret ve kullanım istatistikleri</div>
+        </div>
+        <a href="istatistikler.html" class="setting-btn" data-i18n="ay.goruntule">Görüntüle →</a>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.uyeyon">Üye Yönetimi</div>
+          <div class="setting-desc" data-i18n="ay.uyeyon_alt">Rolleri düzenle, üye ekle/sil</div>
+        </div>
+        <a href="uyeler.html" class="setting-btn" data-i18n="ay.uyeler">Üyeler →</a>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.oneriler">Bekleyen Öneriler</div>
+          <div class="setting-desc" data-i18n="ay.oneriler_alt">Onay bekleyen eser önerileri</div>
+        </div>
+        <a href="eserler.html" class="setting-btn" onclick="localStorage.setItem('openPending','1')" data-i18n="ay.incele">İncele →</a>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.temizle">Veri Temizleme</div>
+          <div class="setting-desc" data-i18n="ay.temizle_alt">Boş ve hatalı kayıtları temizle</div>
+        </div>
+        <a href="temizle.html" class="setting-btn danger" data-i18n="ay.temizlebtn">Temizle →</a>
+      </div>
+    </div>
+
+    <!-- 4. HAKKINDA -->
+
+    <!-- DAVET ET -->
+    <div class="settings-section member-only" style="display:none;">
+      <div class="section-header">
+        <span class="section-icon">📋</span>
+        <div>
+          <div class="section-title">Önerilerim <span id="pendingCountBadge" style="display:none;background:rgba(249,160,74,.2);border:1px solid rgba(249,160,74,.4);color:#F9A04A;font-size:14px;font-weight:700;border-radius:10px;padding:1px 8px;margin-left:4px;"></span></div>
+          <div class="section-subtitle" style="font-size:14px;color:var(--text3);margin-top:2px;" data-i18n="ay.onerilerim_alt">Gönderdiğiniz eser önerileri ve onay durumları</div>
+        </div>
+      </div>
+      <a href="onerilerim.html" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;text-decoration:none;margin-top:12px;">
+        <span style="font-size:16px;color:var(--text);" data-i18n="ay.onerilerimgor">Önerilerimi Görüntüle</span>
+        <i class="ti ti-chevron-right" style="color:var(--text3);font-size:20px;"></i>
+      </a>
+    </div>
+
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-icon">🎵</span>
+        <div>
+          <div class="section-title" data-i18n="ay.davet">Arkadaşını Davet Et</div>
+          <div class="section-subtitle" style="font-size:14px;color:var(--text3);margin-top:2px;" data-i18n="ay.davet_alt">Repertuvar'ı müzisyen arkadaşlarınla paylaş</div>
+        </div>
+      </div>
+
+      <!-- Link kopyala -->
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.davetlink">Davet Linki</div>
+          <div class="setting-desc" id="davetLink" style="font-size:14px;color:var(--text3);word-break:break-all;">app.repertuvar.app/login.html</div>
+        </div>
+        <button class="setting-btn" onclick="linkKopyala()" id="kopyalaBtn" data-i18n="ay.kopyala">📋 Kopyala</button>
+      </div>
+
+      <!-- Paylaş -->
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:12px;">
+        <div class="setting-label" data-i18n="ay.paylas">Paylaş</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;width:100%;">
+          <button onclick="paylasBilesen('whatsapp')" style="flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:rgba(37,211,102,.1);color:#25D366;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.335-1.508A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.368l-.359-.214-3.721.976.994-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+            WhatsApp
+          </button>
+          <button onclick="paylasBilesen('email')" style="flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:rgba(124,111,255,.1);color:var(--accent);font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s;">
+            <i class="ti ti-mail" style="font-size:18px;"></i> <span data-i18n="ay.paylas_eposta">E-posta</span>
+          </button>
+          <button onclick="paylasBilesen('sms')" style="flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:rgba(74,222,128,.1);color:#4ade80;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s;">
+            <i class="ti ti-message" style="font-size:18px;"></i> SMS
+          </button>
+          <button onclick="paylasBilesen('native')" style="flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:rgba(167,139,250,.1);color:var(--accent2);font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s;">
+            <i class="ti ti-share" style="font-size:18px;"></i> <span data-i18n="ay.diger">Diğer</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- E-posta ile davet -->
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:8px;">
+        <div class="setting-label" data-i18n="ay.davetgonder">E-posta ile Davet Gönder</div>
+        <div style="display:flex;gap:8px;width:100%;">
+          <input type="email" id="davetEmail" placeholder="arkadas@mail.com" data-i18n-ph="ay.davet_ph" 
+            style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:16px;font-family:var(--font);outline:none;"
+            onkeydown="if(event.key==='Enter') davetGonder()">
+          <button onclick="davetGonder()" id="davetBtn" style="background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:8px;padding:8px 16px;color:#1a1200;font-size:16px;font-weight:600;cursor:pointer;font-family:var(--font);white-space:nowrap;" data-i18n="ay.gonder">Gönder</button>
+        </div>
+        <div id="davetMsg" style="font-size:15px;display:none;"></div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-icon">ℹ️</span>
+        <div><div class="section-title" data-i18n="ay.hakkinda">Hakkında</div></div>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.uygulama">Uygulama</div>
+          <div class="setting-desc" data-i18n="ay.uygulama_alt">Türk müziği repertuvar yönetimi</div>
+        </div>
+        <span class="version-badge">v2.0</span>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.websitesi">Web Sitesi</div>
+          <div class="setting-desc">repertuvar.app</div>
+        </div>
+        <a href="https://repertuvar.app" target="_blank" class="setting-btn" data-i18n="ay.ziyaret">Ziyaret Et →</a>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.gizlilik">Gizlilik Politikası</div>
+          <div class="setting-desc" data-i18n="ay.gizlilik_alt">Verilerinizi nasıl koruyoruz</div>
+        </div>
+        <a id="hukukGizlilik" href="https://repertuvar.app/privacy" target="_blank" rel="noopener" class="setting-btn" data-i18n="ay.goruntule">Görüntüle →</a>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label" data-i18n="ay.kosullar">Kullanım Koşulları</div>
+          <div class="setting-desc" data-i18n="ay.kosullar_alt">Hizmet şartlarımız</div>
+        </div>
+        <a id="hukukKosullar" href="https://repertuvar.app/terms" target="_blank" rel="noopener" class="setting-btn" data-i18n="ay.goruntule">Görüntüle →</a>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+</div><!-- /main-wrap -->
+
+
+<!-- Hesap Sil Modal -->
+<div class="modal-overlay" id="hesapSilModal">
+  <div class="modal-card">
+    <div class="modal-title" style="color:var(--red);" data-i18n="mod.sil_baslik">⚠️ Hesabı Sil</div>
+    <!-- Vurgu cumle icinden CUMLENIN TAMAMINA tasindi: <strong> metnin
+         ortasinda kalirsa ceviri parcalanir ve kelime sirasi dillere gore
+         degistigi icin parcalar birlesmez. -->
+    <p style="font-size:16px;color:var(--text2);margin-bottom:8px;"><strong data-i18n="mod.sil_p1a">Bu işlem geri alınamaz.</strong> <span data-i18n="mod.sil_p1b">Tüm hesap bilgileriniz kalıcı olarak silinecek.</span></p>
+    <p id="silRepUyari" style="font-size:16px;color:var(--red);font-weight:600;margin-bottom:8px;display:none;"></p>
+    <p style="font-size:16px;color:var(--text2);margin-bottom:8px;" data-i18n="mod.sil_p2">Onayladığınızda hesabınız ve tüm verileriniz hemen ve kalıcı olarak silinir. Sahibi olduğunuz gruplarda başka üye varsa yönetim onlara devredilir.</p>
+    <p style="font-size:16px;color:var(--text2);margin-bottom:16px;" data-i18n="mod.sil_p3">Onaylamak için e-posta adresinizi yazın:</p>
+    <input type="email" id="silOnayEmail" placeholder="e-posta adresiniz" data-i18n-ph="mod.sil_ph"
+      style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:16px;font-family:var(--font);outline:none;margin-bottom:16px;">
+    <div id="silHataMsg" style="font-size:15px;color:var(--red);display:none;margin-bottom:8px;"></div>
+    <div class="modal-actions">
+      <button class="modal-btn" onclick="hesapSilKapat()" data-i18n="ay.iptal">İptal</button>
+      <button class="modal-btn danger" id="silOnayla" onclick="hesapSil()" data-i18n="ay.hesapsil">Hesabımı Sil</button>
+    </div>
+  </div>
 </div>
+
+
+<!-- Şifre Değiştir Modal -->
+<div class="modal-overlay" id="passwordModal">
+  <div class="modal-card">
+    <div class="modal-title" data-i18n="mod.sifre_baslik">🔑 Şifre Değiştir</div>
+    <div class="field"><label data-i18n="mod.sifre_yeni">YENİ ŞİFRE</label><input type="password" id="newPass" placeholder="En az 6 karakter" data-i18n-ph="giris.sifre_min"></div>
+    <div class="field"><label data-i18n="mod.sifre_yeni2">YENİ ŞİFRE (TEKRAR)</label><input type="password" id="newPass2" placeholder="Şifreyi tekrar gir" data-i18n-ph="mod.sifre_ph2"></div>
+    <div class="modal-actions">
+      <button class="setting-btn" onclick="closePasswordModal()" data-i18n="ay.iptal">İptal</button>
+      <button class="setting-btn primary" onclick="changePassword()" data-i18n="ay.kaydet">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- E-posta Değiştir Modal -->
+<div class="modal-overlay" id="emailModal">
+  <div class="modal-card">
+    <div class="modal-title" data-i18n="mod.eposta_baslik">✉️ E-posta Değiştir</div>
+    <div id="emailStep1">
+      <div class="field"><label data-i18n="mod.eposta_yeni">YENİ E-POSTA</label><input type="email" id="newEmail" placeholder="yeni@mail.com" data-i18n-ph="mod.eposta_ph" autocomplete="email"></div>
+      <div class="modal-actions">
+        <button class="setting-btn" onclick="closeEmailModal()" data-i18n="ay.iptal">İptal</button>
+        <button class="setting-btn primary" onclick="requestEmailChange()" data-i18n="mod.eposta_kodGonder">Kod Gönder</button>
+      </div>
+    </div>
+    <div id="emailStep2" style="display:none;">
+      <p style="font-size:14px;color:var(--text2);margin-bottom:14px;" data-i18n="mod.eposta_adim2">Yeni adresine gönderilen 8 haneli kodu gir.</p>
+      <div class="field"><label data-i18n="mod.eposta_kodEtiket">DOĞRULAMA KODU</label><input type="text" id="emailCode" placeholder="00000000" maxlength="8" inputmode="numeric" autocomplete="one-time-code"></div>
+      <div class="modal-actions">
+        <button class="setting-btn" onclick="closeEmailModal()" data-i18n="ay.iptal">İptal</button>
+        <button class="setting-btn primary" onclick="verifyEmailChange()" data-i18n="mod.eposta_dogrula">Doğrula</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toast(msg, type='ok') {
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2500);
+}
+
+// ── Arayüz dili ──────────────────────────────────────────────────────────
+function dilKutusunuDoldur() {
+  const sel = document.getElementById('dilSecim');
+  if (!sel || !window.i18n) return;
+  const d = i18n.diller;
+  sel.innerHTML = Object.keys(d).map(k =>
+    '<option value="' + k + '"' + (k === i18n.dil() ? ' selected' : '') + '>' + d[k] + '</option>'
+  ).join('');
+  const not = document.getElementById('dilNot');
+  if (not) {
+    not.textContent = i18n.dil() === 'tr'
+      ? _t('ay.ceviriSuruyor','Çeviri sürüyor — bazı ekranlar Türkçe kalabilir.')
+      : 'Translation in progress — some screens may remain in Turkish.';
+  }
+}
+
+// (2026-09-08) Hukuki sayfaların dil karşılığı. Yalnızca 'en' için ayrı sayfa
+// var; başka bir dil eklenirse Türkçe sürüm gösterilir — var olmayan bir /xx/
+// yoluna göndermek 404 üretir, yanlış dilde metin ise hiç değilse okunabilir.
+function hukukBaglantilariniKur() {
+  var en = (window.i18n && i18n.dil() === 'en');
+  var g = document.getElementById('hukukGizlilik');
+  var k = document.getElementById('hukukKosullar');
+  if (g) g.href = 'https://repertuvar.app/privacy' + (en ? '/en/' : '');
+  if (k) k.href = 'https://repertuvar.app/terms'   + (en ? '/en/' : '');
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', hukukBaglantilariniKur);
+} else {
+  hukukBaglantilariniKur();
+}
+
+function dilDegistir(yeni) {
+  if (!window.i18n || !i18n.ayarla(yeni)) return;
+  dilKutusunuDoldur();
+  hukukBaglantilariniKur();   // bağlantılar da yeni dile geçsin
+  // Tercih profilde de saklanıyor: başka cihazda aynı dil gelsin.
+  try {
+    const uid = getUserId();
+    if (uid) {
+      // `return=minimal` kullanılmıyor: RLS engellerse sunucu 0 satır
+      // günceller ve bu, başarıdan ayırt edilemez. Satır sayısı doğrulanıyor.
+      fetch(SUPA_URL + '/rest/v1/profiles?id=eq.' + uid + '&select=ui_lang', {
+        method: 'PATCH',
+        headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + (getToken() || ''),
+                   'Content-Type': 'application/json', 'Prefer': 'return=representation' },
+        body: JSON.stringify({ ui_lang: yeni })
+      }).then(async r => {
+        const satir = r.ok ? await r.json().catch(() => []) : [];
+        if (!r.ok || !satir.length) {
+          console.warn('[dil] profile yazilamadi (HTTP ' + r.status +
+            (satir.length ? '' : ', 0 satir') + ') — dil bu cihazda gecerli, ' +
+            'diger cihazlara tasinmayacak.');
+          return;
+        }
+        // Kendi yazdığımızı önbelleğe al, yoksa sonraki açılışta bunu
+        // "başka cihazda değişmiş" sanıp gereksiz yere yeniden uygularız.
+        try { localStorage.setItem('uiLangSunucu', yeni); } catch (e) {}
+      }).catch(() => {});
+    }
+  } catch (e) {}
+  toast(_t('ay.dilDegisti','Dil değiştirildi ✓'));
+}
+
+document.addEventListener('DOMContentLoaded', dilKutusunuDoldur);
+
+// ── Müzik alanları (yeni eserlerin varsayılanı) ──────────────────────────
+// Belgedeki ilke: müzisyeni sınıflandırma, alanları yapılandır.
+// Buradaki seçim `profiles.default_music_fields` alanına yazılıyor ve
+// YALNIZCA yeni eserlerin başlangıç görünümünü belirliyor.
+// (2026-08-30) Çip adları JS'ten çiziliyor, bu yüzden `data-i18n` işlemiyor —
+// çeviri burada alınıyor. `_a()` i18n yoksa Türkçeye düşer.
+function _a(anahtar, tr) {
+  try { return (window.i18n && window.i18n.t) ? window.i18n.t(anahtar, tr) : tr; }
+  catch (e) { return tr; }
+}
+const AYAR_ALANLAR = [
+  { k:'makam',       ad:_a('alan.makam','Makam') },
+  { k:'usul',        ad:_a('alan.usul','Usul') },
+  { k:'olcu',        ad:_a('alan.olcu','Ölçü') },
+  { k:'tempo',       ad:_a('alan.tempo','Tempo') },
+  { k:'akort',       ad:_a('alan.akort','Akort') },
+  { k:'karar',       ad:_a('alan.karar','Karar Sesi') },
+  { k:'enstruman',   ad:_a('alan.enstruman','Enstrüman') },
+  { k:'yore',        ad:_a('alan.yore','Yöre/Bölge') },
+  { k:'kaynak_kisi', ad:_a('alan.kaynak','Kaynak Kişi') },
+  { k:'derleyen',    ad:_a('alan.derleyen','Derleyen') },
+];
+let _ayarSecili = null;
+
+function ayarAlanlariniYukle() {
+  try {
+    const g = JSON.parse(localStorage.getItem('defaultMusicFields') || 'null');
+    _ayarSecili = Array.isArray(g) && g.length ? g.slice() : AYAR_ALANLAR.map(a => a.k);
+  } catch (e) { _ayarSecili = AYAR_ALANLAR.map(a => a.k); }
+  ayarAlanlariCiz();
+  ayarAlanlariTazele();   // sunucudaki değer farklıysa düzeltir
+  var ac = document.getElementById('alanAciklama');
+  if (ac && window.i18n && i18n.dil() === 'en') {
+    ac.innerHTML = 'Fields you switch off are <b>not deleted</b> — a field that has a ' +
+      'value always stays visible, and you can bring any field back on a piece with ' +
+      '<b>"+ Add music field"</b>. This setting only affects how <b>new</b> pieces start out.';
+  }
+}
+
+function ayarAlanlariCiz() {
+  const kap = document.getElementById('alanKutulari');
+  if (!kap) return;
+  kap.innerHTML = AYAR_ALANLAR.map(a => {
+    const acik = _ayarSecili.includes(a.k);
+    return '<button type="button" onclick="ayarAlanTikla(\'' + a.k + '\')" ' +
+      'style="padding:8px 14px;border-radius:20px;font-size:13px;font-family:inherit;' +
+      'cursor:pointer;font-weight:' + (acik ? '700' : '500') + ';' +
+      'background:' + (acik ? 'color-mix(in srgb, var(--accent) 18%, transparent)' : 'var(--surface2)') + ';' +
+      'border:1px solid ' + (acik ? 'color-mix(in srgb, var(--accent) 55%, transparent)' : 'var(--border)') + ';' +
+      'color:' + (acik ? 'var(--accent)' : 'var(--text3)') + ';">' +
+      (acik ? '✓ ' : '') + a.ad + '</button>';
+  }).join('');
+}
+
+function ayarAlanTikla(k) {
+  const i = _ayarSecili.indexOf(k);
+  if (i >= 0) _ayarSecili.splice(i, 1); else _ayarSecili.push(k);
+  ayarAlanlariCiz();
+  const d = document.getElementById('alanDurum');
+  if (d) { d.textContent = 'Kaydedilmedi'; d.style.color = ''; }
+}
+
+async function ayarAlanlariTazele() {
+  try {
+    const uid = getUserId();
+    if (!uid) return;
+    const r = await fetch(SUPA_URL + '/rest/v1/profiles?id=eq.' + uid + '&select=default_music_fields',
+      { headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + (getToken() || '') } });
+    if (!r.ok) return;
+    const j = await r.json();
+    const g = j[0] && j[0].default_music_fields;
+    if (Array.isArray(g)) {
+      _ayarSecili = g.slice();
+      localStorage.setItem('defaultMusicFields', JSON.stringify(g));
+      ayarAlanlariCiz();
+    }
+  } catch (e) {}
+}
+
+async function alanVarsayilanKaydet() {
+  const d = document.getElementById('alanDurum');
+  // Yükleyici henüz çalışmadıysa (ör. hızlı tıklama) null olabilir.
+  if (!Array.isArray(_ayarSecili)) _ayarSecili = AYAR_ALANLAR.map(a => a.k);
+  // Hepsi kapalıysa yeni eser formunda tek alan kalmazdı.
+  if (!_ayarSecili.length) {
+    d.style.color = 'var(--red, #f87171)';
+    d.textContent = _t('ay.enAzBirAlan','En az bir alan seçmelisiniz.');
+    return;
+  }
+  try {
+    d.style.color = ''; d.textContent = 'Kaydediliyor…';
+    const uid = getUserId();
+    const r = await fetch(SUPA_URL + '/rest/v1/profiles?id=eq.' + uid, {
+      method: 'PATCH',
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + (getToken() || ''),
+                 'Content-Type': 'application/json', 'Prefer': 'return=representation' },
+      body: JSON.stringify({ default_music_fields: _ayarSecili })
+    });
+    if (!r.ok) throw new Error(await r.text());
+    // Satır sayısı doğrulanıyor: RLS engellerse 0 satır döner ve bu,
+    // başarıdan ayırt edilemez olurdu.
+    const satir = await r.json();
+    if (!satir.length) throw new Error(_t('ay.satirGuncellenmedi','Sunucu hiçbir satır güncellemedi.'));
+    localStorage.setItem('defaultMusicFields', JSON.stringify(_ayarSecili));
+    d.textContent = _t('ortak.kaydedildi','Kaydedildi ✓');
+    toast(_t('ay.alanlarGuncellendi','Müzik alanları güncellendi ✓'));
+  } catch (e) {
+    d.style.color = 'var(--red, #f87171)';
+    d.textContent = _t('ortak.kaydedilemedi','Kaydedilemedi: ') + (e && e.message ? e.message : e);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', ayarAlanlariniYukle);
+
+function saveSetting(key, value) {
+  localStorage.setItem(key, value);
+  toast(_t('ortak.kaydedildi','Kaydedildi ✓'));
+}
+
+async function saveDisplayName(){
+  const inp = document.getElementById('setName');
+  const msg = document.getElementById('setNameMsg');
+  const name = (inp && inp.value || '').trim();
+  const show = (t, ok) => { if(!msg) return; msg.style.display='block'; msg.textContent=t;
+    msg.style.color = ok ? 'var(--green,#3FB950)' : 'var(--red,#F85149)'; };
+
+  if (name.length < 2) { show(_t('ay.adSoyadGir','Lütfen ad ve soyadınızı girin.'), false); return; }
+  const u = getUser();
+  const token = localStorage.getItem('sb_token');
+  if (!u || !token) { show(_t('ay.oturumYokGiris','Oturum bulunamadı, tekrar giriş yapın.'), false); return; }
+
+  try {
+    // 1) Hesap bilgisine yaz (user_metadata.full_name)
+    const r = await fetch(SUPA_URL + '/auth/v1/user', {
+      method: 'PUT',
+      headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: { full_name: name } })
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+
+    // 2) profiles tablosuna yaz — iki sütuna birden (public_profiles görünümü
+    //    hangisi doluysa onu okuyor; "Ekleyen" alanı buradan besleniyor)
+    await fetch(SUPA_URL + '/rest/v1/profiles?id=eq.' + u.id, {
+      method: 'PATCH',
+      headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + token, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ display_name: name, full_name: name })
+    }).catch(() => {});
+
+    // 3) Yereldeki kullanıcıyı güncelle — arayüz anında yansısın
+    try {
+      const su = JSON.parse(localStorage.getItem('sb_user') || '{}');
+      su.user_metadata = Object.assign({}, su.user_metadata, { full_name: name });
+      localStorage.setItem('sb_user', JSON.stringify(su));
+    } catch(e) {}
+    ['sbUserName','tnUserName','profileName'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent = name; });
+    ['sbAvatar','tnAvatar','profileAvatar'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent = name.charAt(0).toUpperCase(); });
+
+    show(_t('ay.isimKaydedildi','✓ İsminiz kaydedildi.'), true);
+  } catch(e) {
+    show(_t('ortak.kaydedilemedi','Kaydedilemedi: ') + e.message, false);
+  }
+}
+
+function loadSettings() {
+  const theme = localStorage.getItem('stageTheme') || 'day';
+  const align = localStorage.getItem('stageLyricsAlign') || 'center';
+  const chords = localStorage.getItem('stageShowChords') || '0';
+  const el = document.getElementById('stageTheme'); if(el) el.value = theme;
+  const el2 = document.getElementById('stageLyricsAlign'); if(el2) el2.value = align;
+  const el3 = document.getElementById('stageShowChords'); if(el3) el3.checked = chords === '1';
+}
+
+function openPasswordModal() {
+  document.getElementById('newPass').value = '';
+  document.getElementById('newPass2').value = '';
+  document.getElementById('passwordModal').classList.add('open');
+}
+function closePasswordModal() {
+  document.getElementById('passwordModal').classList.remove('open');
+}
+
+async function changePassword() {
+  const p1 = document.getElementById('newPass').value;
+  const p2 = document.getElementById('newPass2').value;
+  if (!p1 || p1.length < 6) { toast(_t('mod.sifre_kisa','En az 6 karakter gerekli'), 'err'); return; }
+  if (p1 !== p2) { toast(_t('mod.sifre_uyusmuyor','Şifreler eşleşmiyor'), 'err'); return; }
+  try {
+    const r = await fetch(SUPA_URL + '/auth/v1/user', {
+      method: 'PUT',
+      headers: {
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + (localStorage.getItem('sb_token') || SUPA_KEY),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ password: p1 })
+    });
+    if (r.ok) {
+      closePasswordModal();
+      toast(_t('mod.sifre_ok','Şifre güncellendi. Çıkış yapılıyor...'));
+      setTimeout(() => {
+        localStorage.removeItem('sb_token');
+        localStorage.removeItem('sb_refresh');
+        localStorage.removeItem('sb_user');
+        localStorage.removeItem('user_role');
+        window.location.href = 'login.html?logout=1';
+      }, 1500);
+    } else {
+      const err = await r.json();
+      toast(err.message || _t('ay.hataOlustu','Hata oluştu'), 'err');
+    }
+  } catch(e) { toast(_t('mod.hata','Hata: ') + e.message, 'err'); }
+}
+
+// ---- E-posta Değiştir ----
+let _pendingNewEmail = '';
+function openEmailModal() {
+  document.getElementById('newEmail').value = '';
+  document.getElementById('emailCode').value = '';
+  document.getElementById('emailStep1').style.display = '';
+  document.getElementById('emailStep2').style.display = 'none';
+  document.getElementById('emailModal').classList.add('open');
+}
+function closeEmailModal() {
+  document.getElementById('emailModal').classList.remove('open');
+}
+async function requestEmailChange() {
+  const email = document.getElementById('newEmail').value.trim().toLowerCase();
+  if (!email || !email.includes('@') || !email.includes('.')) { toast(_t('mod.eposta_gecersiz','Geçerli bir e-posta gir'), 'err'); return; }
+  const u = getUser && getUser();
+  if (u && email === (u.email || '').toLowerCase()) { toast(_t('mod.eposta_ayni','Bu zaten mevcut e-postan'), 'err'); return; }
+  try {
+    const r = await fetch(SUPA_URL + '/auth/v1/user', {
+      method: 'PUT',
+      headers: {
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + (localStorage.getItem('sb_token') || SUPA_KEY),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email })
+    });
+    if (r.ok) {
+      _pendingNewEmail = email;
+      document.getElementById('emailStep1').style.display = 'none';
+      document.getElementById('emailStep2').style.display = '';
+      toast(_t('mod.eposta_kodGonderildi','Doğrulama kodu {mail} adresine gönderildi').replace('{mail}', email));
+    } else {
+      const e = await r.json().catch(() => ({}));
+      toast(e.msg || e.error_description || e.error || _t('ay.islemBasarisiz','İşlem başarısız'), 'err');
+    }
+  } catch (e) { toast(_t('mod.baglantiHatasi','Bağlantı hatası: ') + e.message, 'err'); }
+}
+async function verifyEmailChange() {
+  const token = document.getElementById('emailCode').value.trim();
+  if (!token || token.length < 6) { toast(_t('mod.eposta_kodGir','Kodu gir'), 'err'); return; }
+  try {
+    const r = await fetch(SUPA_URL + '/auth/v1/verify', {
+      method: 'POST',
+      headers: { 'apikey': SUPA_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'email_change', email: _pendingNewEmail, token })
+    });
+    const data = await r.json().catch(() => ({}));
+    if (r.ok) {
+      if (data.access_token) localStorage.setItem('sb_token', data.access_token);
+      if (data.refresh_token) localStorage.setItem('sb_refresh', data.refresh_token);
+      closeEmailModal();
+      toast(_t('mod.eposta_ok','E-posta güncellendi ✓'));
+      setTimeout(() => location.reload(), 1200);
+    } else {
+      toast(data.msg || data.error_description || _t('ay.kodHatali','Kod hatalı veya süresi dolmuş'), 'err');
+    }
+  } catch (e) { toast(_t('mod.baglantiHatasi','Bağlantı hatası: ') + e.message, 'err'); }
+}
+
+(async function() {
+  const ok = await requireAuth(); if (!ok) return;
+  const u = getUser();
+  const name = u?.user_metadata?.full_name || u?.email?.split('@')[0] || '—';
+  const email = u?.email || '—';
+  const initial = name.charAt(0).toUpperCase();
+
+  // Profil
+  ['sbAvatar','tnAvatar','profileAvatar'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent=initial; });
+  ['sbUserName','tnUserName','profileName'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent=name; });
+  const emailEl = document.getElementById('profileEmail'); if(emailEl) emailEl.textContent = email;
+  // İsim düzenleme alanını mevcut isimle doldur (yoksa boş bırak — e-posta yazma)
+  const nameInput = document.getElementById('setName');
+  if (nameInput) nameInput.value = (u && u.user_metadata && u.user_metadata.full_name) ? u.user_metadata.full_name : '';
+
+  // Rol - auth.js fonksiyonlarını kullan, yoksa Supabase'den çek
+  try {
+    let role = 'member';
+    if (typeof isAdmin === 'function' && isAdmin()) role = 'admin';
+    else if (typeof isEditor === 'function' && isEditor()) role = 'editor';
+    else {
+      // auth.js'de fonksiyon yoksa Supabase'den çek
+      const H = { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + (localStorage.getItem('sb_token') || SUPA_KEY) };
+      const rp = await fetch(SUPA_URL + '/rest/v1/profiles?select=role&id=eq.' + u.id, { headers: H });
+      const pd = await rp.json();
+      role = pd?.[0]?.role || 'member';
+    }
+    const roleLabel = role === 'admin' ? _t('ortak.admin','Admin') : role === 'editor' ? _t('ortak.editor','Editör') : _t('ortak.uye','Üye');
+    ['sbUserRole','profileRole'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent=roleLabel; });
+    if (role === 'admin' || role === 'editor') {
+      document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('admin-only'));
+    } else {
+      document.querySelectorAll('.member-only').forEach(el => { el.style.display = ''; });
+    }
+    // Gecikme ile tekrar dene - auth.js bazen async yüklenir
+    if (role === 'member') {
+      setTimeout(async () => {
+        if (typeof isAdmin === 'function' && isAdmin()) {
+          document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('admin-only'));
+          ['sbUserRole','profileRole'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent='Admin'; });
+        } else if (typeof isEditor === 'function' && isEditor()) {
+          document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('admin-only'));
+          ['sbUserRole','profileRole'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent=_t('ortak.editor','Editör'); });
+        }
+      }, 500);
+    }
+  } catch(e) {}
+
+  loadSettings();
+
+  // Pending öneri sayısını göster
+  try {
+    const uid = getUserId();
+    if (uid) {
+      const rp = await fetch(SUPA_URL + '/rest/v1/works?submitted_by=eq.' + uid + '&status=eq.pending&select=id', {
+        headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + (localStorage.getItem('sb_token') || SUPA_KEY) }
+      });
+      if (rp.ok) {
+        const pending = await rp.json();
+        const badge = document.getElementById('pendingCountBadge');
+        if (badge && pending.length > 0) {
+          badge.textContent = pending.length + ' bekliyor';
+          badge.style.display = 'inline';
+        }
+      }
+    }
+  } catch(e) {}
+})();
+
+// Modal dışına tıklayınca kapat
+document.getElementById('passwordModal').addEventListener('click', function(e) {
+  if (e.target === this) closePasswordModal();
+});
+document.getElementById('emailModal').addEventListener('click', function(e) {
+  if (e.target === this) closeEmailModal();
+});
+</script>
+<script>
+window.toggleSbDropdown = function() {
+  const dd = document.getElementById('sbUserDropdown');
+  if (dd) dd.classList.toggle('open');
+};
+document.addEventListener('click', function(e) {
+  const btn = document.getElementById('sbUserBtn');
+  const dd = document.getElementById('sbUserDropdown');
+  if (dd && btn && !btn.contains(e.target)) dd.classList.remove('open');
+});
+</script>
+
 </body>
 </html>
