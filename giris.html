@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>if(location.hash==='#kayit')location.replace('kayit.html'+location.search);  /* eski bağlantılar: kayıt artık ayrı sayfa */</script>
+<title>Giriş Yap | Repertuvar.app</title>
+<meta name="description" content="Repertuvar.app hesabına giriş yap.">
+<meta name="theme-color" content="#070a0f">
+<link rel="canonical" href="https://repertuvar.app/giris.html">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/auth.css">
+</head>
+<body>
+<main class="auth">
+
+  <!-- Sol: form -->
+  <section class="form-side">
+    <div class="form-top">
+      <a href="index.html" class="brand" aria-label="Repertuvar.app ana sayfa"><img src="assets/logo.png" alt="repertuvar.app" width="150" height="35"></a>
+      <div class="top-r">
+        <div class="lang-s" role="group" aria-label="Dil"><button type="button" data-lang="tr">TR</button><button type="button" data-lang="en">EN</button></div>
+        <a href="index.html" class="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Ana sayfa</a>
+      </div>
+    </div>
+
+    <div class="form-wrap">
+      <div class="form-in">
+        <nav class="tabs" aria-label="Hesap">
+          <a aria-current="page">Giriş Yap</a>
+          <a href="kayit.html" data-keepq>Kayıt Ol</a>
+        </nav>
+
+        <div class="pane on" id="p-giris">
+          <p class="msg" id="msg" role="alert"></p>
+          <h1>Tekrar hoş geldin</h1>
+          <p class="sub">Repertuvarın seni bekliyor.</p>
+          <div class="sso">
+            <div class="gsi" id="google"></div>
+            <button type="button" class="oauth apple" id="apple" hidden><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.37 12.4c-.02-2.3 1.88-3.4 1.96-3.45-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.37-3.89ZM14.1 5.66c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.68-1.09 1.76-.96 2.8 1.02.08 2.05-.52 2.68-1.28Z"/></svg>Apple ile devam et</button>
+          </div>
+          <div class="or">veya</div>
+          <form id="f-giris" novalidate>
+            <div class="field"><label for="g-mail">E-posta</label><div class="inp"><input id="g-mail" type="email" placeholder="ornek@eposta.com" autocomplete="email" required></div></div>
+            <div class="field"><label for="g-pass">Şifre</label><div class="inp"><input id="g-pass" type="password" placeholder="Şifreni gir" autocomplete="current-password" required><button type="button" class="eye" aria-label="Şifreyi göster"></button></div></div>
+            <div class="row"><span></span><button type="button" class="link" id="unuttum">Şifremi unuttum</button></div>
+            <button type="submit" class="submit" id="g-btn"><span>Giriş Yap</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+          <form id="f-kod" novalidate hidden>
+            <div class="field"><label>E-posta</label><div class="inp"><input id="k-mail" type="email" readonly></div></div>
+            <div class="field"><label for="k-kod">E-postana gelen 8 haneli kod</label><div class="inp"><input id="k-kod" class="code" type="text" inputmode="numeric" maxlength="8" autocomplete="one-time-code" placeholder="00000000"></div></div>
+            <button type="submit" class="submit" id="k-btn"><span>Kodu doğrula</span></button>
+            <button type="button" class="link back-link" id="k-geri">← Geri dön</button>
+          </form>
+          <p class="switch">Hesabın yok mu? <a href="kayit.html" data-keepq>Ücretsiz kayıt ol</a></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="form-foot">© 2026 Repertuvar.app</p>
+  </section>
+
+  <!-- Sağ: marka paneli -->
+  <section class="brand-side" aria-label="Repertuvar.app hakkında">
+    <div class="b-top">
+      <div class="who rv">
+        <span class="mark"><svg viewBox="100 90 300 330" fill="#FFC83D"><rect x="212" y="108" width="58" height="218"/><path d="M262 168 C 274 128 304 104 346 104 L346 162 C 306 158 280 176 270 206 Z"/><rect x="128" y="358" width="257" height="50" rx="25"/></svg></span>
+        <div><b>Repertuvar.app</b><span>Modern Müzisyenler İçin</span></div>
+      </div>
+      <h2 class="rv" style="transition-delay:.12s">Akıllı Sahne ve <em>Repertuvar Yönetimi</em></h2>
+      <div class="b-list rv" style="transition-delay:.2s"><span>Çevrimdışı çalışır</span><span>Bluetooth pedal</span><span>Grup senkronizasyonu</span></div>
+    </div>
+
+    <div class="win rv" style="transition-delay:.22s" aria-hidden="true">
+      <div class="win-in">
+        <div class="win-bar"><i></i><i></i><i></i><span>repertuvar.app</span></div>
+        <div class="app">
+          <div class="app-nav">
+            <img src="assets/logo.png" alt="" width="110" height="26">
+            <a class="on">Repertuvarlar</a><a>Eserler</a><a>Gruplar</a><a>Mesajlar</a><a>İstatistikler</a>
+          </div>
+          <div class="app-main">
+            <div class="h"><span>Konser Setlistim ⌄</span><span>•••</span></div>
+            <div class="s">19 Parça · 75 dk</div>
+            <div class="tr on"><span>1</span><span>Allı Turnam</span><span class="m">Hüseyni</span><span class="k">La</span></div>
+            <div class="tr"><span>2</span><span>Dostum Dostum</span><span class="m">Hüseyni</span><span class="k">La</span></div>
+            <div class="tr"><span>3</span><span>Barış Güvercini</span><span class="m">Hüseyni</span><span class="k">La</span></div>
+            <div class="tr"><span>4</span><span>Vardar Ovası</span><span class="m">Hicaz</span><span class="k">La</span></div>
+            <div class="tr"><span>5</span><span>Aldırma Gönül</span><span class="m">Hicaz</span><span class="k">La</span></div>
+            <div class="tr"><span>6</span><span>Bedir Geliyor</span><span class="m">Hicaz</span><span class="k">La</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site-en.js"></script>
+<script src="assets/site-i18n.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth-site.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); }, t = RA.t;
+  // davet parametresi kayıt bağlantısına da taşınsın
+  document.querySelectorAll('[data-keepq]').forEach(function (a) { a.href = a.getAttribute('href') + location.search; });
+  function msg(tur, metin) { var m = $('msg'); m.className = 'msg' + (tur ? ' ' + tur : ''); m.textContent = metin || ''; }   // sunucu hata metni HTML olarak yazılmaz
+  function mesgul(btn, on, yazi) { btn.disabled = on; if (yazi) btn.querySelector('span').textContent = yazi; }
+  function gecis(sess, tur) { msg('ok', t('Giriş başarılı, uygulamaya geçiliyor…')); RA.devret(sess, tur); }
+
+  /* e-posta + şifre */
+  $('f-giris').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var email = $('g-mail').value.trim(), pass = $('g-pass').value, btn = $('g-btn');
+    if (!email || !pass) { msg('err', t('E-posta ve şifre gerekli.')); return; }
+    mesgul(btn, true, t('Giriş yapılıyor…')); msg();
+    var r = await RA.sb.auth.signInWithPassword({ email: email, password: pass });
+    if (r.error || !r.data.session) { msg('err', RA.hata(r.error || t('Giriş yapılamadı.'))); mesgul(btn, false, t('Giriş Yap')); return; }
+    gecis(r.data.session);
+  });
+
+  /* şifremi unuttum: e-postaya 8 haneli kod → doğrulanınca uygulamanın şifre sıfırlama sayfası */
+  $('unuttum').addEventListener('click', async function () {
+    var email = $('g-mail').value.trim();
+    if (!email) { msg('err', t('Önce e-posta adresini yaz.')); $('g-mail').focus(); return; }
+    var r = await RA.sb.auth.signInWithOtp({ email: email, options: { shouldCreateUser: false } });
+    if (r.error) { msg('err', RA.hata(r.error)); return; }
+    msg('ok', t('8 haneli kod e-postana gönderildi.'));
+    $('f-giris').hidden = true; $('f-kod').hidden = false; $('k-mail').value = email; $('k-kod').focus();
+    document.querySelector('.sso').hidden = document.querySelector('.or').hidden = true;
+  });
+  $('k-geri').addEventListener('click', function () { $('f-kod').hidden = true; $('f-giris').hidden = false; document.querySelector('.sso').hidden = document.querySelector('.or').hidden = false; msg(); });
+  $('f-kod').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var kod = $('k-kod').value.replace(/\D/g, ''), btn = $('k-btn');
+    if (kod.length < 8) { msg('err', t('8 haneli kodu gir.')); return; }
+    mesgul(btn, true, t('Doğrulanıyor…'));
+    var r = await RA.sb.auth.verifyOtp({ email: $('k-mail').value, token: kod, type: 'email' });
+    if (r.error || !r.data.session) { msg('err', t('Kod hatalı veya süresi dolmuş.')); mesgul(btn, false, t('Kodu doğrula')); return; }
+    gecis(r.data.session, 'recovery');
+  });
+
+  RA.google($('google'), 'signin_with', gecis, function (m) { msg('err', m); });
+  RA.apple($('apple'), gecis, function (m) { msg('err', m); });
+  RA.gozler(); RA.netlesme();
+})();
+</script>
+<!-- ── ZİYARET SAYACI (2026-08-09) ────────────────────────────────────────
+     Landing sayfasının kaç ziyaretçi aldığını bilmiyorduk: hiçbir ölçüm
+     yoktu (Search Console arama gösterimini verir, ziyareti değil; GitHub
+     repo "traffic" sayfası repoyu sayar, siteyi değil). Cloudflare Web
+     Analytics kurulamadığı için kendi sayacımızı kullanıyoruz.
+     GİZLİLİK: IP, çerez, kimlik ya da parmak izi YOK — yalnızca zaman, sayfa
+     yolu, geldiği site ve kaba cihaz türü yazılıyor. Bu yüzden rıza bandı
+     gerekmiyor. Sayılar Yönetim sayfasında görünüyor.
+     Sayfa ağırlığı: tek fetch, 1 KB'ın altında, `keepalive` ile sayfa
+     kapansa bile gidiyor; hata olursa sessizce yutuluyor. -->
+<script>
+(function () {
+  try {
+    // Aynı oturumda aynı sayfayı tekrar sayma (F5 spam'ini önler).
+    var k = 'lh:' + location.pathname;
+    if (sessionStorage.getItem(k)) return;
+    sessionStorage.setItem(k, '1');
+  } catch (e) {}
+  try {
+    fetch('https://ehytkzxdhjyjuubizdnl.supabase.co/rest/v1/rpc/log_hit', {
+      method: 'POST',
+      headers: {
+        'apikey': 'sb_publishable_f_WsYxzN06B5dGROrkGyPQ_UDxKSbtO',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        p_path: location.pathname || '/',
+        p_ref: document.referrer || '',
+        p_cihaz: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'mobil' : 'masaustu'
+      }),
+      keepalive: true
+    }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

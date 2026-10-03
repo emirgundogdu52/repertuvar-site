@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 580" preserveAspectRatio="none" fill="#FFFFFF">
+  <!-- sol üst köşe: kısa dalga, etiketin üstünde kalır -->
+  <path d="M0 0 H150 C132 26 104 42 76 58 C48 74 26 86 0 88 Z"/>
+  <!-- sağ: alttan yükselen akış, metin sütununun sağında -->
+  <path d="M700 580 C690 540 650 505 640 452 C628 390 668 344 730 336 C792 328 826 296 850 248 C872 204 892 150 940 128 V580 Z"/>
+  <!-- üst sağ: küçük damla -->
+  <path d="M760 0 C770 36 800 58 836 52 C862 48 878 26 882 0 Z"/>
+</svg>

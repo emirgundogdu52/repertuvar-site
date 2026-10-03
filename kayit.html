@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kayıt Ol | Repertuvar.app</title>
+<meta name="description" content="Repertuvar.app için ücretsiz hesap oluştur.">
+<meta name="theme-color" content="#070a0f">
+<link rel="canonical" href="https://repertuvar.app/kayit.html">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/auth.css">
+<style>
+/* ---------- kayıt: adım göstergesi ---------- */
+.steps{list-style:none;display:flex;gap:6px;margin:0 0 26px;padding:0;counter-reset:a}
+.steps li{flex:1;display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:600;color:rgba(17,23,34,.4)}
+.steps li::before{content:"";height:4px;border-radius:4px;background:rgba(17,23,34,.1);transition:background .4s}
+.steps li span::before{counter-increment:a;content:counter(a) " · "}
+.steps li.on{color:var(--ink)}
+.steps li.on::before{background:var(--primary)}
+.steps li.ok{color:rgba(17,23,34,.6)}
+.steps li.ok::before{background:var(--ink)}
+.step{display:none}
+.step.on{display:block;animation:paneIn .5s cubic-bezier(.22,1,.36,1)}
+/* şifre gücü */
+.meter{display:flex;align-items:center;gap:10px;margin-top:2px}
+.meter i{flex:1;height:4px;border-radius:4px;background:rgba(17,23,34,.1);transition:background .3s}
+.meter[data-s="1"] i:nth-child(-n+1){background:#d9534f}
+.meter[data-s="2"] i:nth-child(-n+2){background:#e8a33d}
+.meter[data-s="3"] i:nth-child(-n+3){background:#7fb03b}
+.meter[data-s="4"] i:nth-child(-n+4){background:#2f9e5b}
+.meter b{flex:none;width:52px;text-align:right;font-size:12px;font-weight:600;color:rgba(17,23,34,.55)}
+/* 8 kutulu kod */
+.boxes{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:6px 0 4px}
+.boxes input{width:100%;height:54px;border-radius:12px;border:1px solid rgba(17,23,34,.15);background:var(--white);text-align:center;font-size:22px;font-weight:600;color:var(--ink);outline:0;transition:border-color .2s,box-shadow .2s}
+.boxes input:focus{border-color:var(--orange-deep);box-shadow:0 0 0 4px rgba(255,200,61,.25)}
+.boxes.hata input{border-color:#e5a3a3}
+.hint{font-size:13px;color:rgba(17,23,34,.55);line-height:19px}
+.resend{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:rgba(17,23,34,.55)}
+.resend .link:disabled{color:rgba(17,23,34,.35);text-decoration:none;cursor:default}
+.sub b{color:var(--ink);font-weight:600}
+/* hazır */
+.done{text-align:center;padding:24px 0}
+.done .ic{width:72px;height:72px;margin:0 auto 22px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;animation:pop .6s cubic-bezier(.2,1.4,.4,1)}
+.done .ic svg{width:34px;height:34px}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.spin{display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-2px;border-radius:50%;border:2px solid rgba(17,23,34,.2);border-top-color:var(--ink);animation:dn .8s linear infinite}
+@keyframes dn{to{transform:rotate(360deg)}}
+/* ---------- sağ panel: kayıtla gelenler ---------- */
+.perks{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px}
+.perk{padding:18px;border-radius:20px;background:rgba(9,13,20,.5);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.perk .pi{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(255,200,61,.14);color:var(--primary);margin-bottom:12px}
+.perk .pi svg{width:18px;height:18px}
+.perk b{display:block;font-weight:600;font-size:15px}
+.perk span{display:block;margin-top:4px;font-size:13px;line-height:18px;color:rgba(255,255,255,.62)}
+.invite{position:absolute;right:clamp(24px,5vw,64px);bottom:clamp(24px,5vw,56px);width:min(340px,70%);padding:16px;border-radius:22px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px rgba(0,0,0,.5);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:rotate(-2deg)}
+.invite .ih{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.6)}
+.invite .ih i{width:30px;height:30px;border-radius:50%;background:var(--primary);display:grid;place-items:center;color:var(--on-primary);font-style:normal;font-weight:700}
+.invite p{margin:12px 0 14px;font-size:15px;line-height:21px}
+.invite p b{color:var(--primary);font-weight:600}
+.invite .ib{display:flex;gap:8px}
+.invite .ib span{flex:1;text-align:center;padding:9px;border-radius:200px;font-size:13px;font-weight:600;background:rgba(255,255,255,.08)}
+.invite .ib span:last-child{background:var(--primary);color:var(--on-primary)}
+@media (max-width:1024px){.invite{position:relative;right:auto;bottom:auto;margin-top:28px;width:auto;max-width:360px}}
+@media (max-width:600px){.perks{grid-template-columns:1fr}.boxes{gap:5px}.boxes input{height:46px;font-size:19px}}
+@media (prefers-reduced-motion:reduce){.done .ic,.spin{animation:none}}
+</style>
+</head>
+<body>
+<main class="auth">
+
+  <!-- Sol: form -->
+  <section class="form-side">
+    <div class="form-top">
+      <a href="index.html" class="brand" aria-label="Repertuvar.app ana sayfa"><img src="assets/logo.png" alt="repertuvar.app" width="150" height="35"></a>
+      <div class="top-r">
+        <div class="lang-s" role="group" aria-label="Dil"><button type="button" data-lang="tr">TR</button><button type="button" data-lang="en">EN</button></div>
+        <a href="index.html" class="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Ana sayfa</a>
+      </div>
+    </div>
+
+    <div class="form-wrap">
+      <div class="form-in">
+        <nav class="tabs" aria-label="Hesap">
+          <a href="giris.html" data-keepq>Giriş Yap</a>
+          <a aria-current="page">Kayıt Ol</a>
+        </nav>
+
+        <ol class="steps" aria-label="Kayıt adımları">
+          <li class="on" data-s="1"><span>Hesap bilgileri</span></li>
+          <li data-s="2"><span>E-posta doğrulama</span></li>
+          <li data-s="3"><span>Hazır</span></li>
+        </ol>
+        <p class="msg" id="msg" role="alert"></p>
+
+        <!-- 1 · hesap bilgileri -->
+        <div class="step on" id="s1">
+          <h1>Hesabını oluştur</h1>
+          <p class="sub">Repertuvarını dakikalar içinde kur, grubunu davet et.</p>
+          <div class="sso">
+            <div class="gsi" id="google"></div>
+            <button type="button" class="oauth apple" id="apple" hidden><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.37 12.4c-.02-2.3 1.88-3.4 1.96-3.45-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.37-3.89ZM14.1 5.66c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.68-1.09 1.76-.96 2.8 1.02.08 2.05-.52 2.68-1.28Z"/></svg>Apple ile devam et</button>
+          </div>
+          <div class="or">veya e-postayla</div>
+          <form id="f1" novalidate>
+            <div class="field"><label for="ad">Ad Soyad <span class="req">*</span></label><div class="inp"><input id="ad" type="text" placeholder="Adın ve soyadın" autocomplete="name" required></div></div>
+            <div class="field"><label for="mail">E-posta</label><div class="inp"><input id="mail" type="email" placeholder="ornek@eposta.com" autocomplete="email" required></div></div>
+            <div class="field"><label for="pass">Şifre</label><div class="inp"><input id="pass" type="password" placeholder="En az 6 karakter" autocomplete="new-password" minlength="6" required><button type="button" class="eye" aria-label="Şifreyi göster"></button></div>
+              <div class="meter" data-s="0" aria-live="polite"><i></i><i></i><i></i><i></i><b></b></div></div>
+            <label class="check"><input type="checkbox" id="onay"><span>Hesap oluşturarak <a href="/terms/" target="_blank" rel="noopener">Kullanım Koşulları</a>'nı ve <a href="/privacy/" target="_blank" rel="noopener">Gizlilik Politikası</a>'nı kabul ediyorum.</span></label>
+            <button type="submit" class="submit" id="b1"><span>Hesap oluştur</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+          <p class="switch">Zaten hesabın var mı? <a href="giris.html" data-keepq>Giriş yap</a></p>
+        </div>
+
+        <!-- 2 · e-posta doğrulama -->
+        <div class="step" id="s2">
+          <h1>E-postanı doğrula</h1>
+          <p class="sub" id="s2-sub"></p>
+          <form id="f2" novalidate>
+            <div class="field" style="margin-top:22px"><label id="kod-l">Doğrulama kodu</label>
+              <div class="boxes" role="group" aria-labelledby="kod-l"></div></div>
+            <p class="hint">Birkaç dakika içinde gelmezse spam / gereksiz klasörüne de bak.</p>
+            <button type="submit" class="submit" id="b2"><span>Doğrula ve başla</span></button>
+            <div class="resend"><button type="button" class="link" id="degis">← E-postayı değiştir</button><button type="button" class="link" id="tekrar">Kodu tekrar gönder</button></div>
+          </form>
+        </div>
+
+        <!-- 3 · hazır -->
+        <div class="step" id="s3">
+          <div class="done">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+            <h1>Hesabın hazır!</h1>
+            <p class="sub"><span class="spin" aria-hidden="true"></span>Uygulamaya geçiliyor…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="form-foot">© 2026 Repertuvar.app</p>
+  </section>
+
+  <!-- Sağ: kayıtla gelenler -->
+  <section class="brand-side" aria-label="Kayıtla gelenler">
+    <div class="b-top">
+      <div class="who rv">
+        <span class="mark"><svg viewBox="100 90 300 330" fill="#FFC83D" aria-hidden="true"><rect x="212" y="108" width="58" height="218"/><path d="M262 168 C 274 128 304 104 346 104 L346 162 C 306 158 280 176 270 206 Z"/><rect x="128" y="358" width="257" height="50" rx="25"/></svg></span>
+        <div><b>Repertuvar.app</b><span>Modern Müzisyenler İçin</span></div>
+      </div>
+      <h2 class="rv" style="transition-delay:.12s">Repertuvarını bir kez kur, <em>her sahnede</em> yanında olsun.</h2>
+      <div class="perks rv" style="transition-delay:.2s">
+        <div class="perk"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><b>Ücretsiz başla</b><span>Hesabını aç, ilk repertuvarını hemen oluştur.</span></div>
+        <div class="perk"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span><b>Grubunu davet et</b><span>Bir bağlantıyla herkes aynı listede.</span></div>
+        <div class="perk"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.6a10 10 0 0 1 14 0M8.5 16.4a5 5 0 0 1 7 0"/><path d="M12 20h.01"/></svg></span><b>Çevrimdışı çalışır</b><span>Sahnede internet gitse de liste açık kalır.</span></div>
+        <div class="perk"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></span><b>Bluetooth pedal</b><span>Ekrana dokunmadan sıradaki esere geç.</span></div>
+      </div>
+    </div>
+    <div class="invite rv" style="transition-delay:.3s" aria-hidden="true">
+      <div class="ih"><i>E</i><span>Grup daveti</span></div>
+      <p><b>Konser Ekibi</b> grubuna davet edildin. Repertuvar ve notlar hazır.</p>
+      <div class="ib"><span>Sonra</span><span>Katıl</span></div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site-en.js"></script>
+<script src="assets/site-i18n.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth-site.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); }, t = RA.t, email = '', ad = '';
+  document.querySelectorAll('[data-keepq]').forEach(function (a) { a.href = a.getAttribute('href') + location.search; });
+  function msg(tur, metin) { var m = $('msg'); m.className = 'msg' + (tur ? ' ' + tur : ''); m.textContent = metin || ''; }   // sunucu hata metni HTML olarak yazılmaz
+  function mesgul(btn, on, yazi) { btn.disabled = on; if (yazi) btn.querySelector('span').textContent = yazi; }
+  function adim(n) {
+    ['s1', 's2', 's3'].forEach(function (id, i) { $(id).classList.toggle('on', i + 1 === n); });
+    document.querySelectorAll('.steps li').forEach(function (li) { var s = +li.dataset.s; li.classList.toggle('on', s === n); li.classList.toggle('ok', s < n); });
+    if (n === 2) kutular[0].focus();
+  }
+  function bitti(sess) { msg(); adim(3); setTimeout(function () { RA.devret(sess); }, 900); }
+
+  /* şifre gücü: uzunluk, büyük-küçük, rakam, sembol */
+  var meter = document.querySelector('.meter'), ADLAR = ['', 'Zayıf', 'Orta', 'İyi', 'Güçlü'];
+  function guc() {
+    var p = $('pass').value, s = 0;
+    if (p.length >= 6) s++; if (p.length >= 10) s++;
+    if (/[a-zçğıöşü]/.test(p) && /[A-ZÇĞİÖŞÜ]/.test(p)) s++; if (/\d/.test(p) && /[^\w\s]/.test(p)) s++;
+    if (p.length < 6) s = p ? 1 : 0;
+    meter.dataset.s = Math.min(4, s); meter.querySelector('b').textContent = t(ADLAR[Math.min(4, s)]);
+  }
+  $('pass').addEventListener('input', guc); window.addEventListener('dil-degisti', guc);
+
+  /* 1 · hesap oluştur */
+  $('f1').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    ad = $('ad').value.trim(); email = $('mail').value.trim();
+    var pass = $('pass').value, btn = $('b1');
+    if (!ad) { msg('err', t('Ad Soyad zorunlu.')); $('ad').focus(); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg('err', t('Geçerli bir e-posta adresi yaz.')); $('mail').focus(); return; }
+    if (pass.length < 6) { msg('err', t('Şifre en az 6 karakter olmalı.')); $('pass').focus(); return; }
+    if (!$('onay').checked) { msg('err', t("Devam etmek için Kullanım Koşulları ve Gizlilik Politikası'nı kabul etmelisin.")); return; }
+    mesgul(btn, true, t('Hesap oluşturuluyor…')); msg();
+    var r = await RA.sb.auth.signUp({ email: email, password: pass, options: { data: { full_name: ad } } });
+    mesgul(btn, false, t('Hesap oluştur'));
+    if (r.error) { msg('err', RA.hata(r.error)); return; }
+    // Supabase, kayıtlı (doğrulanmış) bir e-posta için hata vermeden kimliksiz kullanıcı döndürür
+    if (r.data.user && r.data.user.identities && r.data.user.identities.length === 0) { msg('err', t('Bu e-posta ile zaten bir hesap var. Giriş yapmayı dene.')); return; }
+    if (r.data.session) { await RA.profilAdi(r.data.session, ad); bitti(r.data.session); return; }   // e-posta doğrulaması kapalıysa
+    s2Yaz(); adim(2); sayac();
+  });
+
+  /* 2 · 8 kutulu kod: yazınca ilerler, silince geri gider, yapıştırınca dağıtır, dolunca doğrular */
+  var kutu = document.querySelector('.boxes'), kutular = [];
+  for (var i = 0; i < 8; i++) {
+    var k = document.createElement('input');
+    k.type = 'text'; k.inputMode = 'numeric'; k.maxLength = 1; k.autocomplete = i ? 'off' : 'one-time-code';
+    k.setAttribute('aria-label', t('Kod hanesi') + ' ' + (i + 1)); kutu.appendChild(k); kutular.push(k);
+  }
+  function kod() { return kutular.map(function (k) { return k.value; }).join(''); }
+  function dagit(s, bas) { s = s.replace(/\D/g, '').slice(0, 8 - bas); for (var j = 0; j < s.length; j++) kutular[bas + j].value = s[j]; var son = Math.min(7, bas + s.length); kutular[son].focus(); if (kod().length === 8) { var f = $('f2'); f.requestSubmit ? f.requestSubmit() : $('b2').click(); } }
+  kutular.forEach(function (k, j) {
+    k.addEventListener('input', function () { kutu.classList.remove('hata'); var v = k.value.replace(/\D/g, ''); k.value = ''; if (v) dagit(v, j); });
+    k.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace' && !k.value && j) { kutular[j - 1].value = ''; kutular[j - 1].focus(); e.preventDefault(); }
+      if (e.key === 'ArrowLeft' && j) kutular[j - 1].focus(); if (e.key === 'ArrowRight' && j < 7) kutular[j + 1].focus();
+    });
+    k.addEventListener('paste', function (e) { e.preventDefault(); dagit((e.clipboardData || window.clipboardData).getData('text'), j); });
+  });
+  $('f2').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var btn = $('b2'); if (btn.disabled) return;
+    if (kod().length < 8) { msg('err', t('8 haneli kodu gir.')); kutu.classList.add('hata'); return; }
+    mesgul(btn, true, t('Doğrulanıyor…'));
+    var r = await RA.sb.auth.verifyOtp({ email: email, token: kod(), type: 'signup' });
+    if (r.error || !r.data.session) { mesgul(btn, false, t('Doğrula ve başla')); msg('err', t('Kod hatalı veya süresi dolmuş.')); kutu.classList.add('hata'); return; }
+    await RA.profilAdi(r.data.session, ad);
+    bitti(r.data.session);
+  });
+  /* tekrar gönder (60 sn bekleme) ve e-postayı değiştir */
+  var kalan = 0, zaman = null;
+  function sayac() {
+    kalan = 60; var b = $('tekrar'); b.disabled = true; clearInterval(zaman);
+    var yaz = function () { b.textContent = kalan > 0 ? t('Kodu tekrar gönder') + ' (' + kalan + ')' : t('Kodu tekrar gönder'); };
+    yaz(); zaman = setInterval(function () { kalan--; yaz(); if (kalan <= 0) { clearInterval(zaman); b.disabled = false; } }, 1000);
+  }
+  $('tekrar').addEventListener('click', async function () {
+    var r = await RA.sb.auth.resend({ type: 'signup', email: email });
+    if (r.error) { msg('err', RA.hata(r.error)); return; }
+    msg('ok', t('Yeni kod gönderildi.')); sayac();
+  });
+  $('degis').addEventListener('click', function () { msg(); kutular.forEach(function (k) { k.value = ''; }); adim(1); $('mail').focus(); });
+
+  // e-posta cümlesi: dillerde sözcük sırası farklı, {e} yer tutucusuyla kurulur
+  function s2Yaz() { var p = $('s2-sub'), parca = t('{e} adresine 8 haneli bir kod gönderdik.').split('{e}'), b = document.createElement('b');
+    b.textContent = email; p.textContent = ''; p.append(parca[0], b, parca[1] || ''); }
+  window.addEventListener('dil-degisti', function () { if (email) s2Yaz(); var b = $('tekrar'); if (!b.disabled) b.textContent = t('Kodu tekrar gönder'); });
+  RA.google($('google'), 'signup_with', bitti, function (m) { msg('err', m); });
+  RA.apple($('apple'), bitti, function (m) { msg('err', m); });
+  RA.gozler(); RA.netlesme(); guc();
+})();
+</script>
+<!-- ── ZİYARET SAYACI (2026-08-09) ────────────────────────────────────────
+     Landing sayfasının kaç ziyaretçi aldığını bilmiyorduk: hiçbir ölçüm
+     yoktu (Search Console arama gösterimini verir, ziyareti değil; GitHub
+     repo "traffic" sayfası repoyu sayar, siteyi değil). Cloudflare Web
+     Analytics kurulamadığı için kendi sayacımızı kullanıyoruz.
+     GİZLİLİK: IP, çerez, kimlik ya da parmak izi YOK — yalnızca zaman, sayfa
+     yolu, geldiği site ve kaba cihaz türü yazılıyor. Bu yüzden rıza bandı
+     gerekmiyor. Sayılar Yönetim sayfasında görünüyor.
+     Sayfa ağırlığı: tek fetch, 1 KB'ın altında, `keepalive` ile sayfa
+     kapansa bile gidiyor; hata olursa sessizce yutuluyor. -->
+<script>
+(function () {
+  try {
+    // Aynı oturumda aynı sayfayı tekrar sayma (F5 spam'ini önler).
+    var k = 'lh:' + location.pathname;
+    if (sessionStorage.getItem(k)) return;
+    sessionStorage.setItem(k, '1');
+  } catch (e) {}
+  try {
+    fetch('https://ehytkzxdhjyjuubizdnl.supabase.co/rest/v1/rpc/log_hit', {
+      method: 'POST',
+      headers: {
+        'apikey': 'sb_publishable_f_WsYxzN06B5dGROrkGyPQ_UDxKSbtO',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        p_path: location.pathname || '/',
+        p_ref: document.referrer || '',
+        p_cihaz: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'mobil' : 'masaustu'
+      }),
+      keepalive: true
+    }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
