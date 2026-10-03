@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akademi İskeleti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== Tasarım tokenları (Elementor global ayarlarıyla aynı değerler) ===== */
+:root{
+  --primary:#FFC83D; --secondary:#FFD463; --orange-deep:#D68A00; --on-primary:#1A1305; --white:#FFFFFF; --text:#100C08;
+  --ink:#1D1C14; --ink-deep:#0F0E07; --ink-14:#14140C; --ink-2:#36352C; --ink-3:#49473A;
+  --cream:#FFF7E6; --cream-2:#FFF4DE; --sand:#CAC7B5; --olive:#E0A93A; --red:#CC3C24;
+  --btn-alt-hover:#F0EFE7;
+  --font:"Inter Tight", system-ui, sans-serif;   /* orijinali lisanslı bir font; yerine koyduğun fontu buraya yaz */
+  --box:1840px;                                     /* e-con-boxed genişliği */
+  --side:40px;
+  /* tipografi ölçeği: masaüstü */
+  --t-display:72px; --t-display-lh:74px; --t-display-ls:-1px;
+  --t-h2:58px; --t-h2-lh:60px;
+  --t-h3:50px; --t-h3-lh:52px;
+  --t-h4:24px; --t-h4-lh:26px;
+  --t-lead:20px; --t-lead-lh:24px;
+  --t-body:16px; --t-body-lh:21px;
+  --t-label:14px; --t-label-ls:1.6px;
+}
+@media (max-width:1366px){:root{--t-display:58px;--t-display-lh:60px;--t-display-ls:-.8px;--t-h2:44px;--t-h2-lh:46px;--t-h3:36px;--t-h3-lh:38px;--side:24px}}
+@media (max-width:767px){:root{--t-display:44px;--t-display-lh:46px;--t-h2:36px;--t-h2-lh:38px;--t-h3:28px;--t-h3-lh:34px;--t-label-ls:1.2px;--side:16px}}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink-deep);color:var(--white);font-family:var(--font);font-size:var(--t-body);line-height:var(--t-body-lh);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.box{width:min(100% - var(--side)*2, var(--box));margin-inline:auto}
+
+/* yer tutucu görünümü */
+.ph{outline:1px dashed rgba(127,127,127,.45);outline-offset:2px}
+.img-ph{background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 14px,rgba(255,255,255,.08) 14px 28px),#2a2920;display:grid;place-items:center;color:rgba(255,255,255,.45);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.img-ph.light{background:repeating-linear-gradient(135deg,rgba(0,0,0,.03) 0 14px,rgba(0,0,0,.06) 14px 28px),#EDEBE2;color:rgba(0,0,0,.4)}
+
+.photo{background-size:cover;background-position:center;background-repeat:no-repeat;color:transparent}
+.hero .hero-box::before{background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.25));opacity:1}
+.master-card.photo::before{display:none}
+.master-card.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(15,14,7,.8));transition:opacity .8s}
+.master-card.photo:hover::after{opacity:.6}
+.master-card .row{z-index:1}
+.credits a{text-decoration:underline}
+
+/* slayt katmanları (kaynak: background slideshow, fade) */
+[data-slides]{position:relative;overflow:hidden;isolation:isolate}
+.ss-layer{position:absolute;inset:0;z-index:-1;background:center/cover no-repeat;opacity:0;transition-property:opacity;transition-timing-function:ease;border-radius:inherit}
+.ss-layer.on{opacity:1}
+.ss-layer.kb{transform:scale(1);transition-property:opacity,transform;transition-timing-function:ease,linear}
+.ss-layer.kb.zoom{transform:scale(1.3)}
+@media (prefers-reduced-motion:reduce){.ss-layer{transition-duration:0s!important}.ss-layer.kb.zoom{transform:none}}
+
+/* tipografi sınıfları */
+.label{font-size:var(--t-label);font-weight:500;letter-spacing:var(--t-label-ls);text-transform:uppercase}
+.display{font-size:var(--t-display);line-height:var(--t-display-lh);letter-spacing:var(--t-display-ls);font-weight:400}
+.h2{font-size:var(--t-h2);line-height:var(--t-h2-lh);font-weight:400}
+.h3{font-size:var(--t-h3);line-height:var(--t-h3-lh);font-weight:400}
+.h4{font-size:var(--t-h4);line-height:var(--t-h4-lh);font-weight:500}
+.lead{font-size:var(--t-lead);line-height:var(--t-lead-lh)}
+.body-m{font-size:16px;line-height:21px;font-weight:500}
+
+/* butonlar */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:200px;padding:14px 24px;font-size:14px;font-weight:600;letter-spacing:.2px;border:0;cursor:pointer;white-space:nowrap}
+.btn-y{background:var(--primary);color:var(--on-primary)} .btn-y:hover{background:var(--secondary)}
+.btn-w{background:var(--white);color:var(--ink)}   .btn-w:hover{background:var(--btn-alt-hover)}
+.btn-sm{padding:8px 24px;text-transform:uppercase}
+.btn-line{background:transparent;border:1px solid var(--sand);color:var(--ink)}
+
+/* ===== 1. HEADER — sabit, yüzen hap bar ===== */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:10;pointer-events:none}
+.hdr-bar{pointer-events:auto}
+body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'ın altından başlar */
+.hdr-bar{margin-top:16px;min-height:48px;border-radius:40px;background:rgba(30,29,21,.48);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 8px 8px 24px}
+.brand img{display:block;width:172px;height:auto}
+.btn-ghost{background:rgba(255,255,255,.08);color:var(--white);border:1px solid rgba(255,255,255,.18)}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
+.lang{display:flex;background:rgba(255,255,255,.08);border-radius:200px;padding:3px}
+.lang button{font:inherit;font-size:12px;font-weight:600;letter-spacing:.8px;color:var(--sand);background:none;border:0;border-radius:200px;padding:5px 10px;cursor:pointer}
+.lang button.on{background:var(--white);color:var(--ink)}
+.menu-btn{display:none}
+.nmenu{display:flex;align-items:center;gap:32px}
+.nmenu>li{position:relative}
+.nmenu>li>a,.nmenu>li>button{font:inherit;font-size:14px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:var(--white);background:none;border:0;cursor:pointer;display:flex;gap:6px;align-items:center}
+.nmenu>li>a:hover,.nmenu>li>button:hover{color:var(--cream-2)}
+.mega{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);display:none;gap:8px;padding:8px;border-radius:32px;background:rgba(30,29,21,.9);backdrop-filter:blur(8px)}
+.nmenu>li:hover .mega,.nmenu>li:focus-within .mega{display:flex}
+.mega a{width:200px;padding:20px;border-radius:24px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;gap:12px}
+.mega a:hover{background:rgba(255,255,255,.12)}
+.ico{width:32px;height:32px;border-radius:50%;background:var(--primary);display:grid;place-items:center;color:var(--ink);flex:none}
+.hdr-right{display:flex;align-items:center;gap:12px}
+.icon-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;border:0;color:var(--white);cursor:pointer}
+
+/* off-canvas */
+.oc{position:fixed;inset:0;z-index:20;background:var(--ink-deep);display:none;overflow:auto}
+.oc.open{display:block}
+.oc-in{padding:24px 0;min-height:100%;display:flex;flex-direction:column;gap:48px}
+.oc-top{display:flex;justify-content:space-between;align-items:center}
+.oc-nav li{border-bottom:1px solid rgba(226,226,236,.12)}
+.oc-nav a{display:block;padding:18px 0;font-size:var(--t-h4);line-height:var(--t-h4-lh)}
+.oc-nav .sub a{font-size:16px;padding:10px 0 10px 24px;color:var(--sand)}
+.oc-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;color:var(--sand)}
+
+/* ===== 2. HERO — 100vh, siyah yuvarlak kutu ===== */
+.hero{min-height:calc(100vh - 96px);display:flex}
+.hero-box{flex:1;display:flex;align-items:center;border-radius:40px;background:#000;position:relative;overflow:hidden;margin-top:0}
+.hero-box::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 18px,rgba(255,255,255,.06) 18px 36px);opacity:.6}
+.hero-box .bg-note{position:absolute;top:96px;right:48px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.hero-l,.hero-r{position:relative;z-index:1;min-height:72vh;display:flex;flex-direction:column;padding:0 48px;gap:16px}
+.hero-l{flex:1;justify-content:center;align-items:flex-start}
+.hero-l .display{max-width:900px}
+.hero-r{width:420px;justify-content:flex-end;padding-bottom:48px;gap:24px}
+.hero-r .btns{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ===== HERO slayt panelleri ===== */
+.hero .hero-box{align-items:stretch}
+.hero-l{justify-content:center;gap:20px}
+.hero-l .display{max-width:760px}
+.hero-l .accent{color:var(--primary)}
+.hero-p{max-width:560px;font-size:18px;line-height:26px;color:rgba(255,255,255,.82)}
+.hero-l .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.hero .hero-r{width:520px;justify-content:center;padding:48px 48px 40px;gap:20px}
+.hpanels{position:relative;height:430px}
+.hp{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
+.hp.on{opacity:1;visibility:visible;transition:opacity .6s ease}
+.hp .st{opacity:0;transform:translateY(22px) scale(.98);filter:blur(8px);transition:opacity .5s ease,transform .5s ease,filter .5s ease}
+.hp.on .st{opacity:1;transform:none;filter:none;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease;transition-delay:calc(var(--i,0) * 110ms + 200ms)}
+/* 1: avantajlar */
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.bcard{display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:20px;background:rgba(30,29,21,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1)}
+.bcard b{font-size:16px;font-weight:600}
+.bcard span:last-child{font-size:14px;line-height:19px;color:rgba(255,255,255,.72)}
+.bi{width:36px;height:36px;border-radius:12px;background:rgba(255,200,61,.16);color:var(--primary);display:grid;place-items:center;margin-bottom:6px}
+.bi svg{width:20px;height:20px}
+/* 2: tablet + pedal */
+.hp-app{align-items:center}
+.tablet2{position:relative;width:100%;max-width:420px;aspect-ratio:4/3;background:#0b0b08;border-radius:22px;padding:11px;box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.08)}
+.hp.on .tablet2{transform:perspective(1000px) rotateY(-8deg) rotateX(3deg)}
+.tablet2 .tscreen{position:relative;font-size:12px;line-height:16px;padding:14px 14px 0}
+.tablet2 .thead{font-size:14px}.tablet2 .tsub{font-size:11px;margin:3px 0 10px}
+.tablet2 .tr{padding:6px 8px;grid-template-columns:18px 1fr auto 24px}
+.tablet2 .tr .mk2,.tablet2 .tr .ky{font-size:11px}
+.tablet2 .tr.on{animation:rowpulse 2.4s ease-in-out infinite}
+@keyframes rowpulse{50%{background:rgba(255,200,61,.22)}}
+.toast{position:absolute;left:14px;bottom:12px;display:flex;gap:6px;align-items:center;background:var(--primary);color:var(--on-primary);font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.4);opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s}
+.hp.on .toast{opacity:1;transform:none;transition-delay:1.6s}
+.hpedal{position:absolute;right:-24px;bottom:-6px;width:190px;height:auto;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5))}
+.hp.on .hpedal{animation:float 4s ease-in-out 1.2s infinite}
+@keyframes float{50%{translate:0 -8px}}
+/* 3: her müzisyen */
+.hp-all{flex-direction:column;align-items:stretch;justify-content:flex-end}
+.inst{position:absolute;right:-8px;top:0;height:58%;display:flex;align-items:flex-end;z-index:0}
+.inst img{height:100%;width:auto;filter:drop-shadow(0 18px 24px rgba(0,0,0,.5))}
+.inst img+img{height:74%;margin-left:-30px}
+.allbox{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;padding-bottom:6px}
+.allbox h3{font-size:34px;line-height:36px;font-weight:400}
+.chips2{display:flex;flex-wrap:wrap;gap:8px}
+.chip2{padding:8px 12px;border-radius:200px;font-size:13px;font-weight:500;background:rgba(30,29,21,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12)}
+.chip2:first-child{background:var(--primary);color:var(--on-primary);border-color:transparent}
+/* göstergeler */
+.hdots{display:flex;gap:8px;justify-content:center}
+.hdots button{width:44px;height:6px;border-radius:6px;border:0;padding:0;background:rgba(255,255,255,.22);cursor:pointer;overflow:hidden;position:relative}
+.hdots button i{position:absolute;inset:0;width:0;background:var(--primary);border-radius:inherit}
+.hdots button.on i{animation:prog var(--dur,7500ms) linear forwards}
+@keyframes prog{to{width:100%}}
+@media (prefers-reduced-motion:reduce){.hp .st,.hp.on .st{transition:none;filter:none;transform:none}.hp.on .hpedal,.tablet2 .tr.on{animation:none}.hdots button.on i{animation:none;width:100%}}
+@media (max-width:1280px){.hero .hero-r{width:460px;padding:40px 32px}.hpanels{height:400px}}
+@media (max-width:1024px){
+  .hero .hero-box{flex-direction:column}
+  .hero .hero-r{width:auto;padding:0 32px 32px}
+  .hpanels{height:380px;max-width:520px;width:100%;margin:0 auto}
+}
+@media (max-width:600px){
+  .hero .hero-r{padding:0 16px 24px}
+  .hpanels{height:360px}
+  .bcard{padding:14px}.bcard span:last-child{font-size:13px}
+  .hpedal{width:130px;right:-8px}
+  .inst{height:44%}.allbox h3{font-size:28px;line-height:30px}
+  .hero-p{font-size:16px;line-height:23px}
+}
+
+/* ===== 3. HAKKIMIZDA — ölçüler kaynak sayfanın kırılımlarıyla birebir ===== */
+.intro{margin-top:24px;background:var(--white);border-radius:40px;min-height:600px;display:flex;gap:8px;padding:8px}
+.intro-img{flex:1;border-radius:36px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;position:relative}
+.intro-img::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 35%,rgba(0,0,0,.55))}
+.intro-img-row{position:relative;display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;padding:48px}
+.intro-img-row .body-m{width:70%;color:var(--white)}
+.intro-img-row .btn-wrap{width:calc(30% - 16px);display:flex;justify-content:flex-end}
+.intro-y{flex:1;border-radius:36px;background:var(--primary);color:var(--on-primary);padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden}
+.intro-top{display:flex;flex-direction:column;gap:24px}
+.intro-y .label{width:90%;color:var(--ink)}
+.intro-y .h2{width:84%;-webkit-text-stroke:.5px #000;color:var(--ink)}
+.intro-y .paras{display:flex;flex-direction:column;gap:24px}
+.intro-y .p1{width:80%;font-size:20px;line-height:24px}
+.intro-y .p2{width:80%;font-size:16px;line-height:21px}
+.intro-y{justify-content:flex-start}
+.intro-top,.intro-y .paras{max-width:72%}
+/* dekor: ilk akışkan şekiller — kartın boyutuna esner, taşmaz */
+.intro-y{background:var(--primary) url("akis_w.svg") no-repeat 0 0/100% 100%}
+.intro-y>*{position:relative;z-index:1}
+@media (max-width:1280px){.intro-top,.intro-y .paras{max-width:none}.intro .intro-y{padding-right:30%}}
+@media (max-width:768px){.intro .intro-y{padding:48px 24px 200px;background-image:url("akis_m.svg")}}
+
+.intro-y .h2{-webkit-text-stroke:0}
+.intro-y .paras p{color:var(--ink-2)}
+@media (min-width:1600px){
+  .intro-img-row{justify-content:space-between}
+  .intro-img-row .body-m,.intro-img-row .btn-wrap{width:100%;justify-content:flex-start}
+  .intro-y .label{width:70%} .intro-y .h2{width:80%} .intro-y .p1{width:70%} .intro-y .p2{width:50%}
+}
+@media (max-width:1280px){
+  .intro{flex-direction:column;min-height:450px}
+  .intro-img{min-height:400px;flex:none}
+  .intro-img-row{padding:32px}
+  .intro-img-row .body-m,.intro-img-row .btn-wrap{width:100%;justify-content:flex-start}
+  .intro-y{flex:none;flex-direction:row;align-items:flex-end;gap:48px;background-position:bottom left}
+  .intro-top{gap:16px}
+  .intro-y .label,.intro-y .h2,.intro-y .p1,.intro-y .p2{width:100%}
+  .intro-top,.intro-y .paras{flex:1}
+}
+@media (max-width:1024px){
+  .intro{min-height:400px}
+  .intro-img-row{justify-content:flex-end}
+  .intro-img-row .body-m{width:70%} .intro-img-row .btn-wrap{width:calc(30% - 16px);justify-content:flex-end}
+  .intro-y{padding:24px}
+  .intro-top{flex:0 0 calc(60% - 24px)} .intro-y .paras{flex:0 0 calc(40% - 24px)}
+}
+@media (max-width:768px){
+  .intro{min-height:0}
+  .intro-img-row{padding:24px;gap:0}
+  .intro-img-row .body-m{width:60%} .intro-img-row .btn-wrap{width:40%}
+  .intro-y{flex-wrap:wrap;gap:16px;padding:32px 24px}
+  .intro-top,.intro-y .paras{flex:0 0 100%}
+}
+@media (max-width:600px){
+  .intro-img{min-height:400px}
+  .intro-img-row{flex-direction:column;align-items:stretch;gap:24px}
+  .intro-img-row .body-m,.intro-img-row .btn-wrap{width:100%;justify-content:flex-start}
+  .intro-y{flex-direction:column;align-items:stretch;min-height:400px;justify-content:flex-end;background-position:center right}
+}
+
+/* ===== 3b. ÖZELLİKLER — bento (üst 1fr/1.25fr/1fr, alt 3 eşit) ===== */
+.feat{margin:48px auto 0;background:var(--cream);color:var(--ink);border-radius:44px;padding:72px 48px}
+.feat-head{max-width:760px;margin:0 auto 48px;text-align:center;display:flex;flex-direction:column;gap:16px}
+.feat-head .label{color:var(--orange-deep)}
+.feat-head .lead{color:var(--ink-3)}
+.bento{display:flex;flex-direction:column;gap:20px}
+.bento-row{display:grid;gap:20px}
+.bento-row.r1{grid-template-columns:1fr 1.25fr 1fr}
+.bento-row.r2{grid-template-columns:repeat(3,1fr)}
+.fcard{position:relative;display:flex;flex-direction:column;min-height:288px;overflow:hidden;border-radius:20px;border:1px solid rgba(0,0,0,.06);background:var(--white);box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.fcard .txt{padding:28px 24px 0;display:flex;flex-direction:column;gap:10px}
+.fcard h3{font-size:20px;line-height:28px;font-weight:500;display:flex;align-items:center;gap:10px}
+.fcard .fi{width:34px;height:34px;border-radius:10px;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;flex:none}
+.fcard .fi svg{width:18px;height:18px}
+.fcard p{font-size:15px;line-height:21px;color:var(--ink-3)}
+.fcard p b{color:var(--ink);font-weight:600}
+.fcard .stage{position:relative;flex:1;min-height:170px;display:flex;align-items:center;justify-content:center;padding:20px 24px 24px}
+
+/* pedal */
+.st-pedal{flex-direction:column;gap:14px}
+.st-pedal img{width:78%;max-width:260px;height:auto;filter:drop-shadow(0 12px 18px rgba(0,0,0,.22))}
+.siradaki{display:flex;align-items:baseline;gap:10px;background:var(--ink);color:var(--white);border-radius:200px;padding:10px 18px;font-size:14px}
+.siradaki small{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--primary)}
+.siradaki span{color:var(--sand)}
+.st-note{font-size:12px!important;color:var(--sand)!important;text-align:center;padding:0 24px 20px}
+
+/* potpuri */
+.pot{width:100%;max-width:420px;display:flex;flex-direction:column;gap:6px}
+.pot-row{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:10px 14px;font-size:14px}
+.pot-row .n{width:22px;color:var(--sand);font-variant-numeric:tabular-nums}
+.pot-row .a{flex:1;font-weight:500}
+.pot-row .i{color:var(--ink-3);font-size:13px}
+.pot-chain{position:relative;background:rgba(255,200,61,.14);border:1.5px solid var(--primary);border-radius:16px;padding:26px 8px 8px;display:flex;flex-direction:column;gap:6px}
+.pot-chain .tag{position:absolute;top:6px;left:14px;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange-deep)}
+.pot-chain .pot-row{animation:chain 6s ease-in-out infinite}
+@keyframes chain{0%,35%{transform:translateY(0)}45%,80%{transform:translateY(-3px)}90%,100%{transform:translateY(0)}}
+
+/* liste */
+.st-list{align-items:flex-start}
+.checks{list-style:none;width:100%;display:flex;flex-direction:column;gap:8px}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:20px;padding:9px 12px;border-radius:12px;background:var(--cream)}
+.checks li::before{content:"";width:16px;height:16px;flex:none;margin-top:2px;border-radius:50%;background:var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%231A1305' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+
+/* ton */
+.st-key{flex-direction:column;gap:14px}
+.keys{display:flex;align-items:center;gap:14px}
+.key{width:74px;height:74px;border-radius:20px;display:grid;place-items:center;font-size:26px;font-weight:500}
+.key.old{background:var(--cream);color:var(--ink-3);border:1px dashed var(--sand)}
+.key.new{background:var(--primary);color:var(--on-primary);box-shadow:0 12px 24px rgba(214,138,0,.28)}
+.keys .arr{color:var(--orange-deep);font-size:22px}
+.notation{display:flex;background:var(--cream);border-radius:200px;padding:3px;font-size:12px;font-weight:600}
+.notation span{padding:5px 12px;border-radius:200px;color:var(--ink-3)}
+.notation span.on{background:var(--ink);color:var(--white)}
+.key-cap{font-size:13px;color:var(--ink-3)}
+
+/* makam bandı */
+.st-belt{padding:0;overflow:hidden}
+.belt{position:relative;width:371px;height:220px;flex:none}
+.belt svg{position:absolute;inset:0}
+.belt .chip{position:absolute;left:0;top:0;offset-path:path("M-60 160C0 160 55 100 185.5 100C316 100 371 160 431 160");offset-rotate:0deg;animation:ride 18s linear infinite;
+  padding:9px 14px;border-radius:14px;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 12px 24px rgba(16,24,40,.18)}
+.belt .chip:nth-child(odd){background:var(--ink);color:var(--white)}
+.belt .chip:nth-child(even){background:var(--primary);color:var(--on-primary)}
+@keyframes ride{from{offset-distance:0%}to{offset-distance:100%}}
+.belt-static{display:none;flex-wrap:wrap;gap:8px;justify-content:center;padding:24px}
+.belt-static span{padding:8px 12px;border-radius:12px;background:var(--cream);font-size:14px;font-weight:600}
+@media (prefers-reduced-motion:reduce){.belt{display:none}.belt-static{display:flex}.pot-chain .pot-row{animation:none}}
+
+/* senkron */
+.st-sync{flex-direction:column;gap:10px;align-items:stretch}
+.snote{border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.snote .e{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase}
+.snote .m{font-size:15px;font-weight:500}
+.snote .k{font-size:12px}
+.snote.grp{background:var(--ink);color:var(--white)}.snote.grp .e{color:var(--primary)}.snote.grp .k{color:var(--sand)}
+.snote.me{background:var(--cream);border:1px dashed var(--sand)}.snote.me .e,.snote.me .k{color:var(--ink-3)}
+.snote.me{margin-left:18%}
+.snote.grp{margin-right:18%}
+
+@media (max-width:1024px){.bento-row.r1,.bento-row.r2{grid-template-columns:1fr 1fr}.bento-row.r1 .fcard:nth-child(2){grid-column:span 2;order:-1}}
+@media (max-width:700px){.feat{padding:56px 16px}.bento-row.r1,.bento-row.r2{grid-template-columns:1fr}.bento-row.r1 .fcard:nth-child(2){grid-column:auto;order:0}.siradaki{flex-wrap:wrap;justify-content:center;border-radius:16px;row-gap:2px}.siradaki small{flex:0 0 100%;text-align:center}}
+
+/* ===== 3c. NASIL ÇALIŞIR — numara şeridi + 4 adım kartı ===== */
+.how{margin:0 auto;padding:96px 0 48px}
+.how-head{max-width:760px;margin:0 auto 64px;text-align:center;display:flex;flex-direction:column;gap:16px}
+.how-head .label{color:var(--primary)}
+.how-head .lead{color:var(--sand)}
+.how-in{max-width:1200px;margin:0 auto}
+.how-nums{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:32px}
+.how-nums::before{content:"";position:absolute;left:12.5%;right:12.5%;top:50%;height:2px;transform:translateY(-50%);background:linear-gradient(90deg,var(--ink-2),var(--primary),var(--ink-2))}
+.how-nums span{position:relative;justify-self:center;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--white);font-weight:600;box-shadow:0 0 0 6px var(--ink-deep);border:1px solid var(--ink-2)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.step{position:relative;border-radius:20px;border:1px solid var(--ink-2);background:var(--ink);padding:24px;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease,background .3s ease}
+.step:hover{transform:scale(1.05);box-shadow:0 18px 40px rgba(0,0,0,.35);border-color:rgba(255,200,61,.5);background:#24231a}
+.step .si{width:48px;height:48px;border-radius:12px;background:rgba(255,200,61,.12);color:var(--primary);display:grid;place-items:center;margin-bottom:16px}
+.step .si svg{width:24px;height:24px}
+.step h3{font-size:20px;line-height:26px;font-weight:600;margin-bottom:8px}
+.step>p{color:var(--sand);font-size:15px;line-height:21px;margin-bottom:20px}
+.step ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:auto}
+.step li{display:flex;align-items:center;gap:10px;font-size:14px;line-height:19px;color:var(--sand)}
+.step li::before{content:"";width:16px;height:16px;flex:none;border-radius:50%;background:radial-gradient(circle,var(--primary) 0 4px,rgba(255,200,61,.2) 4.5px)}
+.step .pedal-art{width:78%;max-width:180px;height:auto;margin:18px auto 0;opacity:.9}
+@media (max-width:1024px){
+  .how-nums{display:none}
+  .steps{grid-template-columns:1fr 1fr}
+  .step::before{content:attr(data-n);position:absolute;top:20px;right:20px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ink-deep);border:1px solid var(--ink-2);font-size:13px;font-weight:600}
+}
+@media (max-width:600px){.how{padding:72px 0 24px}.steps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.step:hover{transform:none}}
+
+/* ===== 3d. NEDEN REPERTUVAR — karşılaştırma (2 kart) ===== */
+.cmp{padding:48px 0 96px}
+.cmp-in{max-width:960px;margin:0 auto}
+.cmp-head{text-align:center;margin-bottom:40px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.badge{display:inline-flex;align-items:center;gap:6px;border-radius:200px;padding:4px 12px;font-size:12px;font-weight:600;border:1px solid var(--ink-2);color:var(--cream)}
+.badge svg{width:14px;height:14px;color:var(--primary)}
+.badge.solid{background:var(--primary);color:var(--on-primary);border-color:transparent}
+.cmp-head .lead{color:var(--sand);max-width:620px}
+.cmp-head .note{font-size:13px;color:#9A9784}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ccard{border-radius:20px;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.ccard .ch{padding:24px;display:flex;flex-direction:column;gap:8px}
+.ccard .ct{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600}
+.ccard .cd{font-size:14px;line-height:20px}
+.ccard hr{border:0;height:1px;margin:0}
+.ccard ul{list-style:none;padding:20px 24px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.ccard li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:20px}
+.ccard li .mk{width:18px;height:18px;border-radius:5px;flex:none;display:grid;place-items:center;margin-top:1px}
+.ccard li .mk svg{width:12px;height:12px}
+.ccard .cf{padding:20px 24px;border-top:1px solid}
+.ccard .cf .btn{width:100%}
+.ccard.us{background:var(--white);color:var(--ink);box-shadow:0 0 0 1px rgba(255,200,61,.45),0 0 0 6px rgba(255,200,61,.14)}
+.ccard.us .cd{color:var(--ink-3)} .ccard.us hr,.ccard.us .cf{background:transparent;border-color:rgba(0,0,0,.07)} .ccard.us hr{background:rgba(0,0,0,.07)}
+.ccard.us .mk{background:var(--primary);color:var(--on-primary)}
+.ccard.them{background:rgba(29,28,20,.6);border:1px solid var(--ink-2);color:var(--sand)}
+.ccard.them .ct{color:var(--sand)} .ccard.them .cd{color:#9A9784}
+.ccard.them hr{background:var(--ink-2)} .ccard.them .cf{border-color:var(--ink-2)}
+.ccard.them .mk{background:var(--ink-2);color:var(--sand)}
+.btn-sec{background:var(--ink-2);color:var(--cream)} .btn-sec:hover{background:var(--ink-3)}
+/* karşılaştırma görselleri: sol nota sehpası, sağ müzisyen + tablet */
+.cvis{position:relative;height:260px;background-size:cover;background-position:center;overflow:hidden}
+.ccard.them .cvis{filter:grayscale(.55) contrast(.95);height:auto;aspect-ratio:880/580}
+.ccard.them .cvis::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(15,14,7,.75))}
+.cvis-tag{position:absolute;left:16px;bottom:14px;z-index:1;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--cream);background:rgba(15,14,7,.55);backdrop-filter:blur(6px);padding:6px 12px;border-radius:200px}
+.ccard.us .cvis{background-position:0% 35%}
+.ccard.us .cvis::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,14,7,0) 30%,rgba(15,14,7,.5))}
+.tablet{position:absolute;right:18px;bottom:-18px;width:58%;max-width:300px;aspect-ratio:4/3;background:#0b0b08;border-radius:18px;padding:9px;box-shadow:0 24px 48px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08) inset;transform:perspective(900px) rotateY(-10deg) rotateX(4deg);transform-origin:right bottom}
+.tscreen{height:100%;border-radius:10px;background:#15140e;color:var(--white);padding:10px 10px 0;overflow:hidden;font-size:10px;line-height:14px}
+.thead{display:flex;justify-content:space-between;font-weight:600;font-size:11px}
+.tsub{color:var(--sand);font-size:9px;margin:2px 0 6px}
+.tr{display:grid;grid-template-columns:14px 1fr auto 18px;gap:6px;align-items:center;padding:4px 6px;border-radius:6px;border:1px solid transparent}
+.tr span:first-child{color:var(--sand)}
+.tr .mk2{color:var(--sand);font-size:9px}
+.tr .ky{justify-self:end;background:rgba(255,200,61,.14);color:var(--primary);border-radius:4px;padding:0 4px;font-size:9px}
+.tr.on{background:rgba(255,200,61,.12);border-color:rgba(255,200,61,.5)}
+.cvis.lap{height:auto;aspect-ratio:880/580;background:#2a2920}
+.cvis.lap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 40%}
+.ccard.us .cvis.lap::before{display:none}
+@media (max-width:700px){.cvis{height:220px}.cvis.lap{height:auto}.tablet{width:70%}}
+
+@media (max-width:700px){.cmp-grid{grid-template-columns:1fr}.cmp{padding:24px 0 72px}}
+
+/* ===== 4. KURSLAR — koyu degrade kutu, 3 kart ===== */
+.offer{margin:48px auto;border-radius:44px;padding:0 48px;position:relative;overflow:hidden;isolation:isolate;background:var(--ink-14)}
+/* glow: bulanık turuncu kütleler — sol alttan yükselen dalga + sağ üst ışıma */
+.offer::before{content:"";position:absolute;inset:-15%;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(42% 44% at 20% 62%, var(--primary) 0%, var(--primary) 30%, transparent 72%),
+    radial-gradient(40% 40% at 8% 92%, var(--secondary) 0%, var(--secondary) 25%, transparent 72%),
+    radial-gradient(46% 32% at 50% 102%, var(--primary) 0%, var(--primary) 25%, transparent 74%),
+    radial-gradient(30% 22% at 80% 0%, var(--secondary) 0%, var(--secondary) 20%, transparent 72%),
+    radial-gradient(18% 16% at 96% 84%, var(--orange-deep) 0%, transparent 70%);
+  filter:blur(40px);opacity:1;animation:glow 22s ease-in-out infinite alternate}
+/* koyu katman: kaynak sayfadaki %81 overlay'in karşılığı — başlık bölgesi okunur kalsın */
+.offer::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,20,12,.55) 0%,rgba(20,20,12,.2) 50%,rgba(20,20,12,.08) 100%)}
+@keyframes glow{0%{transform:translate(0,0) scale(1)}50%{transform:translate(3%,-2%) scale(1.05)}100%{transform:translate(-2%,2%) scale(1)}}
+@media (prefers-reduced-motion:reduce){.offer::before{animation:none}}
+.offer-head{display:flex;gap:48px;margin:248px 0 56px;align-items:flex-end}
+.offer-head>div:first-child{flex:1;display:flex;flex-direction:column;gap:16px;color:var(--cream-2)}
+.offer-head .h2{text-shadow:0 0 12px rgba(0,0,0,.3);text-wrap:balance}
+.offer-head .lead{flex:1;color:var(--cream-2);text-shadow:1px 1px 12px rgba(0,0,0,.58);align-self:center}
+.cards{display:flex;gap:24px;margin-bottom:248px}
+.card{flex:1;background:var(--white);border-radius:40px;box-shadow:0 0 12px rgba(0,0,0,.2);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;color:var(--ink)}
+.card-img{min-height:300px;border:8px solid var(--white);border-radius:40px;padding:16px;display:flex;align-items:flex-start;background:#2a2920}
+.card-body{padding:24px;display:flex;flex-direction:column;gap:8px}
+.card-body p{color:var(--ink-3)}
+.card-foot{padding:0 24px 24px}
+
+/* ===== 5. MASTERCLASS — beyaz kutu, koyu kart + yazı ===== */
+.master{background:var(--white);border-radius:40px;padding:8px;display:flex;gap:0}
+.master-card{flex:1;min-height:640px;border:8px solid var(--white);border-radius:36px;background:var(--ink-deep);padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:background .8s}
+.master-card::before{content:"";position:absolute;right:-20%;bottom:-30%;width:90%;aspect-ratio:1;border-radius:50%;border:48px solid rgba(255,200,61,.08)}
+.master-card:hover{background:#1a190f}
+.master-card .row{display:flex;align-items:center;gap:16px;position:relative}
+.master-txt{flex:1;padding:32px;display:flex;flex-direction:column;justify-content:center;gap:48px;color:var(--ink)}
+.master-txt .top{display:flex;flex-direction:column;gap:16px}
+.master-txt .h2 .hl{position:relative;white-space:nowrap}
+.master-txt .h2 .hl svg{position:absolute;left:-2%;bottom:-8px;width:104%;height:24px;overflow:visible}
+.master-txt .h2 .hl path{fill:none;stroke:var(--primary);stroke-width:16;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.8s ease-in-out infinite}
+/* çalışma odası arayüz çizimi */
+.master-card .row:first-child{justify-content:space-between}
+.studio{position:relative;z-index:1;margin:auto 0;align-self:center;width:100%;max-width:440px;background:rgba(29,28,20,.85);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 60px rgba(0,0,0,.45);color:var(--white)}
+.st-tabs{display:flex;gap:4px;background:rgba(255,255,255,.06);border-radius:200px;padding:3px;font-size:12px;font-weight:600;color:var(--sand)}
+.st-tabs span{flex:1;text-align:center;padding:6px 8px;border-radius:200px}
+.st-tabs span.on{background:var(--primary);color:var(--on-primary)}
+.st-rec{display:flex;align-items:center;gap:12px}
+.st-rec b{display:block;font-size:14px;font-weight:600}
+.st-rec span{font-size:12px;color:var(--sand)}
+.st-play{width:40px;height:40px;flex:none;border:0;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center}
+.st-play svg{width:18px;height:18px;margin-left:2px}
+.wave{height:56px;display:flex;align-items:center;gap:3px}
+.wave i{flex:1;height:var(--h);border-radius:3px;background:linear-gradient(var(--primary),var(--orange-deep));opacity:.85;transform-origin:center;animation:wv 1.2s ease-in-out var(--d) infinite alternate}
+.wave i:nth-child(n+20){background:rgba(255,255,255,.18);animation:none}
+@keyframes wv{to{transform:scaleY(.45)}}
+.st-sl{display:flex;flex-direction:column;gap:6px}
+.sl-h{display:flex;justify-content:space-between;font-size:13px}
+.sl-h span{color:var(--sand)}
+.sl-h b{color:var(--primary);font-weight:600}
+.sl{position:relative;height:6px;border-radius:6px;background:rgba(255,255,255,.12)}
+.sl i{position:absolute;left:0;top:0;bottom:0;width:var(--v);border-radius:6px;background:var(--primary)}
+.sl i::after{content:"";position:absolute;right:-8px;top:50%;width:16px;height:16px;border-radius:50%;background:var(--white);transform:translateY(-50%);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.sl-n{font-size:11px;color:rgba(202,199,181,.75)}
+@media (prefers-reduced-motion:reduce){.wave i{animation:none}}
+@keyframes draw{40%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-600}}
+@media (prefers-reduced-motion:reduce){.master-txt .h2 .hl path{animation:none;stroke-dashoffset:0}}
+.master-txt .h2 .hl span{position:relative}
+.master-txt .bottom{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.master-txt .lead{color:var(--ink-3);max-width:560px}
+
+/* ===== (eski sosyal bölümü stilleri — .social artık kullanılmıyor) */
+.social{margin:48px auto;border-radius:44px}
+.social-in{background:var(--ink-deep);border:1px solid var(--ink-2);border-radius:40px;padding:72px 24px;display:flex;flex-direction:column;align-items:center}
+.social-in .label{color:var(--sand);margin-bottom:16px;text-align:center}
+.social-in .h2{text-align:center;padding-bottom:24px}
+.feed{width:80%;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding-bottom:24px}
+.feed .photo{aspect-ratio:1;border-radius:24px}
+.feed .photo:first-child{border-top-left-radius:40px}
+.feed .photo:nth-child(4){border-top-right-radius:40px}
+.feed .photo:nth-child(5){border-bottom-left-radius:40px}
+.feed .photo:last-child{border-bottom-right-radius:40px}
+
+/* ===== 6. SSS — 3 sütun akordeon (details/summary: içerik her zaman HTML'de) ===== */
+.faq{margin:48px auto;border-radius:44px;background:var(--ink-deep);border:1px solid var(--ink-2);padding:72px clamp(24px,5vw,72px)}
+.faq-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.faq-head>div{display:flex;flex-direction:column;gap:12px;max-width:720px}
+.faq-badge{width:fit-content;border-radius:8px;background:var(--ink);border:1px solid var(--ink-2);padding:6px 10px;font-size:13px;color:var(--primary);font-weight:600}
+.faq-head .h2{text-wrap:balance}
+.faq-head .lead{color:var(--sand)}
+.faq-head .btn{flex:none}
+.faq-cols{display:flex;gap:48px}
+.faq-col{flex:1;display:flex;flex-direction:column;gap:24px;min-width:0}
+.faq-cat h3{font-size:18px;font-weight:600}
+.faq-cat p{font-size:14px;color:var(--sand);margin-top:2px}
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.qa{border-radius:14px;background:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.2),0 2px 6px rgba(0,0,0,.25);border:1px solid transparent;transition:border-color .25s,background .25s}
+.qa[open]{border-color:rgba(255,200,61,.35);background:#24231a}
+.qa summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;cursor:pointer}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary h4{font-size:14px;line-height:20px;font-weight:500;color:var(--sand);transition:color .2s}
+.qa[open] summary h4,.qa summary:hover h4{color:var(--white)}
+.qa .chev{width:16px;height:16px;flex:none;color:var(--sand);transition:transform .25s}
+.qa[open] .chev{transform:rotate(180deg);color:var(--primary)}
+.qa summary:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:14px}
+.ans{padding:0 16px 14px}
+.ans p{font-size:14px;line-height:21px;color:var(--cream);text-wrap:pretty}
+/* açılış animasyonu (destekleyen tarayıcılarda) */
+@supports (interpolate-size:allow-keywords){
+  .faq{interpolate-size:allow-keywords}
+  .qa::details-content{height:0;overflow:clip;transition:height .3s ease,content-visibility .3s allow-discrete}
+  .qa[open]::details-content{height:auto}
+}
+@media (prefers-reduced-motion:reduce){.qa::details-content{transition:none}}
+@media (max-width:1024px){.faq-cols{flex-direction:column;gap:32px}}
+@media (max-width:600px){.faq{padding:48px 16px}.faq-head .btn{width:100%}}
+
+/* ===== 7. FOOTER — beyaz destekçiler alanı + üstü 44px yuvarlak koyu blok ===== */
+.ftr{background:transparent;color:var(--ink)}
+.sponsors{background:var(--white);border-radius:44px;margin:48px auto;padding:96px 0;display:flex;flex-direction:column;gap:48px;overflow:hidden}
+.sponsors .h3{padding:0 24px}
+.sponsors.cta{align-items:center;text-align:center;gap:20px;padding:96px 24px}
+.sponsors.cta .lead{color:var(--ink-3);max-width:680px;text-wrap:balance}
+.sponsors.cta .btn{margin-top:12px}
+.sponsors .h3{text-align:center;font-size:50px;line-height:52px}
+.marq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq-track{display:flex;gap:16px;width:max-content;animation:slide 40s linear infinite}
+.marq-track .img-ph{width:calc((min(100vw - var(--side)*2, 1840px) - 48px)/4);height:140px;border-radius:24px;flex:none}
+@keyframes slide{to{transform:translateX(calc(-50% - 8px))}}
+@media (prefers-reduced-motion:reduce){.marq-track{animation:none}}
+
+.f-dark{background:var(--ink-deep);color:var(--white);border-radius:44px 44px 0 0}
+.f-main{display:flex;gap:24px;padding-top:72px}
+.f-brand{width:25%;flex:none;display:flex;flex-direction:column}
+.f-brand .f-logo{width:248px;max-width:100%;margin-bottom:16px}
+.f-brand .f-logo img{display:block;width:100%;height:auto}
+.f-brand p{font-size:16px;line-height:21px}
+.f-brand .gap12{padding-bottom:12px}
+.f-brand .gap24{margin-bottom:24px}
+.f-btns{display:flex;align-items:center;gap:8px}
+.f-btns .btn{padding:12px 24px}
+.f-right{flex:1;display:flex;gap:24px}
+.f-links{flex:1;display:flex;flex-direction:column;gap:48px}
+.f-cols{display:flex;gap:24px}
+.f-cols>div{flex:1;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.f-cols .f-h{font-size:14px;font-weight:600;letter-spacing:.2px;color:var(--primary);margin-bottom:4px}
+.f-cols a{font-size:14px;font-weight:500;letter-spacing:var(--t-label-ls);text-transform:uppercase;padding:6px 0;color:var(--white);transition:color .2s}
+.f-cols a:hover,.f-cols a:focus{color:var(--primary)}
+.f-card{width:40%;flex:none;background:var(--ink);border-radius:40px;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:24px}
+.f-card>a,.f-card>div{display:flex;flex-direction:column;gap:0}
+.f-card .k{display:flex;align-items:center;gap:4px;font-size:14px;font-weight:500;letter-spacing:var(--t-label-ls);text-transform:uppercase;color:var(--sand)}
+.f-card .k svg{width:24px;height:24px;flex:none;color:var(--primary)}
+.f-card .v{font-size:16px;line-height:21px;color:var(--white);padding-left:28px}
+.f-card a:hover .v{color:var(--primary)}
+.f-div{border:0;border-top:1px solid var(--ink-3);margin:24px 0}
+.f-bottom{display:flex;gap:24px;align-items:center;margin-bottom:24px;font-size:16px;line-height:21px}
+.f-bottom>div{flex:1;display:flex;flex-direction:column;gap:8px}
+.f-bottom .mid{text-align:center}
+.f-bottom .icons{flex-direction:row;justify-content:flex-end;gap:12px}
+.f-bottom .icons a{color:var(--white);display:grid;place-items:center;transition:color .2s}
+.f-bottom .icons a:hover{color:var(--primary)}
+.f-bottom .icons svg{width:24px;height:24px}
+.credits{font-size:11px;line-height:15px;color:var(--sand);padding-bottom:24px}
+@media (min-width:1600px){
+  .f-brand{width:20%}
+  .f-card{width:50%;align-items:center;text-align:center;gap:40px;padding:32px}
+  .f-card .k{justify-content:center}.f-card .v{padding-left:0}
+}
+@media (max-width:1280px){
+  .f-main{gap:48px}
+  .f-brand{width:30%}
+  .f-right{flex-direction:column;gap:48px}
+  .f-card{width:auto;flex-direction:row;border-radius:200px;padding:24px 40px;justify-content:space-around}
+  .f-btns{flex-direction:column;align-items:stretch}
+}
+@media (max-width:1024px){
+  .f-brand{width:auto}
+  .f-right{flex-direction:column-reverse}
+  .f-btns{flex-direction:row;align-items:center}
+}
+@media (max-width:768px){
+  .f-card{border-radius:40px}
+  .f-bottom{gap:8px}
+}
+@media (max-width:600px){
+  .sponsors{padding:64px 0}.sponsors .h3{font-size:28px;line-height:34px}
+  .f-cols{flex-direction:column;gap:24px}
+  .f-card{flex-direction:column;align-items:flex-start}
+  .f-bottom{flex-wrap:wrap}
+  .f-bottom>div{flex:0 0 100%}.f-bottom .mid{text-align:left}.f-bottom .icons{justify-content:flex-start}
+}
+
+/* ===== Kırılım noktaları ===== */
+@media (max-width:1024px){
+  .nmenu,.hdr-right>.btn,.lang{display:none}
+  .menu-btn{display:grid}
+  .hero-box{flex-direction:column;align-items:stretch}
+  .hero-l,.hero-r{min-height:auto;width:auto;padding:0 32px}
+  .hero-l{min-height:60vh;padding-top:48px}
+  .master{flex-direction:column}
+  .cards{flex-direction:column}
+  .offer-head{flex-direction:column;align-items:flex-start;margin-top:160px}
+  .cards{margin-bottom:160px}
+  .f-main{flex-direction:column}
+  .feed{width:100%}
+}
+@media (max-width:767px){
+  .hdr-bar{padding-left:16px}
+  .brand img{width:140px}
+  .hero-l,.hero-r{padding:0 20px}
+  .offer{padding:0 16px}
+  .offer-head{margin-top:96px}
+  .cards{margin-bottom:96px}
+  .master-card{min-height:420px}
+  .master-txt{padding:24px 16px}
+  .feed{grid-template-columns:repeat(2,1fr)}
+  .marq-track .img-ph{width:60vw}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. HEADER ============ -->
+<header class="hdr">
+  <div class="box hdr-bar">
+    <a href="/" class="brand" aria-label="Repertuvar.app ana sayfa"><img src="logo.png" alt="repertuvar.app" width="172" height="40"></a>
+    <nav>
+      <ul class="nmenu">
+        <li><a href="#features">Özellikler</a></li>
+        <li><a href="#pedal">Pedal</a></li>
+        <li><a href="#nasil">Nasıl çalışır</a></li>
+        <li><a href="#neden">Neden Repertuvar</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-right">
+      <div class="lang" role="group" aria-label="Dil"><button class="on">TR</button><button>EN</button></div>
+      <a href="giris.html" class="btn btn-ghost btn-sm">Giriş Yap</a>
+      <a href="#" class="btn btn-y btn-sm">Ücretsiz Dene</a>
+      <button class="icon-btn menu-btn" aria-label="Menüyü aç" onclick="document.getElementById('oc').classList.add('open')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- off-canvas menü -->
+<div class="oc" id="oc">
+  <div class="box oc-in">
+    <div class="oc-top">
+      <img src="logo.png" alt="repertuvar.app" width="150" height="35">
+      <button class="icon-btn" aria-label="Kapat" onclick="document.getElementById('oc').classList.remove('open')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ul class="oc-nav">
+      <li><a href="#features">Özellikler</a></li>
+      <li><a href="#pedal">Pedal</a></li>
+      <li><a href="#nasil">Nasıl çalışır</a></li>
+      <li><a href="#neden">Neden Repertuvar</a></li>
+    </ul>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="giris.html" class="btn btn-ghost">Giriş Yap</a><a href="#" class="btn btn-y">Ücretsiz Dene</a></div>
+    <div class="oc-foot">
+      <div><p>[İletişim satırı 1]</p><p>[İletişim satırı 2]</p></div>
+      <div style="display:flex;gap:8px"><span class="icon-btn">◎</span><span class="icon-btn">▶</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2. HERO ============ -->
+<section class="box hero">
+  <div class="hero-box" id="heroSS" data-slides="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Metropolitan_Opera_House%2C_a_concert_by_pianist_Josef_Hofmann_-_NARA_541890_-_Edit.jpg/1920px-Metropolitan_Opera_House%2C_a_concert_by_pianist_Josef_Hofmann_-_NARA_541890_-_Edit.jpg|https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Middleton_Community_Orchestra_Spring_2024_Concert_-_53749951483.jpg/1920px-Middleton_Community_Orchestra_Spring_2024_Concert_-_53749951483.jpg|https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Orchestra_Wellington_in_concert_at_the_MFC.jpg/1920px-Orchestra_Wellington_in_concert_at_the_MFC.jpg" data-delay="6500" data-speed="1000" data-kenburns="in">
+    <div class="hero-l">
+      <p class="label">Repertuvar.app</p>
+      <h1 class="display">Sen sahnede müziğine odaklan. Gerisini <span class="accent">repertuvar.app</span> halletsin.</h1>
+      <p class="hero-p">Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedalı ile sahneni yönet. İster sürükle-bırak ile kendi akışını oluştur, ister akıllı özelliklerle repertuvarını saniyeler içinde düzenle.</p>
+      <div class="btns">
+        <a href="#" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#pedal" class="btn btn-w">Pedalı Keşfet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-r">
+      <div class="hpanels">
+        <div class="hp hp-ben on" data-p="0">
+          <div class="bgrid"><div class="bcard st" style="--i:0"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5.2-2.8M19 12.9a10 10 0 0 0-2.2-1.6M2 8.8a15 15 0 0 1 4.2-2.7M22 8.8a15 15 0 0 0-11.3-3.7"/><circle cx="12" cy="20" r="1"/></svg></span><b>Çevrimdışı Çalışır</b><span>İnternet olmasa da sorun yok.</span></div><div class="bcard st" style="--i:1"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></span><b>Bluetooth Pedal</b><span>Ekrana dokunmadan geçiş yap.</span></div><div class="bcard st" style="--i:2"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg></span><b>Grup Senkronizasyonu</b><span>Değişiklikler anında herkese ulaşır.</span></div><div class="bcard st" style="--i:3"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><b>Güvenli Yedekleme</b><span>Verilerin güvende kalır.</span></div></div>
+        </div>
+        <div class="hp hp-app" data-p="1">
+          <div class="tablet2 st" style="--i:0">
+            <div class="tscreen">
+              <div class="thead"><span>Konser Setlistim ⌄</span><span>•••</span></div>
+              <div class="tsub">19 Parça · 75 dk</div>
+              <div class="tr on"><span>1</span><span>Allı Turnam</span><span class="mk2">Hüseyni</span><span class="ky">La</span></div><div class="tr"><span>2</span><span>Dostum Dostum</span><span class="mk2">Hüseyni</span><span class="ky">La</span></div><div class="tr"><span>3</span><span>Barış Güvercini</span><span class="mk2">Hüseyni</span><span class="ky">La</span></div><div class="tr"><span>4</span><span>Vardar Ovası</span><span class="mk2">Hicaz</span><span class="ky">La</span></div><div class="tr"><span>5</span><span>Aldırma Gönül</span><span class="mk2">Hicaz</span><span class="ky">La</span></div><div class="tr"><span>6</span><span>Bedir Geliyor</span><span class="mk2">Hicaz</span><span class="ky">La</span></div>
+              <div class="toast"><span>✓</span>Repertuvar güncellendi</div>
+            </div>
+          </div>
+          <img class="hpedal st" style="--i:2" src="pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı (harici cihaz)" width="640" height="344">
+        </div>
+        <div class="hp hp-all" data-p="2">
+          <div class="inst st" style="--i:0"><img src="baglama.png" alt="Akustik bağlama" width="606" height="1286"><img src="guitar-dik.png" alt="Akustik klasik gitar" width="440" height="667"></div>
+          <div class="allbox">
+            <h3 class="st" style="--i:0">Her müzisyen<br>için güçlü.</h3>
+            <div class="chips2"><span class="chip2 st" style="--i:1">Makama göre düzenleme</span><span class="chip2 st" style="--i:2">Potpuri desteği</span><span class="chip2 st" style="--i:3">Sürükle-bırak akış</span><span class="chip2 st" style="--i:4">Akıllı sıralama</span><span class="chip2 st" style="--i:5">Bluetooth pedal ile kontrol</span><span class="chip2 st" style="--i:6">Eser notları ve kişisel notlar</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hdots" role="tablist" aria-label="Slaytlar">
+        <button role="tab" aria-label="Avantajlar" class="on"><i></i></button>
+        <button role="tab" aria-label="Uygulama"><i></i></button>
+        <button role="tab" aria-label="Her müzisyen için"><i></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. HAKKIMIZDA ============ -->
+<section class="box intro" id="hakkimizda">
+  <div class="intro-img photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/A_musician_playing_violin_2.jpg/1920px-A_musician_playing_violin_2.jpg')">
+    <div class="intro-img-row">
+      <p class="body-m">Setlist, potpuri ve makam sırası tek ekranda. Sahnede telefona değil, müziğe bak.</p>
+      <div class="btn-wrap"><a href="#features" class="btn btn-y">Özellikleri gör</a></div>
+    </div>
+  </div>
+  <div class="intro-y">
+    <div class="intro-top">
+      <p class="label">Hakkımızda</p>
+      <h2 class="h2">Repertuvar.app ve sahnedeki müzisyen</h2>
+    </div>
+    <div class="paras">
+      <p class="p1">Repertuvar.app, sahneye çıkan müzisyenler için geliştirilmiş akıllı bir repertuvar yönetim sistemi. Amacı basit: provadan konsere kadar tüm grubun aynı listeyle, aynı anda çalışması.</p>
+      <p class="p2">Sürükle-bırak ile kendi akışını kur ya da tek dokunuşla makam düzenine geç. Değişiklikler anında grubundaki herkese ulaşır, Bluetooth pedalla ekrana dokunmadan sayfa çevirirsin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3b. ÖZELLİKLER ============ -->
+<section class="box feat" id="features">
+  <div class="feat-head">
+    <p class="label">Özellikler</p>
+    <h2 class="h2">Sahneye çıkan müzisyenlerin ihtiyaç duyduğu özellikler.</h2>
+    <p class="lead">Dağınık listeler yerine, performansın tamamını tek yerden yönetin.</p>
+  </div>
+  <div class="bento">
+    <div class="bento-row r1">
+      <article class="fcard" id="pedal">
+        <div class="txt">
+          <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></span>Bluetooth Pedal</h3>
+          <p>Telefonuna ya da tabletine dokunmadan şarkılar arasında geçiş yap. Ellerini enstrümandan ayırmadan performansını sürdür.</p>
+          <p><b>Sahnedeki fısıltıya son.</b> Sahne modunda, ekranın altında sıradaki eser her zaman görünür — adı, kararı, usulü. "Sırada ne var, hangi tondan giriyoruz?" diye sormaya gerek kalmaz.</p>
+        </div>
+        <div class="stage st-pedal">
+          <div class="siradaki"><small>Sıradaki eser</small><b>Acem Kızı</b><span>La · 15/8 · Dp</span></div>
+          <img src="pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı" width="640" height="344">
+        </div>
+        <p class="st-note">Örnek: bir Türk müziği eseri — karar sesi, usulü ve düzeniyle.</p>
+      </article>
+
+      <article class="fcard">
+        <div class="txt">
+          <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>Kesintisiz Performanslar Hazırla</h3>
+          <p>Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.</p>
+          <p>Sıralamayı değiştirdiğinde <b>zincirlenmiş eserler birlikte taşınır</b> — potpurinin içi asla dağılmaz.</p>
+        </div>
+        <div class="stage">
+          <div class="pot">
+            <div class="pot-row"><span class="n">3</span><span class="a">Yemen Türküsü</span><span class="i">A · 4/4</span></div>
+            <div class="pot-chain">
+              <span class="tag">Potpuri · aralıksız</span>
+              <div class="pot-row"><span class="n">4</span><span class="a">Allı Turnam</span><span class="i">A · 4/4</span></div>
+              <div class="pot-row"><span class="n">5</span><span class="a">Dostum Dostum</span><span class="i">A · 4/4</span></div>
+              <div class="pot-row"><span class="n">6</span><span class="a">Şafak Türküsü</span><span class="i">A · 9/8</span></div>
+            </div>
+            <div class="pot-row"><span class="n">7</span><span class="a">Vardar Ovası</span><span class="i">D · 4/4</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="fcard">
+        <div class="txt">
+          <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Akıllı Repertuvar Yönetimi</h3>
+          <p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p>
+        </div>
+        <div class="stage st-list">
+          <ul class="checks">
+            <li>Sürükle-bırak ile sırala</li>
+            <li>Makama göre tek dokunuşla düzen</li>
+            <li>Potpuri zincirleri — eserleri birbirine bağla</li>
+            <li>Repertuvarı kopyala, taslak veya onaylı olarak tut</li>
+            <li>Her esere kadro ve not ekle</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="bento-row r2">
+      <article class="fcard">
+        <div class="txt">
+          <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></span>Kendi Tonundan Çal</h3>
+          <p>Eseri kendi tonuna transpoze et. Akorları ister A-B-C ile ister Do-Re-Mi ile okuyabilirsin — hangisine alışkınsan.</p>
+          <p><b>Grubun akoru bozulmaz.</b> Yaptığın transpoze yalnızca senin kopyanda kalır. Aktardıktan sonra karar rozeti hem yeni hem orijinal kararı gösterir.</p>
+        </div>
+        <div class="stage st-key">
+          <div class="keys"><span class="key old">La</span><span class="arr">→</span><span class="key new">Do</span></div>
+          <span class="key-cap"><b>Acem Kızı</b> · Do (C) · orijinal: La (A)</span>
+          <div class="notation"><span class="on">A-B-C</span><span>Do-Re-Mi</span></div>
+        </div>
+      </article>
+
+      <article class="fcard">
+        <div class="txt">
+          <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></span>Makama Göre Düzenle</h3>
+          <p>Tek dokunuşla repertuvarını makam düzenine geçir; eserler kendi makam grubunda sıralanır.</p>
+        </div>
+        <div class="stage st-belt" aria-hidden="true">
+          <div class="belt"><span class="chip" style="animation-delay:-0s">Hüseyni</span><span class="chip" style="animation-delay:-3s">Hicaz</span><span class="chip" style="animation-delay:-6s">Kürdi</span><span class="chip" style="animation-delay:-9s">Uşşak</span><span class="chip" style="animation-delay:-12s">Rast</span><span class="chip" style="animation-delay:-15s">Segâh</span></div>
+          <div class="belt-static"><span>Hüseyni</span><span>Hicaz</span><span>Kürdi</span><span>Uşşak</span><span>Rast</span><span>Segâh</span></div>
+        </div>
+      </article>
+
+      <article class="fcard">
+        <div class="txt">
+          <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg></span>Grup Senkronizasyonu</h3>
+          <p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşır. Herkes aynı repertuvar üzerinde çalışır.</p>
+          <p>Eserin altına düştüğün not — "girişi ben alıyorum", "burada yavaşlıyoruz" — herkese gider. <b>Kişisel notların ise yalnızca sende kalır.</b></p>
+        </div>
+        <div class="stage st-sync">
+          <div class="snote grp"><span class="e">Grup notu</span><span class="m">Girişi ben alıyorum</span><span class="k">Emir · herkes görür</span></div>
+          <div class="snote me"><span class="e">Kişisel not</span><span class="m">Kapoyu 2'ye al</span><span class="k">yalnızca sen</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3c. NASIL ÇALIŞIR ============ -->
+<section class="box how" id="nasil">
+  <div class="how-head">
+    <p class="label">4 adımda</p>
+    <h2 class="h2">Nasıl Çalışır?</h2>
+    <p class="lead">Dakikalar içinde sahneye hazır ol.</p>
+  </div>
+  <div class="how-in">
+    <div class="how-nums" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+    <div class="steps">
+      <div class="step" data-n="1"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <h3>Eseri Bul veya Ekle</h3>
+        <p>Veritabanından eser seç ya da kendi eserini ekle.</p>
+        <ul><li>Hazır eser veritabanı</li><li>Kendi eserini ekle</li><li>Makam, usul ve karar bilgisiyle</li></ul>
+      </div>
+      <div class="step" data-n="2"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 5-10 5L2 7l10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+        <h3>Repertuvarını Oluştur</h3>
+        <p>Şarkılarını sırala, potpurilerini oluştur, istersen makamına göre düzenle.</p>
+        <ul><li>Sürükle-bırak ile sırala</li><li>Potpuri zincirleri</li><li>Makama göre tek dokunuşla düzen</li></ul>
+      </div>
+      <div class="step" data-n="3"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+        <h3>Grubunla Paylaş</h3>
+        <p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşsın.</p>
+        <ul><li>Herkes aynı listede</li><li>Grup notları herkese gider</li><li>Kişisel notlar sende kalır</li></ul>
+      </div>
+      <div class="step" data-n="4"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></span>
+        <h3>Sahnede Yönet</h3>
+        <p>Bluetooth pedal ile şarkılar arasında kesintisiz geçiş yap.</p>
+        <ul><li>Ekrana dokunmadan geçiş</li><li>Sıradaki eser hep görünür</li></ul>
+        <img class="pedal-art" src="pedal-cizim-koyu.png" alt="" width="560" height="277">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3d. NEDEN REPERTUVAR ============ -->
+<section class="box cmp" id="neden">
+  <div class="cmp-in">
+    <div class="cmp-head">
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Neden Repertuvar</span>
+      <h2 class="h2">Neden Repertuvar.app?</h2>
+      <p class="lead">Her müzisyen için güçlü. Türk müziği icra edenler için ise daha da güçlü.</p>
+      <p class="note">Makam ve usul, Türk müziğinin ezgi ve ritim sistemleridir.</p>
+    </div>
+    <div class="cmp-grid">
+      <article class="ccard them">
+        <div class="cvis photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Sheet_music_on_stand_-_Regent_St_Festival_2010_%28photo_by_Garry_Knight%29.jpg/960px-Sheet_music_on_stand_-_Regent_St_Festival_2010_%28photo_by_Garry_Knight%29.jpg')"><span class="cvis-tag">Kâğıt nota · sehpa</span></div>
+        
+        <div class="ch">
+          <div class="ct">Diğer uygulamalar</div>
+          <p class="cd">Genel amaçlı liste uygulamalarında sahnede karşılaşılan eksikler.</p>
+        </div>
+        <hr>
+        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Manuel liste düzenleme</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Potpuri desteği yok</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Türk müziğine özel değil</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Ekrana dokunmak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Bireysel kullanım odaklı</span></li></ul>
+        <div class="cf"><a href="#features" class="btn btn-sec">Özellikleri gör <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </article>
+      <article class="ccard us">
+        <div class="cvis lap"><img src="tablet-muzisyen.png" alt="Koltukta gitar çalarken sehpadaki tablette Repertuvar.app’e bakan müzisyen" width="1672" height="941"></div>
+        
+        <div class="ch">
+          <div class="ct">Repertuvar.app <span class="badge solid">Önerilen</span></div>
+          <p class="cd">İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam düzenine geç.</p>
+        </div>
+        <hr>
+        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sürükle-bırak ve akıllı sıralama</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Potpuri oluşturabilir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Makam sıralama desteği</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Bluetooth pedal ile kontrol</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Grup senkronizasyonu</span></li></ul>
+        <div class="cf"><a href="#" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. KİMİN İÇİN ============ -->
+<section class="box offer" id="kimler">
+  <div class="offer-head">
+    <div>
+      <p class="label">Kimin için</p>
+      <h2 class="h2">Tek başına da, koroyla da</h2>
+    </div>
+    <p class="lead">Bireysel çalışmadan sahneye, üç farklı ihtiyaç için tek uygulama.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div>
+        <div class="card-img" data-slides="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/A_musician_playing_violin_3.jpg/960px-A_musician_playing_violin_3.jpg|https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Close_up_of_an_acoustic_guitar_being_played.jpg/960px-Close_up_of_an_acoustic_guitar_being_played.jpg|https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Grand_Piano_MET_DP300941.jpg/960px-Grand_Piano_MET_DP300941.jpg" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Solo</span></div>
+        <div class="card-body"><h4 class="h4">Bireysel müzisyen</h4><p>Kendi repertuvarını kur, eseri kendi tonuna aktar. Akor yalnızca senin kopyanda değişir; Çalışma Odası'nda kaydınla tonunu ve temponu ayarla.</p></div>
+      </div>
+      <div class="card-foot"><a href="giris.html#kayit" class="btn btn-y">Başla</a></div>
+    </article>
+    <article class="card">
+      <div>
+        <div class="card-img" data-slides="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Girls_choir_singing_Christmas_carols%2C_Brisbane%2C_2021.jpg/960px-Girls_choir_singing_Christmas_carols%2C_Brisbane%2C_2021.jpg|https://upload.wikimedia.org/wikipedia/commons/d/d2/Singing_choir_in_Rotterdam.jpg|https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/WYSO_Concert_Orchestra_rehearsal.jpg/960px-WYSO_Concert_Orchestra_rehearsal.jpg" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Grup / Koro</span></div>
+        <div class="card-body"><h4 class="h4">Gruplar ve korolar</h4><p>Üyeler davet linki ya da QR kodla katılır. Herkes aynı listede çalışır; duyurular ve grup notları anında herkese ulaşır.</p></div>
+      </div>
+      <div class="card-foot"><a href="giris.html#kayit" class="btn btn-y">Grup kur</a></div>
+    </article>
+    <article class="card">
+      <div>
+        <div class="card-img" data-slides="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Middleton_Community_Orchestra_Spring_2024_Concert_-_53748843502.jpg/960px-Middleton_Community_Orchestra_Spring_2024_Concert_-_53748843502.jpg|https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Orchestra_Wellington_in_concert_at_the_MFC.jpg/960px-Orchestra_Wellington_in_concert_at_the_MFC.jpg|https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/A_drum_kit_made_by_Mapex_Drums_-_Cacon_Photos-_Copyleft_-_Creative_Commons_01.jpg/960px-A_drum_kit_made_by_Mapex_Drums_-_Cacon_Photos-_Copyleft_-_Creative_Commons_01.jpg" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Sahne</span></div>
+        <div class="card-body"><h4 class="h4">Sahnedeki müzisyen</h4><p>Sahne modu, Bluetooth pedal ve hep görünen sıradaki eser. Misafir solistlere girişsiz, süreli ve akorsuz bir liste linki gönder.</p></div>
+      </div>
+      <div class="card-foot"><a href="#pedal" class="btn btn-y">Sahne modunu gör</a></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 5. ÇALIŞMA ODASI ============ -->
+<section class="box master" id="calisma">
+  <div class="master-card">
+    <div class="row"><span class="ico">↗</span><p class="label" style="color:var(--cream-2)">Çalışma Odası</p></div>
+    <div class="studio" aria-hidden="true">
+      <div class="st-tabs"><span class="on">Kayıtlarım</span><span>Ritim</span><span>Metronom</span></div>
+      <div class="st-rec">
+        <button class="st-play" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div><b>Acem Kızı — prova.m4a</b><span>02:41 · Karar: La</span></div>
+      </div>
+      <div class="wave"><i style="--h:59%;--d:0.24s"></i><i style="--h:68%;--d:0.00s"></i><i style="--h:27%;--d:0.96s"></i><i style="--h:30%;--d:0.60s"></i><i style="--h:92%;--d:0.00s"></i><i style="--h:82%;--d:0.36s"></i><i style="--h:22%;--d:0.12s"></i><i style="--h:73%;--d:0.72s"></i><i style="--h:26%;--d:0.36s"></i><i style="--h:29%;--d:0.96s"></i><i style="--h:72%;--d:0.00s"></i><i style="--h:90%;--d:0.12s"></i><i style="--h:46%;--d:1.08s"></i><i style="--h:25%;--d:1.08s"></i><i style="--h:92%;--d:0.72s"></i><i style="--h:24%;--d:0.36s"></i><i style="--h:23%;--d:0.96s"></i><i style="--h:35%;--d:0.48s"></i><i style="--h:71%;--d:0.24s"></i><i style="--h:87%;--d:0.12s"></i><i style="--h:91%;--d:0.48s"></i><i style="--h:89%;--d:0.24s"></i><i style="--h:31%;--d:1.08s"></i><i style="--h:91%;--d:0.36s"></i><i style="--h:65%;--d:0.12s"></i><i style="--h:88%;--d:0.12s"></i><i style="--h:90%;--d:0.00s"></i><i style="--h:97%;--d:0.36s"></i><i style="--h:81%;--d:0.96s"></i><i style="--h:72%;--d:0.60s"></i><i style="--h:77%;--d:1.08s"></i><i style="--h:76%;--d:0.60s"></i><i style="--h:56%;--d:0.36s"></i><i style="--h:41%;--d:0.36s"></i><i style="--h:28%;--d:1.08s"></i><i style="--h:56%;--d:0.96s"></i><i style="--h:81%;--d:0.60s"></i><i style="--h:75%;--d:0.48s"></i><i style="--h:95%;--d:0.12s"></i><i style="--h:33%;--d:0.96s"></i><i style="--h:71%;--d:0.24s"></i><i style="--h:61%;--d:0.24s"></i><i style="--h:80%;--d:0.72s"></i><i style="--h:23%;--d:0.12s"></i><i style="--h:89%;--d:1.08s"></i><i style="--h:58%;--d:0.60s"></i><i style="--h:62%;--d:1.08s"></i><i style="--h:81%;--d:1.08s"></i></div>
+      <div class="st-sl">
+        <div class="sl-h"><span>Ton</span><b>−3 yarım ses</b></div>
+        <div class="sl"><i style="--v:35%"></i></div>
+        <div class="sl-n">Kayıt: Do → Karar: La</div>
+      </div>
+      <div class="st-sl">
+        <div class="sl-h"><span>Tempo</span><b>%90</b></div>
+        <div class="sl"><i style="--v:45%"></i></div>
+        <div class="sl-n">Ton değişmeden yavaşlat</div>
+      </div>
+    </div>
+  </div>
+  <div class="master-txt">
+    <div class="top">
+      <p class="label">Çalışma Odası</p>
+      <h3 class="h2">Provaya gelmeden önce <span class="hl"><svg viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M5 16 C80 4 220 4 295 14"/></svg><span>kendi tonunda</span></span> çalış.</h3>
+    </div>
+    <div class="bottom">
+      <p class="lead">Kaydını yükle (mp3, m4a, wav), tonunu ve temposunu birbirinden bağımsız değiştir. Uygulama, kaydın tonundan eserin kararına kaç yarım ses gerektiğini kendisi hesaplar. Ritim döngülerini eserlerine bağla; metronom da aynı yerde.</p>
+      <a href="giris.html#kayit" class="btn btn-y">Çalışma Odası'nı keşfet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. SIK SORULANLAR ============ -->
+<section class="box faq" id="sss" aria-labelledby="sss-baslik">
+  <header class="faq-head">
+    <div>
+      <p class="faq-badge">Sık sorulanlar</p>
+      <h2 class="h2" id="sss-baslik">Repertuvar.app hakkında sık sorulan sorular</h2>
+      <p class="lead">Bir sütun seç, ihtiyacına uyan soruyu aç. Cevabını bulamazsan bize yaz.</p>
+    </div>
+    <a href="mailto:info@repertuvar.app" class="btn btn-y"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg> E-posta gönder</a>
+  </header>
+  <div class="faq-cols">
+    <div class="faq-col">
+      <div class="faq-cat"><h3>Başlarken</h3><p>Uygulamayı tanımak ve kurmak.</p></div>
+      <div class="faq-list">
+        <details class="qa" name="sss-0" open>
+          <summary><h4>Repertuvar.app nedir?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Repertuvar.app, sahneye çıkan müzisyenler, gruplar ve korolar için bir repertuvar ve setlist yönetim uygulamasıdır. Eserleri sürükle-bırak ile sıralar, potpuri oluşturur, makama göre düzenler ve sahnede Bluetooth pedalla yönetirsin.</p></div>
+        </details>
+        <details class="qa" name="sss-0">
+          <summary><h4>Repertuvar.app hangi cihazlarda çalışır?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Repertuvar.app web tarayıcısında çalışır; telefonda ve tablette ana ekrana eklenerek uygulama gibi kullanılabilir.</p></div>
+        </details>
+        <details class="qa" name="sss-0">
+          <summary><h4>Repertuvar.app internet olmadan çalışır mı?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Evet. Veriler cihazda da saklandığı için bağlantı olmadığında uygulama çevrimdışı modda yerel verilerle çalışmaya devam eder; sahnede internet kesilse de repertuvarın açık kalır.</p></div>
+        </details>
+        <details class="qa" name="sss-0">
+          <summary><h4>Repertuvar.app hangi dilleri destekliyor?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Repertuvar.app Türkçe ve İngilizce kullanılabilir. Dili ayarlardan istediğin zaman değiştirebilirsin.</p></div>
+        </details>
+      </div>
+    </div>
+    <div class="faq-col">
+      <div class="faq-cat"><h3>Sahne ve grup</h3><p>Pedal, sahne modu ve ekip çalışması.</p></div>
+      <div class="faq-list">
+        <details class="qa" name="sss-1" open>
+          <summary><h4>Repertuvar.app hangi Bluetooth pedalla çalışır?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Repertuvar.app Bluetooth sayfa çevirme pedallarıyla çalışır ve Lekato WT-6 ile test edilmiştir. Pedalla ekrana dokunmadan eserler arasında geçiş yaparsın.</p></div>
+        </details>
+        <details class="qa" name="sss-1">
+          <summary><h4>Sahne modunda ekranda ne görünür?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Sahne modunda çalınan eserin yanında sıradaki eser her zaman görünür: adı, karar sesi ve usulü. Akor gösterimini ve yazı boyutunu sahne ayarlarından seçersin.</p></div>
+        </details>
+        <details class="qa" name="sss-1">
+          <summary><h4>Grubuma ya da koroma nasıl üye eklerim?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Üyeler grubuna davet linkiyle ya da karekodu okutarak katılır; davet linki 7 gün geçerlidir. Bir müzisyen birden fazla gruba veya koroya üye olabilir.</p></div>
+        </details>
+        <details class="qa" name="sss-1">
+          <summary><h4>Misafir solist listeyi nasıl görür?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Misafir solistlere giriş gerektirmeyen, salt okunur bir liste linki gönderirsin. Link belirli bir süre sonra geçersiz olur, akor içermez ve yazdırılabilir.</p></div>
+        </details>
+      </div>
+    </div>
+    <div class="faq-col">
+      <div class="faq-cat"><h3>Eserler ve Türk müziği</h3><p>Makam, ton ve eser ekleme.</p></div>
+      <div class="faq-list">
+        <details class="qa" name="sss-2" open>
+          <summary><h4>Repertuvarı makama göre düzenleyebilir miyim?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Evet. Tek dokunuşla repertuvarını makam düzenine geçirebilirsin; her eserde makam, usul, form ve karar bilgisi tutulur. İstersen sürükle-bırak ile kendi akışını da kurabilirsin.</p></div>
+        </details>
+        <details class="qa" name="sss-2">
+          <summary><h4>Ton değiştirince grubun akoru bozulur mu?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Hayır. Yaptığın transpoze yalnızca senin kopyanda kalır, grubun ve eserin orijinal akoru değişmez. Akorları A-B-C ya da Do-Re-Mi ile okuyabilirsin.</p></div>
+        </details>
+        <details class="qa" name="sss-2">
+          <summary><h4>Potpuri nasıl oluşturulur?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Bir eseri öncekine zincirleyerek potpuri oluşturursun; zincirdeki eserler aralıksız çalınır. Sıralamayı değiştirdiğinde potpuri birlikte taşınır ve içi dağılmaz.</p></div>
+        </details>
+        <details class="qa" name="sss-2">
+          <summary><h4>Kendi eserimi ekleyebilir miyim?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="ans"><p>Evet. Söz, akor (ChordPro biçimi dahil) ve nota görseli ya da PDF ekleyebilirsin. Eseri yalnızca grubunla paylaşmak onay gerektirmez; genel kataloğa önerilen eserler yönetici onayından sonra yayınlanır.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Repertuvar.app nedir?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Repertuvar.app, sahneye çıkan müzisyenler, gruplar ve korolar için bir repertuvar ve setlist yönetim uygulamasıdır. Eserleri sürükle-bırak ile sıralar, potpuri oluşturur, makama göre düzenler ve sahnede Bluetooth pedalla yönetirsin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Repertuvar.app hangi cihazlarda çalışır?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Repertuvar.app web tarayıcısında çalışır; telefonda ve tablette ana ekrana eklenerek uygulama gibi kullanılabilir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Repertuvar.app internet olmadan çalışır mı?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Evet. Veriler cihazda da saklandığı için bağlantı olmadığında uygulama çevrimdışı modda yerel verilerle çalışmaya devam eder; sahnede internet kesilse de repertuvarın açık kalır."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Repertuvar.app hangi dilleri destekliyor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Repertuvar.app Türkçe ve İngilizce kullanılabilir. Dili ayarlardan istediğin zaman değiştirebilirsin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Repertuvar.app hangi Bluetooth pedalla çalışır?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Repertuvar.app Bluetooth sayfa çevirme pedallarıyla çalışır ve Lekato WT-6 ile test edilmiştir. Pedalla ekrana dokunmadan eserler arasında geçiş yaparsın."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Sahne modunda ekranda ne görünür?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sahne modunda çalınan eserin yanında sıradaki eser her zaman görünür: adı, karar sesi ve usulü. Akor gösterimini ve yazı boyutunu sahne ayarlarından seçersin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Grubuma ya da koroma nasıl üye eklerim?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Üyeler grubuna davet linkiyle ya da karekodu okutarak katılır; davet linki 7 gün geçerlidir. Bir müzisyen birden fazla gruba veya koroya üye olabilir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Misafir solist listeyi nasıl görür?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Misafir solistlere giriş gerektirmeyen, salt okunur bir liste linki gönderirsin. Link belirli bir süre sonra geçersiz olur, akor içermez ve yazdırılabilir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Repertuvarı makama göre düzenleyebilir miyim?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Evet. Tek dokunuşla repertuvarını makam düzenine geçirebilirsin; her eserde makam, usul, form ve karar bilgisi tutulur. İstersen sürükle-bırak ile kendi akışını da kurabilirsin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ton değiştirince grubun akoru bozulur mu?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Hayır. Yaptığın transpoze yalnızca senin kopyanda kalır, grubun ve eserin orijinal akoru değişmez. Akorları A-B-C ya da Do-Re-Mi ile okuyabilirsin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Potpuri nasıl oluşturulur?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Bir eseri öncekine zincirleyerek potpuri oluşturursun; zincirdeki eserler aralıksız çalınır. Sıralamayı değiştirdiğinde potpuri birlikte taşınır ve içi dağılmaz."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Kendi eserimi ekleyebilir miyim?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Evet. Söz, akor (ChordPro biçimi dahil) ve nota görseli ya da PDF ekleyebilirsin. Eseri yalnızca grubunla paylaşmak onay gerektirmez; genel kataloğa önerilen eserler yönetici onayından sonra yayınlanır."
+   }
+  }
+ ]
+}
+  </script>
+</section>
+
+<!-- ============ 7. FOOTER ============ -->
+<footer class="ftr">
+  <div class="box sponsors cta">
+    <h2 class="h3">Hazırsan sahneye çık.</h2>
+    <p class="lead">Repertuvarını dakikalar içinde oluştur. Gerisini Repertuvar.app halletsin.</p>
+    <a href="#" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  <div class="f-dark">
+    <div class="box">
+      <div class="f-main">
+        <div class="f-brand">
+          <a href="/" class="f-logo" aria-label="Repertuvar.app ana sayfa"><img src="logo.png" alt="repertuvar.app" width="248" height="58"></a>
+          <p>Repertuvar.app</p>
+          <p class="gap12">Sahneye çıkan müzisyenler için akıllı repertuvar yönetim sistemi.</p>
+          <p>Çevrimdışı çalışır · Bluetooth pedal</p>
+          <p class="gap24">Grup senkronizasyonu · Güvenli yedekleme</p>
+          <div class="f-btns">
+            <a href="#" class="btn btn-y">Ücretsiz Dene</a>
+            <a href="giris.html" class="btn btn-w">Giriş Yap</a>
+          </div>
+        </div>
+        <div class="f-right">
+          <div class="f-links">
+            <div class="f-cols">
+              <div><p class="f-h">Ürün</p><a href="#features">Özellikler</a><a href="#pedal">Pedal</a><a href="#nasil">Nasıl çalışır</a><a href="#neden">Neden Repertuvar</a></div>
+              <div><p class="f-h">Uygulama</p><a href="#">Uygulamayı aç</a><a href="giris.html">Giriş yap</a><a href="#">Ücretsiz dene</a></div>
+              <div><p class="f-h">Yasal</p><a href="/privacy">Gizlilik Politikası</a><a href="/terms">Kullanım Koşulları</a></div>
+            </div>
+          </div>
+          <div class="f-card">
+            <a href="mailto:info@repertuvar.app"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>İletişim</span><span class="v">info@repertuvar.app</span></a>
+            <a href="/"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>Web</span><span class="v">repertuvar.app</span></a>
+          </div>
+        </div>
+      </div>
+      <hr class="f-div">
+      <div class="f-bottom">
+        <div><p>© 2026 Repertuvar.app</p></div>
+        <div class="mid"><p>Tüm hakları saklıdır.</p></div>
+        <div class="icons"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.3-1.3.4-2.5.4-3.8s-.1-2.5-.4-3.8zM10 15V9l5.2 3L10 15z"/></svg></a></div>
+      </div>
+      <p class="credits">Geçici görseller: Wikimedia Commons (CC0 / CC BY 2.0 / CC BY 4.0 / CC BY-SA 4.0) — Middleton Community Orchestra, Orchestra Wellington, WYSO, Cacon Photos, Garry Knight ve diğer yazarlar. Yayından önce kendi görsellerinizle değiştirin.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* arka plan slayt gösterisi: data-delay = bekleme, data-speed = geçiş (ms). 'slide' olayı yayar, el._go(n) ile atlanır */
+document.querySelectorAll('[data-slides]').forEach(el=>{
+  const urls=el.dataset.slides.split('|'), delay=+el.dataset.delay||5000, speed=+el.dataset.speed||1000, kb=el.dataset.kenburns;
+  const layers=urls.map(u=>{const d=document.createElement('div');d.className='ss-layer'+(kb?' kb':'');d.style.backgroundImage=`url("${u}")`;
+    d.style.transitionDuration=kb?`${speed}ms, ${delay+speed*2}ms`:`${speed}ms`;el.prepend(d);return d});
+  layers.reverse();let i=0,timer=null;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const show=n=>{i=n;layers.forEach((l,k)=>{if(k===n){l.classList.add('on');if(kb){l.classList.remove('zoom');void l.offsetWidth;l.classList.add('zoom')}}else l.classList.remove('on')});
+    el.dispatchEvent(new CustomEvent('slide',{detail:n}))};
+  const start=()=>{clearInterval(timer);if(!reduce&&layers.length>1)timer=setInterval(()=>show((i+1)%layers.length),delay+speed)};
+  el._go=n=>{show(n);start()};
+  el._cycle=delay+speed;
+  show(0);start();
+});
+/* hero: sağ paneller + göstergeler arka planla eş zamanlı */
+(()=>{const hero=document.getElementById('heroSS');if(!hero)return;
+  const panels=[...hero.querySelectorAll('.hp')], dots=[...hero.querySelectorAll('.hdots button')];
+  hero.style.setProperty('--dur',hero._cycle+'ms');
+  hero.addEventListener('slide',e=>{const n=e.detail%panels.length;
+    panels.forEach((p,k)=>p.classList.toggle('on',k===n));
+    dots.forEach((d,k)=>{d.classList.remove('on');d.setAttribute('aria-selected',k===n);if(k===n){void d.offsetWidth;d.classList.add('on')}})});
+  dots.forEach((d,k)=>d.addEventListener('click',()=>hero._go(k)));
+  hero.dispatchEvent(new CustomEvent('slide',{detail:0}));
+})();
+</script>
+</body>
+</html>

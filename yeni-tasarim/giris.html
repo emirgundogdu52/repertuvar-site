@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repertuvar Giriş</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#FFC83D; --secondary:#FFD463; --orange-deep:#D68A00; --on-primary:#1A1305;
+  --white:#FFFFFF; --ink:#1D1C14; --ink-deep:#0F0E07; --ink-14:#14140C; --ink-2:#36352C; --ink-3:#49473A;
+  --cream:#FFF7E6; --cream-2:#FFF4DE; --sand:#CAC7B5;
+  --font:"Inter Tight", system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink-deep);color:var(--white);font-family:var(--font);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit}
+button,input{font:inherit}
+
+.auth{min-height:100vh;padding:12px;display:grid;grid-template-columns:.94fr 1.06fr;gap:12px}
+
+/* ---------- sol: form ---------- */
+.form-side{border-radius:40px;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;padding:32px clamp(24px,5vw,80px)}
+.form-top{display:flex;justify-content:space-between;align-items:center}
+.brand img{display:block;width:150px;height:auto;background:var(--ink);border-radius:200px;padding:10px 16px;box-sizing:content-box}
+.back{font-size:14px;font-weight:500;color:var(--ink-3);text-decoration:none;display:flex;align-items:center;gap:6px}
+.back:hover{color:var(--ink)}
+.form-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 0}
+.form-in{width:100%;max-width:440px}
+.tabs{display:inline-flex;background:rgba(29,28,20,.07);border-radius:200px;padding:4px;margin-bottom:28px}
+.tabs button{border:0;background:none;padding:8px 18px;border-radius:200px;font-size:14px;font-weight:600;color:var(--ink-3);cursor:pointer;transition:background .2s,color .2s}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--white)}
+.form-in h1{font-size:clamp(30px,3.2vw,40px);line-height:1.1;font-weight:400;letter-spacing:-.02em}
+.form-in .sub{margin-top:8px;color:var(--ink-3);font-size:15px}
+.oauth{margin-top:28px;width:100%;height:46px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:200px;border:1px solid rgba(29,28,20,.15);background:var(--white);font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s}
+.oauth:hover{border-color:rgba(29,28,20,.3);background:#fffdf8}
+.or{margin:22px 0;display:flex;align-items:center;gap:14px;font-size:12px;font-weight:500;color:rgba(29,28,20,.4)}
+.or::before,.or::after{content:"";height:1px;flex:1;background:rgba(29,28,20,.1)}
+form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;font-weight:600;color:rgba(29,28,20,.6)}
+.field label .req{color:var(--orange-deep)}
+.inp{position:relative;display:flex;align-items:center;height:46px;border-radius:14px;border:1px solid rgba(29,28,20,.15);background:var(--white);padding:0 14px;transition:border-color .2s,box-shadow .2s}
+.inp:focus-within{border-color:var(--orange-deep);box-shadow:0 0 0 4px rgba(255,200,61,.25)}
+.inp input{width:100%;border:0;outline:0;background:transparent;font-size:15px;color:var(--ink)}
+.inp input::placeholder{color:rgba(29,28,20,.3)}
+.eye{position:absolute;right:12px;border:0;background:none;color:rgba(29,28,20,.4);cursor:pointer;display:grid;place-items:center;padding:4px}
+.eye:hover{color:var(--ink)}
+.eye svg{width:18px;height:18px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:rgba(29,28,20,.55)}
+.row a{font-weight:600;color:var(--ink);text-underline-offset:3px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:19px;color:rgba(29,28,20,.5);cursor:pointer}
+.check input{appearance:none;width:16px;height:16px;flex:none;margin-top:2px;border-radius:4px;border:1px solid rgba(29,28,20,.3);background:var(--white);cursor:pointer;display:grid;place-items:center}
+.check input:checked{background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 6.2 5 8.1 9 3.9' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;border-color:var(--ink)}
+.check a{font-weight:600;color:rgba(29,28,20,.7);text-underline-offset:2px}
+.submit{margin-top:10px;height:48px;border:0;border-radius:200px;background:var(--primary);color:var(--on-primary);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,transform .2s}
+.submit:hover{background:var(--secondary);transform:translateY(-1px)}
+.switch{margin-top:20px;text-align:center;font-size:14px;color:rgba(29,28,20,.55)}
+.switch button{border:0;background:none;font-weight:600;color:var(--ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.pane{display:none}
+.pane.on{display:block;animation:paneIn .5s cubic-bezier(.22,1,.36,1)}
+@keyframes paneIn{from{opacity:0;transform:translateY(10px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.form-foot{font-size:12px;color:rgba(29,28,20,.4);text-align:center}
+
+/* ---------- sağ: marka paneli ---------- */
+.brand-side{position:relative;overflow:hidden;border-radius:40px;background:var(--ink-14);padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;isolation:isolate}
+/* turuncu ışıma */
+.brand-side::before{content:"";position:absolute;inset:-20%;z-index:-2;pointer-events:none;filter:blur(50px);
+  background:
+    radial-gradient(40% 36% at 18% 88%, var(--primary) 0%, var(--primary) 25%, transparent 72%),
+    radial-gradient(36% 30% at 60% 104%, var(--secondary) 0%, transparent 72%),
+    radial-gradient(26% 22% at 92% 8%, var(--orange-deep) 0%, transparent 70%);
+  animation:glow 22s ease-in-out infinite alternate}
+@keyframes glow{50%{transform:translate(3%,-2%) scale(1.05)}100%{transform:translate(-2%,2%)}}
+/* oluklu cam: dikey şeritler */
+.brand-side::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,rgba(255,255,255,0) 1px 22px,rgba(0,0,0,.18) 22px 23px,rgba(0,0,0,0) 23px 44px),
+    linear-gradient(180deg,rgba(15,14,7,.55),rgba(15,14,7,.1) 60%,rgba(15,14,7,.35));
+  backdrop-filter:blur(2px)}
+.b-top{max-width:480px}
+.b-top .who{display:flex;align-items:center;gap:14px}
+.b-top .mark{width:44px;height:44px;border-radius:50%;background:var(--ink-deep);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center}
+.b-top .mark svg{width:22px;height:22px}
+.b-top .who b{display:block;font-weight:600}
+.b-top .who span{font-size:12px;color:rgba(255,255,255,.6)}
+.b-top h2{margin-top:28px;font-size:clamp(28px,2.6vw,38px);line-height:1.12;font-weight:300;letter-spacing:-.035em;color:rgba(255,255,255,.92)}
+.b-top h2 em{font-style:normal;color:var(--primary);font-weight:400}
+.b-list{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+.b-list span{padding:7px 12px;border-radius:200px;font-size:13px;background:rgba(15,14,7,.45);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+/* eğik uygulama penceresi */
+.win{position:absolute;left:14%;bottom:-120px;width:108%;border-radius:22px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.7);padding:8px;box-shadow:0 30px 90px rgba(0,0,0,.5);backdrop-filter:blur(20px);transform:rotate(-3deg);transform-origin:bottom left}
+.win-in{border-radius:16px;border:1px solid rgba(255,255,255,.1);background:#15140e;overflow:hidden}
+.win-bar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.win-bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3)}
+.win-bar i:nth-child(2){opacity:.7}.win-bar i:nth-child(3){opacity:.45}
+.win-bar span{margin-left:14px;font:10px ui-monospace,monospace;letter-spacing:.08em;color:rgba(255,255,255,.4)}
+.app{display:grid;grid-template-columns:200px 1fr;min-height:360px}
+.app-nav{border-right:1px solid rgba(255,255,255,.08);padding:16px 12px;display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--sand)}
+.app-nav img{width:110px;height:auto;margin:0 0 14px 6px}
+.app-nav a{padding:8px 10px;border-radius:10px;text-decoration:none}
+.app-nav a.on{background:rgba(255,200,61,.12);color:var(--primary)}
+.app-main{padding:16px 20px}
+.app-main .h{display:flex;justify-content:space-between;font-weight:600;font-size:15px}
+.app-main .s{font-size:11px;color:var(--sand);margin:3px 0 12px}
+.tr{display:grid;grid-template-columns:20px 1fr 70px 28px;gap:8px;align-items:center;padding:8px 10px;border-radius:10px;font-size:13px;border:1px solid transparent}
+.tr span:first-child{color:var(--sand)}
+.tr .m{color:var(--sand);font-size:12px;text-align:right}
+.tr .k{justify-self:end;background:rgba(255,200,61,.14);color:var(--primary);border-radius:5px;padding:1px 6px;font-size:11px}
+.tr.on{background:rgba(255,200,61,.12);border-color:rgba(255,200,61,.5)}
+
+/* görünüme girince bulanıktan netleşme */
+.rv{opacity:0;transform:translateY(14px);filter:blur(7px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1),filter .8s ease}
+.rv.in{opacity:1;transform:none;filter:none}
+.win.rv{transform:rotate(-3deg) translateY(72px);filter:blur(10px);transition-duration:1s}
+.win.rv.in{transform:rotate(-3deg);filter:none}
+@media (prefers-reduced-motion:reduce){.rv,.win.rv{transition:none;opacity:1;filter:none}.win.rv{transform:rotate(-3deg)}.brand-side::before{animation:none}.pane.on{animation:none}}
+
+@media (max-width:1024px){
+  .auth{grid-template-columns:1fr}
+  .brand-side{min-height:640px}
+  .win{left:6%;width:120%;bottom:-100px}
+}
+@media (max-width:600px){
+  .auth{padding:8px;gap:8px}
+  .form-side,.brand-side{border-radius:28px}
+  .form-side{padding:24px 20px}
+  .brand img{width:120px}
+  .app{grid-template-columns:1fr}.app-nav{display:none}
+  .brand-side{min-height:560px}
+  .win{left:4%;width:130%;bottom:-80px}
+}
+</style>
+</head>
+<body>
+<main class="auth">
+
+  <!-- Sol: form -->
+  <section class="form-side">
+    <div class="form-top">
+      <a href="iskelet.html" class="brand" aria-label="Repertuvar.app ana sayfa"><img src="logo.png" alt="repertuvar.app" width="150" height="35"></a>
+      <a href="iskelet.html" class="back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Ana sayfa</a>
+    </div>
+
+    <div class="form-wrap">
+      <div class="form-in">
+        <div class="tabs" role="tablist" aria-label="Hesap">
+          <button role="tab" id="t-giris" aria-controls="p-giris" aria-selected="true">Giriş Yap</button>
+          <button role="tab" id="t-kayit" aria-controls="p-kayit" aria-selected="false">Kayıt Ol</button>
+        </div>
+
+        <!-- Giriş -->
+        <div class="pane on" id="p-giris" role="tabpanel" aria-labelledby="t-giris">
+          <h1>Tekrar hoş geldin</h1>
+          <p class="sub">Repertuvarın seni bekliyor.</p>
+          <button type="button" class="oauth"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09Z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23Z" fill="#34A853"/><path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84Z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z" fill="#EB4335"/></svg>Google ile devam et</button>
+          <div class="or">veya</div>
+          <form onsubmit="return false">
+            <div class="field"><label for="g-mail">E-posta</label><div class="inp"><input id="g-mail" type="email" placeholder="ornek@eposta.com" autocomplete="email"></div></div>
+            <div class="field"><label for="g-pass">Şifre</label><div class="inp"><input id="g-pass" type="password" placeholder="Şifreni gir" autocomplete="current-password"><button type="button" class="eye" aria-label="Şifreyi göster"></button></div></div>
+            <div class="row"><label class="check"><input type="checkbox" checked><span>Beni hatırla</span></label><a href="#">Şifremi unuttum</a></div>
+            <button type="submit" class="submit">Giriş Yap <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+          <p class="switch">Hesabın yok mu? <button type="button" data-go="kayit">Ücretsiz kayıt ol</button></p>
+        </div>
+
+        <!-- Kayıt -->
+        <div class="pane" id="p-kayit" role="tabpanel" aria-labelledby="t-kayit">
+          <h1>Hesap oluştur</h1>
+          <p class="sub">Repertuvarını dakikalar içinde oluştur.</p>
+          <button type="button" class="oauth"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09Z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23Z" fill="#34A853"/><path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84Z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38Z" fill="#EB4335"/></svg>Google ile devam et</button>
+          <div class="or">veya</div>
+          <form onsubmit="return false">
+            <div class="field"><label for="k-ad">Ad Soyad <span class="req">*</span></label><div class="inp"><input id="k-ad" type="text" placeholder="Adın ve soyadın" autocomplete="name"></div></div>
+            <div class="field"><label for="k-mail">E-posta</label><div class="inp"><input id="k-mail" type="email" placeholder="ornek@eposta.com" autocomplete="email"></div></div>
+            <div class="field"><label for="k-pass">Şifre</label><div class="inp"><input id="k-pass" type="password" placeholder="Bir şifre belirle" autocomplete="new-password"><button type="button" class="eye" aria-label="Şifreyi göster"></button></div></div>
+            <label class="check"><input type="checkbox"><span>Hesap oluşturarak <a href="/terms">Kullanım Koşulları</a>'nı ve <a href="/privacy">Gizlilik Politikası</a>'nı kabul ediyorum.</span></label>
+            <button type="submit" class="submit">Kayıt Ol <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+          <p class="switch">Zaten hesabın var mı? <button type="button" data-go="giris">Giriş yap</button></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="form-foot">© 2026 Repertuvar.app</p>
+  </section>
+
+  <!-- Sağ: marka paneli -->
+  <section class="brand-side" aria-label="Repertuvar.app hakkında">
+    <div class="b-top">
+      <div class="who rv">
+        <span class="mark"><svg viewBox="100 90 300 330" fill="#FFC83D"><rect x="212" y="108" width="58" height="218"/><path d="M262 168 C 274 128 304 104 346 104 L346 162 C 306 158 280 176 270 206 Z"/><rect x="128" y="358" width="257" height="50" rx="25"/></svg></span>
+        <div><b>Repertuvar.app</b><span>Modern Müzisyenler İçin</span></div>
+      </div>
+      <h2 class="rv" style="transition-delay:.12s">Akıllı Sahne ve <em>Repertuvar Yönetimi</em></h2>
+      <div class="b-list rv" style="transition-delay:.2s"><span>Çevrimdışı çalışır</span><span>Bluetooth pedal</span><span>Grup senkronizasyonu</span></div>
+    </div>
+
+    <div class="win rv" style="transition-delay:.22s" aria-hidden="true">
+      <div class="win-in">
+        <div class="win-bar"><i></i><i></i><i></i><span>repertuvar.app</span></div>
+        <div class="app">
+          <div class="app-nav">
+            <img src="logo.png" alt="" width="110" height="26">
+            <a class="on">Repertuvarlar</a><a>Eserler</a><a>Gruplar</a><a>Mesajlar</a><a>İstatistikler</a>
+          </div>
+          <div class="app-main">
+            <div class="h"><span>Konser Setlistim ⌄</span><span>•••</span></div>
+            <div class="s">19 Parça · 75 dk</div>
+            <div class="tr on"><span>1</span><span>Allı Turnam</span><span class="m">Hüseyni</span><span class="k">La</span></div>
+            <div class="tr"><span>2</span><span>Dostum Dostum</span><span class="m">Hüseyni</span><span class="k">La</span></div>
+            <div class="tr"><span>3</span><span>Barış Güvercini</span><span class="m">Hüseyni</span><span class="k">La</span></div>
+            <div class="tr"><span>4</span><span>Vardar Ovası</span><span class="m">Hicaz</span><span class="k">La</span></div>
+            <div class="tr"><span>5</span><span>Aldırma Gönül</span><span class="m">Hicaz</span><span class="k">La</span></div>
+            <div class="tr"><span>6</span><span>Bedir Geliyor</span><span class="m">Hicaz</span><span class="k">La</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* sekmeler: #kayit ile açılırsa kayıt sekmesi */
+const tabs={giris:document.getElementById('t-giris'),kayit:document.getElementById('t-kayit')};
+const panes={giris:document.getElementById('p-giris'),kayit:document.getElementById('p-kayit')};
+function show(k){for(const n in tabs){const on=n===k;tabs[n].setAttribute('aria-selected',on);panes[n].classList.toggle('on',on)}
+  history.replaceState(null,'',k==='kayit'?'#kayit':location.pathname)}
+tabs.giris.onclick=()=>show('giris');tabs.kayit.onclick=()=>show('kayit');
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));
+if(location.hash==='#kayit')show('kayit');
+
+/* şifre göster/gizle */
+const eyeOpen='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+const eyeOff='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l18 18M10.6 5.1A10 10 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17 17 0 0 0 2 12s3.6 7 10 7a9.7 9.7 0 0 0 5.4-1.6M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>';
+document.querySelectorAll('.eye').forEach(b=>{b.innerHTML=eyeOpen;b.onclick=()=>{const i=b.previousElementSibling,s=i.type==='password';
+  i.type=s?'text':'password';b.innerHTML=s?eyeOff:eyeOpen;b.setAttribute('aria-label',s?'Şifreyi gizle':'Şifreyi göster')}});
+
+/* görünüme girince netleşme */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'-10% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
