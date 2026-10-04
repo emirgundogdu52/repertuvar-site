@@ -242,6 +242,36 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
   .inst{height:44%}.allbox h3{font-size:28px;line-height:30px}
   .hero-p{font-size:16px;line-height:23px}
 }
+/* ===== HERO (2026-10-05): ürün fotoğrafı — tablet + gitar sağda, metin + avantajlar solda ===== */
+.hero .hero-urun{display:grid;grid-template-columns:minmax(0,min(640px,46%)) 1fr;grid-template-rows:1fr auto auto 1fr;align-items:start;padding:48px;box-sizing:border-box}
+.hero .hero-urun::before{display:none}
+.hero-urun .hero-l{grid-column:1;grid-row:2;min-height:0;padding:0;position:relative;z-index:1}
+.hero-urun .hero-l .display{max-width:none;font-size:min(var(--t-display),4.2vw);line-height:1.05}
+.hero-foto{position:absolute;top:0;right:0;bottom:0;width:60%;z-index:0;pointer-events:none}
+.hero-foto img{display:block;width:100%;height:100%;object-fit:cover;object-position:0% 55%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);mask-image:linear-gradient(90deg,transparent 0,#000 30%);
+  animation:heroFoto 1.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes heroFoto{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+.hero-avantaj{grid-column:1;grid-row:3;position:relative;z-index:1;margin-top:28px;max-width:600px}
+.hero-avantaj .bcard{padding:14px 16px;gap:4px;border-radius:18px;background:rgba(255,255,255,.05)}
+.hero-avantaj .bi{width:32px;height:32px;border-radius:10px;margin-bottom:4px}
+.hero-avantaj .bi svg{width:18px;height:18px}
+.hero-avantaj .bcard b{font-size:15px}
+.hero-avantaj .bcard span:last-child{font-size:13px;line-height:18px}
+@media (prefers-reduced-motion:reduce){.hero-foto img{animation:none}}
+@media (max-width:1024px){
+  .hero .hero-urun{grid-template-columns:1fr;grid-template-rows:auto;padding:40px 32px 32px;row-gap:28px}
+  .hero-urun .hero-l{grid-row:1}
+  .hero-urun .hero-l .display{font-size:var(--t-display);line-height:var(--t-display-lh)}
+  .hero-foto{position:relative;grid-row:2;width:auto;aspect-ratio:3/2;border-radius:24px;overflow:hidden;margin:0 -8px}
+  .hero-foto img{object-position:30% 55%;-webkit-mask-image:none;mask-image:none}
+  .hero-avantaj{grid-row:3;margin-top:0;max-width:none}
+}
+@media (max-width:600px){
+  .hero .hero-urun{padding:32px 16px 16px;row-gap:24px}
+  .hero-foto{aspect-ratio:1/1;margin:0;border-radius:20px}
+  .hero-foto img{object-position:34% 56%}
+}
 
 /* ===== 3. HAKKIMIZDA — ölçüler kaynak sayfanın kırılımlarıyla birebir ===== */
 .intro{margin-top:24px;background:var(--white);border-radius:40px;min-height:600px;display:flex;gap:8px;padding:8px}
@@ -250,6 +280,8 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .intro-img-row{position:relative;display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;padding:48px}
 .intro-img-row .body-m{width:70%;color:var(--white)}
 .intro-img-row .btn-wrap{width:calc(30% - 16px);display:flex;justify-content:flex-end}
+/* (2026-10-05) sahnede bas gitarist + sehpada Repertuvar setlist'i + pedal */
+.intro-sahne{background-image:url('assets/foto/sahne-setlist-1200.jpg');background-image:image-set(url('assets/foto/sahne-setlist-1200.webp') type('image/webp') 1x,url('assets/foto/sahne-setlist-1872.webp') type('image/webp') 2x,url('assets/foto/sahne-setlist-1200.jpg') type('image/jpeg') 1x);background-position:74% 40%}
 .intro-y{flex:1;border-radius:36px;background:var(--primary);color:var(--on-primary);padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden}
 .intro-top{display:flex;flex-direction:column;gap:24px}
 .intro-y .label{width:90%;color:var(--ink)}
@@ -922,7 +954,13 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 
 <!-- ============ 2. HERO ============ -->
 <section class="box hero">
-  <div class="hero-box" id="heroSS" data-slides="assets/foto/metropolitan-opera-josef-hofmann-1920.jpg|assets/foto/1920px-Middleton_Community_Orchestra_Spring_2024_Concert_-_53749951483.jpg|assets/foto/1920px-Orchestra_Wellington_in_concert_at_the_MFC.jpg" data-delay="6500" data-speed="1000" data-kenburns="in">
+  <!-- (2026-10-05) Ürün fotoğrafı: tablet + gitar sağda (masaüstü), metin solda.
+       Eski orkestra slaytları ve HTML tablet paneli kaldırıldı; avantaj kartları metnin altında. -->
+  <div class="hero-box hero-urun">
+    <picture class="hero-foto">
+      <source type="image/webp" srcset="assets/foto/hero-tablet-gitar-800.webp 800w, assets/foto/hero-tablet-gitar-1200.webp 1200w, assets/foto/hero-tablet-gitar-1872.webp 1872w" sizes="(max-width:1024px) 100vw, 62vw">
+      <img src="assets/foto/hero-tablet-gitar-1200.jpg" alt="Repertuvar uygulaması bir tablette, akustik gitarın üzerinde" width="1200" height="800" fetchpriority="high" decoding="async">
+    </picture>
     <div class="hero-l">
       <p class="label">Repertuvar.app</p>
       <h1 class="display">Sen sahnede müziğine odaklan. Gerisini <span class="accent">repertuvar.app</span> halletsin.</h1>
@@ -932,42 +970,13 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         <a href="#pedal" class="btn btn-w">Pedalı Keşfet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="hero-r">
-      <div class="hpanels">
-        <div class="hp hp-ben on" data-p="0">
-          <div class="bgrid"><div class="bcard st" style="--i:0"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5.2-2.8M19 12.9a10 10 0 0 0-2.2-1.6M2 8.8a15 15 0 0 1 4.2-2.7M22 8.8a15 15 0 0 0-11.3-3.7"/><circle cx="12" cy="20" r="1"/></svg></span><b>Çevrimdışı Çalışır</b><span>İnternet olmasa da sorun yok.</span></div><div class="bcard st" style="--i:1"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></span><b>Bluetooth Pedal</b><span>Ekrana dokunmadan geçiş yap.</span></div><div class="bcard st" style="--i:2"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg></span><b>Grup Senkronizasyonu</b><span>Değişiklikler anında herkese ulaşır.</span></div><div class="bcard st" style="--i:3"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><b>Güvenli Yedekleme</b><span>Verilerin güvende kalır.</span></div></div>
-        </div>
-        <div class="hp hp-app" data-p="1">
-          <div class="tablet2 st" style="--i:0">
-            <div class="tscreen">
-              <div class="thead"><span>Konser Setlistim ⌄</span><span>•••</span></div>
-              <div class="tsub">19 Parça · 75 dk</div>
-              <div class="tr on"><span>1</span><span>Allı Turnam</span><span class="mk2">Hüseyni</span><span class="ky">La</span></div><div class="tr"><span>2</span><span>Dostum Dostum</span><span class="mk2">Hüseyni</span><span class="ky">La</span></div><div class="tr"><span>3</span><span>Barış Güvercini</span><span class="mk2">Hüseyni</span><span class="ky">La</span></div><div class="tr"><span>4</span><span>Vardar Ovası</span><span class="mk2">Hicaz</span><span class="ky">La</span></div><div class="tr"><span>5</span><span>Aldırma Gönül</span><span class="mk2">Hicaz</span><span class="ky">La</span></div><div class="tr"><span>6</span><span>Bedir Geliyor</span><span class="mk2">Hicaz</span><span class="ky">La</span></div>
-              <div class="toast"><span>✓</span>Repertuvar güncellendi</div>
-            </div>
-          </div>
-          <img class="hpedal st" style="--i:2" src="assets/pedal-foto.png" alt="Bluetooth sayfa çevirme pedalı (harici cihaz)" width="640" height="344">
-        </div>
-        <div class="hp hp-all" data-p="2">
-          <div class="inst st" style="--i:0"><img src="assets/baglama.png" alt="Akustik bağlama" width="606" height="1286"><img src="assets/guitar-dik.png" alt="Akustik klasik gitar" width="440" height="667"></div>
-          <div class="allbox">
-            <h3 class="st" style="--i:0">Her müzisyen<br>için güçlü.</h3>
-            <div class="chips2"><span class="chip2 st" style="--i:1">Makama göre düzenleme</span><span class="chip2 st" style="--i:2">Potpuri desteği</span><span class="chip2 st" style="--i:3">Sürükle-bırak akış</span><span class="chip2 st" style="--i:4">Akıllı sıralama</span><span class="chip2 st" style="--i:5">Bluetooth pedal ile kontrol</span><span class="chip2 st" style="--i:6">Eser notları ve kişisel notlar</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="hdots" role="tablist" aria-label="Slaytlar">
-        <button role="tab" aria-label="Avantajlar" class="on"><i></i></button>
-        <button role="tab" aria-label="Uygulama"><i></i></button>
-        <button role="tab" aria-label="Her müzisyen için"><i></i></button>
-      </div>
-    </div>
+    <div class="bgrid hero-avantaj"><div class="bcard"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5.2-2.8M19 12.9a10 10 0 0 0-2.2-1.6M2 8.8a15 15 0 0 1 4.2-2.7M22 8.8a15 15 0 0 0-11.3-3.7"/><circle cx="12" cy="20" r="1"/></svg></span><b>Çevrimdışı Çalışır</b><span>İnternet olmasa da sorun yok.</span></div><div class="bcard"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></span><b>Bluetooth Pedal</b><span>Ekrana dokunmadan geçiş yap.</span></div><div class="bcard"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></svg></span><b>Grup Senkronizasyonu</b><span>Değişiklikler anında herkese ulaşır.</span></div><div class="bcard"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><b>Güvenli Yedekleme</b><span>Verilerin güvende kalır.</span></div></div>
   </div>
 </section>
 
 <!-- ============ 3. HAKKIMIZDA ============ -->
 <section class="box intro" id="hakkimizda">
-  <div class="intro-img photo" style="background-image:url('assets/foto/1920px-A_musician_playing_violin_2.jpg')">
+  <div class="intro-img photo intro-sahne">
     <div class="intro-img-row">
       <p class="body-m">Setlist, potpuri ve makam sırası tek ekranda. Sahnede telefona değil, müziğe bak.</p>
       <div class="btn-wrap"><a href="#features" class="btn btn-y">Özellikleri gör</a></div>
