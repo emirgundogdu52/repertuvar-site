@@ -112,6 +112,9 @@ form{display:flex;flex-direction:column;gap:16px}
 .tr .m{color:var(--sand);font-size:12px;text-align:right}
 .tr .k{justify-self:end;background:rgba(255,200,61,.14);color:var(--primary);border-radius:5px;padding:1px 6px;font-size:11px}
 .tr.on{background:rgba(255,200,61,.12);border-color:rgba(255,200,61,.5)}
+/* (2026-10-05) tablet listesi dile göre (giris.html): TR makam + karar, EN tempo + ton */
+html[lang="en"] .liste-tr,html:not([lang="en"]) .liste-en{display:none}
+.liste-en .tr{grid-template-columns:20px 1fr 64px 34px}
 
 /* görünüme girince bulanıktan netleşme */
 .rv{opacity:0;transform:translateY(14px);filter:blur(7px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1),filter .8s ease}

@@ -82,7 +82,7 @@
   .logo{ width:318px; height:74px; display:block; flex:0 0 auto; object-fit:contain; }
   .baslik{
     margin:0; font-size:46px; line-height:1.08; letter-spacing:-.035em;
-    font-weight:800; max-width:520px;
+    font-weight:400; max-width:520px; /* 2026-10-05: yayındaki og-image.png bu ağırlıkla çekilmişti */
   }
   .baslik .vurgu{ color:var(--orange); }
   .alt{
@@ -149,6 +149,9 @@
     line-height:1.6; font-family:ui-monospace,monospace;
   }
   @media print{ .yardim{ display:none; } }
+  /* 2026-10-05: yayındaki og-image.png'de bütün metin 400 ağırlıkla çizilmişti; yeniden
+     üretilen görsel onaylı görünümden sapmasın diye sabitlendi. */
+  .og *{font-weight:400 !important}
 </style>
 </head>
 <body>
@@ -166,7 +169,7 @@
 
     <div class="tablet">
       <div class="ekran">
-        <div class="ekran-bas"><span>Konser Setlistim</span><span>•••</span></div>
+        <div class="ekran-bas"><span>Konser Repertuvarım</span><span>•••</span></div>
         <div class="ekran-alt">19 parça · 75 dk</div>
         <div class="liste">
           <div class="satir"><span>1</span><span>Allı Turnam</span><span class="ton">Hüseyni</span></div>
