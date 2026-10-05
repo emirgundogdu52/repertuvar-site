@@ -14,7 +14,7 @@ window.SITE_EN={
 "Repertuvarını oluştur, grubunla senkronize ol, Bluetooth pedalı ile sahneni yönet. İster sürükle-bırak ile kendi akışını oluştur, ister akıllı özelliklerle repertuvarını saniyeler içinde düzenle.": "Build your setlist, keep the whole band in sync, and turn pages with a Bluetooth pedal — without taking your hands off the instrument.",
 "Pedalı Keşfet": "See the Pedal",
 "Çevrimdışı Çalışır": "Works Offline",
-"Repertuvar uygulaması bir tablette, akustik gitarın üzerinde": "The Repertuvar app on a tablet resting on an acoustic guitar",
+"Sahnede bir müzik grubu; her müzisyenin önünde Repertuvar açık bir tablet": "A band on stage, each musician with Repertuvar open on a tablet",
 "İnternet olmasa da sorun yok.": "No signal in the venue? Still works.",
 "Bluetooth Pedal": "Bluetooth Pedal",
 "Ekrana dokunmadan geçiş yap.": "Change songs hands-free.",
