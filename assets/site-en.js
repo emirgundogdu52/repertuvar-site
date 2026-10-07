@@ -256,7 +256,7 @@ window.SITE_EN={
 "Geliştiren ve işleten: StageFlow B.V. · Spijkenisse, Hollanda": "Developed and operated by StageFlow B.V. · Spijkenisse, the Netherlands",
 "Gizlilik Politikası": "Privacy Policy",
 "Kullanım Koşulları": "Terms of Use",
-"Geçici görseller: Wikimedia Commons (CC0 / CC BY 2.0 / CC BY 4.0 / CC BY-SA 4.0) — Orchestra Wellington, WYSO, Cacon Photos, Garry Knight ve diğer yazarlar. Yayından önce kendi görsellerinizle değiştirin.": "Temporary images: Wikimedia Commons (CC0 / CC BY 2.0 / CC BY 4.0 / CC BY-SA 4.0) — Orchestra Wellington, WYSO, Cacon Photos, Garry Knight and other authors. Replace with your own images before launch.",
+"Bazı görseller: Wikimedia Commons (CC0 / CC BY 2.0 / CC BY 4.0 / CC BY-SA 4.0) — Orchestra Wellington, WYSO, Cacon Photos, Garry Knight ve diğer yazarlar.": "Some images: Wikimedia Commons (CC0 / CC BY 2.0 / CC BY 4.0 / CC BY-SA 4.0) — Orchestra Wellington, WYSO, Cacon Photos, Garry Knight and other authors.",
 "Repertuvar.app ana sayfa": "Repertuvar.app home",
 "Dil": "Language",
 "Menüyü aç": "Open menu",
