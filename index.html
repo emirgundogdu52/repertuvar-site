@@ -377,6 +377,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .fcard .stage .item:hover,.fcard .stage .item-media,.fcard .stage .notation{background:var(--white)}
 .fcard .stage .item:hover .item-media{background:var(--primary)}
 .fcard .txt{flex:1;padding:24px 24px 28px}
+.fcard .txt p.ipucu{font-size:13px;line-height:18px;color:var(--ink-3);padding-left:10px;border-left:2px solid var(--primary)}   /* 2026-10-07: kayıt ipucu */
 .fcard h3{transition:color .3s ease}
 .fcard:hover h3{color:var(--orange-deep)}
 @media (prefers-reduced-motion:reduce){.fcard,.fcard .stage>*{transition:none}.fcard:hover{transform:none}.fcard:hover .stage>*{transform:none}}
@@ -402,7 +403,9 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 
 /* liste */
 .st-list{align-items:flex-start}
-.fcard .st-list{align-items:stretch;padding-top:12px}
+.fcard .st-list{align-items:center;padding-top:18px;padding-bottom:18px}   /* 2026-10-05: liste alanda dikey ortalı, üst/alt boşluk eşit */
+.fcard .st-list .item{padding-top:7px;padding-bottom:7px}   /* 2026-10-05: 6 madde (karar sesi eklendi) eski yüksekliğe sığsın */
+@media (min-width:1025px) and (max-width:1366px){.fcard .st-list .item-meta{display:none}}   /* dar kartta açıklamalar tek satıra sığsın */
 .items{list-style:none;margin:0;padding:0;width:100%;display:flex;flex-direction:column}
 .item{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:12px;transition:background-color .2s ease}
 .item+.item{border-top:1px solid rgba(0,0,0,.06)}
@@ -462,6 +465,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .lime-list .mk{font-size:12px;color:var(--ink-3)}
 .lime-list li.on{background:rgba(255,200,61,.28)}
 .lime-list li.off{opacity:.35;transform:scale(.98)}
+@media (max-width:480px){.fcard .st-lime{padding-left:14px;padding-right:14px}.lime{align-self:stretch;padding:0 4px}.lime button{flex:1 1 auto;padding:0 4px}}   /* 2026-10-07: 4 sekme (Kürdi) 320px telefonda da karta sığsın */
 @media (prefers-reduced-motion:reduce){.lime-light.ready,.lime-list li{transition:none}.pot-chain .pot-row{animation:none}}
 
 /* senkron */
@@ -505,8 +509,8 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .step-mid p{font-size:14px;line-height:20px;color:rgba(255,255,255,.8);margin-top:4px}
 .step h4{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:8px}
 .step ul{list-style:none;display:flex;flex-direction:column;gap:6px}
-.step li{display:flex;align-items:center;gap:8px;font-size:13px;line-height:18px;color:rgba(255,255,255,.72)}
-.step li::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--primary)}
+.step li{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:18px;color:rgba(255,255,255,.72)}
+.step li::before{content:"";width:6px;height:6px;flex:none;margin-top:6px;border-radius:50%;background:var(--primary)}   /* 2026-10-07: çok satırlı maddede im ilk satırda */
 .step-foot{position:absolute;left:0;right:0;bottom:-80px;padding:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;opacity:0;transition:bottom .5s ease-in-out,opacity .5s ease-in-out}
 .step:hover .step-foot,.step:focus-within .step-foot{bottom:0;opacity:1}
 .step-no{font-size:36px;line-height:1;font-weight:700;color:var(--white);white-space:nowrap}
@@ -534,13 +538,14 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .ccard{border-radius:20px;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
 .ccard .ch{padding:24px;display:flex;flex-direction:column;gap:8px}
-.ccard .ct{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600}
+.ccard .ct{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600;min-height:31px}   /* 2026-10-07: rozetsiz başlık da rozetli kadar; iki listenin satırları aynı hizada başlar */
 .ccard .cd{font-size:14px;line-height:20px}
 .ccard hr{border:0;height:1px;margin:0}
 .ccard ul{list-style:none;padding:20px 24px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
 .ccard li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:20px}
 .ccard li .mk{width:18px;height:18px;border-radius:5px;flex:none;display:grid;place-items:center;margin-top:1px}
 .ccard li .mk svg{width:12px;height:12px}
+@media (min-width:701px) and (max-width:840px){.ccard li{min-height:40px}}   /* 2026-10-07: iki sütunda uzun maddeler 2 satıra iner; karşılıklı satırlar hizalı kalsın */
 .ccard .cf{padding:20px 24px;border-top:1px solid}
 .ccard .cf .btn{width:100%}
 .ccard.us{background:var(--white);color:var(--ink);box-shadow:0 0 0 1px rgba(255,200,61,.45),0 0 0 6px rgba(255,200,61,.14)}
@@ -996,7 +1001,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg><span>Repertuvarını oluştur</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>Eserleri ekle</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span>Potpuri oluştur<small>Bağlı eserler sıralamada kopmaz, birlikte hareket eder.</small></span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4-4 4 4M7 5v14M21 15l-4 4-4-4M17 19V5"/></svg><span>Tek tuşla sırala<span class="intro-sirala"><span>İster makama göre</span><span>İster karar sesine göre</span><span>İstersen elle, sürükle-bırak ile</span></span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4-4 4 4M7 5v14M21 15l-4 4-4-4M17 19V5"/></svg><span>Tek tuşla sırala<span class="intro-sirala"><span>İster makama göre</span><span>İster karar sesine göre</span><span>İster ölçüsüne göre</span><span>İstersen elle, sürükle-bırak ile</span></span></span></li>
         </ul>
       </div>
       <div class="btn-wrap"><a href="#features" class="btn btn-y">Özellikleri gör</a></div>
@@ -1008,8 +1013,8 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <h2 class="h2">Repertuvar.app ve sahnedeki müzisyen</h2>
     </div>
     <div class="paras">
-      <p class="p1">Repertuvar.app, sahneye çıkan müzisyenler için geliştirilmiş akıllı bir repertuvar yönetim sistemi. Amacı basit: provadan konsere kadar tüm grubun aynı listeyle, aynı anda çalışması.</p>
-      <p class="p2">Sürükle-bırak ile kendi akışını kur ya da tek dokunuşla makam düzenine geç. Değişiklikler anında grubundaki herkese ulaşır, Bluetooth pedalla ekrana dokunmadan sayfa çevirirsin.</p>
+      <p class="p1">Repertuvar.app, sahne müzisyenlerinin ihtiyaçlarına cevap verecek şekilde, yine müzisyenler tarafından geliştirildi. Amacı basit: provadan sahneye kadar tüm grubun ya da koronun aynı repertuvar listesiyle, aynı anda çalışması.</p>
+      <p class="p2">Sürükle-bırak ile kendi akışını kur ya da tek dokunuşla makam, karar sesi veya ölçü düzenine geç. Değişiklikler anında grubundaki herkese ulaşır, Bluetooth pedalla ekrana dokunmadan sayfa çevirirsin.</p>
     </div>
   </div>
 </section>
@@ -1019,7 +1024,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
   <div class="feat-head">
     <p class="label">Özellikler</p>
     <h2 class="h2">Sahneye çıkan müzisyenlerin ihtiyaç duyduğu özellikler.</h2>
-    <p class="lead">Dağınık listeler yerine, performansın tamamını tek yerden yönetin.</p>
+    <p class="lead">Dağınık listeler yerine, performansın tamamını tek yerden yönetin.<br>Bilgisayar, tablet veya telefondan; her an, her yerden repertuvarlarınıza erişin.</p>
   </div>
   <div class="bento">
     <div class="bento-row r1">
@@ -1059,12 +1064,13 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <article class="fcard">
         <div class="txt">
           <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Akıllı Repertuvar Yönetimi</h3>
-          <p>Repertuvarını sürükle-bırak yöntemiyle düzenle, ister makamına göre otomatik organize et.</p>
+          <p>Repertuvarlarını ister sürükle-bırak yöntemiyle elle düzenle, ister makam sırasına, karar sesine ya da ölçüsüne göre otomatik düzenle.</p>
+          <p class="ipucu">Sıralamanın doğru çalışması için eser kaydederken karar sesi, ölçü ve makam gibi alanları mümkün olduğunca doldurmanı öneririz.</p>
         </div>
         <div class="stage st-list">
           <ul class="items">
             <li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg></span><span class="item-body"><b>Sürükle-bırak ile sırala</b><span>Eseri tut, istediğin sıraya bırak.</span></span><span class="item-meta">Sürükle</span></li>
-            <li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></span><span class="item-body"><b>Makama göre tek dokunuşla düzen</b><span>Aynı makamdaki eserler art arda dizilir.</span></span><span class="item-meta">1 dokunuş</span></li>
+            <li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></span><span class="item-body"><b>Makama göre sırala</b><span>Aynı makamdaki eserler art arda dizilir.</span></span><span class="item-meta">1 dokunuş</span></li><li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l8-2v4"/><circle cx="6" cy="18" r="3"/><path d="M15 12c1.3 1.3 1.3 3.7 0 5M18 10c2.4 2.4 2.4 6.6 0 9"/></svg></span><span class="item-body"><b>Karar sesine göre sırala</b><span>Kaydettiğin karar sesine göre sıralanır.</span></span><span class="item-meta">1 dokunuş</span></li><li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8l-3-17h-2z"/><path d="M12 14l5-6"/><path d="M6 21h12"/></svg></span><span class="item-body"><b>Ölçüye göre sırala</b><span>9/8'likler bir arada, 2/4'lükler bir arada.</span></span><span class="item-meta">1 dokunuş</span></li>
             <li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span><span class="item-body"><b>Potpuri zincirleri</b><span>Eserleri birbirine bağla, art arda çalınsın.</span></span><span class="item-meta">Zincir</span></li>
             <li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg></span><span class="item-body"><b>Repertuvarı kopyala</b><span>Kopyayı taslak ya da onaylı olarak tut.</span></span><span class="item-meta">Taslak · Onaylı</span></li>
             <li class="item"><span class="item-media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><span class="item-body"><b>Her esere kadro ve not ekle</b><span>Kimin çalacağı ve notlar esere iliştirilir.</span></span><span class="item-meta">Kadro</span></li>
@@ -1104,14 +1110,14 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <article class="fcard">
         <div class="txt">
           <h3><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></span>Makama Göre Sırala</h3>
-          <p>Tek dokunuşla repertuvarını makam düzenine göre sırala. Aynı makamdaki eserler art arda gelir; geçişler kulağa doğal gelir, akış kendiliğinden oturur.</p>
+          <p>Tek dokunuşla repertuvarını makam düzenine göre sırala. Aynı makamdaki eserler art arda gelir; geçişler kulağa doğal gelir, akış kendiliğinden oturur. İstersen karar sesine ya da ölçüsüne göre de sırala: 9/8'likler peş peşe, 2/4'lükler peş peşe.</p>
         </div>
         <div class="stage st-lime">
           <div class="lime" role="tablist" aria-label="Makam düzeni">
-            <button type="button" role="tab" aria-selected="true" data-mk="">Tümü</button><button type="button" role="tab" aria-selected="false" data-mk="Hüseyni">Hüseyni</button><button type="button" role="tab" aria-selected="false" data-mk="Hicaz">Hicaz</button>
+            <button type="button" role="tab" aria-selected="true" data-mk="">Tümü</button><button type="button" role="tab" aria-selected="false" data-mk="Hüseyni">Hüseyni</button><button type="button" role="tab" aria-selected="false" data-mk="Hicaz">Hicaz</button><button type="button" role="tab" aria-selected="false" data-mk="Kürdi">Kürdi</button>
             <span class="lime-light" aria-hidden="true"></span>
           </div>
-          <ol class="lime-list"><li data-mk="Hüseyni"><span class="n">Allı Turnam</span><span class="mk">Hüseyni</span></li><li data-mk="Hüseyni"><span class="n">Dostum Dostum</span><span class="mk">Hüseyni</span></li><li data-mk="Hüseyni"><span class="n">Barış Güvercini</span><span class="mk">Hüseyni</span></li><li data-mk="Hicaz"><span class="n">Vardar Ovası</span><span class="mk">Hicaz</span></li><li data-mk="Hicaz"><span class="n">Aldırma Gönül</span><span class="mk">Hicaz</span></li><li data-mk="Hicaz"><span class="n">Bedir Geliyor</span><span class="mk">Hicaz</span></li></ol>
+          <ol class="lime-list"><li data-mk="Hüseyni"><span class="n">Allı Turnam</span><span class="mk">Hüseyni</span></li><li data-mk="Hicaz"><span class="n">Vardar Ovası</span><span class="mk">Hicaz</span></li><li data-mk="Kürdi"><span class="n">Bülbülüm Altın Kafeste</span><span class="mk">Kürdi</span></li><li data-mk="Hüseyni"><span class="n">Dostum Dostum</span><span class="mk">Hüseyni</span></li><li data-mk="Kürdi"><span class="n">Kırmızı Buğday</span><span class="mk">Kürdi</span></li><li data-mk="Hicaz"><span class="n">Bedir Geliyor</span><span class="mk">Hicaz</span></li></ol>
         </div>
       </article>
 
@@ -1147,7 +1153,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           <div class="step-top"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span></div>
           <div class="step-mid">
             <div><h3>Eseri Bul veya Ekle</h3><p>Veritabanından eser seç ya da kendi eserini ekle.</p></div>
-            <div><h4>Neler var</h4><ul><li>Hazır eser veritabanı</li><li>Kendi eserini ekle</li><li>Makam, usul ve karar bilgisiyle</li></ul></div>
+            <div><h4>Neler var</h4><ul><li>Hazır eser veritabanı</li><li>Kendi eserini ekle, kimlerin görebileceğini belirle</li><li>Makam, usul ve karar bilgisiyle</li></ul></div>
           </div>
           <div class="step-foot">
             <span class="step-no">01<small> / 04 adım</small></span>
@@ -1161,8 +1167,8 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         <div class="step-in">
           <div class="step-top"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 5-10 5L2 7l10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span></div>
           <div class="step-mid">
-            <div><h3>Repertuvarını Oluştur</h3><p>Şarkılarını sırala, potpurilerini oluştur, istersen makamına göre düzenle.</p></div>
-            <div><h4>Neler var</h4><ul><li>Sürükle-bırak ile sırala</li><li>Potpuri zincirleri</li><li>Makama göre tek dokunuşla düzen</li></ul></div>
+            <div><h3>Repertuvarını Oluştur</h3><p>Şarkılarını sırala, potpurilerini oluştur, istersen makamına, karar sesine ya da ölçüsüne göre düzenle.</p></div>
+            <div><h4>Neler var</h4><ul><li>Sürükle-bırak ile sırala</li><li>Potpuri zincirleri</li><li>Makama göre tek dokunuşla düzen</li><li>Karar sesine ve ölçüye göre sırala</li></ul></div>
           </div>
           <div class="step-foot">
             <span class="step-no">02<small> / 04 adım</small></span>
@@ -1176,8 +1182,8 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         <div class="step-in">
           <div class="step-top"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span></div>
           <div class="step-mid">
-            <div><h3>Grubunla Paylaş</h3><p>Yaptığın değişiklikler tüm grup üyelerine anında ulaşsın.</p></div>
-            <div><h4>Neler var</h4><ul><li>Herkes aynı listede</li><li>Grup notları herkese gider</li><li>Kişisel notlar sende kalır</li></ul></div>
+            <div><h3>Grubunla, Koronla Paylaş</h3><p>Yaptığın değişiklikler grubundaki ya da korondaki herkese anında ulaşsın.</p></div>
+            <div><h4>Neler var</h4><ul><li>30 kişilik koro bile tek QR kodla katılır</li><li>Herkes aynı listede</li><li>Her eserde grup üyeleri için ve kendin için notlar tutabilirsin. Grup notları herkese gider. Kişisel notlar sende kalır.</li></ul></div>
           </div>
           <div class="step-foot">
             <span class="step-no">03<small> / 04 adım</small></span>
@@ -1186,13 +1192,13 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         </div>
       </article>
       <article class="step" data-n="4" tabindex="0">
-        <img class="step-bg" src="assets/foto/960px-A_musician_playing_violin_3.jpg" alt="Sahnede keman çalan müzisyen" loading="lazy">
+        <img class="step-bg" src="assets/foto/solo-baglama-sahne-1280.webp" alt="Sahnede bağlama çalan müzisyen, sehpadaki tablette Repertuvar.app" loading="lazy" style="object-position:27% 50%">
         <span class="step-shade" aria-hidden="true"></span>
         <div class="step-in">
           <div class="step-top"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg></span></div>
           <div class="step-mid">
-            <div><h3>Sahnede Yönet</h3><p>Bluetooth pedal ile şarkılar arasında kesintisiz geçiş yap.</p></div>
-            <div><h4>Neler var</h4><ul><li>Ekrana dokunmadan geçiş</li><li>Sıradaki eser hep görünür</li></ul></div>
+            <div><h3>Sahnede Yönet</h3><p>Şarkılar arasında kesintisiz geçiş yap: Bluetooth pedalla ya da ekranı kaydırarak.</p></div>
+            <div><h4>Neler var</h4><ul><li>Pedalla ekrana dokunmadan geçiş</li><li>Pedal şart değil: kaydırarak ya da oklarla geç</li><li>Sıradaki eser hep görünür</li></ul></div>
           </div>
           <div class="step-foot">
             <span class="step-no">04<small> / 04 adım</small></span>
@@ -1218,11 +1224,11 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         <div class="cvis photo" style="background-image:url('assets/foto/960px-Sheet_music_on_stand_-_Regent_St_Festival_2010_-photo_by_Garry_Knight-.jpg')"><span class="cvis-tag">Kâğıt nota · sehpa</span></div>
         
         <div class="ch">
-          <div class="ct">Diğer uygulamalar</div>
-          <p class="cd">Genel amaçlı liste uygulamalarında sahnede karşılaşılan eksikler.</p>
+          <div class="ct">Müzik defteri ve genel uygulamalar</div>
+          <p class="cd">Kâğıt defterde ya da genel amaçlı liste uygulamalarında sahnede karşılaşılan eksikler.</p>
         </div>
         <hr>
-        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Manuel liste düzenleme</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Potpuri desteği yok</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Türk müziğine özel değil</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Ekrana dokunmak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Bireysel kullanım odaklı</span></li></ul>
+        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Şarkıları her seferinde elle sıralamak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Potpuri desteği yok</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Türk müziğine özel değil</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Sayfa çevirmek ya da ekrana dokunmak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Müzik defterini her yere götüremezsin</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Bireysel kullanım odaklı</span></li></ul>
         <div class="cf"><a href="#features" class="btn btn-sec">Özellikleri gör <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
       <article class="ccard us">
@@ -1230,10 +1236,10 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         
         <div class="ch">
           <div class="ct">Repertuvar.app <span class="badge solid">Önerilen</span></div>
-          <p class="cd">İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam düzenine geç.</p>
+          <p class="cd">İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam, karar sesi ya da ölçü düzenine geç.</p>
         </div>
         <hr>
-        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sürükle-bırak ve akıllı sıralama</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Potpuri oluşturabilir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Makam sıralama desteği</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Bluetooth pedal ile kontrol</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Grup senkronizasyonu</span></li></ul>
+        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sürükle-bırak ve akıllı sıralama</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Potpuri oluşturabilir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Makam sıralama desteği</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Bluetooth pedal ile kontrol</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Cebinde, tablette ve bilgisayarda çalışır</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Grup senkronizasyonu</span></li></ul>
         <div class="cf"><a href="kayit.html" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
     </div>
@@ -1252,7 +1258,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
   <div class="cards">
     <article class="card">
       <div>
-        <div class="card-img" data-slides="assets/foto/960px-A_musician_playing_violin_3.jpg|assets/foto/960px-Close_up_of_an_acoustic_guitar_being_played.jpg|assets/foto/960px-Grand_Piano_MET_DP300941.jpg" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Solo</span></div>
+        <div class="card-img" data-slides="assets/foto/solo-baglama-sahne-1280.webp|assets/foto/960px-Close_up_of_an_acoustic_guitar_being_played.jpg|assets/foto/960px-Grand_Piano_MET_DP300941.jpg" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Solo</span></div>
         <div class="card-body"><h4 class="h4">Bireysel müzisyen</h4><p>Kendi repertuvarını kur, eseri kendi tonuna aktar. Akor yalnızca senin kopyanda değişir; Çalışma Odası'nda kaydınla tonunu ve temponu ayarla.</p></div>
       </div>
       <div class="card-foot"><a href="kayit.html" class="btn btn-y">Başla</a></div>
@@ -1375,7 +1381,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <div class="faq-list">
         <details class="qa" name="sss-0" open>
           <summary><h4>Repertuvar.app nedir?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="ans"><p>Repertuvar.app, sahneye çıkan müzisyenler, gruplar ve korolar için bir repertuvar ve sahne yönetim uygulamasıdır. Eserleri sürükle-bırak ile sıralar, potpuri oluşturur, makama göre düzenler ve sahnede Bluetooth pedalla yönetirsin.</p></div>
+          <div class="ans"><p>Repertuvar.app, sahneye çıkan müzisyenler, gruplar ve korolar için bir repertuvar ve sahne yönetim uygulamasıdır. Eserleri sürükle-bırak ile sıralar, potpuri oluşturur, makama, karar sesine ya da ölçüye göre düzenler ve sahnede Bluetooth pedalla yönetirsin.</p></div>
         </details>
         <details class="qa" name="sss-0">
           <summary><h4>Repertuvar.app hangi cihazlarda çalışır?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -1404,7 +1410,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         </details>
         <details class="qa" name="sss-1">
           <summary><h4>Grubuma ya da koroma nasıl üye eklerim?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="ans"><p>Üyeler grubuna davet linkiyle ya da karekodu okutarak katılır; davet linki 7 gün geçerlidir. Bir müzisyen birden fazla gruba veya koroya üye olabilir.</p></div>
+          <div class="ans"><p>Üyeler grubuna davet linkiyle ya da QR kodu okutarak katılır; davet linki 7 gün geçerlidir. Bir müzisyen birden fazla gruba veya koroya üye olabilir.</p></div>
         </details>
         <details class="qa" name="sss-1">
           <summary><h4>Misafir solist listeyi nasıl görür?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -1417,7 +1423,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <div class="faq-list">
         <details class="qa" name="sss-2" open>
           <summary><h4>Repertuvarı makama göre düzenleyebilir miyim?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="ans"><p>Evet. Tek dokunuşla repertuvarını makam düzenine geçirebilirsin; her eserde makam, usul, form ve karar bilgisi tutulur. İstersen sürükle-bırak ile kendi akışını da kurabilirsin.</p></div>
+          <div class="ans"><p>Evet. Tek dokunuşla repertuvarını makam düzenine geçirebilir, karar sesine ya da ölçüsüne göre de sıralayabilirsin (ör. 9/8'likler peş peşe gelir). Her eserde makam, usul, ölçü, form ve karar bilgisi tutulur. İstersen sürükle-bırak ile kendi akışını da kurabilirsin.</p></div>
         </details>
         <details class="qa" name="sss-2">
           <summary><h4>Ton değiştirince grubun akoru bozulur mu?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -1444,7 +1450,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
    "name": "Repertuvar.app nedir?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Repertuvar.app, sahneye çıkan müzisyenler, gruplar ve korolar için bir repertuvar ve sahne yönetim uygulamasıdır. Eserleri sürükle-bırak ile sıralar, potpuri oluşturur, makama göre düzenler ve sahnede Bluetooth pedalla yönetirsin."
+    "text": "Repertuvar.app, sahneye çıkan müzisyenler, gruplar ve korolar için bir repertuvar ve sahne yönetim uygulamasıdır. Eserleri sürükle-bırak ile sıralar, potpuri oluşturur, makama, karar sesine ya da ölçüye göre düzenler ve sahnede Bluetooth pedalla yönetirsin."
    }
   },
   {
@@ -1492,7 +1498,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
    "name": "Grubuma ya da koroma nasıl üye eklerim?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Üyeler grubuna davet linkiyle ya da karekodu okutarak katılır; davet linki 7 gün geçerlidir. Bir müzisyen birden fazla gruba veya koroya üye olabilir."
+    "text": "Üyeler grubuna davet linkiyle ya da QR kodu okutarak katılır; davet linki 7 gün geçerlidir. Bir müzisyen birden fazla gruba veya koroya üye olabilir."
    }
   },
   {
@@ -1508,7 +1514,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
    "name": "Repertuvarı makama göre düzenleyebilir miyim?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Evet. Tek dokunuşla repertuvarını makam düzenine geçirebilirsin; her eserde makam, usul, form ve karar bilgisi tutulur. İstersen sürükle-bırak ile kendi akışını da kurabilirsin."
+    "text": "Evet. Tek dokunuşla repertuvarını makam düzenine geçirebilir, karar sesine ya da ölçüsüne göre de sıralayabilirsin (ör. 9/8'likler peş peşe gelir). Her eserde makam, usul, ölçü, form ve karar bilgisi tutulur. İstersen sürükle-bırak ile kendi akışını da kurabilirsin."
    }
   },
   {
@@ -1604,14 +1610,23 @@ document.querySelectorAll('.st-key').forEach(st=>{
     btns.forEach(x=>{const on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)});
     st.querySelectorAll('[data-abc]').forEach(el=>el.textContent=el.dataset[n])}));
 });
-/* makam düzeni: limelight sekmeler (kendiliğinden döner; tıklayınca/üzerine gelince durur) */
+/* makam düzeni: limelight sekmeler (kendiliğinden döner; tıklayınca/üzerine gelince durur).
+   Tümü = HTML'deki karışık sıra; makam seçilince o makam başa, diğerleri sekme sırasıyla gruplanır. */
 document.querySelectorAll('.st-lime').forEach(st=>{
-  const tabs=[...st.querySelectorAll('.lime button')], light=st.querySelector('.lime-light'), rows=[...st.querySelectorAll('.lime-list li')];
+  const tabs=[...st.querySelectorAll('.lime button')], light=st.querySelector('.lime-light'), list=st.querySelector('.lime-list'), rows=[...list.children];
+  const groups=tabs.map(t=>t.dataset.mk).filter(Boolean);
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let i=0,timer=null;
   const place=()=>{const t=tabs[i],w=t.offsetWidth-8;light.style.width=w+'px';light.style.left=(t.offsetLeft+4)+'px'};
+  const rank=(r,mk)=>r.dataset.mk===mk?-1:groups.indexOf(r.dataset.mk);
+  /* FLIP: yer değiştiren satır eski konumundan kayar. 'translate' ayrı özellik; .off'un scale'ine karışmaz.
+     offsetTop düzen koordinatı: kart üzerine gelince büyüse de kayma doğru. */
+  const sort=mk=>{const y=new Map(rows.map(r=>[r,r.offsetTop]));
+    (mk?rows.slice().sort((a,b)=>rank(a,mk)-rank(b,mk)):rows).forEach(r=>list.appendChild(r));
+    if(!reduce)rows.forEach(r=>{const dy=y.get(r)-r.offsetTop;if(dy&&r.animate)r.animate([{translate:`0 ${dy}px`},{translate:'0 0'}],{duration:450,easing:'ease-in-out'})})};
   const pick=n=>{i=n;const mk=tabs[n].dataset.mk;
     tabs.forEach((t,k)=>t.setAttribute('aria-selected',k===n));
+    sort(mk);
     rows.forEach(r=>{const hit=!mk||r.dataset.mk===mk;r.classList.toggle('on',!!mk&&hit);r.classList.toggle('off',!hit)});
     place()};
   const stop=()=>{clearInterval(timer);timer=null};
