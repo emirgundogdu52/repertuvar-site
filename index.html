@@ -301,8 +301,8 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .intro-sirala span{padding:7px 12px;border-radius:200px;font-size:13px;line-height:16px;font-weight:500;color:#fff;background:rgba(17,23,34,.55);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .intro-sirala span:first-child{background:var(--primary);color:var(--on-primary);border-color:transparent}
 @media (max-width:767px){.intro .intro-sahne{min-height:560px}.intro .intro-sahne::before{background:linear-gradient(transparent 12%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.85))}}
-/* (2026-10-05) sahnede bas gitarist + sehpada Repertuvar'ın gerçek setlist ekranı + pedal */
-.intro-sahne{background-image:url('assets/foto/sahne-setlist-v2-1200.jpg');background-image:image-set(url('assets/foto/sahne-setlist-v2-1200.webp') type('image/webp') 1x,url('assets/foto/sahne-setlist-v2-1872.webp') type('image/webp') 2x,url('assets/foto/sahne-setlist-v2-1200.jpg') type('image/jpeg') 1x);background-position:74% 40%}
+/* (2026-10-08) klavye başında müzisyen, nota sehpasındaki tablette Repertuvar'a dokunuyor (magnific …94806) */
+.intro-sahne{background-image:url('assets/foto/klavye-tablet-1200.jpg');background-image:image-set(url('assets/foto/klavye-tablet-1200.webp') type('image/webp') 1x,url('assets/foto/klavye-tablet-1872.webp') type('image/webp') 2x,url('assets/foto/klavye-tablet-1200.jpg') type('image/jpeg') 1x);background-position:70% 22%}
 .intro-y{flex:1;border-radius:36px;background:var(--primary);color:var(--on-primary);padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden}
 .intro-top{display:flex;flex-direction:column;gap:24px}
 .intro-y .label{width:90%;color:var(--ink)}
@@ -1024,12 +1024,12 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 
 <!-- ============ 2. HERO ============ -->
 <section class="box hero">
-  <!-- (2026-10-05) Hero fotoğrafı sağda (masaüstü), metin solda. Fotoğraf: sahnede grup, her müzisyenin önünde Repertuvar açık tablet (kare).
+  <!-- (2026-10-05) Hero fotoğrafı sağda (masaüstü), metin solda. Fotoğraf (2026-10-08): gün batımında açık hava konseri, arkadan; her müzisyenin önünde Repertuvar açık tablet (1312×1199).
        Eski orkestra slaytları ve HTML tablet paneli kaldırıldı; avantaj kartları metnin altında. -->
   <div class="hero-box hero-urun">
     <picture class="hero-foto">
-      <source type="image/webp" srcset="assets/foto/hero-sahne-grup-800.webp 800w, assets/foto/hero-sahne-grup-1200.webp 1200w, assets/foto/hero-sahne-grup-1536.webp 1536w" sizes="(max-width:1024px) 100vw, 62vw">
-      <img src="assets/foto/hero-sahne-grup-1200.jpg" alt="Sahnede bir müzik grubu; her müzisyenin önünde Repertuvar açık bir tablet" width="1200" height="1200" fetchpriority="high" decoding="async">
+      <source type="image/webp" srcset="assets/foto/hero-canli-konser-800.webp 800w, assets/foto/hero-canli-konser-1200.webp 1200w, assets/foto/hero-canli-konser-1312.webp 1312w" sizes="(max-width:1024px) 100vw, 62vw">
+      <img src="assets/foto/hero-canli-konser-1200.jpg" alt="Gün batımında açık hava konseri; sahnedeki grubun her müzisyeninin önünde Repertuvar açık bir tablet" width="1200" height="1096" fetchpriority="high" decoding="async">
     </picture>
     <div class="hero-l">
       <p class="label">Repertuvar.app</p>
@@ -1304,7 +1304,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           <p class="cd">Kâğıt defterde ya da genel amaçlı liste uygulamalarında sahnede karşılaşılan eksikler.</p>
         </div>
         <hr>
-        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Şarkıları her seferinde elle sıralamak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Potpuri desteği yok</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Makam, usul ve kararı elle not eder, elle sıralarsın</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Sayfa çevirmek ya da ekrana dokunmak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Müzik defterini her yere götüremezsin</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Bireysel kullanım odaklı</span></li></ul>
+        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Şarkıları her seferinde elle sıralamak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Potpuri desteği yok</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Makam, usul ve kararı elle not eder, elle sıralarsın</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Sayfaları elle çevirmek zorundasın</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Müzik defterini her yere götüremezsin</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Bireysel kullanım odaklı</span></li></ul>
         <div class="cf"><a href="#features" class="btn btn-sec">Özellikleri gör <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
       <article class="ccard us">
@@ -1341,7 +1341,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
     </article>
     <article class="card">
       <div>
-        <div class="card-img" data-slides="assets/foto/Singing_choir_in_Rotterdam.jpg|assets/foto/960px-WYSO_Concert_Orchestra_rehearsal.jpg|assets/foto/grup-salon-arkadan-1024.webp 50% 78%" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Grup / Koro</span></div>
+        <div class="card-img" data-slides="assets/foto/Singing_choir_in_Rotterdam.jpg|assets/foto/grup-davet-qr-1280.webp 66% 50%|assets/foto/grup-salon-arkadan-1024.webp 50% 78%" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Grup / Koro</span></div>
         <div class="card-body"><h4 class="h4">Gruplar ve korolar</h4><p>Üyeler davet linki ya da QR kodla katılır. Herkes aynı listede çalışır; duyurular ve grup notları anında herkese ulaşır.</p></div>
       </div>
       <div class="card-foot"><a href="kayit.html" class="btn btn-y">Grup kur</a></div>
