@@ -86,7 +86,10 @@
       b.addEventListener('click', function () { window.setSiteLang(b.getAttribute('data-lang')); });
     });
     var hedef = null;
-    try { hedef = localStorage.getItem('siteLang'); } catch (e) {}
+    // (2026-10-11) ?lang=tr|en adresle gelen dili zorlar (ör. Türkü Radyo uygulamasındaki bağlantı); kalıcı seçimi değiştirmez
+    try { hedef = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (hedef !== 'tr' && hedef !== 'en') hedef = null;
+    if (!hedef) { try { hedef = localStorage.getItem('siteLang'); } catch (e) {} }
     if (!hedef) hedef = ((navigator.language || 'tr').slice(0, 2).toLowerCase() === 'tr') ? 'tr' : 'en';
     if (hedef === 'en') window.setSiteLang('en', false); else isaretle();
   }
