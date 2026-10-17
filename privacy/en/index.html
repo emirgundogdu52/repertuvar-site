@@ -69,7 +69,7 @@
 <header>
   <a class="dil" href="../" onclick="try{localStorage.setItem('siteLang','tr')}catch(e){}">Türkçe</a>
   <h1>Privacy Policy</h1>
-  <p class="eff">Effective date: 26.07.2026 · Last updated: 08.10.2026</p>
+  <p class="eff">Effective date: 26.07.2026 · Last updated: 16.10.2026</p>
 </header>
 
 <div class="ceviri-uyari">
@@ -80,7 +80,7 @@
 
 <p>This privacy policy explains how <strong>Repertuvar</strong> (the "App", "we")
 collects, uses and protects your personal data through its mobile application and
-the <a href="https://www.repertuvar.app">repertuvar.app</a> website. Repertuvar is a
+the <a href="https://repertuvar.app">repertuvar.app</a> website. Repertuvar is a
 tool built for musicians to manage their repertoire, with particular support for
 Turkish music.</p>
 
@@ -120,20 +120,24 @@ your device for offline use). The App <strong>shows no advertising and uses no
 third-party tracking or analytics cookies</strong>.</p>
 
 <h3>d) Usage measurement</h3>
-<p>We measure usage on our own infrastructure in order to improve the service; this data
-is not transferred to any third party and is not used for advertising.</p>
+<p>We measure usage on our own infrastructure in order to improve the service and to plan our regional promotion. Regional promotion uses <strong>aggregate counts only</strong> (for example, how many users there are in a city); there is no personalised advertising or targeting, and the data is not sold. To determine the coarse location your IP address is sent to the geolocation service named below; apart from that, this data is not transferred to any third party.</p>
 <p><strong>Inside the App:</strong> the name of the page opened, the page it was reached
 from, session ID, user ID, device type (mobile/desktop), platform, time zone, and a coarse
 location derived from the IP address (country, region, city).
-<strong>The IP address itself is not stored.</strong> To determine the coarse location, the IP address is sent to a third-party geolocation service (ipwho.is); the result is cached on the device for a while.</p>
+<strong>The IP address itself is not stored.</strong> To determine the coarse location, the IP address is sent to a third-party geolocation service (ipwho.is) at most once a day; the result is cached on the device for a day.</p>
+<p><strong>You can turn it off:</strong> when you switch off Settings › Usage statistics, neither usage records nor location lookups are sent from that device. This choice is per device.</p>
 <p><strong>On the marketing site (repertuvar.app):</strong> the address of the page opened,
 the referring site and device type. <strong>No user ID, cookie or location data is collected
 here</strong>; visitors are not identified.</p>
 
-<h3>e) Purchase information</h3>
-<p>In-app purchases are handled through the App Store and Google Play;
-<strong>we have no access to your payment card details</strong> — these are processed by
-Apple and Google.</p>
+<h3>e) Subscription and purchase information</h3>
+<p>When you buy Repertuvar Pro through the App Store or Google Play, the payment is processed by
+Apple or Google; <strong>we have no access to your card or payment details</strong>. To link your
+subscription to your account and show its status correctly (trial, active, cancelled, expired), we
+receive the following from the store, through our subscription validation service RevenueCat: the
+plan you bought; purchase, renewal and expiry dates; trial status; store transaction IDs; and the
+store country, price and currency. If your account has been given Repertuvar Pro Gift, we keep a
+record of that too.</p>
 
 <h2>3. Why We Process Data and on What Legal Basis</h2>
 <table>
@@ -142,7 +146,9 @@ Apple and Google.</p>
   <tr><td>Running setlist and group features</td><td>Performance of a contract</td></tr>
   <tr><td>Syncing your favourites across your devices and highlighting pieces that suit your music preferences</td><td>Performance of a contract</td></tr>
   <tr><td>Sending invitation and notification emails</td><td>Performance of a contract / legitimate interest</td></tr>
+  <tr><td>Validating your subscription and turning Pro on and managing it for your account</td><td>Performance of a contract (Art. 6(1)(b))</td></tr>
   <tr><td>Security and prevention of misuse</td><td>Legitimate interest (Art. 6(1)(f))</td></tr>
+  <tr><td>Preventing subscription abuse (e.g. one subscription used on several accounts)</td><td>Legitimate interest (Art. 6(1)(f))</td></tr>
   <tr><td>Measuring and improving how the service is used</td><td>Legitimate interest (Art. 6(1)(f))</td></tr>
   <tr><td>Legal obligations</td><td>Legal obligation (Art. 6(1)(c))</td></tr>
 </table>
@@ -154,15 +160,17 @@ to deliver the service:</p>
   <li><strong>Supabase</strong> — database, authentication and hosting (the infrastructure where your data is stored).</li>
   <li><strong>Google</strong> — Sign in with Google (authentication).</li>
   <li><strong>Resend</strong> — transactional email delivery (invitations, notifications).</li>
-  <li><strong>Apple App Store / Google Play</strong> — app distribution and purchase processing.</li>
+  <li><strong>Apple App Store / Google Play</strong> — app distribution, purchase and payment processing.</li>
+  <li><strong>RevenueCat</strong> (RevenueCat, Inc., USA) — subscription validation and management: it verifies store purchases and tells us your subscription status.</li>
+  <li><strong>ipwho.is</strong> — coarse location (country, region, city) from the IP address; only for in-app usage measurement and only while Usage statistics is on. We do not store the IP address.</li>
 </ul>
 <p>These providers process data only to the extent needed to provide the service and
 strictly on our instructions.</p>
 
 <h2>5. International Transfers</h2>
 <p>Your data is stored primarily on <strong>Supabase servers in the European Union</strong>.
-That said, some providers — Google (sign-in), Resend (email delivery) and Apple/Google
-(distribution) — may process data outside the European Economic Area (for example in the
+That said, some providers — Google (sign-in), Resend (email delivery), RevenueCat (subscription
+validation) and Apple/Google (distribution and purchases) — may process data outside the European Economic Area (for example in the
 United States). Such transfers are covered by the safeguards required under the GDPR,
 for example Standard Contractual Clauses.</p>
 
@@ -171,12 +179,15 @@ for example Standard Contractual Clauses.</p>
 is active. Specific retention periods apply to usage measurement records:</p>
 <table>
   <tr><th>Data</th><th>Retention</th></tr>
-  <tr><td>Account information and content you create</td><td>As long as the account is active</td></tr>
+  <tr><td>Account information and content you create (even when Pro is not active)</td><td>Until you delete your account</td></tr>
+  <tr><td>Subscription and purchase records</td><td>Until you delete your account; deleted then, including your record at RevenueCat</td></tr>
+  <tr><td>Accounting records (aggregate sales reports from Apple and Google, containing no personal identifiers)</td><td>Statutory period (7 years)</td></tr>
   <tr><td>User ID, session ID, city and region in in-app usage records</td><td>Deleted after 30 days</td></tr>
   <tr><td>Usage records in full</td><td>Deleted after 180 days</td></tr>
+  <tr><td>Daily aggregate counts (users, sessions and page views per country, region, city and platform; contain no identifiers)</td><td>Indefinitely</td></tr>
   <tr><td>Marketing site visit records (contain no identifiers)</td><td>180 days</td></tr>
 </table>
-<p>Only data we are legally required to retain falls outside these periods.</p>
+<p>When your trial or subscription ends, your content is not deleted; it is kept until you delete your account. Only data we are legally required to retain falls outside these periods.</p>
 
 <h2 id="account-deletion">7. Deleting Your Account and Data</h2>
 <p>You can delete your account yourself <strong>from within the App</strong>, under
@@ -196,6 +207,9 @@ depends on them:</p>
   to another member. If you founded a group, the group is not deleted; ownership is transferred.
   If no members remain, the group and its setlists are deleted as well.</li>
 </ul>
+<p>Deleting your account <strong>does not cancel</strong> your App Store or Google Play subscription;
+cancel it first so you won't be charged. When your account is deleted, your subscription records are
+deleted too; Apple and Google keep their own purchase records under their own policies.</p>
 
 <h2>8. Your Rights</h2>
 <p>Under the GDPR you have the right of <strong>access</strong>, <strong>rectification</strong>,
@@ -213,8 +227,7 @@ lives only until the tab is closed is used so that the same visit is not counted
 <strong>We use no marketing or third-party tracking cookies.</strong></p>
 
 <h2>10. Children's Privacy</h2>
-<p>The App is not directed at children under 16, and we do not knowingly collect data from
-anyone under that age.</p>
+<p>The App is not directed at children under 13, and we do not knowingly collect data from anyone under 13; if we become aware of such an account, we delete the account and its data. Users aged 13 or older who are below the age at which they can consent to the processing of their personal data on their own in their country (between 13 and 16 in the European Union, depending on the country) use the App with the consent of a parent or guardian. If you are a parent or guardian, you can write to <a href="mailto:privacy@repertuvar.app">privacy@repertuvar.app</a> to access, correct or delete your child's data.</p>
 
 <h2>11. Security</h2>
 <p>We take reasonable technical and organisational measures to protect your data — for example
@@ -232,7 +245,7 @@ the App or on the website. The current version is always published on this page.
 <a href="mailto:support@repertuvar.app">support@repertuvar.app</a> (<a href="/support/en/">Support page</a>)</p>
 
 <footer>
-  <a href="https://www.repertuvar.app">repertuvar.app</a> · © 2026 StageFlow B.V.<br>
+  <a href="https://repertuvar.app">repertuvar.app</a> · © 2026 StageFlow B.V.<br>
   This is the privacy policy of repertuvar.app, developed and operated by StageFlow B.V.<br>
   <a href="/support/en/">Support</a> · <a href="/terms/en/">Terms of Use</a> · <a href="../">Türkçe sürüm</a>
 </footer>
