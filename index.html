@@ -533,6 +533,51 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 @media (max-width:1024px){.bento-row.r1,.bento-row.r2{grid-template-columns:1fr 1fr}.bento-row.r1 .fcard:nth-child(2){grid-column:span 2;order:-1}}
 @media (max-width:700px){.feat{padding:56px 16px}.bento-row.r1,.bento-row.r2{grid-template-columns:1fr}.bento-row.r1 .fcard:nth-child(2){grid-column:auto;order:0}.siradaki{flex-wrap:wrap;justify-content:center;border-radius:16px;row-gap:2px}.siradaki small{flex:0 0 100%;text-align:center}}
 
+/* ===== 3b+. NOTA DEFTERİ (2026-10-18) ===== */
+.defter{padding:96px 0 48px}
+.df-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.df-metin{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.df-metin .label{color:var(--primary)}
+.df-metin .lead{color:var(--sand);max-width:560px}
+.df-adim{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:18px}
+.df-adim li{display:flex;gap:14px;align-items:flex-start}
+.df-ik{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,200,61,.12);color:var(--primary);border:1px solid rgba(255,200,61,.35)}
+.df-ik svg{width:20px;height:20px}
+.df-adim b{display:block;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:3px}
+.df-adim p{font-size:14px;line-height:21px;color:var(--sand);margin:0}
+.df-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:10px}
+.df-not{font-size:13px;color:#8A93A6;max-width:320px}
+.df-gorsel{display:flex;justify-content:center}
+.df-tel{width:min(300px,78vw);aspect-ratio:9/19;border-radius:42px;background:#06080c;padding:12px;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08) inset,0 0 0 6px rgba(255,200,61,.10)}
+.df-ekran{height:100%;border-radius:32px;background:#0d1119;overflow:hidden;display:flex;flex-direction:column;padding:18px 14px 14px;gap:12px}
+.df-ust{display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:13px;font-weight:600;padding:8px 4px 0}
+.df-ust b{font-size:11px;color:var(--primary);background:rgba(255,200,61,.14);border-radius:999px;padding:3px 9px;font-weight:600}
+.df-kagit{position:relative;flex:1;border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding:16px 14px;transform:rotate(-2.5deg);margin:6px 8px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.df-kagit img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.15)}
+.df-porte{display:block;height:25px;background:repeating-linear-gradient(to bottom,#9aa0aa 0 1px,transparent 1px 6px);opacity:.55}
+.df-porte.kisa{width:62%}
+.kc{position:absolute;width:22px;height:22px;border:3px solid var(--primary);pointer-events:none}
+.k1{left:-6px;top:-6px;border-right:0;border-bottom:0;border-radius:6px 0 0 0}
+.k2{right:-6px;top:-6px;border-left:0;border-bottom:0;border-radius:0 6px 0 0}
+.k3{left:-6px;bottom:-6px;border-right:0;border-top:0;border-radius:0 0 0 6px}
+.k4{right:-6px;bottom:-6px;border-left:0;border-top:0;border-radius:0 0 6px 0}
+.df-isik{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent);box-shadow:0 0 14px var(--primary);animation:dfTara 2.8s ease-in-out infinite}
+@keyframes dfTara{0%{top:6%}50%{top:92%}100%{top:6%}}
+@media (prefers-reduced-motion:reduce){.df-isik{animation:none;top:50%}}
+.df-kart{display:flex;align-items:center;gap:8px;background:#151b27;border:1px solid var(--ink-2);border-radius:12px;padding:10px}
+.df-no{width:22px;height:22px;border-radius:50%;background:var(--ink-2);color:var(--sand);font-size:11px;font-weight:700;display:grid;place-items:center;flex:none}
+.df-ad{flex:1;min-width:0;color:var(--primary);font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.df-bag{font-size:10px;color:var(--sand);border:1px solid var(--ink-2);border-radius:999px;padding:2px 7px;white-space:nowrap}
+.df-alt{display:flex;gap:8px}
+.df-alt span{flex:1;height:38px;border-radius:10px;display:grid;place-items:center;font-size:12.5px;font-weight:700}
+.df-b1{border:1.5px solid var(--primary);color:var(--primary);background:rgba(255,200,61,.08)}
+.df-b2{background:var(--primary);color:var(--on-primary)}
+@media (max-width:860px){.df-in{grid-template-columns:1fr;gap:40px}.defter{padding:64px 0 32px}}
+/* "Neden" kartındaki fotoğrafın üstünde: defter bölümüne bağlantı */
+.cvis-kap{position:relative}
+.cvis-cta{position:absolute;right:16px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--on-primary);background:var(--primary);padding:6px 12px;border-radius:200px;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.cvis-cta svg{width:14px;height:14px}
+
 /* ===== 3c. NASIL ÇALIŞIR — numara şeridi + 4 adım kartı ===== */
 .how{margin:0 auto;padding:96px 0 48px}
 .how-head{max-width:760px;margin:0 auto 64px;text-align:center;display:flex;flex-direction:column;gap:16px}
@@ -983,7 +1028,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <ul class="nmenu">
         <li><a href="#features">Özellikler</a></li>
         <li><a href="#sahne-modu">Sahne Modu</a></li>
-        <li><a href="#nasil">Nasıl çalışır</a></li>
+        <li><a href="#defter">Nota Defteri</a></li><li><a href="#nasil">Nasıl çalışır</a></li>
         <li><a href="#neden">Neden Repertuvar</a></li>
       </ul>
     </nav>
@@ -1011,7 +1056,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <li><a href="#features">Özellikler</a></li>
       <li><a href="#sahne-modu">Sahne Modu</a></li>
       <li><a href="#pedal">Pedal</a></li>
-      <li><a href="#nasil">Nasıl çalışır</a></li>
+      <li><a href="#defter">Nota Defteri</a></li><li><a href="#nasil">Nasıl çalışır</a></li>
       <li><a href="#neden">Neden Repertuvar</a></li>
     </ul>
     <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="giris.html" class="btn btn-ghost">Giriş Yap</a><a href="kayit.html" class="btn btn-y">Ücretsiz Dene</a></div>
@@ -1212,6 +1257,39 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
   </div>
 </section>
 
+<!-- ============ 3b+. NOTA DEFTERİ (2026-10-18) — kullanıcı: "bu özellik başlı başına tanıtılmalı" ============ -->
+<section class="box defter" id="defter">
+  <div class="df-in">
+    <div class="df-metin">
+      <span class="badge solid">Yeni</span>
+      <p class="label">Nota Defteri</p>
+      <h2 class="h2">Nota defterin artık cebinde.</h2>
+      <p class="lead">Yıllardır biriktirdiğin nota defterini telefonunla tara. Her şarkı kendi eseri olur, sahnede pedalla akar.</p>
+      <ol class="df-adim">
+        <li><span class="df-ik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></span><div><b>Tara</b><p>Sayfaları art arda tara. Kenarlar kendiliğinden bulunur, eğik sayfa düzelir; nota siyah-beyaz ve okunaklı kaydedilir.</p></div></li>
+        <li><span class="df-ik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><div><b>Eşleştir</b><p>Her sayfaya adını yaz. Eser katalogda varsa sayfa onun notası olur, yoksa yeni eser açılır. Çok sayfalı şarkılar tek dokunuşla birleşir.</p></div></li>
+        <li><span class="df-ik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span><div><b>Sahnede çal</b><p>Sayfalar Sahne Modu'nda alt alta açılır; pedalla bir sonraki sayfaya geçersin. İnternet olmasa da çalışır.</p></div></li>
+      </ol>
+      <div class="df-cta"><a href="kayit.html" class="btn btn-y">Ücretsiz Dene</a><span class="df-not">Defterdeki eserlerin yalnız sana görünür; istersen grubunla paylaşırsın.</span></div>
+    </div>
+    <div class="df-gorsel" aria-hidden="true">
+      <div class="df-tel">
+        <div class="df-ekran">
+          <div class="df-ust"><span>Defterden Ekle</span><b>3 sayfa</b></div>
+          <div class="df-kagit">
+            <img src="assets/foto/sahne-nota-kizilciklar.webp" alt="" width="920" height="379" loading="lazy">
+            <span class="df-porte"></span><span class="df-porte"></span><span class="df-porte kisa"></span>
+            <i class="kc k1"></i><i class="kc k2"></i><i class="kc k3"></i><i class="kc k4"></i>
+            <span class="df-isik"></span>
+          </div>
+          <div class="df-kart"><span class="df-no">1</span><span class="df-ad" data-noi18n>Kızılcıklar Oldu mu?</span><span class="df-bag">Mevcut eser</span></div>
+          <div class="df-alt"><span class="df-b1">Sayfa tara</span><span class="df-b2">Kaydet</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 3c. NASIL ÇALIŞIR ============ -->
 <section class="box how" id="nasil">
   <div class="how-head">
@@ -1297,14 +1375,14 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
     </div>
     <div class="cmp-grid">
       <article class="ccard them">
-        <div class="cvis photo" style="background-image:url('assets/foto/960px-Sheet_music_on_stand_-_Regent_St_Festival_2010_-photo_by_Garry_Knight-.jpg')"><span class="cvis-tag">Kâğıt nota · sehpa</span></div>
+        <div class="cvis-kap"><div class="cvis photo" style="background-image:url('assets/foto/960px-Sheet_music_on_stand_-_Regent_St_Festival_2010_-photo_by_Garry_Knight-.jpg')"><span class="cvis-tag">Kâğıt nota · sehpa</span></div><a class="cvis-cta" href="#defter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg>Defterini tara</a></div>
         
         <div class="ch">
           <div class="ct">Müzik defteri ve genel uygulamalar</div>
           <p class="cd">Kâğıt defterde ya da genel amaçlı liste uygulamalarında sahnede karşılaşılan eksikler.</p>
         </div>
         <hr>
-        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Şarkıları her seferinde elle sıralamak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Potpuri desteği yok</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Makam, usul ve kararı elle not eder, elle sıralarsın</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Sayfaları elle çevirmek zorundasın</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Müzik defterini her yere götüremezsin</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Bireysel kullanım odaklı</span></li></ul>
+        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Şarkıları her seferinde elle sıralamak gerekir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Potpuri desteği yok</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Makam, usul ve kararı elle not eder, elle sıralarsın</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Sayfaları elle çevirmek zorundasın</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Müzik defterini her yere götüremezsin</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Defterdeki notalar kâğıtta kalır; yıpranır, kaybolur</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>Bireysel kullanım odaklı</span></li></ul>
         <div class="cf"><a href="#features" class="btn btn-sec">Özellikleri gör <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
       <article class="ccard us">
@@ -1315,7 +1393,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           <p class="cd">İster sürükle-bırak ile kendi akışını oluştur, ister tek dokunuşla makam, karar sesi ya da ölçü düzenine geç.</p>
         </div>
         <hr>
-        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sürükle-bırak ve makama göre akıllı sıralama</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Potpuri oluşturabilir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Hazır eserlerde makam, usul ve karar bilgisi</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sahne Modu ve Bluetooth pedal</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Cebinde, tablette ve bilgisayarda çalışır</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Grup senkronizasyonu</span></li></ul>
+        <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sürükle-bırak ve makama göre akıllı sıralama</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Potpuri oluşturabilir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Hazır eserlerde makam, usul ve karar bilgisi</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sahne Modu ve Bluetooth pedal</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Cebinde, tablette ve bilgisayarda çalışır</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Nota defterini telefonla tara, notaların hep yanında</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Grup senkronizasyonu</span></li></ul>
         <div class="cf"><a href="kayit.html" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
     </div>
@@ -1639,7 +1717,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           <p class="f4-owner">repertuvar.app, Hollanda merkezli StageFlow B.V. tarafından geliştirilen ve işletilen bir üründür.</p>
         </div>
         <div class="f4-cols">
-          <div class="f4-col"><p class="f4-h">Ürün</p><ul><li><a href="#features">Özellikler</a></li><li><a href="#sahne-modu">Sahne Modu</a></li><li><a href="#pedal">Pedal</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#neden">Neden Repertuvar</a></li></ul></div>
+          <div class="f4-col"><p class="f4-h">Ürün</p><ul><li><a href="#features">Özellikler</a></li><li><a href="#sahne-modu">Sahne Modu</a></li><li><a href="#pedal">Pedal</a></li><li><a href="#defter">Nota Defteri</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#neden">Neden Repertuvar</a></li></ul></div>
           <div class="f4-col"><p class="f4-h">Uygulama</p><ul><li><a href="https://app.repertuvar.app/">Uygulamayı aç</a></li><li><a href="giris.html">Giriş yap</a></li><li><a href="kayit.html">Ücretsiz dene</a></li><li><a href="#calisma">Çalışma Odası</a></li></ul></div>
           <div class="f4-col"><p class="f4-h">Yardım</p><ul><li><a href="#sss">Sık sorulanlar</a></li><li><a href="/support/">Destek</a></li><li><a href="#calisma" class="f4-live">Canlı demo<span class="ping" aria-hidden="true"><i></i><i></i></span></a></li></ul></div>
           <div class="f4-col"><p class="f4-h">İletişim</p><ul><li><a href="mailto:info@repertuvar.app" class="f4-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg><span>info@repertuvar.app</span></a></li><li><a href="/" class="f4-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>repertuvar.app</span></a></li><li><span class="f4-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><address>Spijkenisse, Nederland</address></span></li></ul></div>
