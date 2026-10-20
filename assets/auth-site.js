@@ -27,7 +27,26 @@ window.RA = (function () {
     if (davet) q.set('invite', davet);
     q.set('lang', window.siteLang || 'tr');
     var h = new URLSearchParams({ access_token: sess.access_token, refresh_token: sess.refresh_token, type: tur || 'landing' });
-    location.assign(APP + '/login.html?' + q.toString() + '#' + h.toString());
+    kaynakYaz(sess).then(function () { location.assign(APP + '/login.html?' + q.toString() + '#' + h.toString()); });
+  }
+
+  // (2026-10-20) Kayıt kaynağı: sayfaların sayaç bloğunun 'r_ilk_kaynak'a koyduğu ilk gelişi YENİ hesaba bir kez yazar
+  // (user_metadata.kaynak = { ref, sayfa, ilk, utm_* }) ve tarayıcıdan siler. Eski hesaba yazılmaz: yalnız son bir saatte
+  // açılmış ve kaynağı olmayan hesap. En fazla 1,5 sn beklenir; hata girişi engellemez. Gizlilik metni §2(d).
+  function kaynakYaz(sess) {
+    var u = sess && sess.user, k = null, sil = function () { try { localStorage.removeItem('r_ilk_kaynak'); } catch (e) {} };
+    try { k = JSON.parse(localStorage.getItem('r_ilk_kaynak') || 'null'); } catch (e) {}
+    if (!u || !k) return Promise.resolve();
+    var yeni = Date.now() - new Date(u.created_at).getTime() < 60 * 60 * 1000;
+    if (!yeni || (u.user_metadata && u.user_metadata.kaynak)) { sil(); return Promise.resolve(); }
+    var veri = { ref: k.ref || 'dogrudan', sayfa: k.sayfa || '/', ilk: new Date(k.t).toISOString().slice(0, 10) };
+    Object.keys(k.utm || {}).forEach(function (a) { veri[a] = k.utm[a]; });
+    var istek = fetch(SUPA_URL + '/auth/v1/user', {
+      method: 'PUT',
+      headers: { apikey: SUPA_KEY, Authorization: 'Bearer ' + sess.access_token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: { kaynak: veri } })
+    }).then(function (r) { if (r.ok) sil(); }).catch(function () {});
+    return Promise.race([istek, new Promise(function (ok) { setTimeout(ok, 1500); })]);
   }
 
   function hata(e) {

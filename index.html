@@ -1973,6 +1973,25 @@ document.querySelectorAll('.sm').forEach(sm=>{
      Sayfa ağırlığı: tek fetch, 1 KB'ın altında, `keepalive` ile sayfa
      kapansa bile gidiyor; hata olursa sessizce yutuluyor. -->
 <script>
+/* (2026-10-20) Kampanya etiketi + kayıt kaynağı. Bağlantıdaki utm_source/medium/campaign (yalnız bunlar, temizlenmiş)
+   sayaca sayfa yolunun sonuna eklenir. İlk geliş (gelinen sitenin yalnız adı + etiket + tarih) bu tarayıcıda en fazla
+   30 gün 'r_ilk_kaynak'ta durur; kayıt olunursa assets/auth-site.js kaynakYaz() hesaba bir kez yazar ve siler.
+   repertuvar.app içinden gelme kaynak sayılmaz. Gizlilik metni §2(d) "Kayıt kaynağı". */
+var RA_UTM = (function () {
+  var q = new URLSearchParams(location.search), utm = {};
+  ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (a) {
+    var v = (q.get(a) || '').toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 40);
+    if (v) utm[a] = v;
+  });
+  try {
+    var ref = '';
+    try { ref = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+    var ic = /(^|\.)repertuvar\.app$/.test(ref), eski = JSON.parse(localStorage.getItem('r_ilk_kaynak') || 'null');
+    if (!(eski && Date.now() - eski.t < 30 * 864e5) && !(ic && !Object.keys(utm).length))
+      localStorage.setItem('r_ilk_kaynak', JSON.stringify({ t: Date.now(), ref: ic ? '' : ref, utm: utm, sayfa: location.pathname }));
+  } catch (e) {}
+  return Object.keys(utm).map(function (a) { return a + '=' + utm[a]; }).join('&');
+})();
 (function () {
   try {
     // Aynı oturumda aynı sayfayı tekrar sayma (F5 spam'ini önler).
@@ -1988,7 +2007,7 @@ document.querySelectorAll('.sm').forEach(sm=>{
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        p_path: location.pathname || '/',
+        p_path: (location.pathname || '/') + (RA_UTM ? '?' + RA_UTM : ''),
         p_ref: document.referrer || '',
         p_cihaz: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'mobil' : 'masaustu'
       }),
