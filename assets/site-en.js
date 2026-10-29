@@ -412,5 +412,11 @@ window.SITE_EN={
 "Zayıf": "Weak",
 "Orta": "Fair",
 "İyi": "Good",
-"Güçlü": "Strong"
+"Güçlü": "Strong",
+"1 Ay Ücretsiz Dene": "Try 1 Month Free",
+"1 ay ücretsiz dene": "Try 1 month free",
+"App Store'dan indirin": "Download on the App Store",
+"Google Play'den alın": "Get it on Google Play",
+"İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.": "New subscribers get 1 month free on any plan. If you don't cancel before the trial ends, your chosen plan continues.",
+"Hesabın varsa web'den giriş yap": "Already have an account? Sign in on the web"
 };

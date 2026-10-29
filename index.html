@@ -839,6 +839,13 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .sponsors.cta{align-items:center;text-align:center;gap:20px;padding:96px 24px}
 .sponsors.cta .lead{color:var(--ink-3);max-width:680px;text-wrap:balance}
 .sponsors.cta .btn{margin-top:12px}
+.magaza{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:12px}
+.magaza a{display:block;line-height:0;border-radius:9px}
+.magaza a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.magaza img{height:48px;width:auto}
+.magaza-not{font-size:14px;line-height:20px;color:var(--ink-3);max-width:520px;text-wrap:balance}
+.magaza-not a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+#indir{scroll-margin-top:96px}
 .sponsors .h3{text-align:center;font-size:50px;line-height:52px}
 .marq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marq-track{display:flex;gap:16px;width:max-content;animation:slide 40s linear infinite}
@@ -990,7 +997,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
     <div class="hdr-right">
       <div class="lang" role="group" aria-label="Dil"><button type="button" data-lang="tr" class="on">TR</button><button type="button" data-lang="en">EN</button></div>
       <a href="giris.html" class="btn btn-ghost btn-sm">Giriş Yap</a>
-      <a href="kayit.html" class="btn btn-y btn-sm">Ücretsiz Dene</a>
+      <a href="#indir" class="btn btn-y btn-sm">1 Ay Ücretsiz Dene</a>
       <button class="icon-btn menu-btn" aria-label="Menüyü aç" aria-controls="oc" aria-expanded="false" onclick="ocAc(true)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
       </button>
@@ -1014,7 +1021,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <li><a href="#nasil">Nasıl çalışır</a></li>
       <li><a href="#neden">Neden Repertuvar</a></li>
     </ul>
-    <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="giris.html" class="btn btn-ghost">Giriş Yap</a><a href="kayit.html" class="btn btn-y">Ücretsiz Dene</a></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="giris.html" class="btn btn-ghost">Giriş Yap</a><a href="#indir" class="btn btn-y">1 Ay Ücretsiz Dene</a></div>
     <div class="oc-foot">
       <div><p><a href="mailto:info@repertuvar.app">info@repertuvar.app</a></p><p>Geliştiren ve işleten: StageFlow B.V. · Spijkenisse, Hollanda</p></div>
       <div class="lang" role="group" aria-label="Dil"><button type="button" data-lang="tr">TR</button><button type="button" data-lang="en">EN</button></div>
@@ -1036,7 +1043,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
       <h1 class="display">Sen sahnede müziğine odaklan. Gerisini <span class="accent">repertuvar.app</span> halletsin.</h1>
       <p class="hero-p">Repertuvarını oluştur, grubunla senkronize ol, Sahne Modu ve Bluetooth pedalla sahneni yönet. İster sürükle-bırak ile kendi akışını oluştur, ister akıllı özelliklerle repertuvarını saniyeler içinde düzenle.</p>
       <div class="btns">
-        <a href="kayit.html" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#indir" class="btn btn-y">1 Ay Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#sahne-modu" class="btn btn-w">Sahne Modunu Keşfet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -1233,7 +1240,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           </div>
           <div class="step-foot">
             <span class="step-no">01<small> / 04 adım</small></span>
-            <a href="kayit.html" class="btn btn-w">Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#indir" class="btn btn-w">1 Ay Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </article>
@@ -1248,7 +1255,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           </div>
           <div class="step-foot">
             <span class="step-no">02<small> / 04 adım</small></span>
-            <a href="kayit.html" class="btn btn-w">Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#indir" class="btn btn-w">1 Ay Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </article>
@@ -1263,7 +1270,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           </div>
           <div class="step-foot">
             <span class="step-no">03<small> / 04 adım</small></span>
-            <a href="kayit.html" class="btn btn-w">Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#indir" class="btn btn-w">1 Ay Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </article>
@@ -1278,7 +1285,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
           </div>
           <div class="step-foot">
             <span class="step-no">04<small> / 04 adım</small></span>
-            <a href="kayit.html" class="btn btn-w">Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#indir" class="btn btn-w">1 Ay Ücretsiz Dene <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </article>
@@ -1316,7 +1323,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         </div>
         <hr>
         <ul><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sürükle-bırak ve makama göre akıllı sıralama</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Potpuri oluşturabilir</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Hazır eserlerde makam, usul ve karar bilgisi</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Sahne Modu ve Bluetooth pedal</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Cebinde, tablette ve bilgisayarda çalışır</span></li><li><span class="mk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-6.5"/></svg></span><span>Grup senkronizasyonu</span></li></ul>
-        <div class="cf"><a href="kayit.html" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="cf"><a href="#indir" class="btn btn-y">1 Ay Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
     </div>
   </div>
@@ -1337,14 +1344,14 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         <div class="card-img" data-slides="assets/foto/960px-Close_up_of_an_acoustic_guitar_being_played.jpg|assets/foto/keman-tablet-nota-1280.webp|assets/foto/solo-baglama-sahne-1280.webp" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Solo</span></div>
         <div class="card-body"><h4 class="h4">Bireysel müzisyen</h4><p>Kendi repertuvarını kur, eseri kendi tonuna aktar. Akor yalnızca senin kopyanda değişir; Çalışma Odası'nda kaydınla tonunu ve temponu ayarla.</p></div>
       </div>
-      <div class="card-foot"><a href="kayit.html" class="btn btn-y">Başla</a></div>
+      <div class="card-foot"><a href="#indir" class="btn btn-y">Başla</a></div>
     </article>
     <article class="card">
       <div>
         <div class="card-img" data-slides="assets/foto/Singing_choir_in_Rotterdam.jpg|assets/foto/grup-davet-qr-1280.webp 66% 50%|assets/foto/grup-salon-arkadan-1024.webp 50% 78%" data-delay="1600" data-speed="4000"><span class="btn btn-w btn-sm" style="backdrop-filter:blur(12px)">Grup / Koro</span></div>
         <div class="card-body"><h4 class="h4">Gruplar ve korolar</h4><p>Üyeler davet linki ya da QR kodla katılır. Herkes aynı listede çalışır; duyurular ve grup notları anında herkese ulaşır.</p></div>
       </div>
-      <div class="card-foot"><a href="kayit.html" class="btn btn-y">Grup kur</a></div>
+      <div class="card-foot"><a href="#indir" class="btn btn-y">Grup kur</a></div>
     </article>
     <article class="card">
       <div>
@@ -1436,7 +1443,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
     </div>
     <div class="bottom">
       <p class="lead">Kaydını yükle (mp3, m4a, wav), tonunu ve temposunu birbirinden bağımsız değiştir. Uygulama, kaydın tonundan eserin kararına kaç yarım ses gerektiğini kendisi hesaplar. Ritim döngülerini eserlerine bağla; metronom da aynı yerde.</p>
-      <a href="kayit.html" class="btn btn-y">Çalışma Odası'nı keşfet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#indir" class="btn btn-y">Çalışma Odası'nı keşfet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1624,10 +1631,18 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 
 <!-- ============ 7. FOOTER ============ -->
 <footer class="ftr">
-  <div class="box sponsors cta">
+  <!-- (2026-10-29, YAYIN GÜNÜ) İndir bölümü: deneme mağazadan başlar (web'de satış yok). Sayfadaki "1 Ay Ücretsiz Dene"
+       düğmeleri buraya gelir. Rozetler resmî (Apple Marketing Tools / Google Play rozet sayfası; Play'inki saydam kenarı kırpıldı),
+       dile göre değişir. Bağlantılar sayfa sonundaki betikte kampanya koduyla kurulur (App Store ct, Play referrer). -->
+  <div class="box sponsors cta" id="indir">
     <h2 class="h3">Hazırsan sahneye çık.</h2>
     <p class="lead">Repertuvarını dakikalar içinde oluştur. Gerisini Repertuvar.app halletsin.</p>
-    <a href="kayit.html" class="btn btn-y">Ücretsiz Dene <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="magaza">
+      <a href="https://apps.apple.com/app/apple-store/id6820565687?pt=129582906&amp;ct=site&amp;mt=8" data-magaza="ios"><img data-rozet="app-store" src="assets/rozet/app-store-tr.svg" alt="App Store'dan indirin" width="182" height="48"></a>
+      <a href="https://play.google.com/store/apps/details?id=app.repertuvar&amp;referrer=utm_source%3Drepertuvar.app%26utm_medium%3Dsite%26utm_campaign%3Dsite" data-magaza="android"><img data-rozet="google-play" src="assets/rozet/google-play-tr.png" alt="Google Play'den alın" width="161" height="48"></a>
+    </div>
+    <p class="magaza-not">İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.</p>
+    <p class="magaza-not"><a href="giris.html">Hesabın varsa web'den giriş yap</a></p>
   </div>
 
   <div class="f4">
@@ -1640,7 +1655,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         </div>
         <div class="f4-cols">
           <div class="f4-col"><p class="f4-h">Ürün</p><ul><li><a href="#features">Özellikler</a></li><li><a href="#sahne-modu">Sahne Modu</a></li><li><a href="#pedal">Pedal</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#neden">Neden Repertuvar</a></li></ul></div>
-          <div class="f4-col"><p class="f4-h">Uygulama</p><ul><li><a href="https://app.repertuvar.app/">Uygulamayı aç</a></li><li><a href="giris.html">Giriş yap</a></li><li><a href="kayit.html">Ücretsiz dene</a></li><li><a href="#calisma">Çalışma Odası</a></li></ul></div>
+          <div class="f4-col"><p class="f4-h">Uygulama</p><ul><li><a href="https://app.repertuvar.app/">Uygulamayı aç</a></li><li><a href="giris.html">Giriş yap</a></li><li><a href="#indir">1 ay ücretsiz dene</a></li><li><a href="#calisma">Çalışma Odası</a></li></ul></div>
           <div class="f4-col"><p class="f4-h">Yardım</p><ul><li><a href="#sss">Sık sorulanlar</a></li><li><a href="/support/">Destek</a></li><li><a href="#calisma" class="f4-live">Canlı demo<span class="ping" aria-hidden="true"><i></i><i></i></span></a></li></ul></div>
           <div class="f4-col"><p class="f4-h">İletişim</p><ul><li><a href="mailto:info@repertuvar.app" class="f4-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg><span>info@repertuvar.app</span></a></li><li><a href="/" class="f4-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span>repertuvar.app</span></a></li><li><span class="f4-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><address>Spijkenisse, Nederland</address></span></li></ul></div>
         </div>
@@ -2014,6 +2029,38 @@ var RA_UTM = (function () {
       keepalive: true
     }).catch(function () {});
   } catch (e) {}
+})();
+</script>
+<script>
+/* (2026-10-29) Mağaza bağlantıları: kampanya kodu App Store'a ct, Google Play'e referrer olarak gider.
+   Kaynak: bu sayfanın utm'si, yoksa 30 günlük ilk geliş (r_ilk_kaynak), yoksa "site". App Store ct en fazla 30 karakter
+   (pt = sağlayıcı kodu, ASC › Analytics › Campaigns). Rozetler sitenin diline göre TR/EN. */
+(function () {
+  var utm = {};
+  try { (RA_UTM || '').split('&').forEach(function (s) { var a = s.split('='); if (a[1]) utm[a[0]] = a[1]; }); } catch (e) {}
+  if (!utm.utm_source && !utm.utm_campaign) {
+    try { var ilk = JSON.parse(localStorage.getItem('r_ilk_kaynak') || 'null'); if (ilk && ilk.utm) utm = ilk.utm; } catch (e) {}
+  }
+  var kaynak = utm.utm_source || 'repertuvar.app', ortam = utm.utm_medium || 'site';
+  var kampanya = utm.utm_campaign || (utm.utm_source ? [utm.utm_source, utm.utm_medium].filter(Boolean).join('-') : 'site');
+  var ct = kampanya.replace(/[^a-z0-9._-]/g, '').slice(0, 30) || 'site';
+  var ref = 'utm_source=' + kaynak + '&utm_medium=' + ortam + '&utm_campaign=' + kampanya;
+  document.querySelectorAll('a[data-magaza="ios"]').forEach(function (a) {
+    a.href = 'https://apps.apple.com/app/apple-store/id6820565687?pt=129582906&ct=' + encodeURIComponent(ct) + '&mt=8';
+  });
+  document.querySelectorAll('a[data-magaza="android"]').forEach(function (a) {
+    a.href = 'https://play.google.com/store/apps/details?id=app.repertuvar&referrer=' + encodeURIComponent(ref);
+  });
+  function rozetDili(d) {
+    var dil = d === 'en' ? 'en' : 'tr';
+    document.querySelectorAll('img[data-rozet]').forEach(function (img) {
+      var ad = img.getAttribute('data-rozet');
+      img.src = 'assets/rozet/' + ad + '-' + dil + (ad === 'app-store' ? '.svg' : '.png');
+      if (ad === 'app-store') img.width = dil === 'en' ? 144 : 182;
+    });
+  }
+  rozetDili(window.siteLang);
+  window.addEventListener('dil-degisti', function (e) { rozetDili(e.detail); });
 })();
 </script>
 </body>
