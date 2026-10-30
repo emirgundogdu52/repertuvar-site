@@ -201,8 +201,8 @@ window.SITE_EN={
 "D = dum (kalın) · T = tek (ince) · k = hafif vuruş": "D = dum (low) · T = tek (high) · k = light stroke",
 "Ritmi başlat": "Start rhythm",
 "Metronomu başlat": "Start metronome",
-"Provaya gelmeden önce": "Before rehearsal,",
-"kendi tonunda": "practice in your own key.",
+"Provaya gelmeden önce": "Before rehearsal, practice",
+"kendi tonunda": "in your own key.",
 "çalış.": "",
 "Kaydını yükle (mp3, m4a, wav), tonunu ve temposunu birbirinden bağımsız değiştir. Uygulama, kaydın tonundan eserin kararına kaç yarım ses gerektiğini kendisi hesaplar. Ritim döngülerini eserlerine bağla; metronom da aynı yerde.": "Upload your recording (mp3, m4a, wav) and change its key and tempo independently. The app works out how many semitones it takes to get from the recording's key to the piece's tonic (karar). Link rhythm cycles to your pieces — the metronome is right there too.",
 "Çalışma Odası'nı keşfet": "Explore the Practice Room",
@@ -418,5 +418,6 @@ window.SITE_EN={
 "App Store'dan indirin": "Download on the App Store",
 "Google Play'den alın": "Get it on Google Play",
 "İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.": "New subscribers get 1 month free on any plan. If you don't cancel before the trial ends, your chosen plan continues.",
-"Hesabın varsa web'den giriş yap": "Already have an account? Sign in on the web"
+"Hesabın varsa web'den giriş yap": "Already have an account? Sign in on the web",
+"Konser Ekibi": "Concert Crew"
 };

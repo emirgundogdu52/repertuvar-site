@@ -299,8 +299,8 @@
 "Hesap oluştur": "Crea account",
 "Repertuvarını dakikalar içinde oluştur.": "Crea la tua scaletta in pochi minuti.",
 "Ad Soyad": "Nome e cognome",
-"Hesap oluşturarak": "Creando un account, accetto",
-"'nı ve": " e",
+"Hesap oluşturarak": "Creando un account, accetto i",
+"'nı ve": " e la relativa",
 "'nı kabul ediyorum.": ".",
 "Zaten hesabın var mı?": "Hai già un account?",
 "Müzisyenler İçin": "Per musicisti",
@@ -418,5 +418,6 @@
 "App Store'dan indirin": "Scarica su App Store",
 "Google Play'den alın": "Disponibile su Google Play",
 "İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.": "Per i nuovi abbonati, 1 mese gratis con qualsiasi piano. Se non annulli prima della fine della prova, l'abbonamento prosegue con il piano scelto.",
-"Hesabın varsa web'den giriş yap": "Hai già un account? Accedi dal web"
+"Hesabın varsa web'den giriş yap": "Hai già un account? Accedi dal web",
+"Konser Ekibi": "Squadra concerto"
 };

@@ -919,7 +919,31 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
   .f-bottom>div{flex:0 0 100%}.f-bottom .mid{text-align:left}.f-bottom .icons{justify-content:flex-start}
 }
 
+/* (2026-10-30) 10 dil × 375/1100/1440 px ölçümünde her genişlikte taşanlar: adım kartı alt satırı (düğme kart dışına
+   çıkıyordu, Türkçede bile), demo ton kartı etiketi, "Repertuvar.app …" başlığındaki bölünmeyen uzun kelime. */
+.step-foot{flex-wrap:wrap;row-gap:8px}
+.tb-main{min-width:0}
+.tb-main *{overflow-wrap:anywhere}
+.intro-y .h2{min-width:min-content}
+/* (2026-10-30) Dar ekranda (375 px, 10 dil ölçümü) taşan demo öğeleri: araç çubuğu ve alt bilgi satırları sarar, sekme ve
+   etiket yazıları küçülür; metin kesilmeden sığar. */
+@media (max-width:480px){
+  .sm-top{flex-wrap:wrap;row-gap:6px}
+  .step-foot{flex-wrap:wrap;row-gap:8px}
+  .st-tabs{font-size:11px}
+  .st-tabs span,.st-tabs button{padding:6px 4px;font-size:11px;min-width:0;overflow-wrap:anywhere}
+  .tb-main{min-width:0}
+  .tb-main *{overflow-wrap:anywhere}
+  .pl{gap:10px;min-width:0}
+  .pl>*{min-width:0;overflow-wrap:anywhere}
+  .studio .tt{transform:scale(1.5);margin-bottom:64px}   /* 1.6 kat 218 px → 210 px'lik kartta kenarları kırpılıyordu */
+}
 /* ===== Kırılım noktaları ===== */
+/* (2026-10-30) Üst menü 1025–1240 px'te (Türkçede bile; uzun dillerde daha çok) taşıyordu: bu aralıkta da menü düğmesi */
+@media (max-width:1240px){
+  .nmenu,.hdr-right>.btn{display:none}
+  .menu-btn{display:grid}
+}
 @media (max-width:1024px){
   .nmenu,.hdr-right>.btn{display:none}
   .menu-btn{display:grid}

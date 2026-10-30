@@ -169,7 +169,10 @@
         '.lang select.dil-sec{background-color:rgba(255,255,255,.08);color:var(--sand,#e8e2d5)}' +
         '.lang select.dil-sec option{color:#111}' +
         '.lang-s select.dil-sec{background-color:rgba(17,23,34,.07);color:var(--ink-3,#444)}' +
-        '[dir=rtl] select.dil-sec{padding:6px 12px 6px 26px;background-position:left 9px center}';
+        '[dir=rtl] select.dil-sec{padding:6px 12px 6px 26px;background-position:left 9px center}' +
+        /* Arapça: harf aralığı bitişik yazıyı koparır; yön okları (geri, gönder, bağlantı okları) sağdan sola düzende aynalanır */
+        'html[lang=ar] body, html[lang=ar] body *{letter-spacing:0!important}' +
+        '[dir=rtl] .back svg, [dir=rtl] button.submit svg, [dir=rtl] .btn svg.ok, [dir=rtl] .arr{transform:scaleX(-1)}';
       document.head.appendChild(st);
     }
     document.querySelectorAll('.lang[role=group], .lang-s[role=group]').forEach(function (g) {

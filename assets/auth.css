@@ -158,7 +158,8 @@ html:not([lang="tr"]) .liste-tr,html[lang="tr"] .liste-en{display:none}
 .form-in .sso+.or{margin-top:22px}
 :focus-visible{outline:2px solid var(--orange-deep);outline-offset:2px}
 @media (max-width:600px){.top-r{gap:10px}.back{font-size:13px}}
-@media (max-width:380px){
+/* (2026-10-30) 381–400 px'te dil seçici + "Ana sayfa" bağlantısı 4 px yana taşıyordu (de, fr): sınır 400 px */
+@media (max-width:400px){
   .form-side{padding:20px 16px}
   .back{font-size:0;gap:0}.back svg{width:20px;height:20px}   /* yalnızca ok: dar ekranda sığsın */
   .steps li{font-size:11px}

@@ -418,5 +418,6 @@
 "App Store'dan indirin": "Descárgalo en el App Store",
 "Google Play'den alın": "Disponible en Google Play",
 "İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.": "Si te suscribes por primera vez, tienes 1 mes gratis en cualquier plan. Si no cancelas antes de que termine la prueba, la suscripción continúa con el plan que elegiste.",
-"Hesabın varsa web'den giriş yap": "¿Ya tienes cuenta? Inicia sesión en la web"
+"Hesabın varsa web'den giriş yap": "¿Ya tienes cuenta? Inicia sesión en la web",
+"Konser Ekibi": "Equipo de concierto"
 };

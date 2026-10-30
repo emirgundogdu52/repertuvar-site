@@ -79,7 +79,7 @@
 "Kesintisiz Performanslar Hazırla": "Nahtlose Sets planen",
 "Potpuri desteği ile birden fazla eseri tek akışta yönet. Geçişlerini önceden planla.": "Verbinde mehrere Stücke zu einem Medley und plane die Übergänge schon vor dem Auftritt.",
 "Sıralamayı değiştirdiğinde": "Wenn du die Reihenfolge änderst,",
-"zincirlenmiş eserler birlikte taşınır": "wandern verkettete Stücke gemeinsam mit",
+"zincirlenmiş eserler birlikte taşınır": "bewegen sich verkettete Stücke gemeinsam",
 "— potpurinin içi asla dağılmaz.": "– ein Medley fällt nie auseinander.",
 "Potpuri · aralıksız": "Medley · ohne Pause",
 "Akıllı Repertuvar Yönetimi": "Smartes Setlist-Management",
@@ -101,7 +101,7 @@
 "Eserleri birbirine bağla, art arda çalınsın.": "Verbinde Stücke, damit sie direkt nacheinander gespielt werden.",
 "Zincir": "Kette",
 "Repertuvarı kopyala": "Setlist duplizieren",
-"Kopyayı taslak ya da onaylı olarak tut.": "Speichere die Kopie als Entwurf oder freigegeben.",
+"Kopyayı taslak ya da onaylı olarak tut.": "Behalte die Kopie als Entwurf oder als freigegebene Version.",
 "Taslak · Onaylı": "Entwurf · Freigegeben",
 "Her esere kadro ve not ekle": "Besetzung und Notizen für jedes Stück",
 "Kimin çalacağı ve notlar esere iliştirilir.": "Wer was spielt und die Notizen hängen direkt am Stück.",
@@ -237,7 +237,7 @@
 "Ton değiştirince grubun akoru bozulur mu?": "Ändern sich die Akkorde der Band, wenn ich die Tonart wechsle?",
 "Hayır. Yaptığın transpoze yalnızca senin kopyanda kalır, grubun ve eserin orijinal akoru değişmez. Akorları A-B-C ya da Do-Re-Mi ile okuyabilirsin.": "Nein. Deine Transposition bleibt in deiner eigenen Kopie; die Originalakkorde der Band und des Stücks ändern sich nicht. Akkorde kannst du als A-B-C oder Do-Re-Mi lesen.",
 "Potpuri nasıl oluşturulur?": "Wie erstelle ich ein Medley?",
-"Bir eseri öncekine zincirleyerek potpuri oluşturursun; zincirdeki eserler aralıksız çalınır. Sıralamayı değiştirdiğinde potpuri birlikte taşınır ve içi dağılmaz.": "Verkette ein Stück mit dem vorherigen, um ein Medley zu bilden; verkettete Stücke werden ohne Pause gespielt. Beim Umsortieren wandert das Medley als Ganzes mit und fällt nie auseinander.",
+"Bir eseri öncekine zincirleyerek potpuri oluşturursun; zincirdeki eserler aralıksız çalınır. Sıralamayı değiştirdiğinde potpuri birlikte taşınır ve içi dağılmaz.": "Verkette ein Stück mit dem vorherigen, um ein Medley zu bilden; verkettete Stücke werden ohne Pause gespielt. Beim Umsortieren bewegt sich das Medley als Ganzes und fällt nie auseinander.",
 "Kendi eserimi ekleyebilir miyim?": "Kann ich eigene Stücke hinzufügen?",
 "Evet. Söz, akor (ChordPro biçimi dahil) ve nota görseli ya da PDF ekleyebilirsin. Eseri yalnızca grubunla paylaşmak onay gerektirmez; genel kataloğa önerilen eserler yönetici onayından sonra yayınlanır.": "Ja. Du kannst Text, Akkorde (auch im ChordPro-Format) und Noten als Bild oder PDF hinzufügen. Ein Stück nur mit deiner Band zu teilen, braucht keine Freigabe; für den öffentlichen Katalog eingereichte Stücke werden nach Prüfung durch einen Admin veröffentlicht.",
 "Hazırsan sahneye çık.": "Bereit? Ab auf die Bühne.",
@@ -417,6 +417,7 @@
 "1 ay ücretsiz dene": "1 Monat kostenlos testen",
 "App Store'dan indirin": "Laden im App Store",
 "Google Play'den alın": "Jetzt bei Google Play",
-"İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.": "Wer zum ersten Mal abonniert, testet jeden Plan 1 Monat kostenlos. Kündigst du nicht vor Ende des Testzeitraums, läuft dein gewählter Plan weiter.",
-"Hesabın varsa web'den giriş yap": "Schon ein Konto? Im Web anmelden"
+"İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.": "Wer zum ersten Mal abonniert, bekommt bei jedem Plan 1 Monat gratis. Kündigst du nicht vor Ende des Testzeitraums, läuft dein gewählter Plan weiter.",
+"Hesabın varsa web'den giriş yap": "Schon ein Konto? Im Web anmelden",
+"Konser Ekibi": "Konzertteam"
 };

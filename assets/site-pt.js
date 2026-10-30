@@ -202,13 +202,13 @@
 "Ritmi başlat": "Iniciar ritmo",
 "Metronomu başlat": "Iniciar metrônomo",
 "Provaya gelmeden önce": "Antes do ensaio,",
-"kendi tonunda": "estude no seu tom",
-"çalış.": ".",
+"kendi tonunda": "estude no seu tom.",
+"çalış.": "",
 "Kaydını yükle (mp3, m4a, wav), tonunu ve temposunu birbirinden bağımsız değiştir. Uygulama, kaydın tonundan eserin kararına kaç yarım ses gerektiğini kendisi hesaplar. Ritim döngülerini eserlerine bağla; metronom da aynı yerde.": "Envie sua gravação (mp3, m4a, wav) e mude o tom e o andamento de forma independente. O app calcula sozinho quantos semitons separam o tom da gravação da tônica da música. Ligue ciclos rítmicos às suas músicas — e o metrônomo também está ali.",
 "Çalışma Odası'nı keşfet": "Conheça a Sala de Estudo",
 "Sık sorulanlar": "Perguntas frequentes",
 "Repertuvar.app hakkında sık sorulan sorular": "Perguntas frequentes sobre o Repertuvar.app",
-"Bir sütun seç, ihtiyacına uyan soruyu aç. Cevabını bulamazsan bize yaz.": "Escolha uma coluna e abra a pergunta que você precisa. Não encontrou a resposta? Escreva para a gente.",
+"Bir sütun seç, ihtiyacına uyan soruyu aç. Cevabını bulamazsan bize yaz.": "Escolha uma coluna e abra a pergunta que você procura. Não encontrou a resposta? Escreva para a gente.",
 "E-posta gönder": "Enviar e-mail",
 "Başlarken": "Primeiros passos",
 "Uygulamayı tanımak ve kurmak.": "Conhecer e configurar o app.",
@@ -418,5 +418,6 @@
 "App Store'dan indirin": "Baixar na App Store",
 "Google Play'den alın": "Disponível no Google Play",
 "İlk kez abone olanlara her planda 1 ay ücretsiz. Deneme bitmeden iptal etmezsen seçtiğin planla devam eder.": "Novos assinantes ganham 1 mês grátis em qualquer plano. Se você não cancelar antes do fim do teste, a assinatura continua no plano escolhido.",
-"Hesabın varsa web'den giriş yap": "Já tem conta? Entre pela web"
+"Hesabın varsa web'den giriş yap": "Já tem conta? Entre pela web",
+"Konser Ekibi": "Equipe do show"
 };
