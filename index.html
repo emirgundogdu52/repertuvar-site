@@ -107,6 +107,8 @@ ul{list-style:none}
 
 .photo{background-size:cover;background-position:center;background-repeat:no-repeat;color:transparent}
 .hero .hero-box::before{background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.25));opacity:1}
+/* (2026-10-30) Arapçada (sağdan sola) metin sağda: karartma da sağdan başlasın */
+[dir=rtl] .hero .hero-box::before{background:linear-gradient(270deg,rgba(0,0,0,.65),rgba(0,0,0,.25))}
 .master-card.photo::before{display:none}
 .master-card.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(7,10,15,.8));transition:opacity .8s}
 .master-card.photo:hover::after{opacity:.6}
@@ -257,6 +259,9 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
 .hero-urun .hero-l{grid-column:1;grid-row:2;min-height:0;padding:0;position:relative;z-index:1}
 .hero-urun .hero-l .display{max-width:none;font-size:min(var(--t-display),4.2vw);line-height:1.05}
 .hero-foto{position:absolute;top:0;right:0;bottom:0;width:60%;z-index:0;pointer-events:none}
+/* (2026-10-30) Arapçada metin sütunu sağa geçiyor: fotoğraf sola, yumuşak kenarı sağa */
+[dir=rtl] .hero-foto{right:auto;left:0}
+[dir=rtl] .hero-foto img{-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 30%);mask-image:linear-gradient(270deg,transparent 0,#000 30%)}
 .hero-foto img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 72%;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);mask-image:linear-gradient(90deg,transparent 0,#000 30%);
   animation:heroFoto 1.4s cubic-bezier(.2,.7,.2,1) both}
@@ -1476,7 +1481,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
         </details>
         <details class="qa" name="sss-0">
           <summary><h4>Repertuvar.app hangi dilleri destekliyor?</h4><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <div class="ans"><p>Repertuvar.app Türkçe ve İngilizce kullanılabilir. Dili ayarlardan istediğin zaman değiştirebilirsin.</p></div>
+          <div class="ans"><p>Repertuvar.app 10 dilde kullanılabilir: Türkçe, İngilizce, Almanca, Hollandaca, Fransızca, İspanyolca, İtalyanca, Portekizce, Azerbaycanca ve Arapça. Dili ayarlardan istediğin zaman değiştirebilirsin.</p></div>
         </details>
       </div>
     </div>
@@ -1557,7 +1562,7 @@ body{padding-top:80px} /* 16px üst boşluk + 48px bar + 16px ara: hero header'�
    "name": "Repertuvar.app hangi dilleri destekliyor?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Repertuvar.app Türkçe ve İngilizce kullanılabilir. Dili ayarlardan istediğin zaman değiştirebilirsin."
+    "text": "Repertuvar.app 10 dilde kullanılabilir: Türkçe, İngilizce, Almanca, Hollandaca, Fransızca, İspanyolca, İtalyanca, Portekizce, Azerbaycanca ve Arapça. Dili ayarlardan istediğin zaman değiştirebilirsin."
    }
   },
   {
@@ -2052,7 +2057,7 @@ var RA_UTM = (function () {
     a.href = 'https://play.google.com/store/apps/details?id=app.repertuvar&referrer=' + encodeURIComponent(ref);
   });
   function rozetDili(d) {
-    var dil = d === 'en' ? 'en' : 'tr';
+    var dil = d === 'tr' ? 'tr' : 'en';   // (2026-10-30) yalnız TR/EN resmî rozet var; diğer 8 dilde İngilizce rozet
     document.querySelectorAll('img[data-rozet]').forEach(function (img) {
       var ad = img.getAttribute('data-rozet');
       img.src = 'assets/rozet/' + ad + '-' + dil + (ad === 'app-store' ? '.svg' : '.png');

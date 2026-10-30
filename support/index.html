@@ -16,20 +16,16 @@
 <link rel="canonical" href="https://repertuvar.app/support/">
 <link rel="alternate" hreflang="tr" href="https://repertuvar.app/support/">
 <link rel="alternate" hreflang="en" href="https://repertuvar.app/support/en/">
+<link rel="alternate" hreflang="de" href="https://repertuvar.app/support/de/">
+<link rel="alternate" hreflang="nl" href="https://repertuvar.app/support/nl/">
+<link rel="alternate" hreflang="fr" href="https://repertuvar.app/support/fr/">
+<link rel="alternate" hreflang="es" href="https://repertuvar.app/support/es/">
+<link rel="alternate" hreflang="it" href="https://repertuvar.app/support/it/">
+<link rel="alternate" hreflang="pt" href="https://repertuvar.app/support/pt/">
+<link rel="alternate" hreflang="az" href="https://repertuvar.app/support/az/">
+<link rel="alternate" hreflang="ar" href="https://repertuvar.app/support/ar/">
+<link rel="alternate" hreflang="x-default" href="https://repertuvar.app/support/en/">
 <link rel="icon" href="/favicon.ico">
-<script>
-/* Dil yönlendirmesi — landing, gizlilik ve şartlar sayfalarıyla AYNI tercih (`siteLang`). */
-(function () {
-  try {
-    var t = localStorage.getItem('siteLang');
-    if (!t) {
-      var n = (navigator.language || 'tr').slice(0, 2).toLowerCase();
-      t = (n === 'tr') ? 'tr' : 'en';
-    }
-    if (t === 'en') location.replace('en/');
-  } catch (e) {}
-})();
-</script>
 <style>
   :root{--ink:#1b1e2b;--muted:#5b6072;--line:#e6e8f0;--gold:#B26A00;--bg:#fbfbfd}
   *{box-sizing:border-box}
@@ -56,15 +52,18 @@
   footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
   footer a{margin-right:12px}
   @media (max-width:560px){.kart{grid-template-columns:1fr}}
+  .dil-listesi{float:right;display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:flex-end;max-width:62%;font-size:13px}
+  [dir=rtl] .dil-listesi{float:left;justify-content:flex-start}
 </style>
 </head>
-<body>
+<body data-yasal="support">
+<script src="/assets/yasal-dil.js"></script>
 <div class="wrap">
 
 <a class="geri-link" href="https://repertuvar.app/">← repertuvar.app</a>
 
 <header>
-  <a class="dil" href="en/" onclick="try{localStorage.setItem('siteLang','en')}catch(e){}">English</a>
+  <nav id="dilListesi" class="dil-listesi" aria-label="Dil / Language"></nav>
   <h1>Repertuvar.app Destek</h1>
   <p class="eff">Hesabınız, aboneliğiniz ya da uygulamayla ilgili her konuda size yardımcı olmaya hazırız.</p>
 </header>
@@ -102,7 +101,7 @@
 
 <footer>
   repertuvar.app · © 2026 StageFlow B.V.<br>
-  <a href="/privacy/">Gizlilik Politikası</a><a href="/terms/">Kullanım Koşulları</a><a href="en/" onclick="try{localStorage.setItem('siteLang','en')}catch(e){}">English</a>
+  <a href="/privacy/">Gizlilik Politikası</a><a href="/terms/">Kullanım Koşulları</a>
 </footer>
 
 </div>

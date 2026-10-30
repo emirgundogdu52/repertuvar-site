@@ -6,21 +6,15 @@
 <title>Kullanım Koşulları · Repertuvar</title>
 <link rel="alternate" hreflang="tr" href="https://repertuvar.app/terms/">
 <link rel="alternate" hreflang="en" href="https://repertuvar.app/terms/en/">
-<script>
-/* (2026-08-30) Dil yönlendirmesi — landing ve gizlilik sayfasıyla AYNI
-   tercihi (`siteLang`) paylaşıyor: kullanıcı bir kez seçsin, her sayfada
-   tekrar sorulmasın. */
-(function () {
-  try {
-    var t = localStorage.getItem('siteLang');
-    if (!t) {
-      var n = (navigator.language || 'tr').slice(0, 2).toLowerCase();
-      t = (n === 'tr') ? 'tr' : 'en';
-    }
-    if (t === 'en') location.replace('en/');
-  } catch (e) {}
-})();
-</script>
+<link rel="alternate" hreflang="de" href="https://repertuvar.app/terms/de/">
+<link rel="alternate" hreflang="nl" href="https://repertuvar.app/terms/nl/">
+<link rel="alternate" hreflang="fr" href="https://repertuvar.app/terms/fr/">
+<link rel="alternate" hreflang="es" href="https://repertuvar.app/terms/es/">
+<link rel="alternate" hreflang="it" href="https://repertuvar.app/terms/it/">
+<link rel="alternate" hreflang="pt" href="https://repertuvar.app/terms/pt/">
+<link rel="alternate" hreflang="az" href="https://repertuvar.app/terms/az/">
+<link rel="alternate" hreflang="ar" href="https://repertuvar.app/terms/ar/">
+<link rel="alternate" hreflang="x-default" href="https://repertuvar.app/terms/en/">
 <style>
   :root{--ink:#1b1e2b;--muted:#5b6072;--line:#e6e8f0;--gold:#B26A00;--bg:#fbfbfd}
   *{box-sizing:border-box}
@@ -45,16 +39,19 @@
              text-decoration:none;opacity:.85}
   .geri-link:hover{opacity:1;text-decoration:underline}
   footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  .dil-listesi{float:right;display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:flex-end;max-width:62%;font-size:13px}
+  [dir=rtl] .dil-listesi{float:left;justify-content:flex-start}
 </style>
 </head>
-<body>
+<body data-yasal="terms">
+<script src="/assets/yasal-dil.js"></script>
 <div class="wrap">
 
 <a class="geri-link" href="https://repertuvar.app/">← repertuvar.app</a>
 
 <header>
   <!-- (2026-08-30) İngilizce sürüme bağlantı; gizlilik sayfasıyla aynı desen. -->
-  <a class="dil" href="en/" onclick="try{localStorage.setItem('siteLang','en')}catch(e){}">English</a>
+  <nav id="dilListesi" class="dil-listesi" aria-label="Dil / Language"></nav>
   <h1>Kullanım Koşulları</h1>
   <p class="eff">Yürürlük tarihi: 26.07.2026 · Son güncelleme: 29.10.2026</p>
 </header>

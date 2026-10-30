@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Sayfa bulunamadi</title>
+<title>Sayfa bulunamadı</title>
 <script>
 var p = window.location.pathname.replace(/^\//, '');
 if (/\.html$/.test(p)) {
@@ -20,8 +20,35 @@ a{color:#FFC83D}
 <body>
 <div>
 <h1>404</h1>
-<p>Aradigin sayfa burada degil.</p>
-<p><a href="/">Ana sayfaya don</a> &middot; <a href="https://app.repertuvar.app/">Uygulamayi ac</a></p>
+<p data-t="metin">Aradığın sayfa burada değil.</p>
+<p><a href="/" data-t="ana">Ana sayfaya dön</a> &middot; <a href="https://app.repertuvar.app/" data-t="uyg">Uygulamayı aç</a></p>
 </div>
+<script>
+/* (2026-10-30) 10 dil: landing'deki seçim (siteLang) ya da tarayıcı dili; bulunamazsa İngilizce. */
+(function () {
+  var M = {
+    tr: ['Sayfa bulunamadı', 'Aradığın sayfa burada değil.', 'Ana sayfaya dön', 'Uygulamayı aç'],
+    en: ['Page not found', 'The page you’re looking for isn’t here.', 'Back to home', 'Open the app'],
+    de: ['Seite nicht gefunden', 'Die gesuchte Seite gibt es hier nicht.', 'Zur Startseite', 'App öffnen'],
+    nl: ['Pagina niet gevonden', 'De pagina die je zoekt, staat hier niet.', 'Terug naar de startpagina', 'App openen'],
+    fr: ['Page introuvable', 'La page que vous cherchez n’est pas ici.', 'Retour à l’accueil', 'Ouvrir l’application'],
+    es: ['Página no encontrada', 'La página que buscas no está aquí.', 'Volver al inicio', 'Abrir la app'],
+    it: ['Pagina non trovata', 'La pagina che cerchi non è qui.', 'Torna alla home', 'Apri l’app'],
+    pt: ['Página não encontrada', 'A página que você procura não está aqui.', 'Voltar ao início', 'Abrir o app'],
+    az: ['Səhifə tapılmadı', 'Axtardığın səhifə burada deyil.', 'Ana səhifəyə qayıt', 'Tətbiqi aç'],
+    ar: ['الصفحة غير موجودة', 'الصفحة التي تبحث عنها غير موجودة هنا.', 'العودة إلى الصفحة الرئيسية', 'فتح التطبيق']
+  };
+  var d = null;
+  try { d = localStorage.getItem('siteLang'); } catch (e) {}
+  if (!M[d]) { var tl = navigator.languages || [navigator.language || '']; for (var i = 0; i < tl.length && !M[d]; i++) d = String(tl[i] || '').slice(0, 2).toLowerCase(); }
+  if (!M[d]) d = 'en';
+  var m = M[d];
+  document.documentElement.lang = d; document.documentElement.dir = d === 'ar' ? 'rtl' : 'ltr';
+  document.title = m[0];
+  document.querySelector('[data-t=metin]').textContent = m[1];
+  document.querySelector('[data-t=ana]').textContent = m[2];
+  document.querySelector('[data-t=uyg]').textContent = m[3];
+})();
+</script>
 </body>
 </html>

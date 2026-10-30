@@ -6,6 +6,15 @@
 <title>Gizlilik Politikası · Repertuvar</title>
 <link rel="alternate" hreflang="tr" href="https://repertuvar.app/privacy/">
 <link rel="alternate" hreflang="en" href="https://repertuvar.app/privacy/en/">
+<link rel="alternate" hreflang="de" href="https://repertuvar.app/privacy/de/">
+<link rel="alternate" hreflang="nl" href="https://repertuvar.app/privacy/nl/">
+<link rel="alternate" hreflang="fr" href="https://repertuvar.app/privacy/fr/">
+<link rel="alternate" hreflang="es" href="https://repertuvar.app/privacy/es/">
+<link rel="alternate" hreflang="it" href="https://repertuvar.app/privacy/it/">
+<link rel="alternate" hreflang="pt" href="https://repertuvar.app/privacy/pt/">
+<link rel="alternate" hreflang="az" href="https://repertuvar.app/privacy/az/">
+<link rel="alternate" hreflang="ar" href="https://repertuvar.app/privacy/ar/">
+<link rel="alternate" hreflang="x-default" href="https://repertuvar.app/privacy/en/">
 <style>
   :root{--ink:#1b1e2b;--muted:#5b6072;--line:#e6e8f0;--gold:#B26A00;--bg:#fbfbfd}
   *{box-sizing:border-box}
@@ -35,26 +44,12 @@
   table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
   th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
   th{color:var(--muted);font-weight:600}
+  .dil-listesi{float:right;display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:flex-end;max-width:62%;font-size:13px}
+  [dir=rtl] .dil-listesi{float:left;justify-content:flex-start}
 </style>
-<script>
-/* (2026-08-30) DİL YÖNLENDİRMESİ.
-   Landing sayfası tarayıcı diline göre kendiliğinden açılıyordu ama bu sayfa
-   açılmıyordu — tutarsızdı. Artık aynı tercihi (`siteLang`) paylaşıyorlar:
-   kullanıcı landing'de TR seçtiyse burada da Türkçe kalır.
-   Yönlendirme `replace` ile yapılıyor ki geri tuşu döngüye girmesin. */
-(function () {
-  try {
-    var t = localStorage.getItem('siteLang');
-    if (!t) {
-      var n = (navigator.language || 'tr').slice(0, 2).toLowerCase();
-      t = (n === 'tr') ? 'tr' : 'en';
-    }
-    if (t === 'en') location.replace('en/');
-  } catch (e) {}
-})();
-</script>
 </head>
-<body>
+<body data-yasal="privacy">
+<script src="/assets/yasal-dil.js"></script>
 <div class="wrap">
 
 <a class="geri-link" href="https://repertuvar.app/">← repertuvar.app</a>
@@ -62,7 +57,7 @@
 <header>
   <!-- (2026-08-30) İngilizce sürüme bağlantı. Ayrı dosya: hukuki metinde
        yarım çeviri, hangi metnin geçerli olduğunu belirsizleştirir. -->
-  <a class="dil" href="en/" onclick="try{localStorage.setItem('siteLang','en')}catch(e){}">English</a>
+  <nav id="dilListesi" class="dil-listesi" aria-label="Dil / Language"></nav>
   <h1>Gizlilik Politikası</h1>
   <p class="eff">Yürürlük tarihi: 26.07.2026 · Son güncelleme: 20.10.2026</p>
 </header>

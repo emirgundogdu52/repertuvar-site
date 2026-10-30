@@ -107,7 +107,7 @@ window.RA = (function () {
       kutu.innerHTML = '';
       window.google.accounts.id.renderButton(kutu, {
         type: 'standard', theme: 'outline', size: 'large', shape: 'pill', text: metin, logo_alignment: 'center',
-        width: Math.min(400, Math.max(240, Math.round(kutu.getBoundingClientRect().width || 400))), locale: window.siteLang === 'en' ? 'en' : 'tr'
+        width: Math.min(400, Math.max(240, Math.round(kutu.getBoundingClientRect().width || 400))), locale: ({ pt: 'pt-BR' })[window.siteLang] || window.siteLang || 'tr'   // (2026-10-30) 10 dil
       });
     }
     window.addEventListener('dil-degisti', ciz);

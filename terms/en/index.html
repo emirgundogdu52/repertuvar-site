@@ -16,16 +16,15 @@
 <title>Terms of Use · Repertuvar</title>
 <link rel="alternate" hreflang="tr" href="https://repertuvar.app/terms/">
 <link rel="alternate" hreflang="en" href="https://repertuvar.app/terms/en/">
-<script>
-/* Kullanıcı Türkçeyi seçtiyse bu sayfaya doğrudan gelse bile Türkçe sürüme
-   gönderiliyor. Döngü riski yok: Türkçe sayfa yalnızca tercih 'en' iken
-   buraya yönlendiriyor. */
-(function () {
-  try {
-    if (localStorage.getItem('siteLang') === 'tr') location.replace('../');
-  } catch (e) {}
-})();
-</script>
+<link rel="alternate" hreflang="de" href="https://repertuvar.app/terms/de/">
+<link rel="alternate" hreflang="nl" href="https://repertuvar.app/terms/nl/">
+<link rel="alternate" hreflang="fr" href="https://repertuvar.app/terms/fr/">
+<link rel="alternate" hreflang="es" href="https://repertuvar.app/terms/es/">
+<link rel="alternate" hreflang="it" href="https://repertuvar.app/terms/it/">
+<link rel="alternate" hreflang="pt" href="https://repertuvar.app/terms/pt/">
+<link rel="alternate" hreflang="az" href="https://repertuvar.app/terms/az/">
+<link rel="alternate" hreflang="ar" href="https://repertuvar.app/terms/ar/">
+<link rel="alternate" hreflang="x-default" href="https://repertuvar.app/terms/en/">
 <style>
   :root{--ink:#1b1e2b;--muted:#5b6072;--line:#e6e8f0;--gold:#B26A00;--bg:#fbfbfd}
   *{box-sizing:border-box}
@@ -52,22 +51,25 @@
              text-decoration:none;opacity:.85}
   .geri-link:hover{opacity:1;text-decoration:underline}
   footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  .dil-listesi{float:right;display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:flex-end;max-width:62%;font-size:13px}
+  [dir=rtl] .dil-listesi{float:left;justify-content:flex-start}
 </style>
 </head>
-<body>
+<body data-yasal="terms">
+<script src="/assets/yasal-dil.js"></script>
 <div class="wrap">
 
 <a class="geri-link" href="https://repertuvar.app/">← repertuvar.app</a>
 
 <header>
-  <a class="dil" href="../" onclick="try{localStorage.setItem('siteLang','tr')}catch(e){}">Türkçe</a>
+  <nav id="dilListesi" class="dil-listesi" aria-label="Dil / Language"></nav>
   <h1>Terms of Use</h1>
   <p class="eff">Effective date: 26.07.2026 · Last updated: 29.10.2026</p>
 </header>
 
 <div class="ceviri-uyari">
   This English text is provided for information only. The binding version of these
-  terms is the Turkish one, available at <a href="../">repertuvar.app/terms</a>.
+  terms is the Turkish one, available at <a href="../?lang=tr">repertuvar.app/terms</a>.
   In case of any discrepancy, the Turkish text prevails.
 </div>
 
@@ -168,7 +170,7 @@ rights granted to you by the mandatory consumer protection rules of your country
 <footer>
   <a href="https://repertuvar.app">repertuvar.app</a> · © 2026 StageFlow B.V.<br>
   Repertoire management for performing musicians, developed and operated by StageFlow B.V.<br>
-  <a href="/support/en/">Support</a> · <a href="/privacy/en/">Privacy Policy</a> · <a href="../">Türkçe sürüm</a>
+  <a href="/support/en/">Support</a> · <a href="/privacy/en/">Privacy Policy</a> · <a href="../?lang=tr">Türkçe sürüm</a>
 </footer>
 
 </div>
