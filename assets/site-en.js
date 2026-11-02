@@ -174,7 +174,7 @@ window.SITE_EN={
 "Mevcut eser": "Existing piece",
 "Sayfa tara": "Scan page",
 "Kaydet": "Save",
-"Nota defterini tara": "Scan your music notebook",
+"Nota defterini tara": "Scan Music Notebook",
 "Defterdeki notalar kâğıtta kalır; yıpranır, kaybolur": "Notebook music stays on paper — it wears out and gets lost",
 "Nota defterini telefonla tara, notaların hep yanında": "Scan your music notebook with your phone — it's always with you",
 "Müzik defteri ve genel uygulamalar": "Paper notebooks & generic apps",

@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- YARDIM / FR — üretildi: pazarlama/yardim/olustur.py (elle düzenleme; şablon betikte). -->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centre d’aide Repertuvar</title>
+<meta name="description" content="Des réponses pas à pas pour Repertuvar, de la création d’une setlist à la connexion d’une pédale tourne-page. Écrivez ce que vous voulez faire et suivez les étapes.">
+<link rel="canonical" href="https://repertuvar.app/help/fr/">
+<link rel="alternate" hreflang="tr" href="https://repertuvar.app/help/">
+<link rel="alternate" hreflang="en" href="https://repertuvar.app/help/en/">
+<link rel="alternate" hreflang="de" href="https://repertuvar.app/help/de/">
+<link rel="alternate" hreflang="nl" href="https://repertuvar.app/help/nl/">
+<link rel="alternate" hreflang="fr" href="https://repertuvar.app/help/fr/">
+<link rel="alternate" hreflang="es" href="https://repertuvar.app/help/es/">
+<link rel="alternate" hreflang="it" href="https://repertuvar.app/help/it/">
+<link rel="alternate" hreflang="pt" href="https://repertuvar.app/help/pt/">
+<link rel="alternate" hreflang="ar" href="https://repertuvar.app/help/ar/">
+<link rel="alternate" hreflang="az" href="https://repertuvar.app/help/az/">
+<link rel="alternate" hreflang="x-default" href="https://repertuvar.app/help/en/">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/help/yardim.css?v=01797b26">
+</head>
+<body>
+<header class="ust">
+  <a href="/" aria-label="Page d’accueil de repertuvar.app"><img src="/assets/logo-acik.png" alt="repertuvar.app" width="148" height="28"></a>
+  <nav aria-label="Liens de la page">
+    <a href="/support/fr/">Assistance</a>
+    <select class="dil-sec" aria-label="Language" onchange="location.href=this.value">
+      <option value="/help/" lang="tr">Türkçe</option>
+      <option value="/help/en/" lang="en">English</option>
+      <option value="/help/de/" lang="de">Deutsch</option>
+      <option value="/help/nl/" lang="nl">Nederlands</option>
+      <option value="/help/fr/" selected lang="fr">Français</option>
+      <option value="/help/es/" lang="es">Español</option>
+      <option value="/help/it/" lang="it">Italiano</option>
+      <option value="/help/pt/" lang="pt">Português</option>
+      <option value="/help/ar/" lang="ar">العربية</option>
+      <option value="/help/az/" lang="az">Azərbaycanca</option>
+    </select>
+  </nav>
+</header>
+
+<section class="giris">
+  <h1 id="yBaslik">Comment faire ?</h1>
+  <p id="yAlt">Écrivez ce que vous voulez faire, choisissez une question dans la liste : les étapes s’affichent dans l’ordre.</p>
+  <div class="arama" role="search">
+    <input id="ara" type="search" aria-label="Rechercher dans l’aide" autocomplete="off" spellcheck="false" placeholder="Par exemple : créer une setlist" aria-describedby="durum" aria-controls="liste">
+    <button id="temizle" class="temizle" type="button" aria-label="Effacer la recherche" hidden>×</button>
+  </div>
+  <div class="sik" id="ySik"></div>
+</section>
+
+<main id="govde" class="govde">
+  <div>
+    <p id="durum" class="durum" aria-live="polite"></p>
+    <nav id="liste" class="liste" aria-label="Questions"></nav>
+  </div>
+  <article id="sahne" class="sahne" aria-labelledby="cevap-baslik"></article>
+</main>
+
+<footer class="alt">
+  repertuvar.app, StageFlow B.V.
+  <a href="/privacy/fr/">Confidentialité</a><a href="/terms/fr/">Conditions d’utilisation</a><a href="/support/fr/">Assistance</a>
+</footer>
+
+<script src="/help/veri-fr.js?v=01797b26"></script>
+<script src="/help/yardim.js?v=01797b26"></script>
+</body>
+</html>
