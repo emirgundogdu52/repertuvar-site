@@ -3260,7 +3260,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Conta e assinatura",
    "baslik": "Como entro com Face ID ou com a impressão digital?",
-   "ozet": "No app do celular ou do tablet, entre uma vez com e-mail e senha e toque em Sim quando o app perguntar, ou ative a chave em Configurações > Conta; depois disso, você não precisa mais digitar a senha.",
+   "ozet": "No app do celular, do tablet ou do Mac, entre uma vez com e-mail e senha e toque em Sim quando o app perguntar, ou ative a chave em Configurações > Conta; depois disso, você não precisa mais digitar a senha.",
    "anahtar": [
     "face id",
     "touch id",
@@ -3289,7 +3289,7 @@ window.YARDIM_VERI = {
     "Sair da conta não apaga esse login salvo; excluir a conta, sim.",
     "Se o Face ID não funcionar, o formulário de login continua disponível; você pode entrar com a senha."
    ],
-   "platform": "Só aparece no app para iPhone, iPad e Android, em dispositivos com Face ID, Touch ID ou impressão digital configurados; não existe no navegador. Se você criou a conta só com Google ou Apple (sem senha), a linha em Configurações pode não aparecer.",
+   "platform": "Aparece no app para iPhone, iPad e Android e no app instalado pela Mac App Store (em um Mac com Touch ID); o dispositivo precisa ter Face ID, Touch ID ou impressão digital configurados. Não existe no navegador. Se você criou a conta só com Google ou Apple (sem senha), a linha em Configurações pode não aparecer.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

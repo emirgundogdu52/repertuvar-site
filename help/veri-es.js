@@ -3251,7 +3251,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Cuenta y suscripción",
    "baslik": "¿Cómo inicio sesión con Face ID o con la huella digital?",
-   "ozet": "En la app del teléfono o la tableta, después de entrar con tu correo y tu contraseña, toca Sí en la pregunta que aparece o activa el interruptor de Ajustes > Cuenta; a partir de entonces no tendrás que escribir la contraseña.",
+   "ozet": "En la app del teléfono, la tableta o el Mac, después de entrar con tu correo y tu contraseña, toca Sí en la pregunta que aparece o activa el interruptor de Ajustes > Cuenta; a partir de entonces no tendrás que escribir la contraseña.",
    "anahtar": [
     "Face ID",
     "Touch ID",
@@ -3280,7 +3280,7 @@ window.YARDIM_VERI = {
     "Al cerrar sesión, este inicio de sesión guardado no se elimina; si eliminas tu cuenta, sí.",
     "Si Face ID no funciona, el formulario de inicio de sesión sigue disponible; puedes entrar con tu contraseña."
    ],
-   "platform": "Solo aparece en la app de iPhone, iPad y Android, si en tu dispositivo están configurados Face ID, Touch ID o la huella digital; no está disponible en el navegador. Si creaste tu cuenta solo con Google o Apple (sin contraseña), puede que la fila no aparezca en Ajustes.",
+   "platform": "Aparece en la app de iPhone, iPad y Android, y en la app instalada desde la Mac App Store (en un Mac con Touch ID); en el dispositivo deben estar configurados Face ID, Touch ID o la huella digital. No está disponible en el navegador. Si creaste tu cuenta solo con Google o Apple (sin contraseña), puede que la fila no aparezca en Ajustes.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

@@ -3101,7 +3101,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Account and subscription",
    "baslik": "How do I sign in with Face ID or my fingerprint?",
-   "ozet": "In the phone or tablet app, sign in once with your email and password and tap Yes when asked, or turn on the switch in Settings > Account; after that you won't need to type your password.",
+   "ozet": "In the phone, tablet or Mac app, sign in once with your email and password and tap Yes when asked, or turn on the switch in Settings > Account; after that you won't need to type your password.",
    "anahtar": [
     "Face ID",
     "Touch ID",
@@ -3129,7 +3129,7 @@ window.YARDIM_VERI = {
     "Signing out doesn't remove the saved sign-in; deleting your account does.",
     "If Face ID doesn't work, the sign-in form stays available, so you can use your password."
    ],
-   "platform": "Only available in the iPhone, iPad and Android apps, on devices with Face ID, Touch ID or a fingerprint set up; not available in the browser. If you created your account only with Google or Apple (no password), the row in Settings may not appear.",
+   "platform": "Available in the iPhone, iPad and Android apps, and in the app installed from the Mac App Store (on a Mac with Touch ID); Face ID, Touch ID or a fingerprint must be set up on the device. Not available in the browser. If you created your account only with Google or Apple (no password), the row in Settings may not appear.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

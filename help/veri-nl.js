@@ -3211,7 +3211,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Account en abonnement",
    "baslik": "Hoe log ik in met Face ID of mijn vingerafdruk?",
-   "ozet": "Log in de app op je telefoon of tablet één keer in met je e-mailadres en wachtwoord en tik op Ja als dat wordt gevraagd, of zet de schakelaar in Instellingen > Account aan; daarna hoef je je wachtwoord niet meer te typen.",
+   "ozet": "Log in de app op je telefoon, tablet of Mac één keer in met je e-mailadres en wachtwoord en tik op Ja als dat wordt gevraagd, of zet de schakelaar in Instellingen > Account aan; daarna hoef je je wachtwoord niet meer te typen.",
    "anahtar": [
     "Face ID",
     "Touch ID",
@@ -3240,7 +3240,7 @@ window.YARDIM_VERI = {
     "Uitloggen verwijdert de opgeslagen inlog niet; je account verwijderen wel.",
     "Werkt Face ID niet, dan blijft het inlogformulier beschikbaar en kun je je wachtwoord gebruiken."
    ],
-   "platform": "Alleen beschikbaar in de apps voor iPhone, iPad en Android, op apparaten waarop Face ID, Touch ID of een vingerafdruk is ingesteld; niet in de browser. Heb je je account alleen met Google of Apple aangemaakt (zonder wachtwoord), dan staat de rij misschien niet in Instellingen.",
+   "platform": "Beschikbaar in de apps voor iPhone, iPad en Android, en in de app uit de Mac App Store (op een Mac met Touch ID); op het apparaat moet Face ID, Touch ID of een vingerafdruk zijn ingesteld. Niet in de browser. Heb je je account alleen met Google of Apple aangemaakt (zonder wachtwoord), dan staat de rij misschien niet in Instellingen.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

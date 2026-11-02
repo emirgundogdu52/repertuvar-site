@@ -3132,7 +3132,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Hesap ve abonelik",
    "baslik": "Face ID ya da parmak iziyle nasıl giriş yaparım?",
-   "ozet": "Telefon ve tablet uygulamasında e-posta ve şifreyle girdikten sonra çıkan soruda Evet'e bas ya da Ayarlar > Hesap bölümündeki anahtarı aç; sonraki girişlerde şifre yazmazsın.",
+   "ozet": "Telefon, tablet ya da Mac uygulamasında e-posta ve şifreyle girdikten sonra çıkan soruda Evet'e bas ya da Ayarlar > Hesap bölümündeki anahtarı aç; sonraki girişlerde şifre yazmazsın.",
    "anahtar": [
     "Face ID",
     "Touch ID",
@@ -3160,7 +3160,7 @@ window.YARDIM_VERI = {
     "Çıkış yapınca bu kayıt silinmez; hesabını silersen silinir.",
     "Face ID çalışmazsa giriş formu açık kalır; şifrenle girebilirsin."
    ],
-   "platform": "Yalnız iPhone, iPad ve Android uygulamasında, cihazında Face ID, Touch ID ya da parmak izi kuruluysa görünür; tarayıcıda yoktur. Hesabını yalnız Google ya da Apple ile açtıysan (şifren yoksa) Ayarlar'daki satır görünmeyebilir.",
+   "platform": "iPhone, iPad ve Android uygulamasında, ayrıca Mac App Store'dan kurulan uygulamada (Touch ID'li Mac) görünür; cihazında Face ID, Touch ID ya da parmak izi kurulu olmalı. Tarayıcıda yoktur. Hesabını yalnız Google ya da Apple ile açtıysan (şifren yoksa) Ayarlar'daki satır görünmeyebilir.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

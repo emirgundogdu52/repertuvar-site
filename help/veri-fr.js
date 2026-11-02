@@ -3234,7 +3234,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Compte et abonnement",
    "baslik": "Comment me connecter avec Face ID ou mon empreinte digitale ?",
-   "ozet": "Dans l’appli pour téléphone et tablette, après une connexion par e-mail et mot de passe, touchez Oui quand la question s’affiche, ou activez l’interrupteur dans Réglages > Compte ; vous n’aurez plus à saisir votre mot de passe.",
+   "ozet": "Dans l’appli pour téléphone, tablette ou Mac, après une connexion par e-mail et mot de passe, touchez Oui quand la question s’affiche, ou activez l’interrupteur dans Réglages > Compte ; vous n’aurez plus à saisir votre mot de passe.",
    "anahtar": [
     "Face ID",
     "Touch ID",
@@ -3263,7 +3263,7 @@ window.YARDIM_VERI = {
     "La déconnexion ne supprime pas cet enregistrement ; la suppression de votre compte, si.",
     "Si Face ID ne fonctionne pas, le formulaire de connexion reste disponible : vous pouvez utiliser votre mot de passe."
    ],
-   "platform": "Disponible uniquement dans l’appli iPhone, iPad et Android, sur un appareil où Face ID, Touch ID ou une empreinte digitale est configuré ; absent du navigateur. Si vous avez créé votre compte uniquement avec Google ou Apple (sans mot de passe), la ligne peut ne pas apparaître dans Réglages.",
+   "platform": "Disponible dans l’appli iPhone, iPad et Android, ainsi que dans l’appli installée depuis le Mac App Store (sur un Mac avec Touch ID) ; Face ID, Touch ID ou une empreinte digitale doit être configuré sur l’appareil. Absent du navigateur. Si vous avez créé votre compte uniquement avec Google ou Apple (sans mot de passe), la ligne peut ne pas apparaître dans Réglages.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

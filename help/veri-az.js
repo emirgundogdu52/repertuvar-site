@@ -3212,7 +3212,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Hesab və abunəlik",
    "baslik": "Face ID və ya barmaq izi ilə necə daxil olum?",
-   "ozet": "Telefon və planşet tətbiqində e-poçt və şifrə ilə daxil olduqdan sonra çıxan sualda Bəli düyməsinə toxun və ya Ayarlar > Hesab bölməsindəki açarı aç; sonrakı girişlərdə şifrə yazmırsan.",
+   "ozet": "Telefon, planşet və ya Mac tətbiqində e-poçt və şifrə ilə daxil olduqdan sonra çıxan sualda Bəli düyməsinə toxun və ya Ayarlar > Hesab bölməsindəki açarı aç; sonrakı girişlərdə şifrə yazmırsan.",
    "anahtar": [
     "Face ID",
     "Touch ID",
@@ -3241,7 +3241,7 @@ window.YARDIM_VERI = {
     "Hesabdan çıxanda bu qeyd silinmir; hesabını silsən, silinir.",
     "Face ID işləməsə, giriş forması açıq qalır; şifrənlə daxil ola bilərsən."
    ],
-   "platform": "Yalnız iPhone, iPad və Android tətbiqində, cihazında Face ID, Touch ID və ya barmaq izi qurulubsa görünür; brauzerdə yoxdur. Hesabını yalnız Google və ya Apple ilə yaratmısansa (şifrən yoxdursa), Ayarlar bölməsindəki sətir görünməyə bilər.",
+   "platform": "iPhone, iPad və Android tətbiqində, həmçinin Mac App Store-dan quraşdırılan tətbiqdə (Touch ID-li Mac) görünür; cihazında Face ID, Touch ID və ya barmaq izi qurulmalıdır. Brauzerdə yoxdur. Hesabını yalnız Google və ya Apple ilə yaratmısansa (şifrən yoxdursa), Ayarlar bölməsindəki sətir görünməyə bilər.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

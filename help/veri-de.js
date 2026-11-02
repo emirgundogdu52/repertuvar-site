@@ -3276,7 +3276,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Konto und Abo",
    "baslik": "Wie melde ich mich mit Face ID oder Fingerabdruck an?",
-   "ozet": "Melde dich in der App für Smartphone oder Tablet einmal mit E-Mail und Passwort an und tippe bei der Frage auf Ja, oder aktiviere den Schalter unter Einstellungen > Konto; danach musst du dein Passwort nicht mehr eingeben.",
+   "ozet": "Melde dich in der App für Smartphone, Tablet oder Mac einmal mit E-Mail und Passwort an und tippe bei der Frage auf Ja, oder aktiviere den Schalter unter Einstellungen > Konto; danach musst du dein Passwort nicht mehr eingeben.",
    "anahtar": [
     "face id",
     "touch id",
@@ -3305,7 +3305,7 @@ window.YARDIM_VERI = {
     "Beim Abmelden wird diese gespeicherte Anmeldung nicht gelöscht; beim Löschen deines Kontos schon.",
     "Funktioniert Face ID nicht, bleibt das Anmeldeformular verfügbar; du kannst dich mit deinem Passwort anmelden."
    ],
-   "platform": "Nur in der App für iPhone, iPad und Android verfügbar, wenn auf dem Gerät Face ID, Touch ID oder ein Fingerabdruck eingerichtet ist; im Browser gibt es diese Funktion nicht. Hast du dein Konto nur mit Google oder Apple erstellt (ohne Passwort), erscheint die Zeile in den Einstellungen möglicherweise nicht.",
+   "platform": "Verfügbar in der App für iPhone, iPad und Android sowie in der App aus dem Mac App Store (auf einem Mac mit Touch ID); auf dem Gerät muss Face ID, Touch ID oder ein Fingerabdruck eingerichtet sein. Im Browser gibt es diese Funktion nicht. Hast du dein Konto nur mit Google oder Apple erstellt (ohne Passwort), erscheint die Zeile in den Einstellungen möglicherweise nicht.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",

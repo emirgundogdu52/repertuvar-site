@@ -3236,7 +3236,7 @@ window.YARDIM_VERI = {
    "id": "face-id-ile-giris",
    "kategori": "Account e abbonamento",
    "baslik": "Come accedo con Face ID o con l'impronta digitale?",
-   "ozet": "Nell'app per telefono e tablet, dopo aver effettuato l'accesso con email e password tocca Sì nella domanda che compare, oppure attiva l'interruttore in Impostazioni > Account; agli accessi successivi non dovrai scrivere la password.",
+   "ozet": "Nell'app per telefono, tablet o Mac, dopo aver effettuato l'accesso con email e password tocca Sì nella domanda che compare, oppure attiva l'interruttore in Impostazioni > Account; agli accessi successivi non dovrai scrivere la password.",
    "anahtar": [
     "Face ID",
     "Touch ID",
@@ -3265,7 +3265,7 @@ window.YARDIM_VERI = {
     "Uscendo dall'account questi dati salvati non vengono eliminati; vengono eliminati se elimini l'account.",
     "Se Face ID non funziona, il modulo di accesso resta disponibile: puoi accedere con la password."
    ],
-   "platform": "Disponibile solo nell'app per iPhone, iPad e Android, se sul dispositivo è configurato Face ID, Touch ID o l'impronta digitale; nel browser non c'è. Se hai creato l'account solo con Google o Apple (senza password), la riga nelle Impostazioni potrebbe non comparire.",
+   "platform": "Disponibile nell'app per iPhone, iPad e Android e nell'app installata dal Mac App Store (su un Mac con Touch ID); sul dispositivo deve essere configurato Face ID, Touch ID o l'impronta digitale. Nel browser non c'è. Se hai creato l'account solo con Google o Apple (senza password), la riga nelle Impostazioni potrebbe non comparire.",
    "ilgili": [
     "giris-yapamiyorum",
     "sifre-degistir",
