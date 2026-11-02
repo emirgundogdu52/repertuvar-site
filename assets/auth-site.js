@@ -7,15 +7,15 @@
  *
  * Google: Google Identity Services butonu + signInWithIdToken. Supabase'in OAuth yönlendirmesi
  * kullanılmadığı için Google penceresinde "…supabase.co" değil, uygulama adı ve repertuvar.app görünür.
- * Apple: kod hazır, APPLE_AKTIF=false (Apple Developer üyeliği onaylanınca açılacak — app/_not.md).
+ * Apple: Apple JS (açılır pencere) + signInWithIdToken; Services ID app.repertuvar.web, 2026-11-02'de açıldı.
  */
 window.RA = (function () {
   var SUPA_URL = 'https://ehytkzxdhjyjuubizdnl.supabase.co';
   var SUPA_KEY = 'sb_publishable_f_WsYxzN06B5dGROrkGyPQ_UDxKSbtO';   // herkese açık anahtar (uygulamadakiyle aynı)
   var APP = 'https://app.repertuvar.app';
   var GOOGLE_CLIENT_ID = '33396018913-5h3jfncqf93a4js20k4e3gfgluc3v4l8.apps.googleusercontent.com';
-  var APPLE_AKTIF = false;
-  var APPLE_CLIENT_ID = 'app.repertuvar.web';                       // Apple Services ID (onaydan sonra oluşturulacak)
+  var APPLE_AKTIF = true;                                            // 2026-11-02 açıldı (Supabase Client IDs: app.repertuvar.web önce)
+  var APPLE_CLIENT_ID = 'app.repertuvar.web';                       // Apple Services ID
 
   // persistSession:false → landing kendi oturumunu saklamaz, devrettiği refresh token'ı döndürmez.
   var sb = window.supabase.createClient(SUPA_URL, SUPA_KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
