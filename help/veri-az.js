@@ -990,6 +990,7 @@ window.YARDIM_VERI = {
     "**+** düyməsinə toxun və açılan menyudan **Dəftərdən əlavə et** seç. Ana səhifədəki **Not dəftərini skan et** kartı da həmin pəncərəni açır.",
     "**📒 Dəftərdən əlavə et** pəncərəsində **Səhifəni skan et** düyməsinə toxun və dəftərinin səhifələrini ardıcıl skan et. Telefonunda saxlanmış şəkil və ya fayl varsa, **Seç** düyməsinə toxunub qalereyadan və ya fayllardan seç.",
     "Hər səhifə bir kart olur. Hər kartın üstündəki xanaya əsərin adını yaz.",
+    "**Repertuvar Pro**-da səhifələr avtomatik oxunur: səhifədə yazılıbsa əsərin adı, sözləri və akkordları kartlara yazılır; notlardan akkord çıxarılmır. Yadda saxlamazdan əvvəl kartları yoxla; oxunuşda səhv varsa düzəlt və ya **🔍 Daha diqqətlə oxu** düyməsinə bas.",
     "Yan düşmüş səhifəni kiçik şəklindəki **Sağa döndər** düyməsi ilə düzəlt. İstəmədiyin kartı zibil qutusu işarəsi (**Bu əsəri çıxar**) ilə sil.",
     "**Yadda saxla** düyməsinə toxun. Yadda saxlama bitəndə “✓ 3 əsər əlavə edildi — 🔒 Qaralamalarım” kimi bildiriş çıxır və siyahı **🔒 Qaralamalarım** görünüşünə keçir."
    ],

@@ -992,6 +992,7 @@ window.YARDIM_VERI = {
     "Tik op de knop **+** en kies in het menu **Toevoegen uit schrift**. Ook de kaart **Muziekschrift scannen** op de pagina Home opent hetzelfde venster.",
     "Tik in het venster **📒 Toevoegen uit schrift** op **Pagina scannen** en scan de pagina's van je schrift na elkaar. Staat er al een foto of bestand op je telefoon, tik dan op **Kiezen** en kies het uit je galerij of je bestanden.",
     "Elke pagina wordt een kaart. Typ de titel van het stuk in het vak bovenaan elke kaart.",
+    "Met **Repertuvar Pro** worden de pagina's automatisch gelezen: titel, tekst en akkoorden die op de pagina staan (indien aanwezig) worden op de kaarten ingevuld; akkoorden worden niet uit de noten afgeleid. Controleer de kaarten voordat je opslaat; is iets verkeerd gelezen, verbeter het dan of tik op **🔍 Nauwkeuriger lezen**.",
     "Staat een pagina op zijn kant, draai hem dan recht met de knop **Naar rechts draaien** op de miniatuur. Een kaart die je niet wilt, haal je weg met het prullenbakpictogram (**Dit stuk verwijderen**).",
     "Tik op **Opslaan**. Als het opslaan klaar is, zie je een melding zoals “✓ 3 stukken toegevoegd — 🔒 Mijn concepten”, en de lijst gaat naar de weergave **🔒 Mijn concepten**."
    ],

@@ -948,6 +948,7 @@ window.YARDIM_VERI = {
     "**+** düğmesine bas ve açılan menüden **Defterden ekle**'yi seç. Ana Sayfa'daki **Nota Defterini Tara** kartı da aynı pencereyi açar.",
     "**📒 Defterden Ekle** penceresinde **Sayfa tara**'ya bas ve defterinin sayfalarını art arda tara. Telefonunda kayıtlı bir fotoğraf ya da dosya varsa **Seç**'e basıp galeriden ya da dosyalardan seç.",
     "Her sayfa bir kart olur. Her kartın üstündeki kutuya eserin adını yaz.",
+    "**Repertuvar Pro**'da sayfalar otomatik okunur: sayfada yazılıysa eserin adı, sözleri ve akorları kartlara yazılır; notalardan akor çıkarılmaz. Kaydetmeden önce kartları kontrol et; bir okuma hatalıysa düzelt ya da **🔍 Daha dikkatli oku**'ya bas.",
     "Yan yatmış bir sayfayı küçük resmindeki **Sağa döndür** düğmesiyle düzelt. İstemediğin kartı çöp kutusu simgesiyle (**Bu eseri çıkar**) kaldır.",
     "**Kaydet**'e bas. Kayıt bitince “✓ 3 eser eklendi — 🔒 Taslaklarım” gibi bir bildirim çıkar ve liste **🔒 Taslaklarım** görünümüne geçer."
    ],

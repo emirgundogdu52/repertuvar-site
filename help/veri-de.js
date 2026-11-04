@@ -1036,6 +1036,7 @@ window.YARDIM_VERI = {
     "Tippe auf die Schaltfläche **+** und wähle im Menü **Aus dem Notenheft hinzufügen**. Die Karte **Notenheft scannen** auf der Startseite öffnet dasselbe Fenster.",
     "Tippe im Fenster **📒 Aus dem Notenheft hinzufügen** auf **Seite scannen** und scanne die Seiten deines Notenhefts nacheinander. Hast du schon ein Foto oder eine Datei auf deinem Smartphone, tippe auf **Wählen** und wähle sie aus der Galerie oder aus deinen Dateien.",
     "Jede Seite wird eine Karte. Gib im Feld oben auf jeder Karte den Titel des Stücks ein.",
+    "Mit **Repertuvar Pro** werden die Seiten automatisch gelesen: Titel, Liedtext und Akkorde werden in die Karten eingetragen, sofern sie auf der Seite stehen; aus den Noten werden keine Akkorde abgeleitet. Prüfe die Karten vor dem Speichern; wurde etwas falsch gelesen, korrigiere es oder tippe auf **🔍 Genauer lesen**.",
     "Korrigiere eine quer liegende Seite mit der Schaltfläche **Nach rechts drehen** auf ihrem Vorschaubild. Eine Karte, die du nicht brauchst, entfernst du mit dem Papierkorb-Symbol (**Dieses Stück entfernen**).",
     "Tippe auf **Speichern**. Danach erscheint eine Meldung wie „✓ 3 Stücke hinzugefügt — 🔒 Meine Entwürfe“, und die Liste wechselt zur Ansicht **🔒 Meine Entwürfe**."
    ],

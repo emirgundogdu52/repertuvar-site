@@ -1010,6 +1010,7 @@ window.YARDIM_VERI = {
     "Toca el botón **+** y, en el menú que se abre, elige **Añadir desde el cuaderno**. La tarjeta **Escanear cuaderno** de Inicio abre la misma ventana.",
     "En la ventana **📒 Añadir desde el cuaderno**, toca **Escanear página** y escanea las páginas de tu cuaderno una tras otra. Si ya tienes una foto o un archivo guardado en el teléfono, toca **Elegir** y selecciónalo en la galería o en los archivos.",
     "Cada página se convierte en una tarjeta. Escribe el título de la obra en el cuadro de la parte superior de cada tarjeta.",
+    "Con **Repertuvar Pro** las páginas se leen automáticamente: el título, la letra y los acordes escritos en la página (si los hay) se escriben en las tarjetas; los acordes no se deducen de las notas. Revisa las tarjetas antes de guardar; si algo se ha leído mal, corrígelo o toca **🔍 Leer con más detalle**.",
     "Endereza una página que esté de lado con el botón **Girar a la derecha** de su miniatura. Quita una tarjeta que no quieras con el icono de la papelera (**Quitar esta obra**).",
     "Toca **Guardar**. Cuando termina de guardarse, aparece un aviso como «✓ 3 obras añadidas — 🔒 Mis borradores» y la lista pasa a la vista **🔒 Mis borradores**."
    ],

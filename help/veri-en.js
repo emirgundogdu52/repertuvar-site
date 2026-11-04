@@ -936,6 +936,7 @@ window.YARDIM_VERI = {
     "Tap the **+** button and choose **Add from notebook**. The **Scan Music Notebook** card on the Home page opens the same window.",
     "In the **📒 Add from Notebook** window, tap **Scan page** and scan your notebook pages one after another. If you already have a photo or file on your phone, tap **Choose** and pick it.",
     "Each page becomes a card. Type the piece's title in the box at the top of each card.",
+    "With **Repertuvar Pro** the pages are read automatically: the title, lyrics and chords written on the page (if any) are filled in on the cards; chords are not worked out from the notes. Check the cards before you save; if something was read wrong, correct it or tap **🔍 Read more carefully**.",
     "Fix a sideways page with the **Rotate right** button on its thumbnail. Remove a card you don't want with the trash icon (**Remove this piece**).",
     "Tap **Save**. When saving is done you'll see a message such as “✓ 3 pieces added — 🔒 My Drafts”, and the list switches to **🔒 My Drafts**."
    ],

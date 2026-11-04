@@ -1018,6 +1018,7 @@ window.YARDIM_VERI = {
     "Touchez le bouton **+** et choisissez **Ajouter depuis le cahier** dans le menu. La carte **Scanner le cahier de musique** de la page Accueil ouvre la même fenêtre.",
     "Dans la fenêtre **📒 Ajouter depuis le cahier**, touchez **Scanner une page** et scannez les pages de votre cahier l’une après l’autre. Si une photo ou un fichier se trouve déjà sur votre téléphone, touchez **Choisir** et sélectionnez-le dans la galerie ou dans vos fichiers.",
     "Chaque page devient une fiche. Saisissez le titre du morceau dans la zone en haut de chaque fiche.",
+    "Avec **Repertuvar Pro**, les pages sont lues automatiquement : le titre, les paroles et les accords écrits sur la page (le cas échéant) sont inscrits sur les fiches ; les accords ne sont pas déduits des notes. Vérifiez les fiches avant d'enregistrer ; si une lecture est erronée, corrigez-la ou appuyez sur **🔍 Lire plus attentivement**.",
     "Redressez une page couchée avec le bouton **Pivoter à droite** de sa vignette. Retirez une fiche dont vous ne voulez pas avec l’icône corbeille (**Retirer ce morceau**).",
     "Touchez **Enregistrer**. À la fin, un message comme « ✓ 3 morceaux ajoutés — 🔒 Mes brouillons » s’affiche et la liste passe à la vue **🔒 Mes brouillons**."
    ],

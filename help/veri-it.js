@@ -1020,6 +1020,7 @@ window.YARDIM_VERI = {
     "Tocca il pulsante **+** e nel menu che si apre scegli **Aggiungi dal quaderno**. Anche la scheda **Scansiona il quaderno** nella Home apre la stessa finestra.",
     "Nella finestra **📒 Aggiungi dal quaderno** tocca **Scansiona pagina** e scansiona le pagine del quaderno una dopo l'altra. Se hai già una foto o un file sul telefono, tocca **Scegli** e selezionalo dalla galleria o dai file.",
     "Ogni pagina diventa una scheda. Scrivi il titolo del brano nella casella in alto di ogni scheda.",
+    "Con **Repertuvar Pro** le pagine vengono lette automaticamente: titolo, testo e accordi scritti sulla pagina (se presenti) vengono riportati nelle schede; gli accordi non vengono ricavati dalle note. Controlla le schede prima di salvare; se qualcosa è stato letto male, correggilo o tocca **🔍 Leggi con più attenzione**.",
     "Raddrizza una pagina girata di lato con il pulsante **Ruota a destra** sulla sua miniatura. Togli una scheda che non vuoi con l'icona del cestino (**Rimuovi questo brano**).",
     "Tocca **Salva**. Al termine compare un avviso come “✓ 3 brani aggiunti — 🔒 Le mie bozze” e l'elenco passa alla vista **🔒 Le mie bozze**."
    ],

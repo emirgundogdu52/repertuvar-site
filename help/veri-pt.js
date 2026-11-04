@@ -1015,6 +1015,7 @@ window.YARDIM_VERI = {
     "Toque no botão **+** e, no menu que se abre, escolha **Adicionar do caderno**. O cartão **Escanear caderno** do Início abre a mesma janela.",
     "Na janela **📒 Adicionar do caderno**, toque em **Escanear página** e escaneie as páginas do caderno, uma atrás da outra. Se já tiver uma foto ou um arquivo salvo no celular, toque em **Escolher** e selecione-o na galeria ou nos arquivos.",
     "Cada página vira um cartão. Digite o título da música na caixa no topo de cada cartão.",
+    "Com o **Repertuvar Pro** as páginas são lidas automaticamente: o título, a letra e os acordes escritos na página (se houver) são preenchidos nos cartões; os acordes não são deduzidos das notas. Confira os cartões antes de salvar; se algo foi lido errado, corrija ou toque em **🔍 Ler com mais atenção**.",
     "Corrija uma página deitada com o botão **Girar para a direita** na miniatura dela. Tire um cartão que você não quer com o ícone de lixeira (**Remover esta música**).",
     "Toque em **Salvar**. Quando terminar, aparece um aviso como “✓ 3 músicas adicionadas — 🔒 Meus rascunhos”, e a lista passa para a exibição **🔒 Meus rascunhos**."
    ],
