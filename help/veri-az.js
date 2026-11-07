@@ -258,7 +258,7 @@ window.YARDIM_VERI = {
     "Birdən çox qrupun üzvüsənsə, profil menyusunun əvvəlində **Aktiv qrup** siyahısı çıxır; qrupunu buradan dəyişirsən.",
     "**Ayarlar** bölməsində **Ana səhifəni bağla** açıqdırsa, menyularda **Ana səhifə** görünmür."
    ],
-   "platform": "Telefonu üfüqi tutanda və planşetdə alt menyunun sonunda **Kömək** əvəzinə **Mesajlar** olur. Planşetdə (şaquli tutanda) alt menyuda **Qrup / Xor** bölməsindən sonra **Solistlər** də var. Geniş ekranda (kompüterdə və üfüqi tutulan əksər planşetlərdə) menyu soldadır: **Ana səhifə**, **Əsərlər**, **Repertuarlar**, **Qrup / Xor**, **Solistlər**, **Məşq otağı**, **Mesajlar**. **Ayarlar** və **Hesabdan çıx** üçün sol menyunun altındakı adına toxun; **Mövzunu dəyiş** də oradadır. Alt menyunun sürüşdürəndə gizlənməsi yalnız toxunmatik ekranlarda olur.",
+   "platform": "Planşetdə (şaquli tutanda) alt menyuda **Qrup / Xor** bölməsindən sonra **Solistlər** də var. Geniş ekranda (kompüterdə və üfüqi tutulan əksər planşetlərdə) menyu soldadır: **Ana səhifə**, **Əsərlər**, **Repertuarlar**, **Qrup / Xor**, **Solistlər**, **Məşq otağı**, **Mesajlar**. **Ayarlar** və **Hesabdan çıx** üçün sol menyunun altındakı adına toxun; **Mövzunu dəyiş** də oradadır. Alt menyunun sürüşdürəndə gizlənməsi yalnız toxunmatik ekranlarda olur.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -375,7 +375,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Əsərlər",
    "baslik": "Əsərləri janra, dilə və ya məqama görə necə filtrləyim və sıralayım?",
-   "ozet": "Axtarış xanasının altındakı dil və janr çiplərinə toxun; məqam, bölgə, kökləmə və forma filtrlərini, həmçinin sıralamanı Filtrlər düyməsindən seç. Seçdiyin dil bu cihazda yadda saxlanılır.",
+   "ozet": "Axtarış xanasının altındakı Filtrlər düyməsinə toxun. Dil və janr çipləri ən yuxarıdadır; məqam, bölgə, kökləmə və forma filtrləri ilə sıralama aşağıdadır. Seçdiyin dil bu cihazda yadda saxlanılır.",
    "anahtar": [
     "filtr",
     "filtrlə",
@@ -395,10 +395,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "**Əsərlər** bölməsinə keç.",
-    "Axtarış xanasının altındakı çip sırasında bir dilə və ya janra toxun. Çipdəki rəqəm o qrupdakı əsərlərin sayıdır. Sıra ekrana sığmırsa, onu yana sürüşdür və ya kənarlardakı oxlara toxun.",
+    "Axtarış xanasının altındakı **Filtrlər** düyməsinə toxun; ən yuxarıdakı **Dil və janr** hissəsində bir dilə və ya janra toxun. Çipdəki rəqəm o qrupdakı əsərlərin sayıdır.",
     "Filtri götürmək üçün həmin çipə yenidən toxun. Eyni anda bir dil və bir janr seçilə bilər.",
-    "Bir dil seçsən (məs. yalnız türkcə əsərlər), seçimin bu cihazda yadda saxlanılır; **Əsərlər** bölməsini yenidən açanda siyahı yenə həmin dildə gəlir. Seçim aktiv olduqca çip sırasının altında \"Dil: Türk – yalnız bu dildə olan əsərlər göstərilir.\" qeydi görünür. Bütün dillərə qayıtmaq üçün qeyddəki **Bütün dilləri göstər** düyməsinə toxun.",
-    "Daha çox seçim üçün **Filtrlər** düyməsinə toxun.",
+    "Bir dil seçsən (məs. yalnız türkcə əsərlər), seçimin bu cihazda yadda saxlanılır; **Əsərlər** bölməsini yenidən açanda siyahı yenə həmin dildə gəlir. Seçim aktiv olduqca **Filtrlər** düyməsində aktiv filtrlərin sayı görünür, çiplərin altında isə \"Dil: Türk – yalnız bu dildə olan əsərlər göstərilir.\" qeydi durur. Bütün dillərə qayıtmaq üçün qeyddəki **Bütün dilləri göstər** düyməsinə toxun.",
+    "Sıralama və digər filtrlər eyni pəncərənin aşağısındadır.",
     "Açılan **Filtr və sıralama** pəncərəsində **Sırala** altından **Ada görə**, **Bəstəkara görə**, **Məqama görə**, **Formaya görə** və ya **Bölgəyə görə** seç.",
     "**Janr / forma**, **Kökləmə**, **Bölgə** və **Məqam** bölmələrində istədiyin dəyərə toxun; hər dəyərin yanında neçə əsər olduğu yazılır. Eyni dəyərə yenidən toxunsan, filtr götürülür.",
     "Filtrləri sıfırlamaq üçün **Filtrləri təmizlə** düyməsinə toxun; bu düymə axtarış xanasını da boşaldır. Axtarış yazısı qalsın istəyirsənsə, siyahının üstündəki **Hamısı** düyməsinə toxun. Bu düymələrin heç biri seçdiyin dili götürmür."
@@ -406,7 +406,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "**Janr təyin edilməyib** çipi janrı hələ daxil edilməmiş əsərləri göstərir.",
     "Dil çipləri yalnız siyahında birdən çox dildə əsər olanda görünür.",
-    "Dil seçimi yalnız Əsərlər siyahısına və axtarışa təsir edir; repertuarların dəyişmir. Dil seçili olanda axtardığın əsəri tapmasan, əvvəlcə **Bütün dilləri göstər** düyməsinə toxun.",
+    "Dil seçimi yalnız Əsərlər siyahısına və axtarışa təsir edir; repertuarların dəyişmir. Dil seçili olanda axtardığın əsəri tapmasan, əvvəlcə **Filtrlər** pəncərəsindəki **Bütün dilləri göstər** düyməsinə toxun.",
     "Dildən başqa filtrlər və sıralama yadda qalmır: səhifəni yenidən açanda onlar götürülür və əsərlər ada görə sıralanır."
    ],
    "platform": "",
@@ -1302,7 +1302,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "**Qrupumla paylaş** seçimi yalnız qrup üzvü olanda görünür.",
     "Təsdiq gözləyən təkliflərini **📋 Əsərlərim** səhifəsindəki **⏳ Təsdiq gözləyən təkliflərim** hissəsində görürsən. Təklifi **Təklifi geri çək** ilə geri götürə bilərsən; əsər silinmir, gizli qaralamana qayıdır.",
-    "Siyahıda yalnız sənin gördüyün əsərlərdə **🔒 Qaralama**, qrupla paylaşılan əsərlərdə **👥 Qrup** nişanı görünür.",
+    "Siyahıda bəzi əsərlərin sətrində kiçik bir işarə görünür: tək adam **Yalnız mən**, bir neçə adam **Qrup**, qum saatı **Təsdiq gözləyir** deməkdir; qum saatını yalnız əsəri əlavə edən görür. Hamı üçün açıq əsərlərdə işarə olmur. İşarəyə toxunanda qısa izah çıxır.",
     "Dəftərdən əlavə etdiyin və başqa tətbiqdən idxal etdiyin əsərlər **Yalnız mən** kimi yaradılır.",
     "Əsəri sonradan yenidən **Yalnız mən** edə bilərsən."
    ],
@@ -1318,7 +1318,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Əsərlər",
    "baslik": "Əlavə etdiyim əsərləri harada tapım?",
-   "ozet": "Əsərlər bölməsindəki 📋 Əsərlərim düyməsinə toxun; qaralamaların, təsdiq gözləyən təkliflərin, dərc olunan əsərlərin və sildiklərin ayrı hissələrdə göstərilir.",
+   "ozet": "Əsərlər bölməsində Filtrlər pəncərəsini aç və Göstər hissəsindəki 📋 Əsərlərim düyməsinə toxun; qaralamaların, təsdiq gözləyən təkliflərin, dərc olunan əsərlərin və sildiklərin ayrı hissələrdə göstərilir.",
    "anahtar": [
     "əsərlərim",
     "öz əsərlərim",
@@ -1333,12 +1333,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Alt menyuda **Əsərlər** bölməsinə toxun.",
-    "Axtarış xanasının altında, **Filtrlər** düyməsinin yanındakı **📋 Əsərlərim** düyməsinə toxun.",
+    "Axtarış xanasının altındakı **Filtrlər** düyməsinə toxun, sonra **Göstər** hissəsindəki **📋 Əsərlərim** düyməsinə toxun.",
     "Əsərlərin dörd hissədə göstərilir: **⏳ Təsdiq gözləyən təkliflərim**, **🔒 Qaralamalarım**, **✓ Dərc olunan əsərlərim** və **🗑 Silinənlər**.",
     "Əsəri dəyişmək üçün **Redaktə et**, sözlərinə baxmaq üçün **🎵 Sözləri göstər** düyməsinə toxun."
    ],
    "ipuclari": [
-    "Yalnız sənin gördüyün əsərləri Əsərlər siyahısında da filtrləyə bilərsən: **Hamısı** və **★ Seçilmişlər** düymələrinin yanındakı **🔒 Qaralamalarım** düyməsinə toxun. Bu düymə ən azı bir gizli əsərin olanda görünür.",
+    "Yalnız sənin gördüyün əsərləri Əsərlər siyahısında da filtrləyə bilərsən: **Filtrlər** pəncərəsində **Göstər** hissəsindəki **🔒 Qaralamalarım** düyməsinə toxun. Bu düymə ən azı bir gizli əsərin olanda görünür.",
     "**📋 Əsərlərim** düyməsindəki rəqəm təsdiq gözləyən təkliflərinin sayıdır.",
     "İçində əsər olmayan hissə səhifədə görünmür.",
     "Təsdiq gözləyən təklifi **Təklifi geri çək** ilə geri götürə bilərsən; əsər silinmir, qaralamalarına qayıdır.",
@@ -1372,7 +1372,7 @@ window.YARDIM_VERI = {
     "Silmək istədiyin əsərə toxun və əsərin adının altındakı **Sil** düyməsinə toxun.",
     "“Bu əsəri silmək istədiyinə əminsən?” sualında **Bəli, sil** düyməsinə toxun.",
     "Ekranda əsərin adı ilə “silindi” bildirişi çıxır. Fikrini dəyişsən, 8 saniyə ərzində bildirişdəki **Geri qaytar** düyməsinə toxun.",
-    "Bildirişi qaçırmısansa, **Əsərlər** bölməsindəki **📋 Əsərlərim** düyməsinə toxun.",
+    "Bildirişi qaçırmısansa, **Əsərlər** bölməsində **Filtrlər** pəncərəsini aç və **Göstər** hissəsindəki **📋 Əsərlərim** düyməsinə toxun.",
     "**🗑 Silinənlər** hissəsində əsəri tap və **↩︎ Bərpa et** düyməsinə toxun. Kartda həmişəlik silinməyə neçə gün qaldığı yazılır."
    ],
    "ipuclari": [
@@ -3621,7 +3621,7 @@ window.YARDIM_VERI = {
     "Mesajı silmək üçün onun altındakı **Sil** düyməsinə toxun.",
     "Bu səhifə Repertuvar komandası ilə yazışmaq üçündür; qrup üzvləri arasında mesajlaşma bölməsi yoxdur."
    ],
-   "platform": "Telefonu üfüqi tutanda və planşetdə **Mesajlar** alt menyuda da var. Geniş ekranda (kompüterdə və ya üfüqi tutulan böyük planşetdə) sol menyudadır.",
+   "platform": "Telefonda və planşetdə **Mesajlar** alt menyuda yox, sağ yuxarıdakı profil menyusundadır. Geniş ekranda (kompüterdə və ya üfüqi tutulan böyük planşetdə) sol menyudadır.",
    "ilgili": [
     "bildirimler"
    ]

@@ -260,7 +260,7 @@ window.YARDIM_VERI = {
     "Ben je lid van meer dan één groep, dan staat bovenaan het profielmenu een lijst **Actieve groep**; daar wissel je van groep.",
     "Staat **Home uitschakelen** aan in **Instellingen**, dan staat **Home** niet in de menu's."
    ],
-   "platform": "Houd je de telefoon liggend of gebruik je een tablet, dan is de laatste knop van het menu onderaan **Berichten** in plaats van **Help**. Op een tablet in staande stand heeft het menu onderaan na **Groep / koor** ook **Solisten**. Op brede schermen (computers en de meeste tablets in liggende stand) staat het menu links: **Home**, **Stukken**, **Setlists**, **Groep / koor**, **Solisten**, **Oefenruimte**, **Berichten**. Tik voor **Instellingen** en **Uitloggen** onderaan het menu links op je naam; daar staat ook **Thema wijzigen**. Het menu onderaan verdwijnt alleen op aanraakschermen bij het scrollen.",
+   "platform": "Op een tablet in staande stand heeft het menu onderaan na **Groep / koor** ook **Solisten**. Op brede schermen (computers en de meeste tablets in liggende stand) staat het menu links: **Home**, **Stukken**, **Setlists**, **Groep / koor**, **Solisten**, **Oefenruimte**, **Berichten**. Tik voor **Instellingen** en **Uitloggen** onderaan het menu links op je naam; daar staat ook **Thema wijzigen**. Het menu onderaan verdwijnt alleen op aanraakschermen bij het scrollen.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -377,7 +377,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Stukken",
    "baslik": "Hoe filter en sorteer ik stukken op genre, taal of makam?",
-   "ozet": "Tik op de taal- en genrechips onder het zoekvak; de filters voor makam, regio, stemming en vorm en de sorteeropties vind je onder Filters. De gekozen taal wordt op dit apparaat onthouden.",
+   "ozet": "Tik onder het zoekvak op Filters. De taal- en genrechips staan bovenaan; de filters voor makam, regio, stemming en vorm en de sorteeropties vind je verderop. De gekozen taal wordt op dit apparaat onthouden.",
    "anahtar": [
     "filteren",
     "filter",
@@ -397,10 +397,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Ga naar **Stukken**.",
-    "Tik in de rij chips onder het zoekvak op een taal of een genre. Het getal op een chip geeft aan hoeveel stukken erbij horen. Past de rij niet op het scherm, veeg dan opzij of tik op de pijlen aan de rand.",
+    "Tik onder het zoekvak op **Filters** en tik bovenaan in het onderdeel **Taal en genre** op een taal of een genre. Het getal op een chip geeft aan hoeveel stukken erbij horen.",
     "Tik nog een keer op dezelfde chip om het filter weg te halen. Je kunt tegelijk één taal en één genre kiezen.",
-    "Kies je een taal (bijv. alleen Turkse stukken), dan wordt je keuze op dit apparaat onthouden; open je **Stukken** opnieuw, dan toont de lijst weer die taal. Zolang de keuze aan staat, staat onder de rij chips de melding “Taal: Turks – alleen stukken in deze taal worden getoond.” Tik in die melding op **Alle talen tonen** om weer alle talen te zien.",
-    "Tik op **Filters** voor meer opties.",
+    "Kies je een taal (bijv. alleen Turkse stukken), dan wordt je keuze op dit apparaat onthouden; open je **Stukken** opnieuw, dan toont de lijst weer die taal. Zolang de keuze aan staat, toont de knop **Filters** het aantal actieve filters en staat onder de chips de melding “Taal: Turks – alleen stukken in deze taal worden getoond.” Tik in die melding op **Alle talen tonen** om weer alle talen te zien.",
+    "De sorteeropties en de overige filters staan verderop in hetzelfde venster.",
     "Kies in het venster **Filteren en sorteren** onder **Sorteren** voor **Op titel**, **Op componist**, **Op makam**, **Op vorm** of **Op regio**.",
     "Tik op een waarde onder **Genre / vorm**, **Stemming**, **Regio** of **Makam**; bij elke waarde staat hoeveel stukken erbij horen. Tik er nog een keer op om dat filter weg te halen.",
     "Tik op **Filters wissen** om de filters terug te zetten; deze knop maakt ook het zoekvak leeg. Wil je je zoektekst houden, tik dan boven de lijst op **Alles**. Geen van beide knoppen haalt de gekozen taal weg."
@@ -408,7 +408,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "De chip **Geen genre** toont stukken waarvoor nog geen genre is ingevuld.",
     "Taalchips verschijnen alleen als er in je lijst stukken in meer dan één taal staan.",
-    "De taalkeuze geldt alleen voor de lijst met stukken en het zoeken; je setlists veranderen niet. Vind je een stuk niet terwijl er een taal gekozen is, tik dan eerst op **Alle talen tonen**.",
+    "De taalkeuze geldt alleen voor de lijst met stukken en het zoeken; je setlists veranderen niet. Vind je een stuk niet terwijl er een taal gekozen is, open dan **Filters** en tik eerst op **Alle talen tonen**.",
     "Behalve de taal worden filters en sortering niet onthouden: open je de pagina opnieuw, dan zijn ze weg en staan de stukken op titel."
    ],
    "platform": "",
@@ -1304,7 +1304,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "**Delen met mijn groep** verschijnt alleen als je lid bent van een groep.",
     "Je ingediende stukken die op goedkeuring wachten, vind je onder **⏳ Wachten op goedkeuring** op de pagina **📋 Mijn stukken**. Met **Inzending intrekken** trek je een inzending in; het stuk wordt niet verwijderd, maar wordt weer een privéconcept.",
-    "In de lijst hebben stukken die alleen jij ziet het label **🔒 Concept**, en stukken die met je groep zijn gedeeld het label **👥 Groep**.",
+    "In de lijst hebben sommige stukken een klein pictogram in hun regel: één persoon betekent **Alleen ik**, meerdere personen **Groep** en een zandloper **Wacht op goedkeuring** (de zandloper ziet alleen wie het stuk heeft toegevoegd). Openbare stukken hebben geen pictogram. Tik op het pictogram voor een korte uitleg.",
     "Stukken die je uit een schrift toevoegt of uit een andere app importeert, krijgen de instelling **Alleen ik**.",
     "Je kunt een stuk later weer op **Alleen ik** zetten."
    ],
@@ -1320,7 +1320,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Stukken",
    "baslik": "Waar vind ik de stukken die ik heb toegevoegd?",
-   "ozet": "Tik op de pagina Stukken op 📋 Mijn stukken; je concepten, ingediende stukken die op goedkeuring wachten, gepubliceerde stukken en verwijderde stukken staan in aparte onderdelen.",
+   "ozet": "Open op de pagina Stukken de Filters en tik onder Tonen op 📋 Mijn stukken; je concepten, ingediende stukken die op goedkeuring wachten, gepubliceerde stukken en verwijderde stukken staan in aparte onderdelen.",
    "anahtar": [
     "mijn stukken",
     "eigen stukken",
@@ -1335,12 +1335,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Tik in het menu onderaan op **Stukken**.",
-    "Tik onder het zoekvak, naast de knop **Filters**, op **📋 Mijn stukken**.",
+    "Tik onder het zoekvak op **Filters** en tik in het onderdeel **Tonen** op **📋 Mijn stukken**.",
     "Je stukken staan in vier onderdelen: **⏳ Wachten op goedkeuring**, **🔒 Mijn concepten**, **✓ Mijn gepubliceerde stukken** en **🗑 Prullenbak**.",
     "Tik op **Bewerken** om een stuk te wijzigen, of op **🎵 Tekst tonen** om de tekst te lezen."
    ],
    "ipuclari": [
-    "Je kunt de lijst bij Stukken ook beperken tot de stukken die alleen jij ziet: tik naast **Alles** en **★ Favorieten** op **🔒 Mijn concepten**. Deze knop verschijnt als je minstens één privéstuk hebt.",
+    "Je kunt de lijst bij Stukken ook beperken tot de stukken die alleen jij ziet: tik in **Filters**, onder **Tonen**, op **🔒 Mijn concepten**. Deze knop verschijnt als je minstens één privéstuk hebt.",
     "Het getal op de knop **📋 Mijn stukken** is het aantal ingediende stukken dat op goedkeuring wacht.",
     "Een onderdeel zonder stukken wordt niet getoond.",
     "Met **Inzending intrekken** trek je een ingediend stuk in; het stuk wordt niet verwijderd, maar gaat terug naar je concepten.",
@@ -1374,7 +1374,7 @@ window.YARDIM_VERI = {
     "Tik op het stuk dat je wilt verwijderen en tik onder de titel op **Verwijderen**.",
     "Bij de vraag “Weet je zeker dat je dit stuk wilt verwijderen?” tik je op **Ja, verwijderen**.",
     "Er verschijnt een melding met de naam van het stuk en “verwijderd”. Bedenk je je, tik dan binnen 8 seconden in de melding op **Ongedaan maken**.",
-    "Heb je de melding gemist, tik dan op de pagina **Stukken** op **📋 Mijn stukken**.",
+    "Heb je de melding gemist, open dan op de pagina **Stukken** de **Filters** en tik onder **Tonen** op **📋 Mijn stukken**.",
     "Zoek het stuk onder **🗑 Prullenbak** en tik op **↩︎ Terugzetten**. Op de kaart staat hoeveel dagen het nog duurt voordat het stuk definitief wordt verwijderd."
    ],
    "ipuclari": [
@@ -3619,7 +3619,7 @@ window.YARDIM_VERI = {
     "Tik op **Verwijderen** onder een bericht om het weg te halen.",
     "Deze pagina is bedoeld om het team van Repertuvar te schrijven; berichten sturen tussen groepsleden kan niet."
    ],
-   "platform": "Houd je de telefoon liggend of gebruik je een tablet, dan staat **Berichten** ook in het menu onderaan. Op brede schermen (een computer of een grote tablet in liggende stand) staat het in het menu links.",
+   "platform": "Op een telefoon en een tablet staat **Berichten** niet in het menu onderaan, maar in het profielmenu rechtsboven. Op brede schermen (een computer of een grote tablet in liggende stand) staat het in het menu links.",
    "ilgili": [
     "bildirimler"
    ]

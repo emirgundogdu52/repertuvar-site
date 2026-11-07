@@ -301,7 +301,7 @@ window.YARDIM_VERI = {
     "Bist du Mitglied in mehreren Gruppen, erscheint oben im Profilmenü die Liste **Aktive Gruppe**; dort wechselst du deine Gruppe.",
     "Ist in den **Einstellungen** die Option **Startseite ausblenden** aktiviert, erscheint die **Startseite** nicht in den Menüs."
    ],
-   "platform": "Bei quer gehaltenem Smartphone und auf dem Tablet steht am Ende des unteren Menüs **Nachrichten** statt **Hilfe**. Auf einem Tablet im Hochformat enthält das untere Menü nach **Gruppe / Chor** auch **Solisten**. Auf breiten Bildschirmen (am Computer und auf den meisten Tablets im Querformat) befindet sich das Menü links: **Startseite**, **Stücke**, **Setlists**, **Gruppe / Chor**, **Solisten**, **Übungsraum**, **Nachrichten**. Für **Einstellungen** und **Abmelden** tippe unten im Menü links auf deinen Namen; dort findest du auch **Design wechseln**. Dass das untere Menü beim Scrollen verschwindet, gibt es nur auf Touchscreens.",
+   "platform": "Auf einem Tablet im Hochformat enthält das untere Menü nach **Gruppe / Chor** auch **Solisten**. Auf breiten Bildschirmen (am Computer und auf den meisten Tablets im Querformat) befindet sich das Menü links: **Startseite**, **Stücke**, **Setlists**, **Gruppe / Chor**, **Solisten**, **Übungsraum**, **Nachrichten**. Für **Einstellungen** und **Abmelden** tippe unten im Menü links auf deinen Namen; dort findest du auch **Design wechseln**. Dass das untere Menü beim Scrollen verschwindet, gibt es nur auf Touchscreens.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -420,7 +420,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Stücke",
    "baslik": "Wie filtere und sortiere ich Stücke nach Genre, Sprache oder Makam?",
-   "ozet": "Tippe auf die Sprach- und Genre-Chips unter dem Suchfeld; die Filter für Makam, Region, Stimmung und Form sowie die Sortierung findest du unter Filter. Die gewählte Sprache wird auf diesem Gerät gespeichert.",
+   "ozet": "Tippe unter dem Suchfeld auf Filter. Die Sprach- und Genre-Chips stehen ganz oben; die Filter für Makam, Region, Stimmung und Form sowie die Sortierung findest du weiter unten. Die gewählte Sprache wird auf diesem Gerät gespeichert.",
    "anahtar": [
     "filtern",
     "filter",
@@ -440,10 +440,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Öffne **Stücke**.",
-    "Tippe in der Chip-Leiste unter dem Suchfeld auf eine Sprache oder ein Genre. Die Zahl auf einem Chip gibt an, wie viele Stücke dazugehören. Passt die Leiste nicht auf den Bildschirm, wische sie zur Seite oder tippe auf die Pfeile an ihren Rändern.",
+    "Tippe unter dem Suchfeld auf **Filter** und dann ganz oben im Bereich **Sprache und Genre** auf eine Sprache oder ein Genre. Die Zahl auf einem Chip gibt an, wie viele Stücke dazugehören.",
     "Tippe noch einmal auf denselben Chip, um den Filter zu entfernen. Eine Sprache und ein Genre können gleichzeitig ausgewählt sein.",
-    "Wählst du eine Sprache (z. B. nur türkische Stücke), wird deine Auswahl auf diesem Gerät gespeichert; öffnest du **Stücke** erneut, zeigt die Liste wieder diese Sprache. Solange die Auswahl aktiv ist, steht unter der Chip-Leiste der Hinweis „Sprache: Türkisch – nur Stücke in dieser Sprache werden angezeigt.“ Um wieder alle Sprachen zu sehen, tippe im Hinweis auf **Alle Sprachen zeigen**.",
-    "Für weitere Optionen tippe auf **Filter**.",
+    "Wählst du eine Sprache (z. B. nur türkische Stücke), wird deine Auswahl auf diesem Gerät gespeichert; öffnest du **Stücke** erneut, zeigt die Liste wieder diese Sprache. Solange die Auswahl aktiv ist, zeigt die Schaltfläche **Filter** die Zahl der aktiven Filter, und unter den Chips steht der Hinweis „Sprache: Türkisch – nur Stücke in dieser Sprache werden angezeigt.“ Um wieder alle Sprachen zu sehen, tippe im Hinweis auf **Alle Sprachen zeigen**.",
+    "Die Sortierung und die übrigen Filter findest du weiter unten im selben Fenster.",
     "Wähle im Fenster **Filtern & Sortieren** unter **Sortieren** die Option **Nach Titel**, **Nach Komponist**, **Nach Makam**, **Nach Form** oder **Nach Region**.",
     "Tippe in den Bereichen **Genre / Form**, **Stimmung**, **Region** und **Makam** auf den gewünschten Wert; neben jedem Wert steht, wie viele Stücke dazugehören. Tippst du noch einmal auf denselben Wert, wird der Filter entfernt.",
     "Um die Filter zurückzusetzen, tippe auf **Filter zurücksetzen**; diese Schaltfläche leert auch das Suchfeld. Soll dein Suchtext erhalten bleiben, tippe stattdessen oben in der Liste auf **Alle**. Keine der beiden Schaltflächen hebt die gewählte Sprache auf."
@@ -451,7 +451,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "Der Chip **Kein Genre** zeigt Stücke, für die noch kein Genre eingetragen ist.",
     "Sprach-Chips erscheinen nur, wenn deine Liste Stücke in mehr als einer Sprache enthält.",
-    "Die Sprachauswahl gilt nur für die Stückliste und die Suche; deine Setlists bleiben unverändert. Findest du ein Stück nicht, während eine Sprache gewählt ist, tippe zuerst auf **Alle Sprachen zeigen**.",
+    "Die Sprachauswahl gilt nur für die Stückliste und die Suche; deine Setlists bleiben unverändert. Findest du ein Stück nicht, während eine Sprache gewählt ist, öffne **Filter** und tippe zuerst auf **Alle Sprachen zeigen**.",
     "Außer der Sprache werden Filter und Sortierung nicht gespeichert: Wenn du die Seite erneut öffnest, sind sie aufgehoben und die Stücke nach Titel sortiert."
    ],
    "platform": "",
@@ -1352,7 +1352,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "Die Option **Mit meiner Gruppe teilen** erscheint nur, wenn du Mitglied einer Gruppe bist.",
     "Deine wartenden Vorschläge findest du auf der Seite **📋 Meine Stücke** im Bereich **⏳ Meine wartenden Einreichungen**. Mit **Einreichung zurückziehen** nimmst du einen Vorschlag zurück; das Stück wird nicht gelöscht, sondern wird wieder zu deinem privaten Entwurf.",
-    "In der Liste tragen Stücke, die nur du siehst, die Markierung **🔒 Entwurf**, und mit deiner Gruppe geteilte Stücke die Markierung **👥 Gruppe**.",
+    "In der Liste zeigen manche Stücke in ihrer Zeile ein kleines Symbol: Eine Person steht für **Nur ich**, mehrere Personen für **Gruppe** und eine Sanduhr für **Wartet auf Freigabe** (die Sanduhr sieht nur, wer das Stück hinzugefügt hat). Öffentliche Stücke haben kein Symbol. Tippst du auf das Symbol, erscheint eine kurze Erklärung.",
     "Stücke, die du aus dem Notenheft hinzufügst oder aus einer anderen App importierst, werden mit **Nur ich** angelegt.",
     "Du kannst ein Stück später wieder auf **Nur ich** stellen."
    ],
@@ -1368,7 +1368,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Stücke",
    "baslik": "Wo finde ich die Stücke, die ich hinzugefügt habe?",
-   "ozet": "Tippe unter Stücke auf 📋 Meine Stücke; deine Entwürfe, wartenden Einreichungen, veröffentlichten und gelöschten Stücke stehen dort in getrennten Bereichen.",
+   "ozet": "Öffne unter Stücke die Filter und tippe im Bereich Anzeigen auf 📋 Meine Stücke; deine Entwürfe, wartenden Einreichungen, veröffentlichten und gelöschten Stücke stehen dort in getrennten Bereichen.",
    "anahtar": [
     "meine stücke",
     "eigene stücke",
@@ -1383,12 +1383,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Tippe im unteren Menü auf **Stücke**.",
-    "Tippe unter dem Suchfeld neben der Schaltfläche **Filter** auf **📋 Meine Stücke**.",
+    "Tippe unter dem Suchfeld auf **Filter** und dann im Bereich **Anzeigen** auf **📋 Meine Stücke**.",
     "Deine Stücke stehen in vier Bereichen: **⏳ Meine wartenden Einreichungen**, **🔒 Meine Entwürfe**, **✓ Meine veröffentlichten Stücke** und **🗑 Papierkorb**.",
     "Tippe auf **Bearbeiten**, um ein Stück zu ändern, oder auf **🎵 Text anzeigen**, um seinen Text zu lesen."
    ],
    "ipuclari": [
-    "Auch in der Liste unter Stücke kannst du auf die Stücke filtern, die nur du siehst: Tippe neben **Alle** und **★ Favoriten** auf **🔒 Meine Entwürfe**. Diese Schaltfläche erscheint, sobald du mindestens ein privates Stück hast.",
+    "Auch in der Liste unter Stücke kannst du auf die Stücke filtern, die nur du siehst: Tippe unter **Filter** im Bereich **Anzeigen** auf **🔒 Meine Entwürfe**. Diese Schaltfläche erscheint, sobald du mindestens ein privates Stück hast.",
     "Die Zahl auf der Schaltfläche **📋 Meine Stücke** ist die Anzahl deiner wartenden Einreichungen.",
     "Ein Bereich ohne Stücke wird auf der Seite nicht angezeigt.",
     "Mit **Einreichung zurückziehen** nimmst du eine wartende Einreichung zurück; das Stück wird nicht gelöscht, sondern landet wieder bei deinen Entwürfen.",
@@ -1422,7 +1422,7 @@ window.YARDIM_VERI = {
     "Tippe auf das Stück, das du löschen möchtest, und dann unter seinem Titel auf **Löschen**.",
     "Tippe bei der Frage „Möchtest du dieses Stück wirklich löschen?“ auf **Ja, löschen**.",
     "Es erscheint eine Meldung mit dem Namen des Stücks und dem Wort „gelöscht“. Überlegst du es dir anders, tippe innerhalb von 8 Sekunden in der Meldung auf **Rückgängig**.",
-    "Hast du die Meldung verpasst, tippe unter **Stücke** auf **📋 Meine Stücke**.",
+    "Hast du die Meldung verpasst, öffne unter **Stücke** die **Filter** und tippe im Bereich **Anzeigen** auf **📋 Meine Stücke**.",
     "Such das Stück im Bereich **🗑 Papierkorb** und tippe auf **↩︎ Wiederherstellen**. Auf der Karte steht, wie viele Tage bis zum endgültigen Löschen bleiben."
    ],
    "ipuclari": [
@@ -3686,7 +3686,7 @@ window.YARDIM_VERI = {
     "Um eine Nachricht zu entfernen, tippe darunter auf **Löschen**.",
     "Diese Seite ist für den Austausch mit dem Repertuvar-Team gedacht; Nachrichten zwischen Gruppenmitgliedern gibt es nicht."
    ],
-   "platform": "Bei quer gehaltenem Smartphone und auf dem Tablet findest du **Nachrichten** auch im unteren Menü. Auf breiten Bildschirmen (Computer oder großes Tablet im Querformat) steht es im Menü links.",
+   "platform": "Auf dem Smartphone und dem Tablet steht **Nachrichten** nicht im unteren Menü, sondern im Profilmenü oben rechts. Auf breiten Bildschirmen (Computer oder großes Tablet im Querformat) steht es im Menü links.",
    "ilgili": [
     "bildirimler"
    ]

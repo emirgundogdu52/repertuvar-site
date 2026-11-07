@@ -274,7 +274,7 @@ window.YARDIM_VERI = {
     "Si eres miembro de más de un grupo, al principio del menú de perfil aparece la lista **Grupo activo**; desde ahí cambias de grupo.",
     "Si en **Ajustes** está activado **Ocultar Inicio**, **Inicio** no aparece en los menús."
    ],
-   "platform": "Con el teléfono en horizontal y en la tableta, el último botón del menú inferior es **Mensajes** en lugar de **Ayuda**. En la tableta (en vertical), el menú inferior también incluye **Solistas** después de **Grupo / Coro**. En pantallas anchas (en el ordenador y en la mayoría de las tabletas en horizontal), el menú está a la izquierda: **Inicio**, **Obras**, **Repertorios**, **Grupo / Coro**, **Solistas**, **Sala de Ensayo**, **Mensajes**. Para **Ajustes** y **Cerrar sesión**, toca tu nombre al final del menú de la izquierda; **Cambiar tema** también está ahí. El menú inferior solo se oculta al desplazarse en las pantallas táctiles.",
+   "platform": "En la tableta (en vertical), el menú inferior también incluye **Solistas** después de **Grupo / Coro**. En pantallas anchas (en el ordenador y en la mayoría de las tabletas en horizontal), el menú está a la izquierda: **Inicio**, **Obras**, **Repertorios**, **Grupo / Coro**, **Solistas**, **Sala de Ensayo**, **Mensajes**. Para **Ajustes** y **Cerrar sesión**, toca tu nombre al final del menú de la izquierda; **Cambiar tema** también está ahí. El menú inferior solo se oculta al desplazarse en las pantallas táctiles.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -391,7 +391,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Obras",
    "baslik": "¿Cómo filtro y ordeno las obras por género, idioma o makam?",
-   "ozet": "Toca los botones de idioma y de género que hay debajo del cuadro de búsqueda; los filtros de makam, región, afinación y forma, y el orden, se eligen en Filtros. El idioma que elijas se recuerda en este dispositivo.",
+   "ozet": "Toca Filtros debajo del cuadro de búsqueda. Los botones de idioma y de género están arriba del todo; los filtros de makam, región, afinación y forma, y el orden, están más abajo. El idioma que elijas se recuerda en este dispositivo.",
    "anahtar": [
     "filtrar",
     "filtro",
@@ -411,10 +411,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Ve a **Obras**.",
-    "En la fila de botones que hay debajo del cuadro de búsqueda, toca un idioma o un género. El número de cada botón indica cuántas obras hay en ese grupo. Si la fila no cabe en la pantalla, deslízala hacia un lado o toca las flechas de los extremos.",
+    "Toca **Filtros** debajo del cuadro de búsqueda y, en la sección **Idioma y género** de arriba del todo, toca un idioma o un género. El número de cada botón indica cuántas obras hay en ese grupo.",
     "Para quitar el filtro, vuelve a tocar el mismo botón. Puedes tener seleccionados a la vez un idioma y un género.",
-    "Si eliges un idioma (p. ej., solo obras en turco), tu elección se recuerda en este dispositivo; cuando vuelves a abrir **Obras**, la lista sigue mostrando ese idioma. Mientras esté activo, debajo de la fila de botones aparece el aviso «Idioma: Turco – solo se muestran obras en este idioma». Para volver a ver todos los idiomas, toca **Mostrar todos los idiomas** en ese aviso.",
-    "Para ver más opciones, toca **Filtros**.",
+    "Si eliges un idioma (p. ej., solo obras en turco), tu elección se recuerda en este dispositivo; cuando vuelves a abrir **Obras**, la lista sigue mostrando ese idioma. Mientras esté activo, el botón **Filtros** muestra cuántos filtros hay activos y debajo de los botones aparece el aviso «Idioma: Turco – solo se muestran obras en este idioma». Para volver a ver todos los idiomas, toca **Mostrar todos los idiomas** en ese aviso.",
+    "El orden y los demás filtros están más abajo, en la misma ventana.",
     "En la ventana **Filtrar y ordenar** que se abre, en **Ordenar**, elige **Por título**, **Por compositor**, **Por makam**, **Por forma** o **Por región**.",
     "En las secciones **Género / Forma**, **Afinación**, **Región** y **Makam**, toca el valor que quieras; junto a cada valor aparece cuántas obras tiene. Si vuelves a tocar el mismo valor, el filtro se quita.",
     "Para restablecer los filtros, toca **Borrar filtros**; este botón también vacía el cuadro de búsqueda. Si quieres conservar el texto de la búsqueda, toca **Todas** encima de la lista. Ninguno de los dos botones quita el idioma elegido."
@@ -422,7 +422,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "El botón **Sin género** muestra las obras a las que aún no se les ha asignado un género.",
     "Los botones de idioma solo aparecen si tu lista tiene obras en más de un idioma.",
-    "La elección de idioma solo afecta a la lista de obras y a la búsqueda; tus repertorios no cambian. Si no encuentras una obra mientras hay un idioma elegido, toca primero **Mostrar todos los idiomas**.",
+    "La elección de idioma solo afecta a la lista de obras y a la búsqueda; tus repertorios no cambian. Si no encuentras una obra mientras hay un idioma elegido, abre **Filtros** y toca primero **Mostrar todos los idiomas**.",
     "Salvo el idioma, los filtros y el orden no se guardan: cuando vuelves a abrir la página, se quitan y las obras aparecen ordenadas por título."
    ],
    "platform": "",
@@ -1326,7 +1326,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "La opción **Compartir con mi grupo** solo aparece si eres miembro de un grupo.",
     "Tus propuestas pendientes de aprobación aparecen en la sección **⏳ Mis propuestas pendientes** de la página **📋 Mis obras**. Puedes retirarlas con **Retirar propuesta**; la obra no se elimina, sino que vuelve a ser un borrador privado.",
-    "En la lista, las obras que solo ves tú llevan la etiqueta **🔒 Borrador**, y las que compartes con tu grupo, la etiqueta **👥 Grupo**.",
+    "En la lista, algunas obras muestran un pequeño icono en su fila: una persona significa **Solo yo**; varias personas, **Grupo**, y un reloj de arena, **Pendiente de aprobación** (el reloj de arena solo lo ve quien añadió la obra). Las obras públicas no llevan icono. Toca el icono para ver una breve explicación.",
     "Las obras que añades desde el cuaderno o importas desde otra app se crean como **Solo yo**.",
     "Más adelante puedes volver a poner una obra en **Solo yo**."
    ],
@@ -1342,7 +1342,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Obras",
    "baslik": "¿Dónde encuentro las obras que he añadido?",
-   "ozet": "Toca el botón 📋 Mis obras en Obras; tus borradores, tus propuestas pendientes, tus obras publicadas y las que has eliminado aparecen en secciones separadas.",
+   "ozet": "En Obras, abre Filtros y toca 📋 Mis obras en la sección Mostrar; tus borradores, tus propuestas pendientes, tus obras publicadas y las que has eliminado aparecen en secciones separadas.",
    "anahtar": [
     "mis obras",
     "mis propias obras",
@@ -1357,12 +1357,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Toca **Obras** en el menú inferior.",
-    "Debajo del cuadro de búsqueda, junto al botón **Filtros**, toca el botón **📋 Mis obras**.",
+    "Toca **Filtros** debajo del cuadro de búsqueda y, en la sección **Mostrar**, toca **📋 Mis obras**.",
     "Tus obras aparecen en cuatro secciones: **⏳ Mis propuestas pendientes**, **🔒 Mis borradores**, **✓ Mis obras publicadas** y **🗑 Papelera**.",
     "Para cambiar una obra, toca **Editar**; para ver su letra, toca **🎵 Mostrar letra**."
    ],
    "ipuclari": [
-    "También puedes filtrar la lista de Obras para ver solo las obras que ves tú: toca **🔒 Mis borradores**, junto a los botones **Todas** y **★ Favoritas**. Este botón aparece cuando tienes al menos una obra privada.",
+    "También puedes filtrar la lista de Obras para ver solo las obras que ves tú: en **Filtros**, toca **🔒 Mis borradores** en la sección **Mostrar**. Este botón aparece cuando tienes al menos una obra privada.",
     "El número del botón **📋 Mis obras** es el número de tus propuestas pendientes de aprobación.",
     "Las secciones que no contienen ninguna obra no aparecen en la página.",
     "Puedes retirar una propuesta pendiente con **Retirar propuesta**; la obra no se elimina, sino que vuelve a tus borradores.",
@@ -1396,7 +1396,7 @@ window.YARDIM_VERI = {
     "Toca la obra que quieres eliminar y toca **Eliminar** debajo de su título.",
     "Cuando aparezca la pregunta «¿Seguro que quieres eliminar esta obra?», toca **Sí, eliminar**.",
     "En la pantalla aparece un aviso de «eliminada» con el nombre de la obra. Si cambias de idea, toca **Deshacer** en el aviso antes de que pasen 8 segundos.",
-    "Si se te ha pasado el aviso, toca el botón **📋 Mis obras** en **Obras**.",
+    "Si se te ha pasado el aviso, abre **Filtros** en **Obras** y toca **📋 Mis obras** en la sección **Mostrar**.",
     "Busca la obra en la sección **🗑 Papelera** y toca **↩︎ Restaurar**. En la tarjeta se indica cuántos días quedan para que se elimine definitivamente."
    ],
    "ipuclari": [
@@ -3660,7 +3660,7 @@ window.YARDIM_VERI = {
     "Para quitar un mensaje, toca **Eliminar** debajo de él.",
     "Esta página sirve para escribir al equipo de Repertuvar; no hay una sección de mensajes entre los miembros del grupo."
    ],
-   "platform": "Con el teléfono en horizontal y en la tableta, **Mensajes** también está en el menú inferior. En pantallas anchas (un ordenador o una tableta grande en horizontal), está en el menú de la izquierda.",
+   "platform": "En el teléfono y en la tableta, **Mensajes** no está en el menú inferior, sino en el menú de perfil de arriba a la derecha. En pantallas anchas (un ordenador o una tableta grande en horizontal), está en el menú de la izquierda.",
    "ilgili": [
     "bildirimler"
    ]

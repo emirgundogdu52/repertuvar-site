@@ -233,7 +233,7 @@ window.YARDIM_VERI = {
     "If you belong to more than one group, an **Active group** list appears at the top of the profile menu; switch groups there.",
     "If **Turn off Home** is on in **Settings**, **Home** doesn't appear in the menus."
    ],
-   "platform": "With the phone held sideways and on tablets, the last button of the bottom menu is **Messages** instead of **Help**. On a tablet held upright, the bottom menu also has **Soloists** after **Group / Choir**. On wide screens (computers and most tablets held in landscape), the menu is on the left: **Home**, **Pieces**, **Setlists**, **Group / Choir**, **Soloists**, **Practice Room**, **Messages**. For **Settings** and **Sign out**, tap your name at the bottom of the left-hand menu; **Change theme** is there too. The bottom menu only hides on scroll on touch screens.",
+   "platform": "On a tablet held upright, the bottom menu also has **Soloists** after **Group / Choir**. On wide screens (computers and most tablets held in landscape), the menu is on the left: **Home**, **Pieces**, **Setlists**, **Group / Choir**, **Soloists**, **Practice Room**, **Messages**. For **Settings** and **Sign out**, tap your name at the bottom of the left-hand menu; **Change theme** is there too. The bottom menu only hides on scroll on touch screens.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -346,7 +346,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Pieces",
    "baslik": "How do I filter and sort pieces by genre, language or makam?",
-   "ozet": "Tap the language and genre chips under the search box; the makam, region, tuning and form filters and the sort options are under Filters. The language you pick is remembered on this device.",
+   "ozet": "Tap Filters under the search box. The language and genre chips are at the top; the makam, region, tuning and form filters and the sort options are further down. The language you pick is remembered on this device.",
    "anahtar": [
     "filter",
     "sort",
@@ -364,10 +364,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Go to **Pieces**.",
-    "Tap a language or a genre in the row of chips under the search box. The number on a chip is how many pieces it contains. If the row does not fit on screen, swipe it sideways or tap the arrows at its edges.",
+    "Tap **Filters** under the search box, then tap a language or a genre in the **Language and genre** section at the top. The number on a chip is how many pieces it contains.",
     "Tap the same chip again to remove the filter. One language and one genre can be selected at the same time.",
-    "If you pick a language (e.g. only Turkish pieces), your choice is remembered on this device; when you open **Pieces** again, the list still shows that language. While it is on, a note under the row of chips says \"Showing only Turkish pieces.\" To go back to all languages, tap **Show all languages** in the note.",
-    "For more options, tap **Filters**.",
+    "If you pick a language (e.g. only Turkish pieces), your choice is remembered on this device; when you open **Pieces** again, the list still shows that language. While it is on, the **Filters** button shows the number of active filters, and a note under the chips says \"Showing only Turkish pieces.\" To go back to all languages, tap **Show all languages** in the note.",
+    "The sort options and the other filters are further down in the same panel.",
     "In the **Filter & Sort** panel, choose **By Title**, **By Composer**, **By Makam**, **By Form** or **By Region** under **Sort**.",
     "Tap a value under **Genre / Form**, **Tuning**, **Region** or **Makam**; each value shows how many pieces it has. Tap it again to remove that filter.",
     "To reset the filters, tap **Clear Filters**; this also empties the search box. If you want to keep your search text, tap **All** above the list instead. Neither button removes the language you picked."
@@ -375,7 +375,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "The **No genre** chip shows pieces that have no genre yet.",
     "Language chips only appear when your list contains pieces in more than one language.",
-    "The language choice only affects the Pieces list and search; your setlists don't change. If you can't find a piece while a language is selected, tap **Show all languages** first.",
+    "The language choice only affects the Pieces list and search; your setlists don't change. If you can't find a piece while a language is selected, open **Filters** and tap **Show all languages** first.",
     "Apart from the language, filters and sorting are not remembered: when you open the page again, they are cleared and pieces are sorted by title."
    ],
    "platform": "",
@@ -1228,7 +1228,8 @@ window.YARDIM_VERI = {
     "hidden piece",
     "who can see",
     "make public",
-    "make private"
+    "make private",
+    "hourglass"
    ],
    "adimlar": [
     "When you write a new piece, or tap **Edit** on one of your pieces, look at the top of the window.",
@@ -1240,7 +1241,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "**Share with My Group** only appears when you are a member of a group.",
     "You'll find your pending submissions under **⏳ My Pending Submissions** on the **📋 My Pieces** page. You can withdraw one with **Withdraw submission**; the piece isn't deleted, it goes back to being a private draft.",
-    "In the list, pieces only you can see carry a **🔒 Draft** label and pieces shared with your group carry a **👥 Group** label.",
+    "In the list, some pieces show a small icon on their row: one person means **Only me**, several people **Group** and an hourglass **Awaiting approval** (only the person who added the piece sees the hourglass). Public pieces have no icon. Tap the icon to see a short explanation.",
     "Pieces you add from a notebook or import from another app are created as **Only Me**.",
     "You can set a piece back to **Only Me** later."
    ],
@@ -1256,7 +1257,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Pieces",
    "baslik": "Where do I find the pieces I added?",
-   "ozet": "Tap 📋 My Pieces on the Pieces page; your drafts, pending submissions, published pieces and deleted pieces are listed in separate sections.",
+   "ozet": "On the Pieces page, open Filters and tap 📋 My Pieces under Show; your drafts, pending submissions, published pieces and deleted pieces are listed in separate sections.",
    "anahtar": [
     "my pieces",
     "my own pieces",
@@ -1270,12 +1271,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Tap **Pieces** in the bottom menu.",
-    "Below the search box, next to the **Filters** button, tap **📋 My Pieces**.",
+    "Tap **Filters** under the search box, then tap **📋 My Pieces** in the **Show** section.",
     "Your pieces are listed in four sections: **⏳ My Pending Submissions**, **🔒 My Drafts**, **✓ My Published Pieces** and **🗑 Trash**.",
     "Tap **Edit** to change a piece, or **🎵 Show Lyrics** to read its lyrics."
    ],
    "ipuclari": [
-    "You can also filter the Pieces list to the pieces only you can see: tap **🔒 My Drafts** next to **All** and **★ Favourites**. This button appears when you have at least one private piece.",
+    "You can also filter the Pieces list to the pieces only you can see: in **Filters**, tap **🔒 My Drafts** in the **Show** section. This button appears when you have at least one private piece.",
     "The number on the **📋 My Pieces** button is the number of your pending submissions.",
     "A section with no pieces isn't shown.",
     "You can withdraw a pending submission with **Withdraw submission**; the piece isn't deleted, it goes back to your drafts.",
@@ -1308,7 +1309,7 @@ window.YARDIM_VERI = {
     "Tap the piece you want to delete and tap **Delete** under its title.",
     "When asked “Are you sure you want to delete this piece?”, tap **Yes, delete**.",
     "A “deleted” message with the piece's name appears. If you change your mind, tap **Undo** in the message within 8 seconds.",
-    "If you missed the message, tap **📋 My Pieces** on the Pieces page.",
+    "If you missed the message, open **Filters** on the Pieces page and tap **📋 My Pieces** in the **Show** section.",
     "Find the piece under **🗑 Trash** and tap **↩︎ Restore**. The card shows how many days are left before it is removed for good."
    ],
    "ipuclari": [
@@ -3499,7 +3500,7 @@ window.YARDIM_VERI = {
     "To remove a message, tap **Delete** below it.",
     "This page is for writing to the Repertuvar team; there is no messaging between group members."
    ],
-   "platform": "With the phone held sideways and on tablets, **Messages** is also in the bottom menu. On wide screens (a computer or a large tablet held sideways) it is in the left menu.",
+   "platform": "On phones and tablets, **Messages** is not in the bottom menu but in the profile menu at the top right. On wide screens (a computer or a large tablet held sideways) it is in the left menu.",
    "ilgili": [
     "bildirimler"
    ]

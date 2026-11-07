@@ -279,7 +279,7 @@ window.YARDIM_VERI = {
     "Se você é membro de mais de um grupo, aparece a lista **Grupo ativo** no começo do menu de perfil; é ali que você troca de grupo.",
     "Se **Ocultar Início** estiver ativado em **Configurações**, o **Início** não aparece nos menus."
    ],
-   "platform": "Com o celular na horizontal e no tablet, o último botão do menu inferior é **Mensagens**, no lugar de **Ajuda**. No tablet (na vertical), o menu inferior também tem **Solistas**, depois de **Grupo / Coral**. Em telas largas (no computador e na maioria dos tablets na horizontal), o menu fica à esquerda: **Início**, **Músicas**, **Setlists**, **Grupo / Coral**, **Solistas**, **Sala de Estudo**, **Mensagens**. Para **Configurações** e **Encerrar sessão**, toque no seu nome, embaixo do menu à esquerda; **Mudar tema** também fica ali. O menu inferior só se esconde ao rolar em telas sensíveis ao toque.",
+   "platform": "No tablet (na vertical), o menu inferior também tem **Solistas**, depois de **Grupo / Coral**. Em telas largas (no computador e na maioria dos tablets na horizontal), o menu fica à esquerda: **Início**, **Músicas**, **Setlists**, **Grupo / Coral**, **Solistas**, **Sala de Estudo**, **Mensagens**. Para **Configurações** e **Encerrar sessão**, toque no seu nome, embaixo do menu à esquerda; **Mudar tema** também fica ali. O menu inferior só se esconde ao rolar em telas sensíveis ao toque.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -397,7 +397,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Músicas",
    "baslik": "Como filtro e ordeno as músicas por gênero, idioma ou makam?",
-   "ozet": "Toque nos botões de idioma e de gênero abaixo da caixa de busca; os filtros de makam, região, afinação e forma e a ordenação ficam em Filtros. O idioma escolhido fica salvo neste aparelho.",
+   "ozet": "Toque em Filtros, abaixo da caixa de busca. Os botões de idioma e de gênero ficam no topo; os filtros de makam, região, afinação e forma e a ordenação ficam mais abaixo. O idioma escolhido fica salvo neste aparelho.",
    "anahtar": [
     "filtrar",
     "filtro",
@@ -417,10 +417,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Vá para **Músicas**.",
-    "Na fileira de botões abaixo da caixa de busca, toque em um idioma ou em um gênero. O número no botão é a quantidade de músicas daquele grupo. Se a fileira não couber na tela, deslize-a para o lado ou toque nas setas das pontas.",
+    "Toque em **Filtros**, abaixo da caixa de busca, e na seção **Idioma e gênero**, no topo, toque em um idioma ou em um gênero. O número no botão é a quantidade de músicas daquele grupo.",
     "Para tirar o filtro, toque de novo no mesmo botão. Você pode ter um idioma e um gênero selecionados ao mesmo tempo.",
-    "Se você escolher um idioma (ex.: só músicas em turco), a escolha fica salva neste aparelho; quando você abre **Músicas** de novo, a lista continua mostrando esse idioma. Enquanto a escolha estiver ativa, embaixo da fileira de botões aparece o aviso \"Idioma: Turco – só são exibidas músicas neste idioma.\" Para voltar a ver todos os idiomas, toque em **Mostrar todos os idiomas** nesse aviso.",
-    "Para mais opções, toque em **Filtros**.",
+    "Se você escolher um idioma (ex.: só músicas em turco), a escolha fica salva neste aparelho; quando você abre **Músicas** de novo, a lista continua mostrando esse idioma. Enquanto a escolha estiver ativa, o botão **Filtros** mostra quantos filtros estão ativos e embaixo dos botões aparece o aviso \"Idioma: Turco – só são exibidas músicas neste idioma.\" Para voltar a ver todos os idiomas, toque em **Mostrar todos os idiomas** nesse aviso.",
+    "A ordenação e os outros filtros ficam mais abaixo, na mesma janela.",
     "Na janela **Filtrar e ordenar** que se abre, em **Ordenar**, escolha **Por título**, **Por compositor**, **Por makam**, **Por forma** ou **Por região**.",
     "Em **Gênero / Forma**, **Afinação**, **Região** e **Makam**, toque no valor que quiser; ao lado de cada valor aparece quantas músicas ele tem. Se você tocar de novo no mesmo valor, o filtro sai.",
     "Para zerar os filtros, toque em **Limpar filtros**; esse botão também esvazia a caixa de busca. Se quiser manter o texto da busca, toque em **Todas** acima da lista. Nenhum dos dois botões tira o idioma escolhido."
@@ -428,7 +428,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "O botão **Sem gênero** mostra as músicas que ainda não têm gênero.",
     "Os botões de idioma só aparecem se a sua lista tiver músicas em mais de um idioma.",
-    "A escolha do idioma vale só para a lista de músicas e para a busca; seus setlists não mudam. Se não encontrar uma música enquanto um idioma estiver escolhido, toque primeiro em **Mostrar todos os idiomas**.",
+    "A escolha do idioma vale só para a lista de músicas e para a busca; seus setlists não mudam. Se não encontrar uma música enquanto um idioma estiver escolhido, abra **Filtros** e toque primeiro em **Mostrar todos os idiomas**.",
     "Fora o idioma, os filtros e a ordenação não ficam salvos: quando a página é aberta de novo, eles saem e as músicas aparecem ordenadas por título."
    ],
    "platform": "",
@@ -1333,7 +1333,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "A opção **Compartilhar com meu grupo** só aparece quando você é membro de um grupo.",
     "As sugestões que aguardam aprovação ficam na seção **⏳ Minhas sugestões pendentes** da página **📋 Minhas músicas**. Você pode desistir com **Retirar sugestão**; a música não é apagada, ela volta a ser um rascunho privado.",
-    "Na lista, as músicas que só você vê têm a etiqueta **🔒 Rascunho**, e as compartilhadas com o grupo, a etiqueta **👥 Grupo**.",
+    "Na lista, algumas músicas mostram um pequeno ícone na linha: uma pessoa quer dizer **Só eu**; várias pessoas, **Grupo**; e uma ampulheta, **Aguardando aprovação** (só quem adicionou a música vê a ampulheta). Músicas públicas não têm ícone. Toque no ícone para ver uma breve explicação.",
     "As músicas que você adiciona do caderno ou importa de outro app são criadas como **Só eu**.",
     "Depois, você pode voltar uma música para **Só eu** quando quiser."
    ],
@@ -1349,7 +1349,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Músicas",
    "baslik": "Onde encontro as músicas que adicionei?",
-   "ozet": "Toque em 📋 Minhas músicas na página Músicas; seus rascunhos, suas sugestões pendentes, suas músicas publicadas e as que você excluiu aparecem em seções separadas.",
+   "ozet": "Na página Músicas, abra Filtros e toque em 📋 Minhas músicas, na seção Mostrar; seus rascunhos, suas sugestões pendentes, suas músicas publicadas e as que você excluiu aparecem em seções separadas.",
    "anahtar": [
     "minhas músicas",
     "músicas que adicionei",
@@ -1364,12 +1364,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Toque em **Músicas** no menu inferior.",
-    "Embaixo da caixa de busca, ao lado do botão **Filtros**, toque em **📋 Minhas músicas**.",
+    "Toque em **Filtros**, abaixo da caixa de busca, e depois em **📋 Minhas músicas**, na seção **Mostrar**.",
     "Suas músicas aparecem em quatro seções: **⏳ Minhas sugestões pendentes**, **🔒 Meus rascunhos**, **✓ Minhas músicas publicadas** e **🗑 Lixeira**.",
     "Para mudar uma música, toque em **Editar**; para ler a letra, toque em **🎵 Mostrar letra**."
    ],
    "ipuclari": [
-    "Na lista de Músicas, você também pode filtrar só as músicas que só você vê: toque em **🔒 Meus rascunhos**, ao lado de **Todas** e **★ Favoritas**. Esse botão aparece quando você tem pelo menos uma música privada.",
+    "Na lista de Músicas, você também pode filtrar só as músicas que só você vê: em **Filtros**, toque em **🔒 Meus rascunhos**, na seção **Mostrar**. Esse botão aparece quando você tem pelo menos uma música privada.",
     "O número no botão **📋 Minhas músicas** é a quantidade de sugestões suas aguardando aprovação.",
     "Uma seção sem músicas não aparece na página.",
     "Você pode retirar uma sugestão pendente com **Retirar sugestão**; a música não é apagada, ela volta para os seus rascunhos.",
@@ -1403,7 +1403,7 @@ window.YARDIM_VERI = {
     "Toque na música que quer excluir e toque em **Excluir**, embaixo do título.",
     "Na pergunta “Tem certeza de que deseja excluir esta música?”, toque em **Sim, excluir**.",
     "Aparece na tela um aviso com o nome da música e a palavra “excluída”. Se mudar de ideia, toque em **Desfazer** no aviso em até 8 segundos.",
-    "Se você perdeu o aviso, vá para **Músicas** e toque em **📋 Minhas músicas**.",
+    "Se você perdeu o aviso, vá para **Músicas**, abra **Filtros** e toque em **📋 Minhas músicas**, na seção **Mostrar**.",
     "Ache a música na seção **🗑 Lixeira** e toque em **↩︎ Restaurar**. O cartão mostra quantos dias faltam para ela ser excluída de vez."
    ],
    "ipuclari": [
@@ -3672,7 +3672,7 @@ window.YARDIM_VERI = {
     "Para remover uma mensagem, toque em **Excluir**, embaixo dela.",
     "Esta página serve para falar com a equipe do Repertuvar; não há troca de mensagens entre os membros do grupo."
    ],
-   "platform": "Com o celular na horizontal e no tablet, **Mensagens** também aparece no menu inferior. Em telas largas (computador ou tablet grande na horizontal), fica no menu à esquerda.",
+   "platform": "No celular e no tablet, **Mensagens** não fica no menu inferior, e sim no menu do perfil, no canto superior direito. Em telas largas (computador ou tablet grande na horizontal), fica no menu à esquerda.",
    "ilgili": [
     "bildirimler"
    ]

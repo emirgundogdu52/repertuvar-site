@@ -290,7 +290,7 @@ window.YARDIM_VERI = {
     "Se fai parte di più gruppi, in cima al menu del profilo compare l'elenco **Gruppo attivo**; da qui cambi gruppo.",
     "Se in **Impostazioni** è attivo **Nascondi Home**, **Home** non compare nei menu."
    ],
-   "platform": "Con il telefono in orizzontale e sul tablet, l'ultimo pulsante del menu in basso è **Messaggi** al posto di **Aiuto**. Sul tablet (in verticale) nel menu in basso dopo **Gruppo / Coro** c'è anche **Solisti**. Sugli schermi larghi (computer e la maggior parte dei tablet in orizzontale) il menu è a sinistra: **Home**, **Brani**, **Scalette**, **Gruppo / Coro**, **Solisti**, **Sala Prove**, **Messaggi**. Per **Impostazioni** ed **Esci** tocca il tuo nome in fondo al menu a sinistra; lì trovi anche **Cambia tema**. Il menu in basso si nasconde durante lo scorrimento solo sugli schermi touch.",
+   "platform": "Sul tablet (in verticale) nel menu in basso dopo **Gruppo / Coro** c'è anche **Solisti**. Sugli schermi larghi (computer e la maggior parte dei tablet in orizzontale) il menu è a sinistra: **Home**, **Brani**, **Scalette**, **Gruppo / Coro**, **Solisti**, **Sala Prove**, **Messaggi**. Per **Impostazioni** ed **Esci** tocca il tuo nome in fondo al menu a sinistra; lì trovi anche **Cambia tema**. Il menu in basso si nasconde durante lo scorrimento solo sugli schermi touch.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -407,7 +407,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Brani",
    "baslik": "Come filtro e ordino i brani per genere, lingua o makam?",
-   "ozet": "Tocca i chip della lingua e del genere sotto la casella di ricerca; i filtri per makam, regione, accordatura e forma e l'ordinamento si trovano in Filtri. La lingua scelta viene memorizzata su questo dispositivo.",
+   "ozet": "Tocca Filtri sotto la casella di ricerca. I chip della lingua e del genere sono in cima; i filtri per makam, regione, accordatura e forma e l'ordinamento sono più in basso. La lingua scelta viene memorizzata su questo dispositivo.",
    "anahtar": [
     "filtrare",
     "filtro",
@@ -427,10 +427,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Vai in **Brani**.",
-    "Tocca una lingua o un genere nella riga di chip sotto la casella di ricerca. Il numero sul chip indica quanti brani ci sono in quel gruppo. Se la riga non entra nello schermo, scorrila di lato o tocca le frecce ai bordi.",
+    "Tocca **Filtri** sotto la casella di ricerca, poi tocca una lingua o un genere nella sezione **Lingua e genere**, in cima. Il numero sul chip indica quanti brani ci sono in quel gruppo.",
     "Per togliere il filtro tocca di nuovo lo stesso chip. Puoi selezionare contemporaneamente una lingua e un genere.",
-    "Se scegli una lingua (es. solo brani in turco), la scelta viene memorizzata su questo dispositivo; quando riapri **Brani**, l'elenco mostra ancora quella lingua. Finché la scelta è attiva, sotto la riga di chip compare la nota “Lingua: Turco – vengono mostrati solo i brani in questa lingua.” Per tornare a tutte le lingue, tocca **Mostra tutte le lingue** nella nota.",
-    "Per altre opzioni tocca **Filtri**.",
+    "Se scegli una lingua (es. solo brani in turco), la scelta viene memorizzata su questo dispositivo; quando riapri **Brani**, l'elenco mostra ancora quella lingua. Finché la scelta è attiva, il pulsante **Filtri** mostra il numero di filtri attivi e sotto i chip compare la nota “Lingua: Turco – vengono mostrati solo i brani in questa lingua.” Per tornare a tutte le lingue, tocca **Mostra tutte le lingue** nella nota.",
+    "L'ordinamento e gli altri filtri sono più in basso nello stesso pannello.",
     "Nel pannello **Filtri e ordinamento** che si apre, sotto **Ordina** scegli **Per titolo**, **Per compositore**, **Per makam**, **Per forma** o **Per regione**.",
     "Nelle sezioni **Genere / Forma**, **Accordatura**, **Regione** e **Makam** tocca il valore che vuoi; accanto a ogni valore è indicato quanti brani ci sono. Se tocchi di nuovo lo stesso valore, il filtro si toglie.",
     "Per azzerare i filtri tocca **Azzera filtri**; questo pulsante svuota anche la casella di ricerca. Se vuoi mantenere il testo della ricerca, tocca invece **Tutti** sopra l'elenco. Nessuno dei due pulsanti toglie la lingua scelta."
@@ -438,7 +438,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "Il chip **Nessun genere** mostra i brani a cui non è ancora stato assegnato un genere.",
     "I chip della lingua compaiono solo se nel tuo elenco ci sono brani in più di una lingua.",
-    "La scelta della lingua vale solo per l'elenco dei brani e per la ricerca; le tue scalette non cambiano. Se non trovi un brano mentre è scelta una lingua, tocca prima **Mostra tutte le lingue**.",
+    "La scelta della lingua vale solo per l'elenco dei brani e per la ricerca; le tue scalette non cambiano. Se non trovi un brano mentre è scelta una lingua, apri **Filtri** e tocca prima **Mostra tutte le lingue**.",
     "A parte la lingua, filtri e ordinamento non vengono memorizzati: quando riapri la pagina vengono tolti e i brani compaiono ordinati per titolo."
    ],
    "platform": "",
@@ -1330,7 +1330,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "L'opzione **Condividi con il mio gruppo** compare solo se fai parte di un gruppo.",
     "Le proposte in attesa di approvazione le trovi nella sezione **⏳ Le mie proposte in attesa** della pagina **📋 I miei brani**. Puoi ritirarle con **Ritira la proposta**: il brano non viene eliminato, torna a essere una tua bozza privata.",
-    "Nell'elenco i brani che vedi solo tu hanno l'etichetta **🔒 Bozza**, quelli condivisi con il gruppo l'etichetta **👥 Gruppo**.",
+    "Nell'elenco alcuni brani mostrano una piccola icona nella riga: una persona indica **Solo io**, più persone **Gruppo** e una clessidra **In attesa di approvazione** (la clessidra la vede solo chi ha aggiunto il brano). I brani pubblici non hanno icona. Tocca l'icona per leggere una breve spiegazione.",
     "I brani che aggiungi dal quaderno o importi da un'altra app vengono creati come **Solo io**.",
     "In seguito puoi rimettere un brano su **Solo io**."
    ],
@@ -1346,7 +1346,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Brani",
    "baslik": "Dove trovo i brani che ho aggiunto?",
-   "ozet": "Tocca il pulsante 📋 I miei brani in Brani; bozze, proposte in attesa, brani pubblicati e brani eliminati sono elencati in sezioni separate.",
+   "ozet": "In Brani apri Filtri e tocca 📋 I miei brani nella sezione Mostra; bozze, proposte in attesa, brani pubblicati e brani eliminati sono elencati in sezioni separate.",
    "anahtar": [
     "i miei brani",
     "brani che ho aggiunto",
@@ -1361,12 +1361,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Nel menu in basso tocca **Brani**.",
-    "Sotto la casella di ricerca, accanto al pulsante **Filtri**, tocca il pulsante **📋 I miei brani**.",
+    "Tocca **Filtri** sotto la casella di ricerca, poi tocca **📋 I miei brani** nella sezione **Mostra**.",
     "I tuoi brani sono elencati in quattro sezioni: **⏳ Le mie proposte in attesa**, **🔒 Le mie bozze**, **✓ I miei brani pubblicati** e **🗑 Cestino**.",
     "Per modificare un brano tocca **Modifica**; per leggerne il testo tocca **🎵 Mostra il testo**."
    ],
    "ipuclari": [
-    "Puoi filtrare i brani che vedi solo tu anche nell'elenco di Brani: tocca **🔒 Le mie bozze** accanto ai pulsanti **Tutti** e **★ Preferiti**. Questo pulsante compare se hai almeno un brano privato.",
+    "Puoi filtrare i brani che vedi solo tu anche nell'elenco di Brani: in **Filtri**, tocca **🔒 Le mie bozze** nella sezione **Mostra**. Questo pulsante compare se hai almeno un brano privato.",
     "Il numero sul pulsante **📋 I miei brani** è il numero delle tue proposte in attesa di approvazione.",
     "Una sezione senza brani non compare nella pagina.",
     "Puoi ritirare una proposta in attesa con **Ritira la proposta**: il brano non viene eliminato, torna tra le tue bozze.",
@@ -1400,7 +1400,7 @@ window.YARDIM_VERI = {
     "Tocca il brano che vuoi eliminare e tocca **Elimina** sotto il titolo del brano.",
     "Alla domanda “Vuoi davvero eliminare questo brano?” tocca **Sì, elimina**.",
     "Sullo schermo compare l'avviso “eliminato” con il titolo del brano. Se cambi idea, entro 8 secondi tocca **Annulla** nell'avviso.",
-    "Se ti sei perso l'avviso, tocca il pulsante **📋 I miei brani** in **Brani**.",
+    "Se ti sei perso l'avviso, apri **Filtri** in **Brani** e tocca **📋 I miei brani** nella sezione **Mostra**.",
     "Trova il brano nella sezione **🗑 Cestino** e tocca **↩︎ Ripristina**. Sulla scheda è indicato quanti giorni mancano all'eliminazione definitiva."
    ],
    "ipuclari": [
@@ -3645,7 +3645,7 @@ window.YARDIM_VERI = {
     "Per togliere un messaggio tocca **Elimina** sotto il messaggio.",
     "Questa pagina serve a scrivere al team di Repertuvar; non c'è una sezione per i messaggi tra i membri del gruppo."
    ],
-   "platform": "Con il telefono in orizzontale e sul tablet **Messaggi** c'è anche nel menu in basso. Sugli schermi larghi (computer o tablet grande in orizzontale) è nel menu a sinistra.",
+   "platform": "Su telefono e tablet **Messaggi** non è nel menu in basso, ma nel menu del profilo in alto a destra. Sugli schermi larghi (computer o tablet grande in orizzontale) è nel menu a sinistra.",
    "ilgili": [
     "bildirimler"
    ]

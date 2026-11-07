@@ -234,7 +234,7 @@ window.YARDIM_VERI = {
     "Birden çok gruba üyeysen profil menüsünün başında **Aktif grup** listesi çıkar; grubunu buradan değiştirirsin.",
     "**Ayarlar**'da **Ana Sayfa'yı kapat** açıksa menülerde **Ana Sayfa** görünmez."
    ],
-   "platform": "Telefonu yatay tuttuğunda ve tablette alt menünün sonunda **Yardım** yerine **Mesajlar** vardır. Tablette (dikey tutunca) alt menüde **Grup / Koro**'dan sonra **Solistler** de vardır. Geniş ekranda (bilgisayarda ve yatay tutulan çoğu tablette) menü soldadır: **Ana Sayfa**, **Eserler**, **Repertuvarlar**, **Grup / Koro**, **Solistler**, **Çalışma Odası**, **Mesajlar**. **Ayarlar** ve **Oturumu Kapat** için sol menünün altındaki adına bas; **Tema değiştir** de oradadır. Alt menünün kaydırınca gizlenmesi yalnız dokunmatik ekranlarda olur.",
+   "platform": "Tablette (dikey tutunca) alt menüde **Grup / Koro**'dan sonra **Solistler** de vardır. Geniş ekranda (bilgisayarda ve yatay tutulan çoğu tablette) menü soldadır: **Ana Sayfa**, **Eserler**, **Repertuvarlar**, **Grup / Koro**, **Solistler**, **Çalışma Odası**, **Mesajlar**. **Ayarlar** ve **Oturumu Kapat** için sol menünün altındaki adına bas; **Tema değiştir** de oradadır. Alt menünün kaydırınca gizlenmesi yalnız dokunmatik ekranlarda olur.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -348,7 +348,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Eserler",
    "baslik": "Eserleri türe, dile ya da makama göre nasıl süzer ve sıralarım?",
-   "ozet": "Arama kutusunun altındaki dil ve tür çiplerine bas; makam, yöre, akort ve form süzgeçlerini ve sıralamayı Filtreler'den seç. Seçtiğin dil bu cihazda hatırlanır.",
+   "ozet": "Arama kutusunun altındaki Filtreler'e bas. Dil ve tür çipleri en üstte; makam, yöre, akort ve form süzgeçleriyle sıralama aşağıdadır. Seçtiğin dil bu cihazda hatırlanır.",
    "anahtar": [
     "filtre",
     "süzgeç",
@@ -367,10 +367,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "**Eserler**'e git.",
-    "Arama kutusunun altındaki çip satırından bir dile ya da türe bas. Çipteki sayı o gruptaki eser sayısıdır. Satır ekrana sığmıyorsa yana kaydır ya da kenardaki oklara bas.",
+    "Arama kutusunun altındaki **Filtreler**'e bas; en üstteki **Dil ve tür** bölümünde bir dile ya da türe bas. Çipteki sayı o gruptaki eser sayısıdır.",
     "Süzgeci kaldırmak için aynı çipe yeniden bas. Aynı anda bir dil ve bir tür seçili olabilir.",
-    "Bir dil seçersen (ör. yalnız Türkçe eserler) seçimin bu cihazda hatırlanır; **Eserler**'i yeniden açtığında liste yine o dilde gelir. Seçim açıkken çip satırının altında \"Yalnız Türkçe eserler gösteriliyor.\" notu durur. Bütün dillere dönmek için nottaki **Tüm dilleri göster**'e bas.",
-    "Daha fazla seçenek için **Filtreler**'e bas.",
+    "Bir dil seçersen (ör. yalnız Türkçe eserler) seçimin bu cihazda hatırlanır; **Eserler**'i yeniden açtığında liste yine o dilde gelir. Seçim açıkken **Filtreler** düğmesinde süzgeç sayısı görünür; çiplerin altında da \"Yalnız Türkçe eserler gösteriliyor.\" notu durur. Bütün dillere dönmek için nottaki **Tüm dilleri göster**'e bas.",
+    "Sıralama ve diğer süzgeçler aynı pencerede, aşağıdadır.",
     "Açılan **Filtre & Sıralama** penceresinde **Sırala** altından **Ada Göre**, **Besteciye Göre**, **Makama Göre**, **Forma Göre** ya da **Yöreye Göre**'yi seç.",
     "**Tür / Form**, **Akort**, **Bölge** ve **Makam** bölümlerinde istediğin değere bas; her değerin yanında kaç eser olduğu yazar. Aynı değere yeniden basarsan süzgeç kalkar.",
     "Süzgeçleri sıfırlamak için **Filtreleri Temizle**'ye bas; bu düğme arama kutusunu da boşaltır. Arama yazısı kalsın istiyorsan listenin üstündeki **Tümü**'ne bas. İki düğme de seçtiğin dili kaldırmaz."
@@ -378,7 +378,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "**Türü belirlenmemiş** çipi, türü henüz girilmemiş eserleri gösterir.",
     "Dil çipleri yalnız listende birden çok dilde eser varsa görünür.",
-    "Dil seçimi yalnız Eserler listesini ve aramayı etkiler; repertuvarların değişmez. Bir dil seçiliyken aradığın eseri bulamazsan önce **Tüm dilleri göster**'e bas.",
+    "Dil seçimi yalnız Eserler listesini ve aramayı etkiler; repertuvarların değişmez. Bir dil seçiliyken aradığın eseri bulamazsan önce **Filtreler**'deki **Tüm dilleri göster**'e bas.",
     "Dil dışındaki süzgeçler ve sıralama hatırlanmaz: sayfayı yeniden açınca bu süzgeçler kalkar, eserler ada göre sıralanır."
    ],
    "platform": "",
@@ -1257,7 +1257,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "**Grubumla Paylaş** seçeneği yalnız bir gruba üyeyken görünür.",
     "Onay bekleyen önerilerini **📋 Eserlerim** sayfasındaki **⏳ Onay Bekleyen Önerilerim** bölümünde görürsün. **Öneriyi Geri Çek** ile geri alabilirsin; eser silinmez, gizli taslağına döner.",
-    "Listede yalnız senin gördüğün eserlerde **🔒 Taslak**, grupla paylaşılan eserlerde **👥 Grup** etiketi görünür.",
+    "Listede bazı eserlerin satırında küçük bir simge görünür: tek kişi **Sadece ben**, birkaç kişi **Grup**, kum saati **Onay bekliyor** demektir; kum saatini yalnız eseri ekleyen görür. Herkese açık eserlerde simge yoktur. Simgeye dokununca kısa bir açıklama çıkar.",
     "Defterden eklediğin ve başka uygulamadan aktardığın eserler **Sadece Ben** olarak açılır.",
     "Bir eseri sonradan yeniden **Sadece Ben** yapabilirsin."
    ],
@@ -1273,7 +1273,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Eserler",
    "baslik": "Eklediğim eserleri nerede bulurum?",
-   "ozet": "Eserler'deki 📋 Eserlerim düğmesine bas; taslakların, onay bekleyen önerilerin, yayımlanan eserlerin ve sildiklerin ayrı bölümlerde listelenir.",
+   "ozet": "Eserler'de Filtreler'i açıp Göster bölümündeki 📋 Eserlerim'e bas; taslakların, onay bekleyen önerilerin, yayımlanan eserlerin ve sildiklerin ayrı bölümlerde listelenir.",
    "anahtar": [
     "eserlerim",
     "kendi eserlerim",
@@ -1287,12 +1287,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Alt menüde **Eserler**'e bas.",
-    "Arama kutusunun altında, **Filtreler** düğmesinin yanındaki **📋 Eserlerim** düğmesine bas.",
+    "Arama kutusunun altındaki **Filtreler**'e bas; **Göster** bölümündeki **📋 Eserlerim**'e bas.",
     "Eserlerin dört bölümde listelenir: **⏳ Onay Bekleyen Önerilerim**, **🔒 Taslaklarım**, **✓ Yayımlanan Eserlerim** ve **🗑 Silinenler**.",
     "Bir eseri değiştirmek için **Düzenle**'ye, sözlerine bakmak için **🎵 Sözleri Aç**'a bas."
    ],
    "ipuclari": [
-    "Yalnız senin gördüğün eserleri Eserler listesinde de süzebilirsin: **Tümü** ve **★ Favoriler** düğmelerinin yanındaki **🔒 Taslaklarım**'a bas. Bu düğme en az bir gizli eserin varken görünür.",
+    "Yalnız senin gördüğün eserleri Eserler listesinde de süzebilirsin: **Filtreler**'deki **Göster** bölümünde **🔒 Taslaklarım**'a bas. Bu düğme en az bir gizli eserin varken görünür.",
     "**📋 Eserlerim** düğmesindeki sayı, onay bekleyen önerilerinin sayısıdır.",
     "İçinde eser olmayan bölüm sayfada görünmez.",
     "Onay bekleyen bir öneriyi **Öneriyi Geri Çek** ile geri alabilirsin; eser silinmez, taslaklarına döner.",
@@ -1325,7 +1325,7 @@ window.YARDIM_VERI = {
     "Silmek istediğin esere bas ve eser adının altındaki **Sil**'e bas.",
     "“Bu eseri silmek istediğinize emin misiniz?” sorusunda **Evet, Sil**'e bas.",
     "Ekranda eserin adıyla “silindi” bildirimi çıkar. Vazgeçersen 8 saniye içinde bildirimdeki **Geri al**'a bas.",
-    "Bildirimi kaçırdıysan **Eserler**'deki **📋 Eserlerim** düğmesine bas.",
+    "Bildirimi kaçırdıysan **Eserler**'de **Filtreler**'i aç ve **Göster** bölümündeki **📋 Eserlerim**'e bas.",
     "**🗑 Silinenler** bölümünde eseri bul ve **↩︎ Geri Al**'a bas. Kartta kalıcı silinmeye kaç gün kaldığı yazar."
    ],
    "ipuclari": [
@@ -3535,7 +3535,7 @@ window.YARDIM_VERI = {
     "Bir mesajı kaldırmak için altındaki **Sil**'e bas.",
     "Bu sayfa Repertuvar ekibiyle yazışmak içindir; grup üyeleri arasında mesajlaşma bölümü yoktur."
    ],
-   "platform": "Telefonu yatay tuttuğunda ve tablette **Mesajlar** alt menüde de vardır. Geniş ekranda (bilgisayar ya da yatay tutulan büyük tablet) sol menüdedir.",
+   "platform": "Telefonda ve tablette **Mesajlar** alt menüde değil, sağ üstteki profil menüsündedir. Geniş ekranda (bilgisayar ya da yatay tutulan büyük tablet) sol menüdedir.",
    "ilgili": [
     "bildirimler"
    ]

@@ -293,7 +293,7 @@ window.YARDIM_VERI = {
     "Si vous êtes membre de plusieurs groupes, une liste **Groupe actif** apparaît en haut du menu de profil ; c’est là que vous changez de groupe.",
     "Si **Masquer l'accueil** est activé dans **Réglages**, **Accueil** n’apparaît pas dans les menus."
    ],
-   "platform": "Quand le téléphone est tenu à l’horizontale et sur tablette, le dernier bouton du menu du bas est **Messages** et non **Aide**. Sur une tablette tenue à la verticale, le menu du bas contient aussi **Solistes** après **Groupe / Chœur**. Sur grand écran (ordinateur et la plupart des tablettes à l’horizontale), le menu est à gauche : **Accueil**, **Morceaux**, **Setlists**, **Groupe / Chœur**, **Solistes**, **Salle de répétition**, **Messages**. Pour **Réglages** et **Se déconnecter**, touchez votre nom en bas du menu de gauche ; **Changer de thème** s’y trouve aussi. Le menu du bas ne se masque au défilement que sur les écrans tactiles.",
+   "platform": "Sur une tablette tenue à la verticale, le menu du bas contient aussi **Solistes** après **Groupe / Chœur**. Sur grand écran (ordinateur et la plupart des tablettes à l’horizontale), le menu est à gauche : **Accueil**, **Morceaux**, **Setlists**, **Groupe / Chœur**, **Solistes**, **Salle de répétition**, **Messages**. Pour **Réglages** et **Se déconnecter**, touchez votre nom en bas du menu de gauche ; **Changer de thème** s’y trouve aussi. Le menu du bas ne se masque au défilement que sur les écrans tactiles.",
    "ilgili": [
     "ana-sayfayi-kapat",
     "tema-degistir",
@@ -408,7 +408,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Morceaux",
    "baslik": "Comment filtrer et trier les morceaux par genre, langue ou makam ?",
-   "ozet": "Touchez les puces de langue et de genre sous la zone de recherche ; les filtres de makam, de région, d’accordage et de forme ainsi que le tri se trouvent dans Filtres. La langue choisie est mémorisée sur cet appareil.",
+   "ozet": "Touchez Filtres sous la zone de recherche. Les puces de langue et de genre sont tout en haut ; les filtres de makam, de région, d’accordage et de forme ainsi que le tri se trouvent plus bas. La langue choisie est mémorisée sur cet appareil.",
    "anahtar": [
     "filtrer",
     "trier",
@@ -428,10 +428,10 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Allez dans **Morceaux**.",
-    "Touchez une langue ou un genre dans la rangée de puces sous la zone de recherche. Le nombre sur une puce indique combien de morceaux elle contient. Si la rangée ne tient pas à l’écran, faites-la défiler sur le côté ou touchez les flèches à ses extrémités.",
+    "Touchez **Filtres** sous la zone de recherche, puis touchez une langue ou un genre dans la section **Langue et genre**, tout en haut. Le nombre sur une puce indique combien de morceaux elle contient.",
     "Touchez de nouveau la même puce pour retirer le filtre. Une langue et un genre peuvent être sélectionnés en même temps.",
-    "Si vous choisissez une langue (p. ex. uniquement les morceaux en turc), ce choix est mémorisé sur cet appareil ; quand vous rouvrez **Morceaux**, la liste affiche toujours cette langue. Tant que le choix est actif, une note sous la rangée de puces indique « Langue : Turc – seuls les morceaux dans cette langue sont affichés. » Pour revenir à toutes les langues, touchez **Afficher toutes les langues** dans cette note.",
-    "Pour plus d’options, touchez **Filtres**.",
+    "Si vous choisissez une langue (p. ex. uniquement les morceaux en turc), ce choix est mémorisé sur cet appareil ; quand vous rouvrez **Morceaux**, la liste affiche toujours cette langue. Tant que le choix est actif, le bouton **Filtres** affiche le nombre de filtres actifs et une note sous les puces indique « Langue : Turc – seuls les morceaux dans cette langue sont affichés. » Pour revenir à toutes les langues, touchez **Afficher toutes les langues** dans cette note.",
+    "Le tri et les autres filtres se trouvent plus bas dans le même panneau.",
     "Dans le panneau **Filtrer et trier** qui s’ouvre, choisissez **Par titre**, **Par compositeur**, **Par makam**, **Par forme** ou **Par région** sous **Trier**.",
     "Touchez la valeur voulue dans les sections **Genre / Forme**, **Accordage**, **Région** et **Makam** ; chaque valeur indique le nombre de morceaux. Touchez de nouveau la même valeur pour retirer ce filtre.",
     "Pour réinitialiser les filtres, touchez **Effacer les filtres** ; ce bouton vide aussi la zone de recherche. Pour garder votre texte de recherche, touchez plutôt **Tout** au-dessus de la liste. Aucun de ces deux boutons ne retire la langue choisie."
@@ -439,7 +439,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "La puce **Sans genre** affiche les morceaux dont le genre n’a pas encore été saisi.",
     "Les puces de langue n’apparaissent que si votre liste contient des morceaux dans plusieurs langues.",
-    "Le choix de la langue ne concerne que la liste des morceaux et la recherche ; vos setlists ne changent pas. Si vous ne trouvez pas un morceau alors qu’une langue est choisie, touchez d’abord **Afficher toutes les langues**.",
+    "Le choix de la langue ne concerne que la liste des morceaux et la recherche ; vos setlists ne changent pas. Si vous ne trouvez pas un morceau alors qu’une langue est choisie, ouvrez **Filtres** et touchez d’abord **Afficher toutes les langues**.",
     "À part la langue, les filtres et le tri ne sont pas conservés : quand vous rouvrez la page, ils sont effacés et les morceaux sont triés par titre."
    ],
    "platform": "",
@@ -1328,7 +1328,7 @@ window.YARDIM_VERI = {
    "ipuclari": [
     "L’option **Partager avec mon groupe** n’apparaît que si vous êtes membre d’un groupe.",
     "Vos propositions en attente de validation se trouvent dans la section **⏳ Mes propositions en attente** de la page **📋 Mes morceaux**. Vous pouvez en retirer une avec **Retirer la proposition** ; le morceau n’est pas supprimé, il redevient un brouillon privé.",
-    "Dans la liste, les morceaux visibles par vous seul portent l’étiquette **🔒 Brouillon**, et les morceaux partagés avec votre groupe l’étiquette **👥 Groupe**.",
+    "Dans la liste, certains morceaux affichent une petite icône sur leur ligne : une personne signifie **Moi seul**, plusieurs personnes **Groupe** et un sablier **En attente de validation** (seule la personne qui a ajouté le morceau voit le sablier). Les morceaux publics n’ont pas d’icône. Touchez l’icône pour voir une courte explication.",
     "Les morceaux ajoutés depuis le cahier ou importés depuis une autre appli sont créés en **Moi seul**.",
     "Vous pouvez plus tard repasser un morceau en **Moi seul**."
    ],
@@ -1344,7 +1344,7 @@ window.YARDIM_VERI = {
    "id": "eserlerim-sayfasi",
    "kategori": "Morceaux",
    "baslik": "Où trouver les morceaux que j’ai ajoutés ?",
-   "ozet": "Touchez le bouton 📋 Mes morceaux dans Morceaux ; vos brouillons, vos propositions en attente, vos morceaux publiés et ceux que vous avez supprimés y sont répartis en sections.",
+   "ozet": "Dans Morceaux, ouvrez Filtres et touchez 📋 Mes morceaux dans la section Afficher ; vos brouillons, vos propositions en attente, vos morceaux publiés et ceux que vous avez supprimés y sont répartis en sections.",
    "anahtar": [
     "mes morceaux",
     "morceaux que j’ai ajoutés",
@@ -1358,12 +1358,12 @@ window.YARDIM_VERI = {
    ],
    "adimlar": [
     "Touchez **Morceaux** dans le menu du bas.",
-    "Sous la zone de recherche, à côté du bouton **Filtres**, touchez le bouton **📋 Mes morceaux**.",
+    "Touchez **Filtres** sous la zone de recherche, puis touchez **📋 Mes morceaux** dans la section **Afficher**.",
     "Vos morceaux sont répartis en quatre sections : **⏳ Mes propositions en attente**, **🔒 Mes brouillons**, **✓ Mes morceaux publiés** et **🗑 Corbeille**.",
     "Touchez **Modifier** pour changer un morceau, ou **🎵 Afficher les paroles** pour lire ses paroles."
    ],
    "ipuclari": [
-    "Vous pouvez aussi filtrer la liste Morceaux pour n’afficher que les morceaux visibles par vous seul : touchez **🔒 Mes brouillons**, à côté de **Tout** et **★ Favoris**. Ce bouton apparaît dès que vous avez au moins un morceau privé.",
+    "Vous pouvez aussi filtrer la liste Morceaux pour n’afficher que les morceaux visibles par vous seul : dans **Filtres**, touchez **🔒 Mes brouillons** dans la section **Afficher**. Ce bouton apparaît dès que vous avez au moins un morceau privé.",
     "Le nombre affiché sur le bouton **📋 Mes morceaux** correspond à vos propositions en attente de validation.",
     "Une section sans morceau n’apparaît pas sur la page.",
     "Vous pouvez retirer une proposition en attente avec **Retirer la proposition** ; le morceau n’est pas supprimé, il retourne dans vos brouillons.",
@@ -1397,7 +1397,7 @@ window.YARDIM_VERI = {
     "Touchez le morceau à supprimer, puis **Supprimer** sous son titre.",
     "À la question « Voulez-vous vraiment supprimer ce morceau ? », touchez **Oui, supprimer**.",
     "Un message « supprimé » accompagné du titre du morceau s’affiche. Si vous changez d’avis, touchez **Annuler** dans ce message dans les 8 secondes.",
-    "Si vous avez manqué le message, touchez le bouton **📋 Mes morceaux** dans **Morceaux**.",
+    "Si vous avez manqué le message, ouvrez **Filtres** dans **Morceaux** et touchez **📋 Mes morceaux** dans la section **Afficher**.",
     "Dans la section **🗑 Corbeille**, trouvez le morceau et touchez **↩︎ Restaurer**. La fiche indique combien de jours il reste avant la suppression définitive."
    ],
    "ipuclari": [
@@ -3642,7 +3642,7 @@ window.YARDIM_VERI = {
     "Pour retirer un message, touchez **Supprimer** en dessous.",
     "Cette page sert à écrire à l’équipe Repertuvar ; il n’y a pas de messagerie entre les membres d’un groupe."
    ],
-   "platform": "Quand le téléphone est tenu à l’horizontale et sur tablette, **Messages** figure aussi dans le menu du bas. Sur grand écran (ordinateur ou grande tablette tenue à l’horizontale), il se trouve dans le menu de gauche.",
+   "platform": "Sur téléphone et sur tablette, **Messages** ne figure pas dans le menu du bas, mais dans le menu du profil en haut à droite. Sur grand écran (ordinateur ou grande tablette tenue à l’horizontale), il se trouve dans le menu de gauche.",
    "ilgili": [
     "bildirimler"
    ]
