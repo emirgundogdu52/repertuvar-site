@@ -397,7 +397,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Músicas",
    "baslik": "Como filtro e ordeno as músicas por gênero, idioma ou makam?",
-   "ozet": "Toque em Filtros, abaixo da caixa de busca. Os botões de idioma e de gênero ficam no topo; os filtros de makam, região, afinação e forma e a ordenação ficam mais abaixo. O idioma escolhido fica salvo neste aparelho.",
+   "ozet": "Toque em Filtros, abaixo da caixa de busca. Os botões de idioma e de gênero ficam no topo; os filtros de makam, região, afinação e forma e a ordenação ficam mais abaixo. Os filtros e a ordenação escolhidos ficam salvos neste aparelho.",
    "anahtar": [
     "filtrar",
     "filtro",
@@ -429,7 +429,7 @@ window.YARDIM_VERI = {
     "O botão **Sem gênero** mostra as músicas que ainda não têm gênero.",
     "Os botões de idioma só aparecem se a sua lista tiver músicas em mais de um idioma.",
     "A escolha do idioma vale só para a lista de músicas e para a busca; seus setlists não mudam. Se não encontrar uma música enquanto um idioma estiver escolhido, abra **Filtros** e toque primeiro em **Mostrar todos os idiomas**.",
-    "Fora o idioma, os filtros e a ordenação não ficam salvos: quando a página é aberta de novo, eles saem e as músicas aparecem ordenadas por título."
+    "Os outros filtros e a ordenação também ficam salvos neste aparelho até você mudar. Para tirar os filtros, toque em **Todas**."
    ],
    "platform": "",
    "ilgili": [

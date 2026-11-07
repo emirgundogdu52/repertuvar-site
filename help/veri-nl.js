@@ -377,7 +377,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Stukken",
    "baslik": "Hoe filter en sorteer ik stukken op genre, taal of makam?",
-   "ozet": "Tik onder het zoekvak op Filters. De taal- en genrechips staan bovenaan; de filters voor makam, regio, stemming en vorm en de sorteeropties vind je verderop. De gekozen taal wordt op dit apparaat onthouden.",
+   "ozet": "Tik onder het zoekvak op Filters. De taal- en genrechips staan bovenaan; de filters voor makam, regio, stemming en vorm en de sorteeropties vind je verderop. Je filters en sortering worden op dit apparaat onthouden.",
    "anahtar": [
     "filteren",
     "filter",
@@ -409,7 +409,7 @@ window.YARDIM_VERI = {
     "De chip **Geen genre** toont stukken waarvoor nog geen genre is ingevuld.",
     "Taalchips verschijnen alleen als er in je lijst stukken in meer dan één taal staan.",
     "De taalkeuze geldt alleen voor de lijst met stukken en het zoeken; je setlists veranderen niet. Vind je een stuk niet terwijl er een taal gekozen is, open dan **Filters** en tik eerst op **Alle talen tonen**.",
-    "Behalve de taal worden filters en sortering niet onthouden: open je de pagina opnieuw, dan zijn ze weg en staan de stukken op titel."
+    "Ook je andere filters en de sortering worden op dit apparaat onthouden, tot je ze wijzigt. Tik op **Alles** om de filters weg te halen."
    ],
    "platform": "",
    "ilgili": [

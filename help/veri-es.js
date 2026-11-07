@@ -391,7 +391,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Obras",
    "baslik": "¿Cómo filtro y ordeno las obras por género, idioma o makam?",
-   "ozet": "Toca Filtros debajo del cuadro de búsqueda. Los botones de idioma y de género están arriba del todo; los filtros de makam, región, afinación y forma, y el orden, están más abajo. El idioma que elijas se recuerda en este dispositivo.",
+   "ozet": "Toca Filtros debajo del cuadro de búsqueda. Los botones de idioma y de género están arriba del todo; los filtros de makam, región, afinación y forma, y el orden, están más abajo. Tus filtros y el orden se recuerdan en este dispositivo.",
    "anahtar": [
     "filtrar",
     "filtro",
@@ -423,7 +423,7 @@ window.YARDIM_VERI = {
     "El botón **Sin género** muestra las obras a las que aún no se les ha asignado un género.",
     "Los botones de idioma solo aparecen si tu lista tiene obras en más de un idioma.",
     "La elección de idioma solo afecta a la lista de obras y a la búsqueda; tus repertorios no cambian. Si no encuentras una obra mientras hay un idioma elegido, abre **Filtros** y toca primero **Mostrar todos los idiomas**.",
-    "Salvo el idioma, los filtros y el orden no se guardan: cuando vuelves a abrir la página, se quitan y las obras aparecen ordenadas por título."
+    "Tus otros filtros y el orden también se recuerdan en este dispositivo hasta que los cambies. Para quitar los filtros, toca **Todas**."
    ],
    "platform": "",
    "ilgili": [

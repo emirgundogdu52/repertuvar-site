@@ -375,7 +375,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Əsərlər",
    "baslik": "Əsərləri janra, dilə və ya məqama görə necə filtrləyim və sıralayım?",
-   "ozet": "Axtarış xanasının altındakı Filtrlər düyməsinə toxun. Dil və janr çipləri ən yuxarıdadır; məqam, bölgə, kökləmə və forma filtrləri ilə sıralama aşağıdadır. Seçdiyin dil bu cihazda yadda saxlanılır.",
+   "ozet": "Axtarış xanasının altındakı Filtrlər düyməsinə toxun. Dil və janr çipləri ən yuxarıdadır; məqam, bölgə, kökləmə və forma filtrləri ilə sıralama aşağıdadır. Seçdiyin filtrlər və sıralama bu cihazda yadda saxlanılır.",
    "anahtar": [
     "filtr",
     "filtrlə",
@@ -407,7 +407,7 @@ window.YARDIM_VERI = {
     "**Janr təyin edilməyib** çipi janrı hələ daxil edilməmiş əsərləri göstərir.",
     "Dil çipləri yalnız siyahında birdən çox dildə əsər olanda görünür.",
     "Dil seçimi yalnız Əsərlər siyahısına və axtarışa təsir edir; repertuarların dəyişmir. Dil seçili olanda axtardığın əsəri tapmasan, əvvəlcə **Filtrlər** pəncərəsindəki **Bütün dilləri göstər** düyməsinə toxun.",
-    "Dildən başqa filtrlər və sıralama yadda qalmır: səhifəni yenidən açanda onlar götürülür və əsərlər ada görə sıralanır."
+    "Digər filtrlər və sıralama da sən dəyişənə qədər bu cihazda yadda qalır. Filtrləri götürmək üçün **Hamısı** düyməsinə bas."
    ],
    "platform": "",
    "ilgili": [

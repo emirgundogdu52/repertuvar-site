@@ -348,7 +348,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Eserler",
    "baslik": "Eserleri türe, dile ya da makama göre nasıl süzer ve sıralarım?",
-   "ozet": "Arama kutusunun altındaki Filtreler'e bas. Dil ve tür çipleri en üstte; makam, yöre, akort ve form süzgeçleriyle sıralama aşağıdadır. Seçtiğin dil bu cihazda hatırlanır.",
+   "ozet": "Arama kutusunun altındaki Filtreler'e bas. Dil ve tür çipleri en üstte; makam, yöre, akort ve form süzgeçleriyle sıralama aşağıdadır. Seçtiğin süzgeçler ve sıralama bu cihazda hatırlanır.",
    "anahtar": [
     "filtre",
     "süzgeç",
@@ -379,7 +379,7 @@ window.YARDIM_VERI = {
     "**Türü belirlenmemiş** çipi, türü henüz girilmemiş eserleri gösterir.",
     "Dil çipleri yalnız listende birden çok dilde eser varsa görünür.",
     "Dil seçimi yalnız Eserler listesini ve aramayı etkiler; repertuvarların değişmez. Bir dil seçiliyken aradığın eseri bulamazsan önce **Filtreler**'deki **Tüm dilleri göster**'e bas.",
-    "Dil dışındaki süzgeçler ve sıralama hatırlanmaz: sayfayı yeniden açınca bu süzgeçler kalkar, eserler ada göre sıralanır."
+    "Seçtiğin süzgeçler ve sıralama da bu cihazda hatırlanır; sen değiştirene kadar kalır. Süzgeçleri kaldırmak için **Tümü**'ne bas."
    ],
    "platform": "",
    "ilgili": [

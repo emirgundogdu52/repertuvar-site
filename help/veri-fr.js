@@ -408,7 +408,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Morceaux",
    "baslik": "Comment filtrer et trier les morceaux par genre, langue ou makam ?",
-   "ozet": "Touchez Filtres sous la zone de recherche. Les puces de langue et de genre sont tout en haut ; les filtres de makam, de région, d’accordage et de forme ainsi que le tri se trouvent plus bas. La langue choisie est mémorisée sur cet appareil.",
+   "ozet": "Touchez Filtres sous la zone de recherche. Les puces de langue et de genre sont tout en haut ; les filtres de makam, de région, d’accordage et de forme ainsi que le tri se trouvent plus bas. Vos filtres et le tri sont mémorisés sur cet appareil.",
    "anahtar": [
     "filtrer",
     "trier",
@@ -440,7 +440,7 @@ window.YARDIM_VERI = {
     "La puce **Sans genre** affiche les morceaux dont le genre n’a pas encore été saisi.",
     "Les puces de langue n’apparaissent que si votre liste contient des morceaux dans plusieurs langues.",
     "Le choix de la langue ne concerne que la liste des morceaux et la recherche ; vos setlists ne changent pas. Si vous ne trouvez pas un morceau alors qu’une langue est choisie, ouvrez **Filtres** et touchez d’abord **Afficher toutes les langues**.",
-    "À part la langue, les filtres et le tri ne sont pas conservés : quand vous rouvrez la page, ils sont effacés et les morceaux sont triés par titre."
+    "Vos autres filtres et le tri sont aussi mémorisés sur cet appareil, jusqu’à ce que vous les changiez. Pour retirer les filtres, touchez **Tout**."
    ],
    "platform": "",
    "ilgili": [

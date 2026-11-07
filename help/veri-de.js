@@ -420,7 +420,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Stücke",
    "baslik": "Wie filtere und sortiere ich Stücke nach Genre, Sprache oder Makam?",
-   "ozet": "Tippe unter dem Suchfeld auf Filter. Die Sprach- und Genre-Chips stehen ganz oben; die Filter für Makam, Region, Stimmung und Form sowie die Sortierung findest du weiter unten. Die gewählte Sprache wird auf diesem Gerät gespeichert.",
+   "ozet": "Tippe unter dem Suchfeld auf Filter. Die Sprach- und Genre-Chips stehen ganz oben; die Filter für Makam, Region, Stimmung und Form sowie die Sortierung findest du weiter unten. Deine Filter und die Sortierung werden auf diesem Gerät gespeichert.",
    "anahtar": [
     "filtern",
     "filter",
@@ -452,7 +452,7 @@ window.YARDIM_VERI = {
     "Der Chip **Kein Genre** zeigt Stücke, für die noch kein Genre eingetragen ist.",
     "Sprach-Chips erscheinen nur, wenn deine Liste Stücke in mehr als einer Sprache enthält.",
     "Die Sprachauswahl gilt nur für die Stückliste und die Suche; deine Setlists bleiben unverändert. Findest du ein Stück nicht, während eine Sprache gewählt ist, öffne **Filter** und tippe zuerst auf **Alle Sprachen zeigen**.",
-    "Außer der Sprache werden Filter und Sortierung nicht gespeichert: Wenn du die Seite erneut öffnest, sind sie aufgehoben und die Stücke nach Titel sortiert."
+    "Auch deine anderen Filter und die Sortierung werden auf diesem Gerät gespeichert, bis du sie änderst. Zum Aufheben der Filter tippe auf **Alle**."
    ],
    "platform": "",
    "ilgili": [

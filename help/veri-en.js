@@ -346,7 +346,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Pieces",
    "baslik": "How do I filter and sort pieces by genre, language or makam?",
-   "ozet": "Tap Filters under the search box. The language and genre chips are at the top; the makam, region, tuning and form filters and the sort options are further down. The language you pick is remembered on this device.",
+   "ozet": "Tap Filters under the search box. The language and genre chips are at the top; the makam, region, tuning and form filters and the sort options are further down. Your filters and sort order are remembered on this device.",
    "anahtar": [
     "filter",
     "sort",
@@ -376,7 +376,7 @@ window.YARDIM_VERI = {
     "The **No genre** chip shows pieces that have no genre yet.",
     "Language chips only appear when your list contains pieces in more than one language.",
     "The language choice only affects the Pieces list and search; your setlists don't change. If you can't find a piece while a language is selected, open **Filters** and tap **Show all languages** first.",
-    "Apart from the language, filters and sorting are not remembered: when you open the page again, they are cleared and pieces are sorted by title."
+    "Your other filters and the sort order are remembered on this device too, until you change them. To clear the filters, tap **All**."
    ],
    "platform": "",
    "ilgili": [

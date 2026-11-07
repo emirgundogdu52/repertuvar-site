@@ -407,7 +407,7 @@ window.YARDIM_VERI = {
    "id": "eserleri-suz-ve-sirala",
    "kategori": "Brani",
    "baslik": "Come filtro e ordino i brani per genere, lingua o makam?",
-   "ozet": "Tocca Filtri sotto la casella di ricerca. I chip della lingua e del genere sono in cima; i filtri per makam, regione, accordatura e forma e l'ordinamento sono più in basso. La lingua scelta viene memorizzata su questo dispositivo.",
+   "ozet": "Tocca Filtri sotto la casella di ricerca. I chip della lingua e del genere sono in cima; i filtri per makam, regione, accordatura e forma e l'ordinamento sono più in basso. Filtri e ordinamento scelti vengono memorizzati su questo dispositivo.",
    "anahtar": [
     "filtrare",
     "filtro",
@@ -439,7 +439,7 @@ window.YARDIM_VERI = {
     "Il chip **Nessun genere** mostra i brani a cui non è ancora stato assegnato un genere.",
     "I chip della lingua compaiono solo se nel tuo elenco ci sono brani in più di una lingua.",
     "La scelta della lingua vale solo per l'elenco dei brani e per la ricerca; le tue scalette non cambiano. Se non trovi un brano mentre è scelta una lingua, apri **Filtri** e tocca prima **Mostra tutte le lingue**.",
-    "A parte la lingua, filtri e ordinamento non vengono memorizzati: quando riapri la pagina vengono tolti e i brani compaiono ordinati per titolo."
+    "Anche gli altri filtri e l’ordinamento vengono memorizzati su questo dispositivo finché non li cambi. Per togliere i filtri tocca **Tutti**."
    ],
    "platform": "",
    "ilgili": [
