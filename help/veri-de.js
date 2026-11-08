@@ -312,7 +312,7 @@ window.YARDIM_VERI = {
    "id": "muzik-tercihleri",
    "kategori": "Erste Schritte",
    "baslik": "Wie ändere ich meine Musikvorlieben?",
-   "ozet": "Wähle in den Einstellungen im Bereich Meine Musik die Musikrichtungen, die du spielst, und tippe auf Speichern; diese Auswahl blendet keine Stücke aus.",
+   "ozet": "Wähle in den Einstellungen im Bereich Meine Musik die Musikrichtungen, die du spielst, und tippe auf Speichern; die Liste Stücke zeigt dann nur diese Musikrichtungen.",
    "anahtar": [
     "musikvorlieben",
     "musikrichtungen",
@@ -333,7 +333,8 @@ window.YARDIM_VERI = {
     "Tippe auf **Speichern**. Es erscheint **Gespeichert ✓**."
    ],
    "ipuclari": [
-    "Laut der Beschreibung in den Einstellungen wird diese Auswahl genutzt, um Stücke und Inhalte hervorzuheben, die zu dir passen; sie blendet keine Stücke aus und ist unabhängig von der Sprache der App.",
+    "Deine Auswahl wird zum Filter in **Stücke**: Die Liste zeigt nur Stücke dieser Musikrichtungen. Deine Favoriten, Entwürfe und selbst hinzugefügten Stücke sind immer zu sehen. Die Auswahl ist unabhängig von der Sprache der App.",
+    "Um alle Genres zu sehen, öffne unter **Stücke** die **Filter** und tippe auf **Alle Genres zeigen** oder **Filter zurücksetzen**. Das bleibt auf diesem Gerät so; sobald du deine Auswahl erneut speicherst, ist der Filter wieder da.",
     "Bei einem neuen Konto kann einmalig das Fenster **Lass uns deine Musik kennenlernen** erscheinen: Wähle deine Musikrichtungen und tippe auf **Weiter**, oder schließe das Fenster mit **Vorerst überspringen**. Deine Auswahl kannst du später hier ändern.",
     "Speicherst du ohne Internet, erscheint **Auf diesem Gerät gespeichert; wird synchronisiert, sobald du wieder online bist.**",
     "Welche Felder (z. B. Makam, Usul und Grundton) bei neuen Stücken angezeigt werden, wählst du auf derselben Seite im Bereich **Musikfelder**."
@@ -436,7 +437,9 @@ window.YARDIM_VERI = {
     "reihenfolge der stücke",
     "sprache merken",
     "nur türkisch",
-    "alle sprachen zeigen"
+    "alle sprachen zeigen",
+    "alle genres zeigen",
+    "musikvorlieben filter"
    ],
    "adimlar": [
     "Öffne **Stücke**.",
@@ -446,13 +449,14 @@ window.YARDIM_VERI = {
     "Die Sortierung und die übrigen Filter findest du weiter unten im selben Fenster.",
     "Wähle im Fenster **Filtern & Sortieren** unter **Sortieren** die Option **Nach Titel**, **Nach Komponist**, **Nach Makam**, **Nach Form** oder **Nach Region**.",
     "Tippe in den Bereichen **Genre / Form**, **Stimmung**, **Region** und **Makam** auf den gewünschten Wert; neben jedem Wert steht, wie viele Stücke dazugehören. Tippst du noch einmal auf denselben Wert, wird der Filter entfernt.",
-    "Um die Filter zurückzusetzen, tippe auf **Filter zurücksetzen**; diese Schaltfläche leert auch das Suchfeld. Soll dein Suchtext erhalten bleiben, tippe stattdessen oben in der Liste auf **Alle**. Keine der beiden Schaltflächen hebt die gewählte Sprache auf."
+    "Um die Filter zurückzusetzen, tippe auf **Filter zurücksetzen** direkt unter dem Bereich **Sprache und Genre**; diese Schaltfläche leert auch das Suchfeld und hebt den Filter nach deinen Musikvorlieben auf. Soll dein Suchtext erhalten bleiben, tippe stattdessen oben in der Liste auf **Alle**. Keine der beiden Schaltflächen hebt die gewählte Sprache auf."
    ],
    "ipuclari": [
     "Der Chip **Kein Genre** zeigt Stücke, für die noch kein Genre eingetragen ist.",
     "Sprach-Chips erscheinen nur, wenn deine Liste Stücke in mehr als einer Sprache enthält.",
     "Die Sprachauswahl gilt nur für die Stückliste und die Suche; deine Setlists bleiben unverändert. Findest du ein Stück nicht, während eine Sprache gewählt ist, öffne **Filter** und tippe zuerst auf **Alle Sprachen zeigen**.",
-    "Auch deine anderen Filter und die Sortierung werden auf diesem Gerät gespeichert, bis du sie änderst. Zum Aufheben der Filter tippe auf **Alle**."
+    "Auch deine anderen Filter und die Sortierung werden auf diesem Gerät gespeichert, bis du sie änderst. Zum Aufheben der Filter tippe auf **Alle**; der Sprachfilter und der Filter nach deinen Musikvorlieben bleiben.",
+    "Hast du in den Einstellungen Musikvorlieben gewählt, zeigt die Liste nur diese Genres, und unter den Chips steht „Nach deinen Musikvorlieben werden nur diese Genres angezeigt“. Deine Favoriten, Entwürfe und selbst hinzugefügten Stücke werden nie herausgefiltert. Zurück zu allen Genres kommst du mit **Alle Genres zeigen** in diesem Hinweis. Ist das gesuchte Stück in einem anderen Genre, tippe über den Suchergebnissen auf **Anzeigen**."
    ],
    "platform": "",
    "ilgili": [
@@ -2135,6 +2139,7 @@ window.YARDIM_VERI = {
    ],
    "ipuclari": [
     "Eine Setlist ohne Stücke lässt sich nicht auf der Bühne öffnen; füge zuerst Stücke hinzu.",
+    "Um bei einem bestimmten Stück zu beginnen, tippe in der Setlist auf seinen Namen; der Bühnenmodus öffnet sich bei diesem Stück und macht mit den nächsten weiter. Den Text siehst du im **⋯**-Menü der Zeile unter **Text anzeigen**.",
     "Um ein einzelnes Stück auf der Bühne zu öffnen, tippe unter Stücke in den Details des Stücks auf **🎭 Im Bühnenmodus öffnen**.",
     "Auf der Bühne ist das untere Menü ausgeblendet; zum Verlassen nutze **Anzeigeeinstellungen** › **Bühnenmodus schließen**.",
     "Sind die Details der Stücke nicht auf dem Gerät gespeichert und gibt es kein Internet, erscheint „Einige Details zu Stücken konnten nicht geladen werden. Der Bühnenmodus wurde nicht gestartet. Prüfe deine Verbindung und versuche es noch einmal.“ Versuch es erneut, sobald du online bist."

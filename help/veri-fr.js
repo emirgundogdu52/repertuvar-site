@@ -304,7 +304,7 @@ window.YARDIM_VERI = {
    "id": "muzik-tercihleri",
    "kategori": "Premiers pas",
    "baslik": "Comment modifier mes préférences musicales ?",
-   "ozet": "Dans la section Ma musique des Réglages, choisissez les genres que vous jouez et touchez Enregistrer ; ce choix ne masque aucun morceau.",
+   "ozet": "Dans la section Ma musique des Réglages, choisissez les genres que vous jouez et touchez Enregistrer ; la liste Morceaux s’ouvre ensuite avec ces genres uniquement.",
    "anahtar": [
     "préférences musicales",
     "genres musicaux",
@@ -324,7 +324,8 @@ window.YARDIM_VERI = {
     "Touchez **Enregistrer**. Le message **Enregistré ✓** s’affiche."
    ],
    "ipuclari": [
-    "D’après l’explication donnée dans Réglages, ce choix sert à mettre en avant les morceaux et les contenus qui vous correspondent ; il ne masque aucun morceau et ne dépend pas de la langue de l’appli.",
+    "Les genres choisis deviennent un filtre dans **Morceaux** : la liste n’affiche que les morceaux de ces genres. Vos favoris, vos brouillons et les morceaux que vous avez ajoutés restent toujours visibles. Ce choix est indépendant de la langue de l’application.",
+    "Pour voir tous les genres, ouvrez **Filtres** dans **Morceaux** et touchez **Afficher tous les genres** ou **Effacer les filtres**. Ce choix reste mémorisé sur cet appareil ; si vous enregistrez de nouveau vos préférences, le filtre revient.",
     "Les nouveaux comptes peuvent voir une seule fois la fenêtre **Faisons connaissance avec votre musique** : choisissez les genres et touchez **Continuer**, ou fermez la fenêtre avec **Passer pour l’instant**. Vous pourrez modifier votre choix ici plus tard.",
     "Si vous enregistrez hors ligne, le message **Enregistré sur cet appareil ; la synchronisation se fera au retour de la connexion.** s’affiche.",
     "Pour choisir quels champs (comme le makam, l’usul ou la tonique) s’affichent sur les nouveaux morceaux, utilisez la section **Champs musicaux** de la même page."
@@ -424,7 +425,9 @@ window.YARDIM_VERI = {
     "tri des morceaux",
     "mémoriser la langue",
     "seulement en turc",
-    "afficher toutes les langues"
+    "afficher toutes les langues",
+    "afficher tous les genres",
+    "filtre préférences musicales"
    ],
    "adimlar": [
     "Allez dans **Morceaux**.",
@@ -434,13 +437,14 @@ window.YARDIM_VERI = {
     "Le tri et les autres filtres se trouvent plus bas dans le même panneau.",
     "Dans le panneau **Filtrer et trier** qui s’ouvre, choisissez **Par titre**, **Par compositeur**, **Par makam**, **Par forme** ou **Par région** sous **Trier**.",
     "Touchez la valeur voulue dans les sections **Genre / Forme**, **Accordage**, **Région** et **Makam** ; chaque valeur indique le nombre de morceaux. Touchez de nouveau la même valeur pour retirer ce filtre.",
-    "Pour réinitialiser les filtres, touchez **Effacer les filtres** ; ce bouton vide aussi la zone de recherche. Pour garder votre texte de recherche, touchez plutôt **Tout** au-dessus de la liste. Aucun de ces deux boutons ne retire la langue choisie."
+    "Pour réinitialiser les filtres, touchez **Effacer les filtres**, juste sous la section **Langue et genre** ; ce bouton vide aussi la zone de recherche et retire le filtre de vos préférences musicales. Pour garder votre texte de recherche, touchez plutôt **Tout** au-dessus de la liste. Aucun de ces deux boutons ne retire la langue choisie."
    ],
    "ipuclari": [
     "La puce **Sans genre** affiche les morceaux dont le genre n’a pas encore été saisi.",
     "Les puces de langue n’apparaissent que si votre liste contient des morceaux dans plusieurs langues.",
     "Le choix de la langue ne concerne que la liste des morceaux et la recherche ; vos setlists ne changent pas. Si vous ne trouvez pas un morceau alors qu’une langue est choisie, ouvrez **Filtres** et touchez d’abord **Afficher toutes les langues**.",
-    "Vos autres filtres et le tri sont aussi mémorisés sur cet appareil, jusqu’à ce que vous les changiez. Pour retirer les filtres, touchez **Tout**."
+    "Vos autres filtres et le tri sont aussi mémorisés sur cet appareil, jusqu’à ce que vous les changiez. Pour retirer les filtres, touchez **Tout** ; le filtre de langue et celui de vos préférences musicales restent en place.",
+    "Si vous avez choisi des préférences musicales dans Réglages, la liste n’affiche que ces genres et une note sous les puces indique « Selon vos préférences musicales, seuls ces genres sont affichés ». Vos favoris, vos brouillons et les morceaux que vous avez ajoutés ne sont jamais filtrés. Pour revenir à tous les genres, touchez **Afficher tous les genres** dans la note. Si le morceau cherché est dans un autre genre, touchez **Afficher** au-dessus des résultats de recherche."
    ],
    "platform": "",
    "ilgili": [
@@ -2100,6 +2104,7 @@ window.YARDIM_VERI = {
    ],
    "ipuclari": [
     "Une setlist vide ne s’ouvre pas en Mode Scène ; ajoutez d’abord des morceaux.",
+    "Pour commencer par un morceau précis, touchez son nom dans la setlist ; le Mode Scène s’ouvre sur ce morceau puis continue avec les suivants. Pour lire les paroles, touchez **Afficher les paroles** dans le menu **⋯** de la ligne.",
     "Pour ouvrir un seul morceau sur scène, touchez le bouton **🎭 Ouvrir en Mode Scène** dans son détail dans Morceaux.",
     "Sur scène, le menu du bas est masqué ; pour sortir, passez par **Réglages d’affichage** › **Fermer le Mode Scène**.",
     "Si les infos des morceaux ne sont pas sur votre appareil et qu’il n’y a pas d’Internet, l’avertissement « Certaines infos de morceaux n’ont pas pu être chargées. Le Mode Scène n’a pas été lancé. Vérifiez votre connexion et réessayez. » s’affiche ; réessayez au retour de la connexion."

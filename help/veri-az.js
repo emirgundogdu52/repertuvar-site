@@ -269,7 +269,7 @@ window.YARDIM_VERI = {
    "id": "muzik-tercihleri",
    "kategori": "İlk addımlar",
    "baslik": "Musiqi seçimlərimi necə dəyişim?",
-   "ozet": "Ayarlar bölməsindəki Musiqi seçimlərim hissəsində çaldığın janrları seçib Yadda saxla düyməsinə toxun; bu seçim heç bir əsəri gizlətmir.",
+   "ozet": "Ayarlar bölməsindəki Musiqi seçimlərim hissəsində çaldığın janrları seçib Yadda saxla düyməsinə toxun; Əsərlər siyahısı bundan sonra yalnız bu janrlarla açılır.",
    "anahtar": [
     "musiqi seçimləri",
     "musiqi janrı",
@@ -289,7 +289,8 @@ window.YARDIM_VERI = {
     "**Yadda saxla** düyməsinə toxun. **Yadda saxlanıldı ✓** yazılır."
    ],
    "ipuclari": [
-    "Ayarlar bölməsindəki izaha görə, bu seçim sənə uyğun əsərləri və məzmunu önə çıxarmaq üçün istifadə olunur; heç bir əsəri gizlətmir və tətbiqin dilindən asılı deyil.",
+    "Seçdiyin janrlar **Əsərlər** siyahısında filtrə çevrilir: siyahı yalnız bu janrlardakı əsərləri göstərir. Seçilmiş əsərlərin, qaralamaların və özün əlavə etdiyin əsərlər həmişə görünür. Seçim tətbiqin dilindən asılı deyil.",
+    "Bütün janrları görmək üçün **Əsərlər** bölməsində **Filtrlər**i aç və **Bütün janrları göstər** ya da **Filtrləri təmizlə** düyməsinə toxun. Bu cihazda belə qalır; seçimlərini yenidən yadda saxlayanda filtr geri gəlir.",
     "Yeni hesab yaradanda bir dəfə **Gəl musiqini bir az tanıyaq** pəncərəsi çıxa bilər: janrları seçib **Davam et** düyməsinə toxun və ya pəncərəni **Hələlik keç** ilə bağla. Seçimini sonra buradan dəyişə bilərsən.",
     "İnternet olmayanda yadda saxlasan, **Bu cihazda yadda saxlanıldı; bağlantı qurulanda sinxronlaşdırılacaq.** yazılır.",
     "Yeni əsərlərdə hansı məlumat sahələrinin (məqam, usul, tonika kimi) açıq gələcəyini həmin səhifədəki **Musiqi sahələri** bölməsindən seçirsən."
@@ -391,7 +392,9 @@ window.YARDIM_VERI = {
     "süz",
     "dili yadda saxla",
     "yalnız türkcə",
-    "bütün dilləri göstər"
+    "bütün dilləri göstər",
+    "bütün janrları göstər",
+    "musiqi seçimləri filtri"
    ],
    "adimlar": [
     "**Əsərlər** bölməsinə keç.",
@@ -401,13 +404,14 @@ window.YARDIM_VERI = {
     "Sıralama və digər filtrlər eyni pəncərənin aşağısındadır.",
     "Açılan **Filtr və sıralama** pəncərəsində **Sırala** altından **Ada görə**, **Bəstəkara görə**, **Məqama görə**, **Formaya görə** və ya **Bölgəyə görə** seç.",
     "**Janr / forma**, **Kökləmə**, **Bölgə** və **Məqam** bölmələrində istədiyin dəyərə toxun; hər dəyərin yanında neçə əsər olduğu yazılır. Eyni dəyərə yenidən toxunsan, filtr götürülür.",
-    "Filtrləri sıfırlamaq üçün **Filtrləri təmizlə** düyməsinə toxun; bu düymə axtarış xanasını da boşaldır. Axtarış yazısı qalsın istəyirsənsə, siyahının üstündəki **Hamısı** düyməsinə toxun. Bu düymələrin heç biri seçdiyin dili götürmür."
+    "Filtrləri sıfırlamaq üçün **Dil və janr** hissəsinin düz altındakı **Filtrləri təmizlə** düyməsinə toxun; bu düymə axtarış xanasını da boşaldır və musiqi seçimlərinə görə filtri də götürür. Axtarış yazısı qalsın istəyirsənsə, siyahının üstündəki **Hamısı** düyməsinə toxun. Bu düymələrin heç biri seçdiyin dili götürmür."
    ],
    "ipuclari": [
     "**Janr təyin edilməyib** çipi janrı hələ daxil edilməmiş əsərləri göstərir.",
     "Dil çipləri yalnız siyahında birdən çox dildə əsər olanda görünür.",
     "Dil seçimi yalnız Əsərlər siyahısına və axtarışa təsir edir; repertuarların dəyişmir. Dil seçili olanda axtardığın əsəri tapmasan, əvvəlcə **Filtrlər** pəncərəsindəki **Bütün dilləri göstər** düyməsinə toxun.",
-    "Digər filtrlər və sıralama da sən dəyişənə qədər bu cihazda yadda qalır. Filtrləri götürmək üçün **Hamısı** düyməsinə bas."
+    "Digər filtrlər və sıralama da sən dəyişənə qədər bu cihazda yadda qalır. Filtrləri götürmək üçün **Hamısı** düyməsinə bas; dil filtri və musiqi seçimlərinə görə filtr yerində qalır.",
+    "Ayarlarda musiqi seçimlərin varsa, siyahı yalnız həmin janrlarla açılır və çiplərin altında “Musiqi seçimlərinə görə yalnız bu janrlar göstərilir” qeydi görünür. Seçilmiş əsərlərin, qaralamaların və özün əlavə etdiyin əsərlər heç vaxt süzülmür. Bütün janrlara qayıtmaq üçün qeyddəki **Bütün janrları göstər** düyməsinə toxun. Axtardığın əsər başqa janrdadırsa, axtarış nəticələrinin üstündəki **Göstər** düyməsinə toxunmaq kifayətdir."
    ],
    "platform": "",
    "ilgili": [
@@ -2075,6 +2079,7 @@ window.YARDIM_VERI = {
    ],
    "ipuclari": [
     "İçində əsər olmayan repertuar səhnədə açılmır; əvvəlcə əsər əlavə et.",
+    "Müəyyən bir əsərdən başlamaq üçün repertuarda həmin əsərin adına toxun; Səhnə rejimi o əsərdən açılır və növbətilərlə davam edir. Sözlərə baxmaq üçün sətirdəki **⋯** menyusunda **Sözləri göstər** düyməsinə toxun.",
     "Tək bir əsəri səhnədə açmaq üçün Əsərlər bölməsində əsərin təfərrüatlarındakı **🎭 Səhnə rejimində aç** düyməsinə toxun.",
     "Səhnədə alt menyu gizlənir; çıxmaq üçün **Görünüş ayarları** › **Səhnə rejimini bağla** yolundan istifadə et.",
     "Əsər məlumatları cihazda yoxdursa və internet də yoxdursa, “Bəzi əsər məlumatlarını yükləmək olmadı. Səhnə rejimi açılmadı. Bağlantını yoxlayıb yenidən cəhd et.” xəbərdarlığı çıxır; bağlantı gələndə yenidən cəhd et."

@@ -271,7 +271,7 @@ window.YARDIM_VERI = {
    "id": "muzik-tercihleri",
    "kategori": "Aan de slag",
    "baslik": "Hoe wijzig ik mijn muziekvoorkeuren?",
-   "ozet": "Kies in Instellingen bij Mijn muziek de stijlen die je speelt en tik op Opslaan; deze keuze verbergt nooit stukken.",
+   "ozet": "Kies in Instellingen bij Mijn muziek de stijlen die je speelt en tik op Opslaan; de lijst Stukken toont daarna alleen deze stijlen.",
    "anahtar": [
     "muziekvoorkeuren",
     "muziekstijlen",
@@ -292,7 +292,8 @@ window.YARDIM_VERI = {
     "Tik op **Opslaan**. Je ziet **Opgeslagen ✓**."
    ],
    "ipuclari": [
-    "Volgens de uitleg in Instellingen wordt deze keuze gebruikt om stukken en inhoud die bij je passen naar voren te halen; ze verbergt nooit stukken en staat los van de taal van de app.",
+    "Je keuze wordt een filter in **Stukken**: de lijst toont alleen stukken in deze stijlen. Je favorieten, concepten en stukken die je zelf hebt toegevoegd blijven altijd zichtbaar. De keuze staat los van de taal van de app.",
+    "Wil je alle genres zien, open dan bij **Stukken** de **Filters** en tik op **Alle genres tonen** of **Filters wissen**. Dat blijft zo op dit apparaat; sla je je voorkeuren opnieuw op, dan komt het filter terug.",
     "Nieuwe accounts kunnen één keer het venster **Laten we je muziek leren kennen** zien: kies je stijlen en tik op **Doorgaan**, of sluit het met **Nu overslaan**. Je keuze kun je hier later wijzigen.",
     "Sla je op terwijl je offline bent, dan zie je **Opgeslagen op dit apparaat; wordt gesynchroniseerd zodra je weer online bent.**",
     "Welke velden (zoals makam, usul en grondtoon) bij nieuwe stukken worden getoond, kies je in het onderdeel **Muziekvelden** op dezelfde pagina."
@@ -393,7 +394,9 @@ window.YARDIM_VERI = {
     "volgorde",
     "taal onthouden",
     "alleen turks",
-    "alle talen tonen"
+    "alle talen tonen",
+    "alle genres tonen",
+    "muziekvoorkeuren filter"
    ],
    "adimlar": [
     "Ga naar **Stukken**.",
@@ -403,13 +406,14 @@ window.YARDIM_VERI = {
     "De sorteeropties en de overige filters staan verderop in hetzelfde venster.",
     "Kies in het venster **Filteren en sorteren** onder **Sorteren** voor **Op titel**, **Op componist**, **Op makam**, **Op vorm** of **Op regio**.",
     "Tik op een waarde onder **Genre / vorm**, **Stemming**, **Regio** of **Makam**; bij elke waarde staat hoeveel stukken erbij horen. Tik er nog een keer op om dat filter weg te halen.",
-    "Tik op **Filters wissen** om de filters terug te zetten; deze knop maakt ook het zoekvak leeg. Wil je je zoektekst houden, tik dan boven de lijst op **Alles**. Geen van beide knoppen haalt de gekozen taal weg."
+    "Tik op **Filters wissen**, direct onder het onderdeel **Taal en genre**, om de filters terug te zetten; deze knop maakt ook het zoekvak leeg en haalt het filter op je muziekvoorkeuren weg. Wil je je zoektekst houden, tik dan boven de lijst op **Alles**. Geen van beide knoppen haalt de gekozen taal weg."
    ],
    "ipuclari": [
     "De chip **Geen genre** toont stukken waarvoor nog geen genre is ingevuld.",
     "Taalchips verschijnen alleen als er in je lijst stukken in meer dan één taal staan.",
     "De taalkeuze geldt alleen voor de lijst met stukken en het zoeken; je setlists veranderen niet. Vind je een stuk niet terwijl er een taal gekozen is, open dan **Filters** en tik eerst op **Alle talen tonen**.",
-    "Ook je andere filters en de sortering worden op dit apparaat onthouden, tot je ze wijzigt. Tik op **Alles** om de filters weg te halen."
+    "Ook je andere filters en de sortering worden op dit apparaat onthouden, tot je ze wijzigt. Tik op **Alles** om de filters weg te halen; het taalfilter en het filter op je muziekvoorkeuren blijven staan.",
+    "Heb je in Instellingen muziekvoorkeuren gekozen, dan toont de lijst alleen die genres en staat onder de chips „Op basis van je muziekvoorkeuren worden alleen deze genres getoond”. Je favorieten, concepten en stukken die je zelf hebt toegevoegd worden nooit weggefilterd. Tik op **Alle genres tonen** in die melding om terug te gaan naar alle genres. Staat het stuk dat je zoekt in een ander genre, tik dan boven de zoekresultaten op **Tonen**."
    ],
    "platform": "",
    "ilgili": [
@@ -2078,6 +2082,7 @@ window.YARDIM_VERI = {
    ],
    "ipuclari": [
     "Een lege setlist gaat niet open op het podium; voeg eerst stukken toe.",
+    "Wil je bij een bepaald stuk beginnen, tik dan in de setlist op de naam ervan; de Podiummodus gaat open bij dat stuk en gaat daarna verder met de volgende. De tekst zie je via **Toon de tekst** in het **⋯**-menu van de regel.",
     "Wil je één stuk op het podium openen, tik dan bij Stukken in de gegevens van het stuk op **🎭 Openen in de Podiummodus**.",
     "Op het podium is het menu onderaan verborgen; je verlaat het podium via **Weergave-instellingen** › **Podiummodus sluiten**.",
     "Staan de gegevens van de stukken niet op je apparaat en is er geen internet, dan zie je “Sommige gegevens van stukken konden niet worden geladen. De Podiummodus is niet gestart. Controleer je verbinding en probeer het opnieuw.” Probeer het opnieuw zodra je verbinding hebt."

@@ -290,7 +290,7 @@ window.YARDIM_VERI = {
    "id": "muzik-tercihleri",
    "kategori": "Primeiros passos",
    "baslik": "Como mudo minhas preferências musicais?",
-   "ozet": "Na seção Minha música, em Configurações, escolha os gêneros que você toca e toque em Salvar; essa escolha nunca esconde nenhuma música.",
+   "ozet": "Na seção Minha música, em Configurações, escolha os gêneros que você toca e toque em Salvar; a lista de Músicas passa a abrir só com esses gêneros.",
    "anahtar": [
     "preferências musicais",
     "gêneros musicais",
@@ -311,7 +311,8 @@ window.YARDIM_VERI = {
     "Toque em **Salvar**. Aparece **Salvo ✓**."
    ],
    "ipuclari": [
-    "Segundo a explicação em Configurações, essa escolha serve para destacar músicas e conteúdos que combinam com você; ela nunca esconde nenhuma música e não depende do idioma do app.",
+    "Os gêneros escolhidos viram um filtro em **Músicas**: a lista mostra só músicas desses gêneros. Suas favoritas, seus rascunhos e as músicas que você mesmo adicionou sempre aparecem. A escolha não depende do idioma do app.",
+    "Para ver todos os gêneros, abra **Filtros** em **Músicas** e toque em **Mostrar todos os gêneros** ou **Limpar filtros**. Fica assim neste aparelho; se você salvar suas preferências de novo, o filtro volta.",
     "Quando você cria uma conta nova, pode aparecer uma vez a janela **Vamos conhecer a sua música**: escolha os gêneros e toque em **Continuar**, ou feche a janela com **Pular por enquanto**. Depois, você pode mudar a escolha aqui.",
     "Se você salvar sem internet, aparece **Salvo neste dispositivo; será sincronizado quando você voltar a ficar online.**",
     "Para escolher quais campos (como makam, usul e tônica) já vêm abertos nas músicas novas, use a seção **Campos musicais**, na mesma página."
@@ -413,7 +414,9 @@ window.YARDIM_VERI = {
     "chip de gênero",
     "lembrar idioma",
     "só turco",
-    "mostrar todos os idiomas"
+    "mostrar todos os idiomas",
+    "mostrar todos os gêneros",
+    "filtro preferências musicais"
    ],
    "adimlar": [
     "Vá para **Músicas**.",
@@ -423,13 +426,14 @@ window.YARDIM_VERI = {
     "A ordenação e os outros filtros ficam mais abaixo, na mesma janela.",
     "Na janela **Filtrar e ordenar** que se abre, em **Ordenar**, escolha **Por título**, **Por compositor**, **Por makam**, **Por forma** ou **Por região**.",
     "Em **Gênero / Forma**, **Afinação**, **Região** e **Makam**, toque no valor que quiser; ao lado de cada valor aparece quantas músicas ele tem. Se você tocar de novo no mesmo valor, o filtro sai.",
-    "Para zerar os filtros, toque em **Limpar filtros**; esse botão também esvazia a caixa de busca. Se quiser manter o texto da busca, toque em **Todas** acima da lista. Nenhum dos dois botões tira o idioma escolhido."
+    "Para zerar os filtros, toque em **Limpar filtros**, logo abaixo da seção **Idioma e gênero**; esse botão também esvazia a caixa de busca e tira o filtro das suas preferências musicais. Se quiser manter o texto da busca, toque em **Todas** acima da lista. Nenhum dos dois botões tira o idioma escolhido."
    ],
    "ipuclari": [
     "O botão **Sem gênero** mostra as músicas que ainda não têm gênero.",
     "Os botões de idioma só aparecem se a sua lista tiver músicas em mais de um idioma.",
     "A escolha do idioma vale só para a lista de músicas e para a busca; seus setlists não mudam. Se não encontrar uma música enquanto um idioma estiver escolhido, abra **Filtros** e toque primeiro em **Mostrar todos os idiomas**.",
-    "Os outros filtros e a ordenação também ficam salvos neste aparelho até você mudar. Para tirar os filtros, toque em **Todas**."
+    "Os outros filtros e a ordenação também ficam salvos neste aparelho até você mudar. Para tirar os filtros, toque em **Todas**; o filtro de idioma e o das suas preferências musicais continuam.",
+    "Se você tem preferências musicais em Configurações, a lista abre só com esses gêneros e, abaixo dos chips, aparece \"Com base nas suas preferências musicais, só estes gêneros são exibidos\". Suas favoritas, seus rascunhos e as músicas que você mesmo adicionou nunca são filtrados. Para voltar a todos os gêneros, toque em **Mostrar todos os gêneros** nessa nota. Se a música que você procura for de outro gênero, toque em **Mostrar** acima dos resultados da busca."
    ],
    "platform": "",
    "ilgili": [
@@ -2115,6 +2119,7 @@ window.YARDIM_VERI = {
    ],
    "ipuclari": [
     "Um setlist sem músicas não abre no palco; adicione músicas antes.",
+    "Para começar por uma música específica, toque no nome dela no setlist; o Modo Palco abre nessa música e segue com as próximas. Para ler a letra, toque em **Mostrar a letra** no menu **⋯** da linha.",
     "Para abrir uma música só no palco, toque no botão **🎭 Abrir no Modo Palco** nos detalhes da música, em Músicas.",
     "No palco, o menu inferior fica escondido; para sair, use **Configurações de exibição** › **Fechar o Modo Palco**.",
     "Se os detalhes das músicas não estiverem no dispositivo e também não houver internet, aparece o aviso “Não foi possível carregar alguns detalhes das músicas. O Modo Palco não foi iniciado. Verifique sua conexão e tente novamente.”; tente de novo quando a conexão voltar."

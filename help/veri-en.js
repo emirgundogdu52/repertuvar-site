@@ -244,7 +244,7 @@ window.YARDIM_VERI = {
    "id": "muzik-tercihleri",
    "kategori": "Getting started",
    "baslik": "How do I change my music preferences?",
-   "ozet": "In the My Music section of Settings, select the styles you play and tap Save; this choice never hides any pieces.",
+   "ozet": "In the My Music section of Settings, select the styles you play and tap Save; the Pieces list then opens with only these styles.",
    "anahtar": [
     "music preferences",
     "music styles",
@@ -264,7 +264,8 @@ window.YARDIM_VERI = {
     "Tap **Save**. You'll see **Saved ✓**."
    ],
    "ipuclari": [
-    "According to the description in Settings, this choice is used to highlight pieces and content that suit you; it never hides any pieces and is independent of the app language.",
+    "The styles you pick become a filter in **Pieces**: the list opens with only pieces in these styles. Your favourites, drafts and the pieces you added yourself always show. The choice is independent of the app language.",
+    "To see all genres, open **Filters** in **Pieces** and tap **Show all genres** or **Clear Filters**. It stays that way on this device; when you save your preferences again, the filter comes back.",
     "New accounts may see a one-time **Let's get to know your music** window: pick your styles and tap **Continue**, or close it with **Skip for now**. You can change your choice here later.",
     "If you save while offline, you'll see **Saved on this device; it will sync when you're back online.**",
     "To choose which fields (such as makam, usul and tonic) are shown on new pieces, use the **Music Fields** section on the same page."
@@ -360,7 +361,9 @@ window.YARDIM_VERI = {
     "genre chip",
     "remember language",
     "only Turkish",
-    "show all languages"
+    "show all languages",
+    "show all genres",
+    "music preferences filter"
    ],
    "adimlar": [
     "Go to **Pieces**.",
@@ -370,13 +373,14 @@ window.YARDIM_VERI = {
     "The sort options and the other filters are further down in the same panel.",
     "In the **Filter & Sort** panel, choose **By Title**, **By Composer**, **By Makam**, **By Form** or **By Region** under **Sort**.",
     "Tap a value under **Genre / Form**, **Tuning**, **Region** or **Makam**; each value shows how many pieces it has. Tap it again to remove that filter.",
-    "To reset the filters, tap **Clear Filters**; this also empties the search box. If you want to keep your search text, tap **All** above the list instead. Neither button removes the language you picked."
+    "To reset the filters, tap **Clear Filters** right below the **Language and genre** section; it also empties the search box and removes the music preferences filter. If you want to keep your search text, tap **All** above the list instead. Neither button removes the language you picked."
    ],
    "ipuclari": [
     "The **No genre** chip shows pieces that have no genre yet.",
     "Language chips only appear when your list contains pieces in more than one language.",
     "The language choice only affects the Pieces list and search; your setlists don't change. If you can't find a piece while a language is selected, open **Filters** and tap **Show all languages** first.",
-    "Your other filters and the sort order are remembered on this device too, until you change them. To clear the filters, tap **All**."
+    "Your other filters and the sort order are remembered on this device too, until you change them. To clear the filters, tap **All**; the language and music preferences filters stay.",
+    "If you have music preferences in Settings, the list opens with only those genres, and a note under the chips says \"Based on your music preferences, only these genres are shown\". Your favourites, drafts and the pieces you added yourself are never filtered out. To go back to all genres, tap **Show all genres** in the note. If the piece you're searching for is in another genre, just tap **Show** above the search results."
    ],
    "platform": "",
    "ilgili": [
@@ -1984,7 +1988,8 @@ window.YARDIM_VERI = {
     "use on stage",
     "live",
     "open setlist on stage",
-    "concert"
+    "concert",
+    "start from a piece"
    ],
    "adimlar": [
     "In **Setlists**, open the setlist and tap **Open in Stage Mode**; the first piece opens straight away.",
@@ -1995,6 +2000,7 @@ window.YARDIM_VERI = {
    ],
    "ipuclari": [
     "An empty setlist won't open on stage; add pieces first.",
+    "To start from a particular piece, tap its name in the setlist; Stage Mode opens at that piece and carries on with the next ones. To read the lyrics, tap **Show the lyrics** in the row's **⋯** menu.",
     "To open a single piece on stage, tap **🎭 Open in Stage Mode** in its detail view in Pieces.",
     "The bottom menu is hidden on stage; to leave, use **Display Settings** › **Close Stage Mode**.",
     "If the piece details aren't on your device and there's no internet, you'll see “Some piece details could not be loaded. Stage Mode was not started. Check your connection and try again.” Try again once you're connected."

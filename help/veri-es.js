@@ -285,7 +285,7 @@ window.YARDIM_VERI = {
    "id": "muzik-tercihleri",
    "kategori": "Primeros pasos",
    "baslik": "¿Cómo cambio mis preferencias musicales?",
-   "ozet": "En la sección Mi música de Ajustes, elige los estilos que tocas y toca Guardar; esta elección no oculta ninguna obra.",
+   "ozet": "En la sección Mi música de Ajustes, elige los estilos que tocas y toca Guardar; la lista de Obras se abrirá solo con esos estilos.",
    "anahtar": [
     "preferencias musicales",
     "estilos musicales",
@@ -306,7 +306,8 @@ window.YARDIM_VERI = {
     "Toca **Guardar**. Aparece **Guardado ✓**."
    ],
    "ipuclari": [
-    "Según la explicación de Ajustes, esta elección se usa para destacar las obras y los contenidos que más te encajan; no oculta ninguna obra y no depende del idioma de la app.",
+    "Los estilos que elijas se convierten en un filtro en **Obras**: la lista solo muestra obras de esos estilos. Tus favoritas, tus borradores y las obras que añadiste tú siempre se ven. La elección es independiente del idioma de la app.",
+    "Para ver todos los géneros, abre **Filtros** en **Obras** y toca **Mostrar todos los géneros** o **Borrar filtros**. Se queda así en este dispositivo; si vuelves a guardar tus preferencias, el filtro vuelve.",
     "Al crear una cuenta nueva, puede aparecer una sola vez la ventana **Queremos conocer tu música**: elige los estilos y toca **Continuar**, o cierra la ventana con **Omitir por ahora**. Más adelante puedes cambiar tu elección aquí.",
     "Si guardas sin conexión a internet, aparece **Guardado en este dispositivo; se sincronizará cuando vuelvas a estar en línea.**",
     "En la sección **Campos musicales** de la misma página eliges qué campos de información (como makam, usul o tónica) aparecen activados en las obras nuevas."
@@ -407,7 +408,9 @@ window.YARDIM_VERI = {
     "botón de género",
     "recordar idioma",
     "solo turco",
-    "mostrar todos los idiomas"
+    "mostrar todos los idiomas",
+    "mostrar todos los géneros",
+    "filtro preferencias musicales"
    ],
    "adimlar": [
     "Ve a **Obras**.",
@@ -417,13 +420,14 @@ window.YARDIM_VERI = {
     "El orden y los demás filtros están más abajo, en la misma ventana.",
     "En la ventana **Filtrar y ordenar** que se abre, en **Ordenar**, elige **Por título**, **Por compositor**, **Por makam**, **Por forma** o **Por región**.",
     "En las secciones **Género / Forma**, **Afinación**, **Región** y **Makam**, toca el valor que quieras; junto a cada valor aparece cuántas obras tiene. Si vuelves a tocar el mismo valor, el filtro se quita.",
-    "Para restablecer los filtros, toca **Borrar filtros**; este botón también vacía el cuadro de búsqueda. Si quieres conservar el texto de la búsqueda, toca **Todas** encima de la lista. Ninguno de los dos botones quita el idioma elegido."
+    "Para restablecer los filtros, toca **Borrar filtros**, justo debajo de la sección **Idioma y género**; este botón también vacía el cuadro de búsqueda y quita el filtro de tus preferencias musicales. Si quieres conservar el texto de la búsqueda, toca **Todas** encima de la lista. Ninguno de los dos botones quita el idioma elegido."
    ],
    "ipuclari": [
     "El botón **Sin género** muestra las obras a las que aún no se les ha asignado un género.",
     "Los botones de idioma solo aparecen si tu lista tiene obras en más de un idioma.",
     "La elección de idioma solo afecta a la lista de obras y a la búsqueda; tus repertorios no cambian. Si no encuentras una obra mientras hay un idioma elegido, abre **Filtros** y toca primero **Mostrar todos los idiomas**.",
-    "Tus otros filtros y el orden también se recuerdan en este dispositivo hasta que los cambies. Para quitar los filtros, toca **Todas**."
+    "Tus otros filtros y el orden también se recuerdan en este dispositivo hasta que los cambies. Para quitar los filtros, toca **Todas**; el filtro de idioma y el de tus preferencias musicales se mantienen.",
+    "Si tienes preferencias musicales en Ajustes, la lista se abre solo con esos géneros y debajo de los chips aparece «Según tus preferencias musicales, solo se muestran estos géneros». Tus favoritas, tus borradores y las obras que añadiste tú nunca se filtran. Para volver a todos los géneros, toca **Mostrar todos los géneros** en esa nota. Si la obra que buscas es de otro género, toca **Mostrar** encima de los resultados de búsqueda."
    ],
    "platform": "",
    "ilgili": [
@@ -2108,6 +2112,7 @@ window.YARDIM_VERI = {
    ],
    "ipuclari": [
     "Un repertorio sin obras no se abre en el escenario; primero añade obras.",
+    "Para empezar por una obra concreta, toca su nombre en el repertorio; el Modo Escenario se abre en esa obra y sigue con las siguientes. Para leer la letra, toca **Mostrar la letra** en el menú **⋯** de la fila.",
     "Para abrir una sola obra en el escenario, toca el botón **🎭 Abrir en el Modo Escenario** de los detalles de la obra, en Obras.",
     "En el escenario, el menú inferior se oculta; para salir, usa **Ajustes de visualización** › **Cerrar el Modo Escenario**.",
     "Si los datos de las obras no están en el dispositivo y tampoco hay internet, aparece el aviso «No se pudieron cargar algunos detalles de las obras. El Modo Escenario no se inició. Comprueba tu conexión e inténtalo de nuevo.»; vuelve a intentarlo cuando haya conexión."
