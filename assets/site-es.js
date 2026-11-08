@@ -47,7 +47,7 @@
 "Bize yazın": "Escríbenos",
 "Okul ve kurum (Edu)": "Escuela o institución (Edu)",
 "öğrenci koltuğu başına, yıllık": "por plaza de estudiante y año",
-"Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "El profesorado es gratis y no cuenta como plaza.",
+"Her 20 koltuğa 1 öğretmen ücretsiz (en az 1).": "1 profesor gratis por cada 20 plazas (al menos 1).",
 "Öğrenciler davetle katılır.": "Los estudiantes se unen por invitación.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | Gestión de repertorio y escenario para músicos",
 "Özellikler": "Funciones",

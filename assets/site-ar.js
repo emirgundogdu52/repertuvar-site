@@ -47,7 +47,7 @@
 "Bize yazın": "راسلنا",
 "Okul ve kurum (Edu)": "مدرسة أو مؤسسة (Edu)",
 "öğrenci koltuğu başına, yıllık": "لكل مقعد طالب سنويًا",
-"Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "المعلّم مجاني ولا يُحتسب ضمن المقاعد.",
+"Her 20 koltuğa 1 öğretmen ücretsiz (en az 1).": "معلّم واحد مجانًا لكل 20 مقعدًا (معلّم واحد على الأقل).",
 "Öğrenciler davetle katılır.": "ينضم الطلاب بدعوة.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | إدارة قوائم العزف والمسرح للموسيقيين",
 "Özellikler": "الميزات",

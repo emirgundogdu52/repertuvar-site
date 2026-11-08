@@ -47,7 +47,7 @@
 "Bize yazın": "Fale conosco",
 "Okul ve kurum (Edu)": "Escola e instituição (Edu)",
 "öğrenci koltuğu başına, yıllık": "por vaga de aluno, por ano",
-"Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "Professores são gratuitos e não contam como vaga.",
+"Her 20 koltuğa 1 öğretmen ücretsiz (en az 1).": "1 professor grátis a cada 20 vagas (pelo menos 1).",
 "Öğrenciler davetle katılır.": "Os alunos entram por convite.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | Gestão de Repertório e Palco para Músicos",
 "Özellikler": "Recursos",

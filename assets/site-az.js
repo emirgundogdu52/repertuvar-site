@@ -47,7 +47,7 @@
 "Bize yazın": "Bizə yaz",
 "Okul ve kurum (Edu)": "Məktəb və təşkilat (Edu)",
 "öğrenci koltuğu başına, yıllık": "şagird yeri başına, illik",
-"Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "Müəllim pulsuzdur, yer sayına daxil deyil.",
+"Her 20 koltuğa 1 öğretmen ücretsiz (en az 1).": "Hər 20 yerə 1 müəllim pulsuz (ən azı 1).",
 "Öğrenciler davetle katılır.": "Şagirdlər dəvətlə qoşulur.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | Musiqiçilər üçün repertuar və səhnə idarəetməsi",
 "Özellikler": "İmkanlar",

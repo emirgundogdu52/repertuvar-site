@@ -47,7 +47,7 @@
 "Bize yazın": "Mail ons",
 "Okul ve kurum (Edu)": "School of instelling (Edu)",
 "öğrenci koltuğu başına, yıllık": "per leerlingplek, per jaar",
-"Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "Docenten zijn gratis en tellen niet mee als plek.",
+"Her 20 koltuğa 1 öğretmen ücretsiz (en az 1).": "1 docent gratis per 20 plekken (minimaal 1).",
 "Öğrenciler davetle katılır.": "Leerlingen doen mee via een uitnodiging.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | Setlist- en podiumbeheer voor muzikanten",
 "Özellikler": "Functies",

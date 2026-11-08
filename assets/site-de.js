@@ -47,7 +47,7 @@
 "Bize yazın": "Schreib uns",
 "Okul ve kurum (Edu)": "Schule und Einrichtung (Edu)",
 "öğrenci koltuğu başına, yıllık": "pro Schülerplatz und Jahr",
-"Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "Lehrkräfte sind kostenlos und zählen nicht zu den Plätzen.",
+"Her 20 koltuğa 1 öğretmen ücretsiz (en az 1).": "1 Lehrkraft gratis je 20 Plätze (mindestens 1).",
 "Öğrenciler davetle katılır.": "Schülerinnen und Schüler treten per Einladung bei.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | Setlist- und Bühnenmanagement für Musiker",
 "Özellikler": "Funktionen",

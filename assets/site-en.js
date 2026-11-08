@@ -21,7 +21,7 @@ window.SITE_EN={
 "Bize yazın": "Contact us",
 "Okul ve kurum (Edu)": "School or organisation (Edu)",
 "öğrenci koltuğu başına, yıllık": "per student seat, per year",
-"Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "Teachers are free and don't count towards the seats.",
+"Her 20 koltuğa 1 öğretmen ücretsiz (en az 1).": "1 teacher free for every 20 seats (at least 1).",
 "Öğrenciler davetle katılır.": "Students join by invitation.",
 "Fiyatlar": "Pricing",
 "Pro'nun her planında 1 ay ücretsiz": "1 month free on every Pro plan",
