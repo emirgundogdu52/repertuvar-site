@@ -1,7 +1,7 @@
 /* Nederlands — landing sözlüğü (assets/site-i18n.js kullanır). Anahtar: sayfadaki Türkçe metin. */
 (window.SITE_DIL = window.SITE_DIL || {})['nl'] = {
 "Fiyatlar": "Prijzen",
-"Her planda 1 ay ücretsiz": "1 maand gratis bij elk abonnement",
+"Pro'nun her planında 1 ay ücretsiz": "1 maand gratis bij elk Pro-abonnement",
 "Tüm özellikler tek planda: Repertuvar Pro. İlk kez abone olanlara her planda 1 ay ücretsiz; deneme bitmeden iptal edersen ücret alınmaz.": "Alle functies in één abonnement: Repertuvar Pro. Nieuwe abonnees krijgen bij elk abonnement 1 maand gratis; zeg je op voordat de proefperiode afloopt, dan betaal je niets.",
 "En avantajlı · %24": "Voordeligst · 24% korting",
 "%9 avantajlı": "9% korting",
@@ -49,7 +49,6 @@
 "öğrenci koltuğu başına, yıllık": "per leerlingplek, per jaar",
 "Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "Docenten zijn gratis en tellen niet mee als plek.",
 "Öğrenciler davetle katılır.": "Leerlingen doen mee via een uitnodiging.",
-"Yalnız yıllık; kuruma bir kez 1 ay ücretsiz deneme.": "Alleen jaarlijks; eenmalig 1 maand gratis per instelling.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | Setlist- en podiumbeheer voor muzikanten",
 "Özellikler": "Functies",
 "Pedal": "Pedaal",

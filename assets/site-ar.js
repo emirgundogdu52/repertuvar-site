@@ -1,7 +1,7 @@
 /* العربية — landing sözlüğü (assets/site-i18n.js kullanır). Anahtar: sayfadaki Türkçe metin. */
 (window.SITE_DIL = window.SITE_DIL || {})['ar'] = {
 "Fiyatlar": "الأسعار",
-"Her planda 1 ay ücretsiz": "شهر مجاني في كل خطة",
+"Pro'nun her planında 1 ay ücretsiz": "شهر مجاني في كل خطة من خطط Pro",
 "Tüm özellikler tek planda: Repertuvar Pro. İlk kez abone olanlara her planda 1 ay ücretsiz; deneme bitmeden iptal edersen ücret alınmaz.": "كل الميزات في خطة واحدة: Repertuvar Pro. يحصل المشتركون الجدد على شهر مجاني في أي خطة؛ وإذا ألغيت قبل انتهاء التجربة فلن تدفع شيئًا.",
 "En avantajlı · %24": "الأوفر · خصم 24٪",
 "%9 avantajlı": "خصم 9٪",
@@ -49,7 +49,6 @@
 "öğrenci koltuğu başına, yıllık": "لكل مقعد طالب سنويًا",
 "Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "المعلّم مجاني ولا يُحتسب ضمن المقاعد.",
 "Öğrenciler davetle katılır.": "ينضم الطلاب بدعوة.",
-"Yalnız yıllık; kuruma bir kez 1 ay ücretsiz deneme.": "سنوي فقط؛ شهر تجريبي مجاني مرة واحدة لكل مؤسسة.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | إدارة قوائم العزف والمسرح للموسيقيين",
 "Özellikler": "الميزات",
 "Pedal": "الدوّاسة",

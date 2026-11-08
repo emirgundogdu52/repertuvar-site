@@ -1,7 +1,7 @@
 /* Italiano — landing sözlüğü (assets/site-i18n.js kullanır). Anahtar: sayfadaki Türkçe metin. */
 (window.SITE_DIL = window.SITE_DIL || {})['it'] = {
 "Fiyatlar": "Prezzi",
-"Her planda 1 ay ücretsiz": "1 mese gratis con ogni piano",
+"Pro'nun her planında 1 ay ücretsiz": "1 mese gratis con ogni piano Pro",
 "Tüm özellikler tek planda: Repertuvar Pro. İlk kez abone olanlara her planda 1 ay ücretsiz; deneme bitmeden iptal edersen ücret alınmaz.": "Tutte le funzioni in un solo piano: Repertuvar Pro. Chi si abbona per la prima volta ha 1 mese gratis con qualsiasi piano; se disdici prima della fine della prova, non paghi nulla.",
 "En avantajlı · %24": "Più conveniente · −24%",
 "%9 avantajlı": "−9%",
@@ -49,7 +49,6 @@
 "öğrenci koltuğu başına, yıllık": "per posto studente, all’anno",
 "Öğretmen ücretsiz; koltuk sayısına dahil değildir.": "Gli insegnanti sono gratis e non contano come posto.",
 "Öğrenciler davetle katılır.": "Gli studenti entrano su invito.",
-"Yalnız yıllık; kuruma bir kez 1 ay ücretsiz deneme.": "Solo annuale; 1 mese di prova gratis, una sola volta per ente.",
 "Repertuvar.app | Müzisyenler İçin Repertuvar ve Sahne Yönetimi": "Repertuvar.app | Scalette e gestione del palco per musicisti",
 "Özellikler": "Funzioni",
 "Pedal": "Pedale",
