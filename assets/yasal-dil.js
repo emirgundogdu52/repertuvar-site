@@ -25,7 +25,8 @@
     return 'en';
   }
   var hedef = istenen();
-  if (hedef !== bu) { try { location.replace(adres(hedef) + location.hash); return; } catch (e) {} }
+  // (2026-11-08) ?lang taşınır: yoksa hedef sayfa tarayıcı diline geri döner (ör. NL tarayıcıda ?lang=de → /de/ → /nl/).
+  if (hedef !== bu) { try { location.replace(adres(hedef) + location.search + location.hash); return; } catch (e) {} }
   function liste() {
     var kap = document.getElementById('dilListesi'); if (!kap) return;
     kap.innerHTML = '';
