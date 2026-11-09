@@ -20,6 +20,10 @@
     if (DILLER[h]) return h;
     try { h = localStorage.getItem('siteLang'); } catch (e) {}
     if (DILLER[h]) return h;
+    // (2026-11-09) Tarayıcı diline göre geçiş yalnız Türkçe ana sayfada (/privacy/ gibi; dış bağlantıların girdiği adres).
+    // Dil sayfası (/privacy/de/ …) açık seçim yoksa olduğu gibi kalır: Googlebot (en-US) bu sayfalardan /en/'e atılınca
+    // Search Console onları "Pagina met omleiding" sayıp indekslemiyordu.
+    if (bu !== 'tr') return bu;
     var tl = []; try { tl = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || '']; } catch (e) {}
     for (var i = 0; i < tl.length; i++) { var k = String(tl[i] || '').slice(0, 2).toLowerCase(); if (DILLER[k]) return k; }
     return 'en';
