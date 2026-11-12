@@ -2282,6 +2282,44 @@ var RA_UTM = (function () {
     }).catch(function () {});
   } catch (e) {}
 })();
+/* (2026-11-12) Ziyaret sonu özeti. Emir: "insanlar geliyor ve hemen çıkıyor" — sayaç yalnız girişi yazıyordu; mağaza rozetine
+   basıp indirmeye giden de "girip çıktı" görünüyordu. Ziyaret başına EN FAZLA BİR KEZ gönderilir: rozete basılınca hemen,
+   yoksa sekme ilk kez gizlenince (çıkış, uygulama değiştirme). Sekme gizlenip geri gelinirse sonrası sayılmaz.
+   Giden: sayfa yolu, kaynak (utm_source ya da gelinen sitenin adı), kaba cihaz, sayfanın görünür kaldığı saniye, basılan
+   mağaza (ios/android). Kimlik, çerez, saklama YOK. Tablo: landing_cikis (app/sql/2026-11-12_landing_cikis.sql). */
+(function () {
+  var basla = document.visibilityState === 'visible' ? Date.now() : 0, magaza = null, gitti = false, kaynak = '';
+  try {
+    kaynak = (/(?:^|&)utm_source=([^&]+)/.exec(RA_UTM) || [])[1]
+      || (document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : '');
+  } catch (e) {}
+  function gonder() {
+    if (gitti) return;
+    gitti = true;
+    try {
+      fetch('https://ehytkzxdhjyjuubizdnl.supabase.co/rest/v1/rpc/log_cikis', {
+        method: 'POST',
+        headers: { 'apikey': 'sb_publishable_f_WsYxzN06B5dGROrkGyPQ_UDxKSbtO', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          p_sayfa: location.pathname || '/',
+          p_kaynak: kaynak,
+          p_cihaz: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'mobil' : 'masaustu',
+          p_sure: basla ? Math.round((Date.now() - basla) / 1000) : 0,
+          p_magaza: magaza
+        }),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  }
+  document.querySelectorAll('a[data-magaza]').forEach(function (a) {
+    a.addEventListener('click', function () { magaza = a.getAttribute('data-magaza'); gonder(); });
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') gonder();
+    else if (!basla) basla = Date.now();   // arka planda açılan sekme: süre görünür olunca başlar
+  });
+  window.addEventListener('pagehide', gonder);
+})();
 </script>
 <script>
 /* (2026-10-29) Mağaza bağlantıları: kampanya kodu App Store'a ct, Google Play'e referrer olarak gider.
